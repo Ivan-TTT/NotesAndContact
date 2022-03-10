@@ -1,0 +1,138 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+* {
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+@font-face{ /*Шрифт*/
+    font-family: "Montserrat-ExtraLight";
+    src: url("../Fonts/Montserrat-Light.ttf");
+}
+
+
+
+.AllContentWindow{/*Расположение SidePane(боковая панель) и EventWindow(окно события)*/
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+textarea::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+textarea::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+ 
+textarea::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  /* outline: 1px solid slategrey; */
+  border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------Бокавая панель----------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.SidePanel{ /*Бокавая панель*/
+    display: flex;
+    flex-direction: column;
+}
+.Tabs{/*Вкладки боковой панели*/
+    font-family: "Montserrat-ExtraLight";
+    transition: .3s;
+}
+.Tabs:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------Задачи--------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+/* .TaskWindow{
+    position: fixed;
+} */
+
+.AddTask {
+    font-family: "Montserrat-ExtraLight";
+    transition: .3s;
+    display: flex;
+    justify-content: center;
+}
+.AddTask:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+.itemGroupOne{
+    /* font-family: "Montserrat-ExtraLight"; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+}
+
+input[type="date"]{
+    
+    position: relative;
+    text-align: center;
+}
+
+input[type="time"]{
+    position: relative;
+    text-align: center;
+}
+
+/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    background: transparent;
+}
+
+/* adjust increase/decrease button */
+input[type="time"]::-webkit-inner-spin-button, input[type="time"]::-webkit-clear-button, input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button{
+    z-index: 1;
+}
+
+.Progress-img, .addDop-img, .saveTask-img{
+    opacity: 50%;
+    transition: .3s;
+}
+.Progress-img:hover, .addDop-img:hover, .saveTask-img:hover{
+    opacity: 80%;
+}
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------------------------Дополнительнные Задачи----------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.itemGroupTwo{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center; 
+}
+
+.DopTask{
+    display: flex;
+    align-items:center;
+    flex-flow:wrap column;
+    justify-content: space-around;
+}
+
+textarea{
+    resize: none;
+}
+

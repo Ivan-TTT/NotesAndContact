@@ -1,0 +1,133 @@
+.indent{ /*Отступы элементов в контейнере*/
+    margin-top:     calc(8px + (26 - 8)*((100vw - 320px) / (1980 - 320)));
+    margin-left:    calc(8px + (26 - 8)*((100vw - 320px) / (1980 - 320)));
+    margin-right:   calc(8px + (26 - 8)*((100vw - 320px) / (1980 - 320)));
+    border-radius:  calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+.indentTask {
+    padding-left:   calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-right:  calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-top:    calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-bottom: calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-top:     calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-bottom:  calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-left:    calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-right:   calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+.input-seze-One{
+    font-family: "Montserrat-ExtraLight";
+    background-color: #E4E4E4;
+    font-size: calc(4px + (28 - 4)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    height: calc(6px + (36 - 6)*((100vw - 320px) / (1980 - 320))) ;
+    border: none;
+    outline: none;
+}
+.input-seze-Two{
+    font-family: "Montserrat-ExtraLight";
+    background-color: #E4E4E4;
+    font-size: calc(4px + (22 - 4)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    border: none;
+    outline: none;
+    width: calc(68px + (530 - 68)*((100vw - 320px) / (1980 - 320))) ; ;
+}
+/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------Бокавая панель----------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.SidePanel{ /*Бокавая панель*/
+    width: calc(50px + (260 - 50)*((100vw - 320px) / (1980 - 320)));
+    height: 100vh;
+}
+.Tabs{/*Вкладки боковой панели*/
+    
+    width: calc(34px + (200 - 34)*((100vw - 320px) / (1980 - 320)));
+    height: calc(8px + (40 - 8)*((100vw - 320px) / (1980 - 320)));
+    font-size: calc(6px + (32 - 6)*((100vw - 320px) / (1980 - 320)));
+}
+.Tabs:hover{
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------Задачи--------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.EventWindow{/*Настройка EventWindow (окна события)*/
+    width: 100vw;
+    height: 100vh;
+}
+
+.AddTask {
+    font-size: calc(6px + (32 - 6)*((100vw - 320px) / (1980 - 320)));
+}
+.AddTask:hover{
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+.itemGroupOne{
+    font-size: calc(6px + (32 - 6)*((100vw - 320px) / (1980 - 320)));
+    border-radius:  calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-left:   calc(4px + (4 - 4)*((100vw - 320px) / (1980 - 320)));
+    padding-right:  calc(4px + (4 - 4)*((100vw - 320px) / (1980 - 320)));
+    padding-top:    calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-bottom: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));   
+}
+
+.ProgressTask, .AddNewDopTask, .SaveTask{
+    width: calc(6px + (36 - 6)*((100vw - 320px) / (1980 - 320)));
+    height: calc(6px + (36 - 6)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-top: calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    /* padding-left: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320))); */
+    /* padding-right: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320))); */
+}
+
+
+.inputTask-Text{
+    width: calc(156px + (1250 - 156)*((100vw - 320px) / (1980 - 320)));
+}
+
+input[type="date"]{
+    width: calc(26px + (160 - 26)*((100vw - 320px) / (1980 - 320)));
+}
+
+input[type="time"]{
+    width: calc(12px + (80 - 12)*((100vw - 320px) / (1980 - 320)));
+}
+
+/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    left: calc(-60px + (-10 - (-60))*((100vw - 320px) / (1980 - 320)));
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------------------------Дополнительнные Задачи----------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.itemGroupTwo{
+    padding-left:   calc(4px + (8 - 4)*((100vw - 320px) / (1980 - 320)));
+    padding-right:  calc(4px + (8 - 4)*((100vw - 320px) / (1980 - 320)));
+    padding-top:    calc(4px + (8 - 4)*((100vw - 320px) / (1980 - 320)));
+    padding-bottom: calc(4px + (8 - 4)*((100vw - 320px) / (1980 - 320)));   
+}
+
+.DopTask{
+    border-radius:  calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-left:   calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-right:  calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-top:    calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-bottom: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+}
+
+.input-DopTaskOne, .input-DopTaskTwo, .input-DopTaskThree, .textarea-DopTaskOne, .textarea-DopTaskTwo, .textarea-DopTaskThree{
+    margin-top:     calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-bottom:  calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-left:    calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+    margin-right:   calc(1px + (2 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+
+
