@@ -38,4 +38,29 @@ def update_task():
         print(error)
         return tasks_items
 
+indexLine = []
+
+def acceptingAnId_py(index):
+    try:
+        connect = sqlite3.connect("bd/storage.db")
+        cursor = connect.cursor()
+        cursor.execute("SELECT * FROM tasks WHERE indexT=?",(index,))
+        global indexLine 
+        indexLine = cursor.fetchall()
+        # for item in cursor.fetchall():
+        #     indexLine.append(item)
+        print("Строка с index = ", index ," : ", indexLine)
+        #     connect.close()
+        returnLineId()
+        return indexLine 
+    except Exception as error:
+        indexLine = "erro"
+        print(error)
+        return indexLine
+
+# Возвращение данных о строке в JS, для ее создания, с возможностью редактирования
+def returnLineId():
+    return indexLine
+ 
+
 

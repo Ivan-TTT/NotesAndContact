@@ -239,22 +239,41 @@ function editingTask(){
     $('.Task').on('click', function(){ 
         let index = $(this).attr('id');
         console.info(`Id этой заметки = ${index}`);
+        idTransfer_js(index);
         $(this).remove();
         $('.Task').unbind('click');
     });
     
 }
 
-// $(document).ready(function() {
-// $(".SaveTask").click(function () {
-// $(this).next(".Task").attr('id');
-// console.log((this).next(".Task").attr('id'));
-// } );
-// } );
+// Значение принимаеться из функции (editingTask)
+// Функция принимает значение и передает его в Python
+// Из пайтон передает значение функции с SQL запросом
+// Запрос сравнивает значение в столбце index_t,
+// Если значение совподает то возвращаеться целая строка
+async function idTransfer_js(index){
+    console.log(`index = "${index}" пердаеться в python`);
+    eel.idTransfer(index);
+    eel.creatingLineId();
+};
 
-// $(document).ready(function(){
-// 	$('img.saveTask-img').click(function(){
-//         $(this).attr('id');
-//         alert($(this).attr('id'));
-// 	});
-// });
+eel.expose(returnLineId_js)
+function returnLineId_js(get_line){
+    get_line = 1;
+    console.log("елки палки");
+    //for (var line = 0; line < line_items.length; line++){
+    //var saveIndex = line_items[0];                 //
+    //var saveCindition = line_items[line][1];             //
+    //var saveQueue  = line_items[line][2];                //
+    //var saveTaskText = line_itemss[line][3];              //
+    //var saveTaskDate = line_items[line][4];              //
+    //var saveTaskTime  = line_items[line][5];             //
+    //var saveDopTaskOne = line_items[line][6];            //
+    //var saveTextareaDopTaskOne = line_items[line][7];    //
+    //var saveDopTaskTwo = line_items[line][8];            //
+    //var saveTextareaDopTaskTwo = line_items[line][9];    //
+    //var saveDopTaskThree = line_items[line][10];         //
+    //var saveTextareaDopTaskThree = line_items[line][11]; //
+    console.log(line_items);       
+    //}
+};
