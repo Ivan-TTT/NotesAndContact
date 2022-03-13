@@ -47,19 +47,26 @@ def acceptingAnId_py(index):
         cursor.execute("SELECT * FROM tasks WHERE indexT=?",(index,))
         global indexLine 
         indexLine = cursor.fetchall()
-        # for item in cursor.fetchall():
-        #     indexLine.append(item)
         print("Строка с index = ", index ," : ", indexLine)
-        #     connect.close()
-        returnLineId()
+        retuuurnLineId()
         return indexLine 
     except Exception as error:
         indexLine = "erro"
         print(error)
         return indexLine
 
+def lineDelete(index):
+    connect = sqlite3.connect("bd/storage.db")
+    cursor = connect.cursor()
+    cursor.execute("DELETE FROM tasks WHERE indexT=?",(index,))
+    connect.close()
+
 # Возвращение данных о строке в JS, для ее создания, с возможностью редактирования
-def returnLineId():
+def retuuurnLineId():
+    index = indexLine[0][0]
+    index.isdigit()
+    print(index)
+    lineDelete(index)
     return indexLine
  
 

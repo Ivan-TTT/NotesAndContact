@@ -1,6 +1,6 @@
 from __future__ import print_function	
 import eel
-from models.bd import saveTask_py, update_task, acceptingAnId_py, returnLineId
+from models.bd import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId
 
 eel.init('web')
 
@@ -17,12 +17,11 @@ def idTransfer(index):
 
 @eel.expose 
 def creatingLineId():
-    get_line = returnLineId()
-    eel.returnLineId_js(get_line)
-    print("Строка передалась в JS, для дальнейшего ёё редактирования")
+    get_line = retuuurnLineId()
+    eel.retuuurnLineId_js(get_line)
+    print("Строка передалась в JS, для дальнейшего её редактирования")
     print("")
     print("-"*130)
-
 
 @eel.expose 
 def update_all_task():
