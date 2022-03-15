@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
-    eel.update_all_task();
+    //eel.update_all_task();
+    localStorage.setItem(`IdTrisTask`,``);
+    localStorage.setItem('Editing','');
     console.log('HTML загружен');
 });
 
@@ -19,6 +21,8 @@ const TaskElementContent = TaskElement.innerHTML;
 function getAddTask(){
     numberOfTasks = document.getElementsByClassName('Task').length;
     console.log(numberOfTasks);
+
+    localStorage.setItem('Editing','');
 
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );
@@ -102,14 +106,13 @@ function saveTaskFunction (){
     ? console.log(saveTextareaDopTaskThree): "";
 
     // {2}
-    if ((saveTaskText || saveTaskDate || saveTaskTime || saveDopTaskOne || saveTextareaDopTaskOne ||        // Данная функция проверяет заполнены ли поля ввода - данными
-        saveDopTaskTwo || saveTextareaDopTaskTwo || saveDopTaskThree || saveTextareaDopTaskThree) != ""){   // Если хоть одно поле заполненно - создаеться шаблон для Заметки
+    if (((saveTaskText || saveTaskDate || saveTaskTime || saveDopTaskOne || saveTextareaDopTaskOne ||        // Данная функция проверяет заполнены ли поля ввода - данными
+        saveDopTaskTwo || saveTextareaDopTaskTwo || saveDopTaskThree || saveTextareaDopTaskThree) != "") && (localStorage.getItem('Editing')) == ""){   // Если хоть одно поле заполненно - создаеться шаблон для Заметки
         console.log("Данные передаються в базу");                                                           // Если в поле вода есть значение - то это поле добавляеться в созданую форму с этим значением
         
         let TaskArr = [saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree];
         console.log(TaskArr);
         localStorage.setItem('Task',TaskArr);
-
         localStorage.setItem('Number', number_stchet++);
 
         var saveIndex = localStorage.getItem('Number');
@@ -117,6 +120,17 @@ function saveTaskFunction (){
         var saveQueue = 1;
 
         // {3}
+        taskValue_js(saveIndex, saveCindition, saveQueue, 
+            saveTaskText, saveTaskDate, saveTaskTime,
+            saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo,
+            saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
+
+    } else {
+        alert( 'Верно!' );
+        var saveIndex = localStorage.getItem('IdThisTask');
+        var saveCindition = "start";
+        var saveQueue = 1;
+
         taskValue_js(saveIndex, saveCindition, saveQueue, 
             saveTaskText, saveTaskDate, saveTaskTime,
             saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo,
@@ -149,7 +163,8 @@ async function taskValue_js(saveIndex, saveCindition, saveQueue, saveTaskText, s
 // {5}
 eel.expose(get_update_task_js)
 function get_update_task_js(tasks_items){
-    $(".Task div").remove(); 
+    $(".Task div").remove();
+    localStorage.setItem('Editing','');
     console.log("Обновление списка");
     for (var tasks = 0; tasks < tasks_items.length; tasks++){
 
@@ -234,15 +249,14 @@ const Tasks = JSON.parse(localStorage.getItem("Task"));
 const sizeSorege = localStorage.length;
 
 function editingTask(){
-
     $('.Task').on('click', function(){ 
         let index = $(this).attr('id');
         console.info(`Id этой заметки = ${index}`);
+        localStorage.setItem(`IdThisTask`,`${index}`);
         idTransfer_js(index);
         $(this).remove();
         $('.Task').unbind('click');
-    });
-    
+    });   
 }
 
 // Значение принимаеться из функции (editingTask)
@@ -277,6 +291,8 @@ function retuuurnLineId_js(line_items){
 };
 
 function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){
+    localStorage.setItem('Editing','active');
+    
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );
     NewTaskElement.classList.add ( "indent" ); 
@@ -299,7 +315,7 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
             <div id ="AddNewDopTask_id" class ="AddNewDopTask indentTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id_')" >
                 <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
             </div> 
-            <div class ="SaveTask indentTask" onClick ="taskValue_js ()">
+            <div class ="SaveTask indentTask" onClick ="saveTaskFunction ()">
                 <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
             </div>
         </div>
