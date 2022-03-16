@@ -5,69 +5,83 @@
     <title>Notes</title>
     <script type="text/javascript" src="eel.js"></script>
     <script src="JS/jquery-3.6.0.js" ></script>
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/size.css">
-    <link rel="stylesheet" href="CSS/color.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <div class="AllContentWindow"> <!--Контейнер со всем кодом страниц, нужен для регулировки положения основных элементов таких как боковое окно и окно по центру экрана -->
-        <div class="SidePanel colorC"> <!-- Боковая панель  --> 
-            <div class="Tabs indent" onclick=" updateTs()">
-                Заметки 
+    <nav class="sidePanel close">
+        <header>
+            <div class="logo-img">
+                <span class="logo">
+                    <img src="Img/save-G.svg" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="txt-logo-name">OnDay</span>
+                </div>
             </div>
-            <div class="Tabs indent">
-                Календарь 
+            <i class='toggle'></i>
+        </header>
+
+        <div class="tabs-bar">
+            <div class="tabs">
+
+                <ul class="tabs-links">
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Заметки</span>
+                        </a>
+                    </li>
+
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Календарь</span>
+                        </a>
+                    </li>
+
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Уведомления</span>
+                        </a>
+                    </li>
+
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Контакты</span>
+                        </a>
+                    </li>
+
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Настройки</span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
-            <div class="Tabs indent">
-                Контакты 
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li> 
             </div>
-            <div class="Tabs indent">
-                Настройки 
-            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="addTask" onclick =" getAddTask()">
+            <li class="">
+                <span class="text">Создать заметку</span>
+            </li> 
         </div>
 
-        <div id ="TaskWindow_id" class="TaskWindow EventWindow" ><!-- Окно Заметок, окно события  --> 
-            <div class ="AddTask indent colorC" onclick =" getAddTask()"> 
-                Создать заметку
-            </div>
-            <div class ="Task indent colorA" id = "0">
-                <div class ="itemGroupOne colorB colorC">
-                    <div class ="ProgressTask indentTask">
-                        <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
-                    </div>
-                    <div class="TextTask    indentTask">
-                        <input id ="Task-id" class ="inputTask-Text input-seze-One " type ="text" name ="Task-name" placeholder ="Напишите заметку..." >
-                    </div>
-                    <div class="DateTask     indentTask">
-                        <input id ="DateTask-id" class ="input-seze-One " type="date" >
-                    </div>
-                    <div class ="TimeTask   indentTask">
-                        <input id ="TimeTask-id" class ="input-seze-One " type ="time" >
-                    </div>
-                    <div id ="AddNewDopTask_id" class ="AddNewDopTask indentTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id_')" >
-                        <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
-                    </div> 
-                    <div class ="SaveTask indentTask" onClick ="saveTaskFunction ()">
-                        <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
-                    </div>
-                </div>
-                <div id ="itemGroupTwo_id_" class ="itemGroupTwo " style ='display:none'>
-                    <div class="DopTask DopTaskOne indentTask colorB">
-                        <input id ="DopTaskOne-id" class ="input-DopTaskOne input-seze-Two " type ="text" name ="DopTaskOne-name" placeholder ="Напишите коментарии...">
-                        <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne input-seze-Two"  name ="comment" cols="40" rows="3"></textarea>
-                    </div>
-                    <div class="DopTask DopTaskTwo indentTask colorB">
-                        <input id ="DopTaskTwo-id" class ="input-DopTaskTwo input-seze-Two" type ="text" name ="DopTaskTwo-name"  placeholder ="Напишите регламент...">
-                        <textarea id ="textareaDopTaskTwo-id" class ="textarea-DopTaskTwo input-seze-Two" name ="comment" cols ="40" rows ="3"></textarea>
-                    </div>
-                    <div class="DopTask DopTaskThree indentTask colorB">
-                        <input id ="DopTaskThree-id" class ="input-DopTaskThree input-seze-Two " type ="text" name ="DopTaskThree-name" placeholder ="Напишите особенности...">
-                        <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree input-seze-Two" name ="comment" cols ="40" rows ="3"></textarea>
-                    </div>
-                </div>
-            </div>               
-        </div>
-    </div>
+    </section>
 
     <script src="JS/mainJquery.js" ></script>
     <script src="JS/mainJs.js" ></script>

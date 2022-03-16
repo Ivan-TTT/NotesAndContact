@@ -1,0 +1,192 @@
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("../Fonts/Montserrat-Regular.ttf"); }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat-Regular'; }
+
+:root {
+  --body-color: #747474;
+  --sidePanel-color: #C4C4C4;
+  --c-color: #C0C0C0;
+  --d-color: #9C9797;
+  --text-color: #000;
+  --tabs-color: #E4E4E4;
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease; }
+
+::selection {
+  background-color: var(--body-color);
+  color: var(--tabs-color); }
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05); }
+
+.sidePanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 26px 10px 10px;
+  background: var(--sidePanel-color);
+  transition: var(--tran-05);
+  z-index: 100; }
+  .sidePanel.close {
+    width: 78px; }
+    .sidePanel.close .text {
+      opacity: 0; }
+    .sidePanel.close .toggle {
+      transform: translateY(-50%) rotate(0deg); }
+    .sidePanel.close ~ .home {
+      left: 78px;
+      height: 100vh;
+      width: calc(100% - 78px); }
+  .sidePanel li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px; }
+    .sidePanel li a {
+      list-style: none;
+      height: 100%;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: var(--tran-03); }
+      .sidePanel li a:hover {
+        background-color: var(--tabs-color); }
+  .sidePanel .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; }
+  .sidePanel .text {
+    font-size: 22px;
+    opacity: 1; }
+  .sidePanel header {
+    position: relative; }
+    .sidePanel header .logo-img {
+      display: flex;
+      align-items: center; }
+    .sidePanel header .logo-text {
+      display: flex;
+      flex-direction: column; }
+    .sidePanel header .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .sidePanel header .logo img {
+        width: 40px;
+        border-radius: 6px; }
+    .sidePanel header .toggle {
+      position: absolute;
+      top: 50%;
+      right: -25px;
+      transform: translateY(-50%) rotate(180deg);
+      height: 25px;
+      width: 25px;
+      background-color: var(--d-color);
+      color: var(--sidebar-color);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      transition: var(--tran-05); }
+  .sidePanel .tabs {
+    margin-top: 40px; }
+  .sidePanel .tabs-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll; }
+    .sidePanel .tabs-bar .mode {
+      border-radius: 6px;
+      background-color: var(--d-color);
+      position: relative;
+      transition: var(--tran-05); }
+
+.sidePanel header .logo,
+.sidePanel .icon {
+  min-width: 60px;
+  border-radius: 6px; }
+
+.sidePanel .text,
+.sidePanel .icon {
+  color: var(--text-color);
+  transition: var(--tran-03); }
+
+header .logo-img .txt-logo-name {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 600; }
+header .logo-img .profession {
+  font-size: 16px;
+  margin-top: -2px;
+  display: block; }
+
+.sidePanel li a:hover .icon,
+.sidePanel li a:hover .text {
+  color: var(--sidePanel-color); }
+
+.tabs-bar::-webkit-scrollbar {
+  display: none; }
+.tabs-bar .mode .sun-moon {
+  height: 50px;
+  width: 60px; }
+.tabs-bar .bottom-content .toggle-switch {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer; }
+
+.home {
+  position: absolute;
+  top: 0;
+  top: 0;
+  left: 250px;
+  height: 100vh;
+  padding: 26px 26px 0px;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05); }
+  .home .addTask {
+    cursor: pointer; }
+    .home .addTask li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      background-color: var(--sidePanel-color);
+      transition: var(--tran-03);
+      border-radius: 6px; }
+      .home .addTask li .text {
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--text-color); }
+      .home .addTask li:hover {
+        background-color: var(--tabs-color); }
+
+/*# sourceMappingURL=style.css.map */
