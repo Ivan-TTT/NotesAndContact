@@ -67,7 +67,8 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="#">
-                        <span class="text nav-text">Logout</span>
+                        <img class="icon" src="Img/two-G.svg" alt="">
+                        <span class="text nav-text">Выход</span>
                     </a>
                 </li> 
             </div>
@@ -75,10 +76,41 @@
     </nav>
 
     <section class="home">
+
         <div class="addTask" onclick =" getAddTask()">
             <li class="">
                 <span class="text">Создать заметку</span>
             </li> 
+        </div>
+
+        <div id = "0" class="Task">
+            <div class="itemGroupOne">
+                <ul>
+                    <li class ="ProgressTask">
+                        <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
+                    </li>
+
+                    <li class="TextTask">
+                        <input id ="Task-id" class ="inputTask-Text" type ="text" name ="Task-name" placeholder ="Напишите заметку..." >
+                    </li>
+
+                    <li class="DateTask">
+                        <input id ="DateTask-id" class ="inputDateTask " type="date" >
+                    </li class ="TimeTask">
+
+                    <li class="TimeTask">
+                        <input id ="TimeTask-id" class ="inputTimeTask " type ="time" >
+                    </li class ="TimeTask">
+
+                    <li id ="AddNewDopTask_id" class ="AddNewDopTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id_')">
+                        <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
+                    </li>
+
+                    <li class ="SaveTask">
+                        <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </section>

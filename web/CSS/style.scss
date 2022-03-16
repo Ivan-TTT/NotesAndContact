@@ -12,7 +12,7 @@
 	--body-color: #747474;
 	--sidePanel-color: #C4C4C4;
 	--c-color: #C0C0C0;
-	--d-color: #9C9797;
+	--task-color: #9C9797;
 	--text-color: #000;
 	--tabs-color: #E4E4E4;
 	--tran-03: all 0.2s ease;
@@ -70,8 +70,10 @@ body {
 			border-radius: 6px;
 			text-decoration: none;
 			transition: var(--tran-03);
+            opacity: 0.5;
 			&:hover {
 				background-color: var(--tabs-color);
+                opacity: 0.8;
 			}
 		}
 	}
@@ -114,7 +116,7 @@ body {
 			transform: translateY(-50%) rotate(180deg);
 			height: 25px;
 			width: 25px;
-			background-color: var(--d-color);
+			background-color: var(--task-color);
 			color: var(--sidebar-color);
 			border-radius: 6px;
 			display: flex;
@@ -136,7 +138,7 @@ body {
 		overflow-y: scroll;
 		.mode {
 			border-radius: 6px;
-			background-color: var(--d-color);
+			background-color: var(--task-color);
 			position: relative;
 			transition: var(--tran-05);
 		}
@@ -144,7 +146,7 @@ body {
 }
 .sidePanel header .logo,
 .sidePanel .icon {
-	min-width: 60px;
+	min-width: 58px;
 	border-radius: 6px;
 }
 .sidePanel .text,
@@ -201,11 +203,12 @@ header {
 	top: 0;
 	left: 250px;
 	height: 100vh;
-    padding: 26px 26px 0px;
+    
 	width: calc(100% - 250px);
 	background-color: var(--body-color);
 	transition: var(--tran-05);
     .addTask{
+        margin: 30px 30px 0px;
         cursor: pointer;
         li{
 	    	display: flex;
@@ -216,13 +219,75 @@ header {
             transition: var(--tran-03);
             border-radius: 6px;
             .text {
-                font-size: 30px;
-                font-weight: 500;
+                font-size: 26px;
                 color: var(--text-color);
+                transition: var(--tran-03);
+                opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                }
             }
             &:hover {
 				background-color: var(--tabs-color);
 			}
        }
+   }
+   .Task{
+        margin: 30px 30px 0px;
+        background-color: var(--task-color);
+        border-radius: 6px;
+        .itemGroupOne{
+            background-color: var(--sidePanel-color);
+            border-radius: 6px;
+            ul{
+                font-size: 26px;
+                
+                list-style: none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                img{
+                    cursor: pointer;
+                    min-width: 30px;
+                    border-radius: 6px;
+                    transition: var(--tran-03);
+                    opacity: 0.5;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                li{
+                    display: flex;
+                    align-items: center; 
+                    background-color: var(--tabs-color);
+                    input .inputDateTask,
+                    input .inputTimeTask{
+                        position: relative;
+                        text-align: center;
+                        &::-webkit-calendar-picker-indicator{
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            width: auto;
+                            height: auto;
+                            background: transparent;
+                            left: 60px;
+                            color: transparent;
+                        }
+                        &::-webkit-inner-spin-button{
+                            z-index: 1;
+                        }
+                    }
+                    input{
+                        min-height: 30px;
+                        border: none;
+                        outline: none;
+                        font-family: Montserrat-Regular;
+                        
+                    }
+                }
+            }
+        }
    }
 }
