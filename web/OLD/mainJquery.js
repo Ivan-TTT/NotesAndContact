@@ -4,11 +4,6 @@ $(document).ready(function() {
     localStorage.setItem(`IdTrisTask`,``);
     localStorage.setItem('Editing','');
     console.log('HTML загружен');
-    $( ".itemGroupTwo" ).toggle('hide');
-});
-
-$( ".AddNewDopTask" ).click(function(){ 
-    $( ".itemGroupTwo" ).toggle('hide');
 });
 
 const body = document.querySelector('body'),
@@ -21,24 +16,13 @@ toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
 
-// function AddNewDopTaskFunction() {
-// //var toggleElements = document.querySelectorAll(".itemGroupTwo");
-// //var toogledElement = document.querySelector("#" + id);
-// //
-// //toogledElement.style.display = toogledElement.style.display == 'none' ? 'flex' : 'none'; // работаем с нужным блоком
+function AddNewDopTaskFunction(id) {
+    var toggleElements = document.querySelectorAll(".itemGroupTwo");
+    var toogledElement = document.querySelector("#" + id);
+  
+    toogledElement.style.display = toogledElement.style.display == 'none' ? 'flex' : 'none'; // работаем с нужным блоком   
+}
 
-//     // $(document).ready(function(){
-//         // $('.spoiler_links').click(function(){
-//         //  $(this).parent().children('div.spoiler_body').toggle('normal');
-//         //  return false;
-//         // });
-//     // });
-//         $( ".AddNewDopTask" ).click(function(){ // задаем функцию при нажатиии на элемент с классом slide-toggle
-//           $( ".itemGroupTwo" ).slideDown( 500, "linear", function(){
-//             console.log("slideToggle completed");
-//           });
-//         });
-// }
 
 const TaskElement = document.querySelector('.Task');
 const TaskElementContent = TaskElement.innerHTML;
@@ -52,53 +36,44 @@ function getAddTask(){
 
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );
+    NewTaskElement.classList.add ( "indent" ); 
+    NewTaskElement.classList.add ( "colorA" );
     NewTaskElement.setAttribute ('id', '0');
     NewTaskElement.innerHTML = `
-       <div class="oneContent">
-           <nav class="queue">
-           <div class="higher">▲</div>
-           <input type="number">
-            <div class="below">▼</div> <!-- доделать в js -->
-           </nav>
-           <div class="itemGroupOne">
-                <ul>
-                   <li class ="ProgressTask">
-                       <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
-                   </li>
-                   <li class="TextTask">
-                       <input id ="Task-id" class ="inputTask-Text" type ="text" placeholder ="Напишите заметку..." >
-                   </li>
-                   <li class="DateTask">
-                       <input id ="DateTask-id" class ="inputDateTask " type="date" >
-                   </li>
-                   <li class="TimeTask">
-                       <input id ="TimeTask-id" class ="inputTimeTask " type ="time" >
-                   </li class ="TimeTask">
-                   <li id ="AddNewDopTask_id" class ="AddNewDopTask" onClick ="AddNewDopTaskFunction()">
-                       <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
-                   </li>
-                   <li class ="SaveTask">
-                       <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
-                   </li>
-                </ul>
-           </div>
-       </div>
-       <div id ="itemGroupTwo_id" class ="itemGroupTwo ">
-            <ul>
-                <li>
-                    <input id ="DopTaskOne-id" class ="input-DopTaskOne" type ="text" placeholder ="Напишите коментарии...">
-                    <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne" cols="54" rows="5"></textarea>
-                </li>
-                <li>
-                    <input id ="DopTaskTwo-id" class ="input-DopTaskTwo" type ="text" placeholder ="Напишите регламент...">
-                    <textarea id ="textareaDopTaskTwo-id" class ="textarea-DopTaskTwo" cols ="54" rows ="5"></textarea>
-                </li>
-                <li>
-                    <input id ="DopTaskThree-id" class ="input-DopTaskThree" type ="text" placeholder ="Напишите особенности...">
-                    <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree" cols ="54" rows ="5"></textarea>
-                </li>
-            </ul>
-       </div>
+        <div class ="itemGroupOne colorB colorC">
+            <div class ="ProgressTask indentTask">
+                <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
+            </div>
+            <div class="TextTask    indentTask">
+                <input id ="Task-id" class ="inputTask-Text input-seze-One " type ="text" name ="Task-name" placeholder ="Напишите заметку..." >
+            </div>
+            <div class="DateTask     indentTask">
+                <input id ="DateTask-id" class ="input-seze-One " type="date" >
+            </div>
+            <div class ="TimeTask   indentTask">
+                <input id ="TimeTask-id" class ="input-seze-One " type ="time" >
+            </div>
+            <div id ="AddNewDopTask_id" class ="AddNewDopTask indentTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id_')" >
+                <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
+            </div> 
+            <div class ="SaveTask indentTask" onClick ="saveTaskFunction ()">
+                <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
+            </div>
+        </div>
+        <div id ="itemGroupTwo_id_" class ="itemGroupTwo " style ='display:none'>
+            <div class="DopTask DopTaskOne indentTask colorB">
+                <input id ="DopTaskOne-id" class ="input-DopTaskOne input-seze-Two " type ="text" name ="DopTaskOne-name" placeholder ="Напишите коментарии...">
+                <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne input-seze-Two"  name ="comment" cols="40" rows="3"></textarea>
+            </div>
+            <div class="DopTask DopTaskTwo indentTask colorB">
+                <input id ="DopTaskTwo-id" class ="input-DopTaskTwo input-seze-Two" type ="text" name ="DopTaskTwo-name"  placeholder ="Напишите регламент...">
+                <textarea id ="textareaDopTaskTwo-id" class ="textarea-DopTaskTwo input-seze-Two" name ="comment" cols ="40" rows ="3"></textarea>
+            </div>
+            <div class="DopTask DopTaskThree indentTask colorB">
+                <input id ="DopTaskThree-id" class ="input-DopTaskThree input-seze-Two " type ="text" name ="DopTaskThree-name" placeholder ="Напишите особенности...">
+                <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree input-seze-Two" name ="comment" cols ="40" rows ="3"></textarea>
+            </div>
+        </div>
     `
     TaskElement.after(NewTaskElement);
 }
