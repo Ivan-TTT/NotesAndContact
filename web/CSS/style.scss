@@ -1,3 +1,11 @@
+//Адаптивное свойство
+$maxWidth:1920;
+@mixin adaptive($property,$startSize,$minSize) {
+	$addSize: $startSize - $minSize;
+	#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+}
+
+
 @font-face {
 	font-family: "Montserrat-Regular";
 	src: url("../Fonts/Montserrat-Regular.ttf");
@@ -11,10 +19,11 @@
 :root {
 	--body-color: #747474;
 	--sidePanel-color: #C4C4C4;
-	--c-color: #C0C0C0;
+	--dopT-color: #C0C0C0;
 	--task-color: #9C9797;
 	--text-color: #000;
 	--tabs-color: #E4E4E4;
+	--num-color: #74747488;
 	--tran-03: all 0.2s ease;
 	--tran-03: all 0.3s ease;
 	--tran-04: all 0.3s ease;
@@ -35,12 +44,15 @@ body {
 	left: 0;
 	height: 100%;
 	width: 250px;
-	padding: 26px 10px 10px;
+	@include adaptive("padding-top", 26 , 4.3);
+	@include adaptive("padding-left", 10 , 1.6);
+	@include adaptive("padding-right", 10 , 1.6);
+	@include adaptive("padding-bottom", 10 , 1.6);
 	background: var(--sidePanel-color);
 	transition: var(--tran-05);
 	z-index: 100;
 	&.close {
-		width: 78px;
+		@include adaptive("width", 78 , 13 );
 		.text {
 			opacity: 0;
 		}
@@ -48,17 +60,18 @@ body {
 			transform: translateY(-50%) rotate(0deg);
 		}
 		& ~ .home {
-			left: 78px;
+			@include adaptive("left", 78 , 13 );
 			height: 100vh;
-			width: calc(100% - 78px);
+			width: calc(100% - calc(13px + (78 - 13) * ((100vw - 320px) / (1920 - 320))));
 		}
 	}
 	li {
-		height: 56px;
+		@include adaptive( "height" , 56 , 9.3);
 		list-style: none;
 		display: flex;
 		align-items: center;
-		margin: 10px 0px 30px;
+		@include adaptive( "margin-top" , 10 , 1.6);
+		@include adaptive( "margin-bottom" , 30 , 5 );
 		a {
 			list-style: none;
 			height: 100%;
@@ -67,7 +80,7 @@ body {
 			align-items: center;
 			height: 100%;
 			width: 100%;
-			border-radius: 6px;
+			@include adaptive( "border-radius" , 6 , 1 );
 			text-decoration: none;
 			transition: var(--tran-03);
             opacity: 0.5;
@@ -78,8 +91,8 @@ body {
 		}
 	}
 	.icon {
-		min-width: 60px;
-		border-radius: 6px;
+		@include adaptive( "width" , 60 , 10 );
+		@include adaptive( "border-radius" , 6 , 1 );
 		height: 100%;
 		display: flex;
 		align-items: center;
@@ -106,7 +119,7 @@ body {
 			justify-content: center;
 			img {
 				width: 40px;
-				border-radius: 6px;
+				@include adaptive( "border-radius" , 6 , 1 );
 			}
 		}
 		.toggle {
@@ -118,7 +131,7 @@ body {
 			width: 25px;
 			background-color: var(--task-color);
 			color: var(--sidebar-color);
-			border-radius: 6px;
+			@include adaptive( "border-radius" , 6 , 1 );
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -137,7 +150,7 @@ body {
 		justify-content: space-between;
 		overflow-y: scroll;
 		.mode {
-			border-radius: 6px;
+			@include adaptive( "border-radius" , 6 , 1 );
 			background-color: var(--task-color);
 			position: relative;
 			transition: var(--tran-05);
@@ -147,7 +160,7 @@ body {
 .sidePanel header .logo,
 .sidePanel .icon {
 	min-width: 58px;
-	border-radius: 6px;
+	@include adaptive( "border-radius" , 6 , 1 );
 }
 .sidePanel .text,
 .sidePanel .icon {
@@ -191,7 +204,7 @@ header {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border-radius: 6px;
+			@include adaptive( "border-radius" , 6 , 1 );
 			cursor: pointer;
 		}
 	}
@@ -207,17 +220,21 @@ header {
 	width: calc(100% - 250px);
 	background-color: var(--body-color);
 	transition: var(--tran-05);
-    .addTask{
+    .btnTopTask{
         margin: 30px 30px 0px;
-        cursor: pointer;
+		display: flex;
+		justify-content: space-between;
         li{
+			cursor: pointer;
+			width: calc(30%);
 	    	display: flex;
 	    	align-items: center;
             justify-content: center;
 	    	list-style: none;
             background-color: var(--sidePanel-color);
             transition: var(--tran-03);
-            border-radius: 6px;
+            @include adaptive( "border-radius" , 6 , 1 );
+			opacity: 0.5;
             .text {
                 font-size: 26px;
                 color: var(--text-color);
@@ -229,111 +246,213 @@ header {
             }
             &:hover {
 				background-color: var(--tabs-color);
+				opacity: 1;
 			}
        }
+	    .oOpen{
+			opacity: 1;
+		}
    }
    .Task{
         margin: 30px 30px 0px;
         background-color: var(--task-color);
-        border-radius: 6px;
+        @include adaptive( "border-radius" , 6 , 1 );
 		display: flex;
 		align-items:center;
+		align-content:center;
+		flex-direction:column;
+		flex-wrap: wrap;
         
-		
-		.queue{
-			min-width: 30px;
-			min-height: 30px;
-			border-radius: 6px;
-			margin-right: 10px;
-			padding: 10px;
-			input{
-				min-height: 20px;
-				width: 30px;
-				border: none;
-				outline: none;
-				font-family: Montserrat-Regular;
-				display: flex;
-				align-items: center;
-				border-radius: 1px;
-				background-color: var(--tabs-color);
-				text-align: center;
-			}
-			.higher, .below{
-				border-radius: 6px;
+		.oneContent{
+			display: flex;
+			justify-content:center;
+			flex-direction: row;
+			width: calc(100%);
+			background-color:var(--num-color);
+			@include adaptive( "border-radius" , 6 , 1 );
+			.queue{
 				min-width: 30px;
-				min-height: 5px;
-				background-color: var(--sidePanel-color);
+				min-height: 30px;
+				@include adaptive( "border-radius" , 6 , 1 );
+				margin: 10px;
+				font-family: Montserrat-Regular;
+
+				input[type="number"]{
+					min-height: 20px;
+					width: 36px;
+					border: none;
+					outline: none;
+					background-color: var(--tabs-color);
+					text-align: center;
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button{
+						-webkit-appearance: none;
+					}
+				}
+				.higher, .below{
+					text-align: center;
+					cursor: pointer;
+					min-width: 36px;
+					min-height: 8px;
+					font-size: 0px;
+					background-color: var(--sidePanel-color);
+				}
+				.higher{
+					border-radius: 6px 6px 0px 0px ;
+					transition: var(--tran-03);
+					&:hover{
+						min-height: 16px;
+						font-size: 10px;
+					}
+					&:hover ~ .below{
+						display: none;
+					}
+					&:hover ~ input[type="number"]{
+						border-radius: 0px 0px 6px 6px ;
+					}
+				};
+				.below{
+					border-radius: 0px 0px 6px 6px ;
+					transition: var(--tran-03);
+					&:hover{
+						min-height: 16px;
+						font-size: 10px;
+					}
+					&:hover ~ .higher{
+						display: none;
+					}
+					&:hover ~ input[type="number"]{
+						border-radius: 6px 6px 0px 0px ;
+					}
+				}
+			}
+		
+    		.itemGroupOne{
+				align-self:flex-start;
+    		    background-color: var(--sidePanel-color);
+    		    @include adaptive( "border-radius" , 6 , 1 );
+				padding: 10px;
+				width: calc(100%);
+				flex: 1;
+
+    		    ul{
+    		        font-size: 26px;
+    		        list-style: none;
+    		        display: flex;
+    		        justify-content: space-between;
+    		        align-items: center;
+    		        img{
+    		            cursor: pointer;
+    		            
+						@include adaptive("width", 36 , 6);
+    		            @include adaptive( "border-radius" , 6 , 1 );
+    		            transition: var(--tran-03);
+    		            opacity: 0.5;
+    		            &:hover {
+    		                opacity: 0.8;
+    		            }
+    		        }
+    		        li{	
+						@include adaptive( "border-radius" , 6 , 1 );
+						// margin: 0px 10px;
+    		            display: flex;
+    		            align-items: center; 
+    		            background-color: var(--tabs-color);
+    		            input[type="date"],
+    		            input[type="time"]{
+    		                position: relative;
+    		                text-align: center;
+    		                &::-webkit-calendar-picker-indicator{
+    		                    position: absolute;
+    		                    top: 0;
+    		                    right: 0;
+    		                    bottom: 0;
+    		                    width: auto;
+    		                    height: auto;
+    		                    background: transparent;
+    		                    left: -10px;
+    		                    color: transparent;
+    		                }
+    		                &::-webkit-inner-spin-button{
+    		                    z-index: 1;
+    		                }
+    		            }
+    		            input{
+							@include adaptive( "border-radius" , 6 , 1 );
+    		                min-height: 30px;
+    		                border: none;
+    		                outline: none;
+    		                font-family: Montserrat-Regular;
+							background-color: var(--tabs-color);
+							width: calc(100%);
+							padding: 0px 5px;
+							font-size: 28px;
+    		            }
+
+    		        }
+					.ProgressTask, .TextTask,
+					.DateTask, .TimeTask,
+					.AddNewDopTask{
+						margin-right: 10px;
+					}
+					.TextTask{
+						width: calc(100%);
+					}
+    		    }
+    		}
+   		}
+		.itemGroupTwo{
+			align-items:center;
+			align-content:center;
+			min-height: 172px;
+			ul{
+				display: flex;
+    			justify-content: space-around;
+    			align-items: center; 
+				li{
+					background-color: var(--dopT-color);
+					@include adaptive( "border-radius" , 6 , 1 );
+					display: flex;
+    				align-items:center;
+    				flex-flow:wrap column;
+    				justify-content: space-around;
+					border: none;
+    				outline: none;
+					margin: 10px;
+					padding: 10px;
+
+					textarea, input{
+						font-family: Montserrat-Regular;
+						border: none;
+    					outline: none;
+						resize: none;
+						font-size: 20px;
+						width:calc(100%);
+						@include adaptive( "border-radius" , 6 , 1 );
+						padding: 0px 5px;
+						background-color: var(--tabs-color);
+						text-emphasis-color: opacity(rgba(0, 0, 0, 0.5));
+					}
+					input{
+						margin-bottom: 10px;
+					}
+					textarea{
+						max-height: 98px;
+						&::-webkit-scrollbar{
+							width: 0.5em;
+						}
+						&::-webkit-scrollbar-track{
+							box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+							@include adaptive( "border-radius" , 6 , 1 );
+							cursor: pointer;
+						}
+						&::-webkit-scrollbar-thumb{
+							background-color: darkgrey;
+							@include adaptive( "border-radius" , 6 , 1 );
+						}
+					}
+				}
 			}
 		}
-        .itemGroupOne{
-            background-color: var(--sidePanel-color);
-            border-radius: 6px;
-			padding: 10px;
-			flex: 1;
-			
-            ul{
-                font-size: 26px;
-                list-style: none;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                img{
-                    cursor: pointer;
-                    min-width: 36px;
-                    border-radius: 6px;
-                    transition: var(--tran-03);
-                    opacity: 0.5;
-                    &:hover {
-                        opacity: 0.8;
-                    }
-                }
-                li{	
-					border-radius: 6px;
-					// margin: 0px 10px;
-                    display: flex;
-                    align-items: center; 
-                    background-color: var(--tabs-color);
-                    input[type="date"],
-                    input[type="time"]{
-                        position: relative;
-                        text-align: center;
-                        &::-webkit-calendar-picker-indicator{
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            bottom: 0;
-                            width: auto;
-                            height: auto;
-                            background: transparent;
-                            left: -10px;
-                            color: transparent;
-                        }
-                        &::-webkit-inner-spin-button{
-                            z-index: 1;
-                        }
-                    }
-                    input{
-						border-radius: 6px;
-                        min-height: 30px;
-                        border: none;
-                        outline: none;
-                        font-family: Montserrat-Regular;
-						background-color: var(--tabs-color);
-						width: calc(100%);
-						padding: 0px 5px;
-						font-size: 28px;
-                    }
-					
-                }
-				.ProgressTask, .TextTask,
-				.DateTask, .TimeTask,
-				.AddNewDopTask{
-					margin-right: 10px;
-				}
-				.TextTask{
-					width: calc(100%);
-				}
-            }
-        }
    }
 }

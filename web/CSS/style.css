@@ -10,10 +10,11 @@
 :root {
   --body-color: #747474;
   --sidePanel-color: #C4C4C4;
-  --c-color: #C0C0C0;
+  --dopT-color: #C0C0C0;
   --task-color: #9C9797;
   --text-color: #000;
   --tabs-color: #E4E4E4;
+  --num-color: #74747488;
   --tran-03: all 0.2s ease;
   --tran-03: all 0.3s ease;
   --tran-04: all 0.3s ease;
@@ -34,26 +35,30 @@ body {
   left: 0;
   height: 100%;
   width: 250px;
-  padding: 26px 10px 10px;
+  padding-top: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  padding-left: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  padding-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  padding-bottom: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   background: var(--sidePanel-color);
   transition: var(--tran-05);
   z-index: 100; }
   .sidePanel.close {
-    width: 78px; }
+    width: calc(13px + 65 * ((100vw - 320px) / 1600)); }
     .sidePanel.close .text {
       opacity: 0; }
     .sidePanel.close .toggle {
       transform: translateY(-50%) rotate(0deg); }
     .sidePanel.close ~ .home {
-      left: 78px;
+      left: calc(13px + 65 * ((100vw - 320px) / 1600));
       height: 100vh;
-      width: calc(100% - 78px); }
+      width: calc(100% - calc(13px + (78 - 13) * ((100vw - 320px) / (1920 - 320)))); }
   .sidePanel li {
-    height: 56px;
+    height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
     list-style: none;
     display: flex;
     align-items: center;
-    margin: 10px 0px 30px; }
+    margin-top: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+    margin-bottom: calc(5px + 25 * ((100vw - 320px) / 1600)); }
     .sidePanel li a {
       list-style: none;
       height: 100%;
@@ -62,7 +67,7 @@ body {
       align-items: center;
       height: 100%;
       width: 100%;
-      border-radius: 6px;
+      border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
       text-decoration: none;
       transition: var(--tran-03);
       opacity: 0.5; }
@@ -70,8 +75,8 @@ body {
         background-color: var(--tabs-color);
         opacity: 0.8; }
   .sidePanel .icon {
-    min-width: 60px;
-    border-radius: 6px;
+    width: calc(10px + 50 * ((100vw - 320px) / 1600));
+    border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
     height: 100%;
     display: flex;
     align-items: center;
@@ -94,7 +99,7 @@ body {
       justify-content: center; }
       .sidePanel header .logo img {
         width: 40px;
-        border-radius: 6px; }
+        border-radius: calc(1px + 5 * ((100vw - 320px) / 1600)); }
     .sidePanel header .toggle {
       position: absolute;
       top: 50%;
@@ -104,7 +109,7 @@ body {
       width: 25px;
       background-color: var(--task-color);
       color: var(--sidebar-color);
-      border-radius: 6px;
+      border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -120,7 +125,7 @@ body {
     justify-content: space-between;
     overflow-y: scroll; }
     .sidePanel .tabs-bar .mode {
-      border-radius: 6px;
+      border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
       background-color: var(--task-color);
       position: relative;
       transition: var(--tran-05); }
@@ -128,7 +133,7 @@ body {
 .sidePanel header .logo,
 .sidePanel .icon {
   min-width: 58px;
-  border-radius: 6px; }
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600)); }
 
 .sidePanel .text,
 .sidePanel .icon {
@@ -161,7 +166,7 @@ header .logo-img .profession {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
   cursor: pointer; }
 
 .home {
@@ -173,111 +178,193 @@ header .logo-img .profession {
   width: calc(100% - 250px);
   background-color: var(--body-color);
   transition: var(--tran-05); }
-  .home .addTask {
+  .home .btnTopTask {
     margin: 30px 30px 0px;
-    cursor: pointer; }
-    .home .addTask li {
+    display: flex;
+    justify-content: space-between; }
+    .home .btnTopTask li {
+      cursor: pointer;
+      width: calc(30%);
       display: flex;
       align-items: center;
       justify-content: center;
       list-style: none;
       background-color: var(--sidePanel-color);
       transition: var(--tran-03);
-      border-radius: 6px; }
-      .home .addTask li .text {
+      border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+      opacity: 0.5; }
+      .home .btnTopTask li .text {
         font-size: 26px;
         color: var(--text-color);
         transition: var(--tran-03);
         opacity: 0.5; }
-        .home .addTask li .text:hover {
+        .home .btnTopTask li .text:hover {
           opacity: 1; }
-      .home .addTask li:hover {
-        background-color: var(--tabs-color); }
+      .home .btnTopTask li:hover {
+        background-color: var(--tabs-color);
+        opacity: 1; }
+    .home .btnTopTask .oOpen {
+      opacity: 1; }
   .home .Task {
     margin: 30px 30px 0px;
     background-color: var(--task-color);
-    border-radius: 6px;
+    border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
     display: flex;
-    align-items: center; }
-    .home .Task .queue {
-      min-width: 30px;
-      min-height: 30px;
-      border-radius: 6px;
-      margin-right: 10px;
-      padding: 10px; }
-      .home .Task .queue input {
-        min-height: 20px;
-        width: 30px;
-        border: none;
-        outline: none;
-        font-family: Montserrat-Regular;
-        display: flex;
-        align-items: center;
-        border-radius: 1px;
-        background-color: var(--tabs-color);
-        text-align: center; }
-      .home .Task .queue .higher, .home .Task .queue .below {
-        border-radius: 6px;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap; }
+    .home .Task .oneContent {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      width: calc(100%);
+      background-color: var(--num-color);
+      border-radius: calc(1px + 5 * ((100vw - 320px) / 1600)); }
+      .home .Task .oneContent .queue {
         min-width: 30px;
-        min-height: 5px;
-        background-color: var(--sidePanel-color); }
-    .home .Task .itemGroupOne {
-      background-color: var(--sidePanel-color);
-      border-radius: 6px;
-      padding: 10px;
-      flex: 1; }
-      .home .Task .itemGroupOne ul {
-        font-size: 26px;
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center; }
-        .home .Task .itemGroupOne ul img {
+        min-height: 30px;
+        border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+        margin: 10px;
+        font-family: Montserrat-Regular; }
+        .home .Task .oneContent .queue input[type="number"] {
+          min-height: 20px;
+          width: 36px;
+          border: none;
+          outline: none;
+          background-color: var(--tabs-color);
+          text-align: center; }
+          .home .Task .oneContent .queue input[type="number"]::-webkit-outer-spin-button, .home .Task .oneContent .queue input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none; }
+        .home .Task .oneContent .queue .higher, .home .Task .oneContent .queue .below {
+          text-align: center;
           cursor: pointer;
           min-width: 36px;
-          border-radius: 6px;
-          transition: var(--tran-03);
-          opacity: 0.5; }
-          .home .Task .itemGroupOne ul img:hover {
-            opacity: 0.8; }
-        .home .Task .itemGroupOne ul li {
-          border-radius: 6px;
+          min-height: 8px;
+          font-size: 0px;
+          background-color: var(--sidePanel-color); }
+        .home .Task .oneContent .queue .higher {
+          border-radius: 6px 6px 0px 0px;
+          transition: var(--tran-03); }
+          .home .Task .oneContent .queue .higher:hover {
+            min-height: 16px;
+            font-size: 10px; }
+          .home .Task .oneContent .queue .higher:hover ~ .below {
+            display: none; }
+          .home .Task .oneContent .queue .higher:hover ~ input[type="number"] {
+            border-radius: 0px 0px 6px 6px; }
+        .home .Task .oneContent .queue .below {
+          border-radius: 0px 0px 6px 6px;
+          transition: var(--tran-03); }
+          .home .Task .oneContent .queue .below:hover {
+            min-height: 16px;
+            font-size: 10px; }
+          .home .Task .oneContent .queue .below:hover ~ .higher {
+            display: none; }
+          .home .Task .oneContent .queue .below:hover ~ input[type="number"] {
+            border-radius: 6px 6px 0px 0px; }
+      .home .Task .oneContent .itemGroupOne {
+        align-self: flex-start;
+        background-color: var(--sidePanel-color);
+        border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+        padding: 10px;
+        width: calc(100%);
+        flex: 1; }
+        .home .Task .oneContent .itemGroupOne ul {
+          font-size: 26px;
+          list-style: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .home .Task .oneContent .itemGroupOne ul img {
+            cursor: pointer;
+            width: calc(6px + 30 * ((100vw - 320px) / 1600));
+            border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+            transition: var(--tran-03);
+            opacity: 0.5; }
+            .home .Task .oneContent .itemGroupOne ul img:hover {
+              opacity: 0.8; }
+          .home .Task .oneContent .itemGroupOne ul li {
+            border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+            display: flex;
+            align-items: center;
+            background-color: var(--tabs-color); }
+            .home .Task .oneContent .itemGroupOne ul li input[type="date"],
+            .home .Task .oneContent .itemGroupOne ul li input[type="time"] {
+              position: relative;
+              text-align: center; }
+              .home .Task .oneContent .itemGroupOne ul li input[type="date"]::-webkit-calendar-picker-indicator,
+              .home .Task .oneContent .itemGroupOne ul li input[type="time"]::-webkit-calendar-picker-indicator {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: auto;
+                height: auto;
+                background: transparent;
+                left: -10px;
+                color: transparent; }
+              .home .Task .oneContent .itemGroupOne ul li input[type="date"]::-webkit-inner-spin-button,
+              .home .Task .oneContent .itemGroupOne ul li input[type="time"]::-webkit-inner-spin-button {
+                z-index: 1; }
+            .home .Task .oneContent .itemGroupOne ul li input {
+              border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+              min-height: 30px;
+              border: none;
+              outline: none;
+              font-family: Montserrat-Regular;
+              background-color: var(--tabs-color);
+              width: calc(100%);
+              padding: 0px 5px;
+              font-size: 28px; }
+          .home .Task .oneContent .itemGroupOne ul .ProgressTask, .home .Task .oneContent .itemGroupOne ul .TextTask,
+          .home .Task .oneContent .itemGroupOne ul .DateTask, .home .Task .oneContent .itemGroupOne ul .TimeTask,
+          .home .Task .oneContent .itemGroupOne ul .AddNewDopTask {
+            margin-right: 10px; }
+          .home .Task .oneContent .itemGroupOne ul .TextTask {
+            width: calc(100%); }
+    .home .Task .itemGroupTwo {
+      align-items: center;
+      align-content: center;
+      min-height: 172px; }
+      .home .Task .itemGroupTwo ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center; }
+        .home .Task .itemGroupTwo ul li {
+          background-color: var(--dopT-color);
+          border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
           display: flex;
           align-items: center;
-          background-color: var(--tabs-color); }
-          .home .Task .itemGroupOne ul li input[type="date"],
-          .home .Task .itemGroupOne ul li input[type="time"] {
-            position: relative;
-            text-align: center; }
-            .home .Task .itemGroupOne ul li input[type="date"]::-webkit-calendar-picker-indicator,
-            .home .Task .itemGroupOne ul li input[type="time"]::-webkit-calendar-picker-indicator {
-              position: absolute;
-              top: 0;
-              right: 0;
-              bottom: 0;
-              width: auto;
-              height: auto;
-              background: transparent;
-              left: -10px;
-              color: transparent; }
-            .home .Task .itemGroupOne ul li input[type="date"]::-webkit-inner-spin-button,
-            .home .Task .itemGroupOne ul li input[type="time"]::-webkit-inner-spin-button {
-              z-index: 1; }
-          .home .Task .itemGroupOne ul li input {
-            border-radius: 6px;
-            min-height: 30px;
+          flex-flow: wrap column;
+          justify-content: space-around;
+          border: none;
+          outline: none;
+          margin: 10px;
+          padding: 10px; }
+          .home .Task .itemGroupTwo ul li textarea, .home .Task .itemGroupTwo ul li input {
+            font-family: Montserrat-Regular;
             border: none;
             outline: none;
-            font-family: Montserrat-Regular;
-            background-color: var(--tabs-color);
+            resize: none;
+            font-size: 20px;
             width: calc(100%);
+            border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
             padding: 0px 5px;
-            font-size: 28px; }
-        .home .Task .itemGroupOne ul .ProgressTask, .home .Task .itemGroupOne ul .TextTask,
-        .home .Task .itemGroupOne ul .DateTask, .home .Task .itemGroupOne ul .TimeTask,
-        .home .Task .itemGroupOne ul .AddNewDopTask {
-          margin-right: 10px; }
-        .home .Task .itemGroupOne ul .TextTask {
-          width: calc(100%); }
+            background-color: var(--tabs-color);
+            text-emphasis-color: 0.5; }
+          .home .Task .itemGroupTwo ul li input {
+            margin-bottom: 10px; }
+          .home .Task .itemGroupTwo ul li textarea {
+            max-height: 98px; }
+            .home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar {
+              width: 0.5em; }
+            .home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar-track {
+              box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+              border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+              cursor: pointer; }
+            .home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar-thumb {
+              background-color: darkgrey;
+              border-radius: calc(1px + 5 * ((100vw - 320px) / 1600)); }
 
 /*# sourceMappingURL=style.css.map */
