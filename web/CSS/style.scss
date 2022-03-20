@@ -54,11 +54,11 @@ body {
 		}
 	}
 	li {
-		height: 50px;
+		height: 56px;
 		list-style: none;
 		display: flex;
 		align-items: center;
-		margin-top: 10px;
+		margin: 10px 0px 30px;
 		a {
 			list-style: none;
 			height: 100%;
@@ -128,7 +128,7 @@ body {
 		}
 	}
 	.tabs {
-		margin-top: 40px;
+		margin-top: 16px;
 	}
 	.tabs-bar {
 		height: calc(100% - 55px);
@@ -245,6 +245,7 @@ header {
 			min-height: 30px;
 			border-radius: 6px;
 			margin-right: 10px;
+			padding: 10px;
 			input{
 				min-height: 20px;
 				width: 30px;
@@ -267,6 +268,7 @@ header {
         .itemGroupOne{
             background-color: var(--sidePanel-color);
             border-radius: 6px;
+			padding: 10px;
 			flex: 1;
 			
             ul{
@@ -277,7 +279,7 @@ header {
                 align-items: center;
                 img{
                     cursor: pointer;
-                    min-width: 30px;
+                    min-width: 36px;
                     border-radius: 6px;
                     transition: var(--tran-03);
                     opacity: 0.5;
@@ -318,6 +320,8 @@ header {
                         font-family: Montserrat-Regular;
 						background-color: var(--tabs-color);
 						width: calc(100%);
+						padding: 0px 5px;
+						font-size: 28px;
                     }
 					
                 }
