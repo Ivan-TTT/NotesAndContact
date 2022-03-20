@@ -196,15 +196,39 @@ header .logo-img .profession {
   .home .Task {
     margin: 30px 30px 0px;
     background-color: var(--task-color);
-    border-radius: 6px; }
+    border-radius: 6px;
+    display: flex;
+    align-items: center; }
+    .home .Task .queue {
+      min-width: 30px;
+      min-height: 30px;
+      border-radius: 6px;
+      margin-right: 10px; }
+      .home .Task .queue input {
+        min-height: 20px;
+        width: 30px;
+        border: none;
+        outline: none;
+        font-family: Montserrat-Regular;
+        display: flex;
+        align-items: center;
+        border-radius: 1px;
+        background-color: var(--tabs-color);
+        text-align: center; }
+      .home .Task .queue .higher, .home .Task .queue .below {
+        border-radius: 6px;
+        min-width: 30px;
+        min-height: 5px;
+        background-color: var(--sidePanel-color); }
     .home .Task .itemGroupOne {
       background-color: var(--sidePanel-color);
-      border-radius: 6px; }
+      border-radius: 6px;
+      flex: 1; }
       .home .Task .itemGroupOne ul {
         font-size: 26px;
         list-style: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center; }
         .home .Task .itemGroupOne ul img {
           cursor: pointer;
@@ -215,15 +239,16 @@ header .logo-img .profession {
           .home .Task .itemGroupOne ul img:hover {
             opacity: 0.8; }
         .home .Task .itemGroupOne ul li {
+          border-radius: 6px;
           display: flex;
           align-items: center;
           background-color: var(--tabs-color); }
-          .home .Task .itemGroupOne ul li input .inputDateTask,
-          .home .Task .itemGroupOne ul li input .inputTimeTask {
+          .home .Task .itemGroupOne ul li input[type="date"],
+          .home .Task .itemGroupOne ul li input[type="time"] {
             position: relative;
             text-align: center; }
-            .home .Task .itemGroupOne ul li input .inputDateTask::-webkit-calendar-picker-indicator,
-            .home .Task .itemGroupOne ul li input .inputTimeTask::-webkit-calendar-picker-indicator {
+            .home .Task .itemGroupOne ul li input[type="date"]::-webkit-calendar-picker-indicator,
+            .home .Task .itemGroupOne ul li input[type="time"]::-webkit-calendar-picker-indicator {
               position: absolute;
               top: 0;
               right: 0;
@@ -231,15 +256,24 @@ header .logo-img .profession {
               width: auto;
               height: auto;
               background: transparent;
-              left: 60px;
+              left: -10px;
               color: transparent; }
-            .home .Task .itemGroupOne ul li input .inputDateTask::-webkit-inner-spin-button,
-            .home .Task .itemGroupOne ul li input .inputTimeTask::-webkit-inner-spin-button {
+            .home .Task .itemGroupOne ul li input[type="date"]::-webkit-inner-spin-button,
+            .home .Task .itemGroupOne ul li input[type="time"]::-webkit-inner-spin-button {
               z-index: 1; }
           .home .Task .itemGroupOne ul li input {
+            border-radius: 6px;
             min-height: 30px;
             border: none;
             outline: none;
-            font-family: Montserrat-Regular; }
+            font-family: Montserrat-Regular;
+            background-color: var(--tabs-color);
+            width: calc(100%); }
+        .home .Task .itemGroupOne ul .ProgressTask, .home .Task .itemGroupOne ul .TextTask,
+        .home .Task .itemGroupOne ul .DateTask, .home .Task .itemGroupOne ul .TimeTask,
+        .home .Task .itemGroupOne ul .AddNewDopTask {
+          margin-right: 10px; }
+        .home .Task .itemGroupOne ul .TextTask {
+          width: calc(100%); }
 
 /*# sourceMappingURL=style.css.map */

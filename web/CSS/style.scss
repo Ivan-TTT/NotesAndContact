@@ -236,15 +236,44 @@ header {
         margin: 30px 30px 0px;
         background-color: var(--task-color);
         border-radius: 6px;
+		display: flex;
+		align-items:center;
+        
+		
+		.queue{
+			min-width: 30px;
+			min-height: 30px;
+			border-radius: 6px;
+			margin-right: 10px;
+			input{
+				min-height: 20px;
+				width: 30px;
+				border: none;
+				outline: none;
+				font-family: Montserrat-Regular;
+				display: flex;
+				align-items: center;
+				border-radius: 1px;
+				background-color: var(--tabs-color);
+				text-align: center;
+			}
+			.higher, .below{
+				border-radius: 6px;
+				min-width: 30px;
+				min-height: 5px;
+				background-color: var(--sidePanel-color);
+			}
+		}
         .itemGroupOne{
             background-color: var(--sidePanel-color);
             border-radius: 6px;
+			flex: 1;
+			
             ul{
                 font-size: 26px;
-                
                 list-style: none;
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
                 img{
                     cursor: pointer;
@@ -256,12 +285,14 @@ header {
                         opacity: 0.8;
                     }
                 }
-                li{
+                li{	
+					border-radius: 6px;
+					// margin: 0px 10px;
                     display: flex;
                     align-items: center; 
                     background-color: var(--tabs-color);
-                    input .inputDateTask,
-                    input .inputTimeTask{
+                    input[type="date"],
+                    input[type="time"]{
                         position: relative;
                         text-align: center;
                         &::-webkit-calendar-picker-indicator{
@@ -272,7 +303,7 @@ header {
                             width: auto;
                             height: auto;
                             background: transparent;
-                            left: 60px;
+                            left: -10px;
                             color: transparent;
                         }
                         &::-webkit-inner-spin-button{
@@ -280,13 +311,24 @@ header {
                         }
                     }
                     input{
+						border-radius: 6px;
                         min-height: 30px;
                         border: none;
                         outline: none;
                         font-family: Montserrat-Regular;
-                        
+						background-color: var(--tabs-color);
+						width: calc(100%);
                     }
+					
                 }
+				.ProgressTask, .TextTask,
+				.DateTask, .TimeTask,
+				.AddNewDopTask{
+					margin-right: 10px;
+				}
+				.TextTask{
+					width: calc(100%);
+				}
             }
         }
    }
