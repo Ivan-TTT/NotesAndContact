@@ -80,7 +80,7 @@ def update_task():
     try:
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM tasks")
+        cursor.execute("SELECT * FROM tasks ORDER BY queue_t DESC")
         tasks_items = []
         for item in cursor.fetchall():
             tasks_items.append(item)

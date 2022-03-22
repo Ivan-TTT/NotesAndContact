@@ -51,6 +51,13 @@ function AddNewDopTaskFunction(id) {
         $( toogledElement ).toggle('hide'); //.slideToggle
     }
 }
+src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+$( function() {
+    $( ".home" ).sortable({
+      placeholder: "Task"
+    });
+    $( ".home" ).disableSelection();
+} );
 
 
 const TaskElement = document.querySelector('.Task');
@@ -316,14 +323,16 @@ const Tasks = JSON.parse(localStorage.getItem("Task"));
 const sizeSorege = localStorage.length;
 
 function editingTask(){
-    $('.Task').on('click', function(){ 
-        let index = $(this).attr('id');
-        console.info(`Id этой заметки = ${index}`);
-        localStorage.setItem(`IdThisTask`,`${index}`);
-        idTransfer_js(index);
-        $(this).remove();
-        $('.Task').unbind('click');
-    });   
+    if (localStorage.getItem('OneCreated') == "no") {
+        $('.Task').on('click', function(){ 
+            let index = $(this).attr('id');
+            console.info(`Id этой заметки = ${index}`);
+            localStorage.setItem(`IdThisTask`,`${index}`);
+            idTransfer_js(index);
+            $(this).remove();
+            $('.Task').unbind('click');
+        }); 
+    }  
 }
 
 // Значение принимаеться из функции (editingTask)
@@ -358,6 +367,7 @@ function retuuurnLineId_js(line_items){
 };
 
 function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){
+    
     localStorage.setItem('Editing','active');
     
     const NewTaskElement = document.createElement ( 'div' );
