@@ -239,6 +239,7 @@ function get_update_task_js(tasks_items){
         var saveTextareaDopTaskThree = tasks_items[tasks][11]; //
         createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
     }
+    visibleNum()
 };
 
 // {6} - Функция (createTask_ReceivedBd) принимает значения
@@ -268,12 +269,12 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
                 </li>
                 `: ""}
                 ${saveTaskDate != "" ? saveTaskElement.innerHTML = `
-                <li class="DateTask">
+                <li class="DateTask" ${saveTaskText == "" ? 'style ="width: calc(100%)"' : ''}>
                     <input id ="DateTask-id_${saveIndex}" class ="inputDateTask " type="date" readonly value ="${saveTaskDate}" >
                 </li>
                 `: ""}
                 ${saveTaskTime != "" ? saveTaskElement.innerHTML = `
-                <li class="TimeTask">
+                <li class="TimeTask" ${(saveTaskText == "") && (saveTaskDate == "") ? 'style ="width: calc(100%)"' : ''}>
                     <input id ="TimeTask-id_${saveIndex}" class ="inputTimeTask " type ="time" readonly value ="${saveTaskTime}" >
                 </li class ="TimeTask">
                 `: ""}
@@ -361,45 +362,54 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
     
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );
-    NewTaskElement.classList.add ( "indent" ); 
-    NewTaskElement.classList.add ( "colorA" );
     NewTaskElement.setAttribute ('id', `${saveIndex}`);
     NewTaskElement.innerHTML = `
-        <div class ="itemGroupOne colorB colorC">
-            <div class ="ProgressTask indentTask">
-                <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
-            </div>
-            <div class="TextTask    indentTask">
-                <input id ="Task-id" class ="inputTask-Text input-seze-One " type ="text" name ="Task-name" placeholder ="Напишите заметку..." value ="${saveTaskText}" >
-            </div>
-            <div class="DateTask     indentTask">
-                <input id ="DateTask-id" class ="input-seze-One " type="date" value ="${saveTaskDate}" >
-            </div>
-            <div class ="TimeTask   indentTask">
-                <input id ="TimeTask-id" class ="input-seze-One " type ="time" value ="${saveTaskTime}" >
-            </div>
-            <div id ="AddNewDopTask_id" class ="AddNewDopTask indentTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id_')" >
-                <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
-            </div> 
-            <div class ="SaveTask indentTask" onClick ="saveTaskFunction ()">
-                <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
-            </div>
+    <div class="oneContent">
+        <nav class="queue">
+             <div class="higher">▲</div>
+             <input type="number">
+             <div class="below">▼</div> <!-- доделать в js -->
+        </nav>
+        <div class="itemGroupOne">
+             <ul>
+                <li class ="ProgressTask">
+                    <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
+                </li>
+                <li class="TextTask">
+                    <input id ="Task-id" class ="inputTask-Text" type ="text" placeholder ="Напишите заметку..." value ="${saveTaskText}" >
+                </li>
+                <li class="DateTask">
+                    <input id ="DateTask-id" class ="inputDateTask " type="date" value ="${saveTaskDate}" >
+                </li>
+                <li class="TimeTask">
+                    <input id ="TimeTask-id" class ="inputTimeTask " type ="time" value ="${saveTaskTime}" >
+                </li class ="TimeTask">
+                <li id ="AddNewDopTask_id" class ="AddNewDopTask" onClick ="AddNewDopTaskFunction('itemGroupTwo_id')">
+                    <img class ="addDop-img" src ="Img/AddDop-G.svg" alt ="">
+                </li>
+                <li class ="SaveTask" onClick ="saveTaskFunction ()">
+                    <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
+                </li>
+             </ul>
         </div>
-        <div id="itemGroupTwo_id_" class="itemGroupTwo " style='display:${(saveDopTaskOne || saveTextareaDopTaskOne || saveDopTaskTwo ||
-            saveTextareaDopTaskTwo || saveDopTaskThree || saveTextareaDopTaskThree) != "" ? "flex": "none"}'>
-            <div class="DopTask DopTaskOne indentTask">
-                <input id ="DopTaskOne-id" class ="input-DopTaskOne input-seze-Two" type ="text" name ="DopTaskOne-name" value ="${saveDopTaskOne}" >
-                <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne input-seze-Two"  name ="comment" cols="40" rows="3" >${ saveTextareaDopTaskOne}</textarea>
-            </div>
-            <div class="DopTask DopTaskTwo indentTask">
-                <input id ="DopTaskTwo-id" class ="input-DopTaskTwo input-seze-Two" type ="text" name ="DopTaskTwo-name" value ="${ saveDopTaskTwo}" >
-                <textarea id ="textareaDopTaskTwo-id" class ="textarea-DopTaskTwo input-seze-Two" name ="comment" cols ="40" rows ="3" >${ saveTextareaDopTaskTwo }</textarea>
-            </div>
-            <div class="DopTask DopTaskThree indentTask">
-                <input id ="DopTaskThree-id" class ="input-DopTaskThree input-seze-Two " type ="text" name ="DopTaskThree-name" value ="${ saveDopTaskThree }" >
-                <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree input-seze-Two" name ="comment" cols ="40" rows ="3" >${ saveTextareaDopTaskThree}</textarea>
-            </div>
-        </div>
+    </div>
+    <div id ="itemGroupTwo_id" class ="itemGroupTwo " style='display:${(saveDopTaskOne || saveTextareaDopTaskOne || saveDopTaskTwo ||
+        saveTextareaDopTaskTwo || saveDopTaskThree || saveTextareaDopTaskThree) != "" ? "flex": "none"}'>
+         <ul>
+             <li>
+                 <input id ="DopTaskOne-id" class ="input-DopTaskOne" type ="text" placeholder ="Напишите коментарии..." value ="${saveDopTaskOne}" >
+                 <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne" cols="54" rows="5">${ saveTextareaDopTaskOne}</textarea>
+             </li>
+             <li>
+                 <input id ="DopTaskTwo-id" class ="input-DopTaskTwo" type ="text" placeholder ="Напишите регламент..." value ="${ saveDopTaskTwo}" >
+                 <textarea id ="textareaDopTaskTwo-id" class ="textarea-DopTaskTwo" cols ="54" rows ="5">${ saveTextareaDopTaskTwo }</textarea>
+             </li>
+             <li>
+                 <input id ="DopTaskThree-id" class ="input-DopTaskThree" type ="text" placeholder ="Напишите особенности..." value ="${ saveDopTaskThree }" >
+                 <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree" cols ="54" rows ="5">${ saveTextareaDopTaskThree}</textarea>
+             </li>
+         </ul>
+    </div>
     `
     TaskElement.after(NewTaskElement);
 }
