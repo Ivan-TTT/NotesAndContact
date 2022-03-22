@@ -263,9 +263,6 @@ header {
 				font-family: Montserrat-Regular;
 				display: flex;
 				flex-direction:column;
-				&.invisible{
-					display: none;
-				}
 
 				input[type="number"]{
 					@include adaptive( "height" , 20 , 3.3);
@@ -394,6 +391,7 @@ header {
 		.itemGroupTwo{
 			align-items:center;
 			align-content:center;
+			display: none;
 			@include adaptive( "height" , 172 , 28.6);
 			ul{
 				display: flex;

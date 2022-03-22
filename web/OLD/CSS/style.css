@@ -377,10 +377,6 @@ header .logo-img .txt-logo-name {
           flex-direction: column;
 }
 
-.home .Task .oneContent .queue.invisible {
-  display: none;
-}
-
 .home .Task .oneContent .queue input[type="number"] {
   height: calc(3.3px + 16.7 * ((100vw - 320px) / 1600));
   width: calc(6px + 30 * ((100vw - 320px) / 1600));
@@ -544,6 +540,7 @@ header .logo-img .txt-logo-name {
           align-items: center;
   -ms-flex-line-pack: center;
       align-content: center;
+  display: none;
   height: calc(28.6px + 143.4 * ((100vw - 320px) / 1600));
 }
 
