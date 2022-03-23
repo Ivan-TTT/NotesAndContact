@@ -287,7 +287,10 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
         <div class="itemGroupOne">
              <ul>
                 <li class ="ProgressTask" onClick="status()">
-                    <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
+                    <img class ="Progress-img " src =" ${saveCindition == "start" 
+                    ? 'Img/zero-G.svg' : ''} ${saveCindition == "middle" 
+                    ? 'Img/One-G.svg' : ''} ${saveCindition == "finish" 
+                    ? 'Img/two-G.svg' : ''}" alt ="">
                 </li>
                 ${saveTaskText != "" ? saveTaskElement.innerHTML = `
                 <li class="TextTask">
@@ -445,45 +448,33 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
 }
 
 
-// function status(){
-    
-// }
-
-
-//  // var queue = document.querySelector(".queue");
-//  if (localStorage.getItem('VisibleNumber') == "no"){
-//     // queue.classList.forEach(i => i.classList.add("invisible"));
-//     [...document.getElementsByClassName('queue')].forEach(i => i.classList.add("invisible"));
-// }
-// else{
-//     [...document.getElementsByClassName('queue')].forEach(i => i.classList.remove("invisible"));
-//     // queue.classList.remove("invisible");
-// }
-
-var toggleElements = document.querySelectorAll(".itemGroupTwo");
-    var toogledElement = document.querySelector("#" + id);
-    if (toogledElement.style.display == 'none'){
-        toogledElement.style.display == 'flex'
-        $( toogledElement ).toggle('hide');
-    }
-    else{
-        toogledElement.style.display == 'none'
-        $( toogledElement ).toggle('hide'); //.slideToggle
-    }
-
 function activeTask(){
     localStorage.setItem('ActiveOrPasiveTask','active');
     console.log("актив");
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.remove("invisible"));
-    // var oOpen = document.querySelectorAll(".oOpen");
-    // var cClose = document.querySelectorAll(".cClose");
-    // oOpen.style.opacity == "1"
+    // var oOpen = document.getElementsByClassName(".oOpen");
+    // var cClose = document.getElementsByClassName(".cClose");
+    // oOpen.style.opacity = "1";
+    // cClose.style.opacity = "0.5";
 }
 function pasiveTask(){
     localStorage.setItem('ActiveOrPasiveTask','pasive');
     console.log("пасив");
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.remove("invisible"));
+    // var oOpen = document.getElementsByClassName(".oOpen");
+    // var cClose = document.getElementsByClassName(".cClose");
+    // oOpen.style.opacity = "0.5";
+    // cClose.style.opacity = "1";
 }
 
+function status(){
+    console.log("Статус");
+    $('.Task').on('click', function(){ 
+        let index = $(this).attr('id');
+        console.info(`Id этой заметки = ${index}`);
+        localStorage.setItem(`IdThisTask`,`${index}`);
+        $('.Task').unbind('click');
+    });
+}
