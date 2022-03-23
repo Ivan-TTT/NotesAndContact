@@ -5,9 +5,10 @@ $(document).ready(function() {
     localStorage.setItem('Editing','');
     localStorage.setItem('OneCreated','no');
     localStorage.setItem('VisibleNumber','yes');
+    localStorage.setItem('ActiveOrPasiveTask','active');
     console.log('HTML загружен');
-    // $( ".itemGroupTwo" ).toggle('hide');
-    visibleNum()
+    visibleNum();
+    activeTask();
 });
 
 
@@ -51,13 +52,30 @@ function AddNewDopTaskFunction(id) {
         $( toogledElement ).toggle('hide'); //.slideToggle
     }
 }
-src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
-$( function() {
-    $( ".home" ).sortable({
-      placeholder: "Task"
-    });
-    $( ".home" ).disableSelection();
-} );
+// src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+// $( function() {
+//     $( ".home" ).sortable({
+//       placeholder: "Task"
+//     });
+//     $( ".home" ).disableSelection();
+// } );
+
+// $(".home").sortable({
+//     stop: function(event, ui) {
+//         alert("New position: " + ui.item.index());
+//     }
+// });
+// $(".home").disableSelection();
+
+$( ".home" ).sortable({
+    start: function(event, ui) {
+        ui.item.startPos = ui.item.index();
+    },
+    stop: function(event, ui) {
+        console.log("Start position: " + ui.item.startPos);
+        console.log("New position: " + ui.item.index());
+    }
+});
 
 
 const TaskElement = document.querySelector('.Task');
@@ -66,7 +84,7 @@ const TaskElementContent = TaskElement.innerHTML;
 
 function getAddTask(){
 
-    if (localStorage.getItem('OneCreated') == "no") {
+    if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active') {
 
         numberOfTasks = document.getElementsByClassName('Task').length;
         console.log(numberOfTasks);
@@ -257,7 +275,8 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
     // localStorage.setItem('Number', number_stchet++);
     const saveTaskElement = document.createElement ( 'div' );
     saveTaskElement.classList.add ( "Task" );
-    saveTaskElement.setAttribute ('id', `${saveIndex}`)
+    saveTaskElement.classList.add ( `${saveCindition == "finish" ? "pPpAsive" : "aAaKtive"}` );
+    saveTaskElement.setAttribute ('id', `${saveIndex}`);
     saveTaskElement.innerHTML = `
     <div class="oneContent">
         <nav class="queue">
@@ -267,7 +286,7 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
         </nav>
         <div class="itemGroupOne">
              <ul>
-                <li class ="ProgressTask">
+                <li class ="ProgressTask" onClick="status()">
                     <img class ="Progress-img " src ="Img/zero-G.svg" alt ="">
                 </li>
                 ${saveTaskText != "" ? saveTaskElement.innerHTML = `
@@ -314,16 +333,16 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
                 </li>
             </ul>
         </div>
-    `            
-
+    `           
     TaskElement.after( saveTaskElement );    
+    activeTask();
 }
 
 const Tasks = JSON.parse(localStorage.getItem("Task"));
 const sizeSorege = localStorage.length;
 
 function editingTask(){
-    if (localStorage.getItem('OneCreated') == "no") {
+    if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active') {
         $('.Task').on('click', function(){ 
             let index = $(this).attr('id');
             console.info(`Id этой заметки = ${index}`);
@@ -331,7 +350,8 @@ function editingTask(){
             idTransfer_js(index);
             $(this).remove();
             $('.Task').unbind('click');
-        }); 
+        });
+        localStorage.setItem('OneCreated','yes'); 
     }  
 }
 
@@ -423,3 +443,47 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
     `
     TaskElement.after(NewTaskElement);
 }
+
+
+// function status(){
+    
+// }
+
+
+//  // var queue = document.querySelector(".queue");
+//  if (localStorage.getItem('VisibleNumber') == "no"){
+//     // queue.classList.forEach(i => i.classList.add("invisible"));
+//     [...document.getElementsByClassName('queue')].forEach(i => i.classList.add("invisible"));
+// }
+// else{
+//     [...document.getElementsByClassName('queue')].forEach(i => i.classList.remove("invisible"));
+//     // queue.classList.remove("invisible");
+// }
+
+var toggleElements = document.querySelectorAll(".itemGroupTwo");
+    var toogledElement = document.querySelector("#" + id);
+    if (toogledElement.style.display == 'none'){
+        toogledElement.style.display == 'flex'
+        $( toogledElement ).toggle('hide');
+    }
+    else{
+        toogledElement.style.display == 'none'
+        $( toogledElement ).toggle('hide'); //.slideToggle
+    }
+
+function activeTask(){
+    localStorage.setItem('ActiveOrPasiveTask','active');
+    console.log("актив");
+    [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.add("invisible"));
+    [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.remove("invisible"));
+    // var oOpen = document.querySelectorAll(".oOpen");
+    // var cClose = document.querySelectorAll(".cClose");
+    // oOpen.style.opacity == "1"
+}
+function pasiveTask(){
+    localStorage.setItem('ActiveOrPasiveTask','pasive');
+    console.log("пасив");
+    [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invisible"));
+    [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.remove("invisible"));
+}
+

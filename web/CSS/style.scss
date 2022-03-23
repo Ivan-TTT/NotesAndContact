@@ -228,9 +228,9 @@ header {
 				opacity: 1;
 			}
        }
-	    .oOpen{
-			opacity: 1;
-		}
+	    // .oOpen{
+		// 	opacity: 1;
+		// }
    }
    .Task{
 		@include adaptive("margin-top", 30 , 5);
@@ -247,6 +247,12 @@ header {
 		&.invisible{
 			display: none;
 		}
+		&.invisible_static{
+			display: none;
+		}
+		&.pPpAsive{
+			opacity: 0.8;
+		}
         
 		.oneContent{
 			display: flex;
@@ -261,7 +267,7 @@ header {
 				@include adaptive( "border-radius" , 6 , 1 );
 				@include adaptive("margin", 10 , 1.6);
 				font-family: Montserrat-Regular;
-				display: flex;
+				display: none;
 				flex-direction:column;
 				&.invisible{
 					display: none;

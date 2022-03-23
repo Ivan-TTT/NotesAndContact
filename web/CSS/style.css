@@ -316,10 +316,6 @@ header .logo-img .txt-logo-name {
   opacity: 1;
 }
 
-.home .btnTopTask .oOpen {
-  opacity: 1;
-}
-
 .home .Task {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
@@ -346,6 +342,14 @@ header .logo-img .txt-logo-name {
   display: none;
 }
 
+.home .Task.invisible_static {
+  display: none;
+}
+
+.home .Task.pPpAsive {
+  opacity: 0.8;
+}
+
 .home .Task .oneContent {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -368,9 +372,7 @@ header .logo-img .txt-logo-name {
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
   margin: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   font-family: Montserrat-Regular;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;

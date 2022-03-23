@@ -79,18 +79,18 @@
     <section class="home">
 
         <div class="btnTopTask">
-            <li class="oOpen">
+            <li class="oOpen" onClick ="activeTask()">
                 <span class="text">Активные</span>
             </li> 
             <li class="addTask" onclick ="getAddTask()">
                 <span class="text">Создать заметку</span>
             </li>
-            <li class="">
+            <li class="" onClick = "pasiveTask()">
                 <span class="text">Неактивный</span>
             </li>  
         </div>
 
-        <div id = "0" class="Task invisible">
+        <div id = "0" class="Task invisible_static">
 
             <!-- <div class="oneContent">
                 <nav class="queue">
