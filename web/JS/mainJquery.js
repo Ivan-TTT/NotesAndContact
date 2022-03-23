@@ -475,6 +475,20 @@ function status(){
         let index = $(this).attr('id');
         console.info(`Id этой заметки = ${index}`);
         localStorage.setItem(`IdThisTask`,`${index}`);
+        idTransfer_status_js(index);
         $('.Task').unbind('click');
     });
+}
+
+async function idTransfer_status_js(index){
+    console.log(`index = "${index}" пердаеться в python`);
+
+    eel.idTransfer_status(index);
+    eel.creatingStatusId();
+    eel.expose(retuuurnStatusId_js); 
+};
+
+function retuuurnStatusId_js(status){
+    console.log(status);
+    eel.update_all_task();
 }

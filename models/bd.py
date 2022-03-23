@@ -92,6 +92,7 @@ def update_task():
         return tasks_items
 
 indexLine = []
+indexStatus = ""
 
 def acceptingAnId_py(index):
     try:
@@ -108,6 +109,43 @@ def acceptingAnId_py(index):
         print(error)
         return indexLine
 
+def acceptingAnId_satus_py(index):
+    try:
+        connect = sqlite3.connect("bd/storage.db")
+        cursor = connect.cursor()
+        cursor.execute("SELECT cinditionT FROM tasks WHERE indexT=?",(index,))
+        global indexStatus 
+        indexStatus = cursor.fetchall()
+        print("Статус с index = ", index ," : ", indexStatus)
+
+        update_status = "UPDATE tasks SET cinditionT = ? WHERE indexT=?"
+
+        if (indexStatus[0][0] == 'start'):
+            print(indexStatus[0][0])
+            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("middle" , index,))
+            
+            # value_status = ("middle" , index,)
+            # cursor.execute(update_status, value_status)
+        elif (indexStatus[0][0] == 'middle'):
+            print(indexStatus[0][0])
+            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("finish" , index,))
+            # value_status = ("finish" , index,)
+            # cursor.execute(update_status, value_status)
+        else:
+            print(indexStatus[0][0])
+            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("start" , index,))
+            # value_status = ("start" , index,)
+            # cursor.execute(update_status, value_status)
+            
+        connect.commit()
+        connect.close()
+        retuuurnLineId()
+        return indexStatus 
+    except Exception as error:
+        indexStatus = "erro"
+        print(error)
+        return indexStatus
+
 # def lineDelete(index):
 #     connect = sqlite3.connect("bd/storage.db")
 #     cursor = connect.cursor()
@@ -121,6 +159,13 @@ def retuuurnLineId():
     # print(index)
     # lineDelete(index)
     return indexLine
+
+def retuuurnStatusId():
+    # index = indexLine[0][0]
+    # index.isdigit()
+    # print(index)
+    # lineDelete(index)
+    return indexStatus
  
 
 

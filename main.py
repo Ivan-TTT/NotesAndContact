@@ -1,6 +1,6 @@
 from __future__ import print_function	
 import eel
-from models.bd import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py
+from models.bd import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, acceptingAnId_satus_py, retuuurnStatusId
 
 eel.init('web')
 
@@ -23,6 +23,22 @@ def creatingLineId():
     print("Строка передалась в JS, для дальнейшего её редактирования")
     print("")
     print("-"*130)
+
+@eel.expose 
+def idTransfer_status(index):
+    int(index)
+    print("")
+    print( "index строки = ", index, ": передан для проверки в базе данных")
+    msg = acceptingAnId_satus_py(index)
+
+@eel.expose 
+def creatingStatusId():
+    get_status = retuuurnStatusId()
+    eel.retuuurnStatusId_js(get_status)
+    print("Строка передалась в JS, для дальнейшего её редактирования")
+    print("")
+    print("-"*130)
+
 
 @eel.expose 
 def update_all_task():
