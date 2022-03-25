@@ -36,10 +36,6 @@ function visibleNum(){
     }
 }
 
-
-
-
-
 function AddNewDopTaskFunction(id) {
     var toggleElements = document.querySelectorAll(".itemGroupTwo");
     var toogledElement = document.querySelector("#" + id);
@@ -52,22 +48,21 @@ function AddNewDopTaskFunction(id) {
         $( toogledElement ).toggle('hide'); //.slideToggle
     }
 }
-// src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
-// $( function() {
-//     $( ".home" ).sortable({
-//       placeholder: "Task"
-//     });
-//     $( ".home" ).disableSelection();
-// } );
 
-// $(".home").sortable({
-//     stop: function(event, ui) {
-//         alert("New position: " + ui.item.index());
-//     }
-// });
-// $(".home").disableSelection();
+function openW_Task(id) {
+    var open = document.querySelectorAll(".windowTask");
+    var open = document.querySelector("#" + id);
+    if (open.style.display == 'none'){
+        open.style.display == 'blok'
+        $( open ).slideToggle('hide');
+    }
+    else{
+        open.style.display == 'blok'
+        $( open ).slideToggle('hide'); //.slideToggle
+    }
+}
 
-$( ".home" ).sortable({
+$( ".windowTask" ).sortable({
     start: function(event, ui) {
         ui.item.startPos = ui.item.index();
     },
@@ -95,6 +90,7 @@ function getAddTask(){
 
         const NewTaskElement = document.createElement ( 'div' );
         NewTaskElement.classList.add ( "Task" );
+        NewTaskElement.classList.add ( "cCreatTask" );
         NewTaskElement.setAttribute ('id', '0');
         NewTaskElement.innerHTML = `
            <div class="oneContent">
@@ -243,7 +239,9 @@ async function taskValue_js(saveIndex, saveCindition, saveQueue, saveTaskText, s
 // {5}
 eel.expose(get_update_task_js)
 function get_update_task_js(tasks_items){
-    $(".Task div").remove();
+    $(".pPpAsive").remove();
+    $(".aAaKtive").remove();
+    $(".cCreatTask").remove();
     localStorage.setItem('OneCreated','no');
     localStorage.setItem('Editing','');
     console.log("Обновление списка");
@@ -286,7 +284,7 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
         </nav>
         <div class="itemGroupOne">
              <ul>
-                <li class ="ProgressTask" onClick="status()">
+                <li class ="ProgressTask" onClick="SED('1')">
                     <img class ="Progress-img " src =" ${saveCindition == "start" 
                     ? 'Img/zero-G.svg' : ''} ${saveCindition == "middle" 
                     ? 'Img/One-G.svg' : ''} ${saveCindition == "finish" 
@@ -307,8 +305,10 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
                     <input id ="TimeTask-id_${saveIndex}" class ="inputTimeTask " type ="time" readonly value ="${saveTaskTime}" >
                 </li class ="TimeTask">
                 `: ""}
-                <li class ="SaveTask" onClick ="editingTask ()">
-                    <img class ="saveTask-img" src ="Img/Pensil-G.svg" alt ="" >
+                <li class ="SaveTask" onClick ="${saveCindition == "finish" 
+                ? "SED('3')" : "SED('2')"}" >
+                    <img class ="saveTask-img" src ="${saveCindition == "finish" 
+                    ? 'Img/zero-G.svg' : 'Img/Pensil-G.svg'}" alt ="" >
                 </li>
              </ul>
         </div>
@@ -344,31 +344,75 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
 const Tasks = JSON.parse(localStorage.getItem("Task"));
 const sizeSorege = localStorage.length;
 
-function editingTask(){
-    if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active') {
-        $('.Task').on('click', function(){ 
-            let index = $(this).attr('id');
-            console.info(`Id этой заметки = ${index}`);
-            localStorage.setItem(`IdThisTask`,`${index}`);
-            idTransfer_js(index);
-            $(this).remove();
-            $('.Task').unbind('click');
-        });
-        localStorage.setItem('OneCreated','yes'); 
-    }  
+// function editingTask(){
+//     if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active') {
+//         $('.Task').on('click', function(){ 
+//             let index = $(this).attr('id');
+//             console.info(`Id этой заметки = ${index}`);
+//             localStorage.setItem(`IdThisTask`,`${index}`);
+//             idTransfer_js(index);
+//             $(this).remove();
+//             $('.Task').unbind('click');
+//         });
+//         localStorage.setItem('OneCreated','yes'); 
+//     }  
+// }
+
+// // Значение принимаеться из функции (editingTask)
+// // Функция принимает значение и передает его в Python
+// // Из пайтон передает значение функции с SQL запросом
+// // Запрос сравнивает значение в столбце index_t,
+// // Если значение совподает то возвращаеться целая строка
+// async function idTransfer_js(index){
+//     console.log(`index = "${index}" пердаеться в python`);
+//     eel.idTransfer(index);
+//     eel.creatingLineId();
+//     eel.expose(retuuurnLineId_js) // запуск функции (retuuurnLineId_js)
+// };
+
+// 1-(S)status | 2-(E)editing | 3-(D)delete  
+function SED(nNum){
+    $('.Task').on('click', function(){ 
+        let index = $(this).attr('id');
+        console.info(`Id этой заметки = ${index}`);
+        localStorage.setItem(`IdThisTask`,`${index}`);
+        
+        if (nNum == '1'){
+            console.log(`Выполняеться функция SED | (S)status | id"=${index}"`)
+            idTransfer_SED_js(index,nNum)
+        } else if (nNum == '2'){
+            if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active'){
+                console.log(`Выполняеться функция SED|(E)editing | id="${index}"`)
+                idTransfer_SED_js(index,nNum);
+                $(this).remove();
+                localStorage.setItem('OneCreated','yes'); 
+            }
+        } else {
+            console.log(`Выполняеться функция SED|(D)delete | id="${index}"`)
+            idTransfer_SED_js(index,nNum)
+        }
+
+        $('.Task').unbind('click');
+    });
 }
 
-// Значение принимаеться из функции (editingTask)
-// Функция принимает значение и передает его в Python
-// Из пайтон передает значение функции с SQL запросом
-// Запрос сравнивает значение в столбце index_t,
-// Если значение совподает то возвращаеться целая строка
-async function idTransfer_js(index){
-    console.log(`index = "${index}" пердаеться в python`);
-    eel.idTransfer(index);
-    eel.creatingLineId();
-    eel.expose(retuuurnLineId_js) // запуск функции (retuuurnLineId_js)
+async function idTransfer_SED_js(index,nNum){
+    console.log(`Выполняеться функция idTransfer_SED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
+    eel.idTransfer_SED(index,nNum);
+    eel.creating_SL_Id();
+    if (nNum == '1'){
+        eel.expose(retuuurnStatusId_js); 
+    } else if (nNum == '2') {
+        eel.expose(retuuurnLineId_js)
+    } else {
+        eel.update_all_task();
+    }
 };
+
+function retuuurnStatusId_js(status){
+    console.log(status);
+    eel.update_all_task();
+}
 
 function retuuurnLineId_js(line_items){
     console.log("елки палки"); 
@@ -395,6 +439,7 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
     
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );
+    NewTaskElement.classList.add ( "cCreatTask" );
     NewTaskElement.setAttribute ('id', `${saveIndex}`);
     NewTaskElement.innerHTML = `
     <div class="oneContent">
@@ -453,42 +498,53 @@ function activeTask(){
     console.log("актив");
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.remove("invisible"));
-    // var oOpen = document.getElementsByClassName(".oOpen");
-    // var cClose = document.getElementsByClassName(".cClose");
-    // oOpen.style.opacity = "1";
-    // cClose.style.opacity = "0.5";
+
+    [...document.getElementsByClassName('oOpen')].forEach(i => i.classList.add("visibleWindow"));
+    [...document.getElementsByClassName('cClose')].forEach(i => i.classList.remove("visibleWindow"));
 }
 function pasiveTask(){
     localStorage.setItem('ActiveOrPasiveTask','pasive');
     console.log("пасив");
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.remove("invisible"));
-    // var oOpen = document.getElementsByClassName(".oOpen");
-    // var cClose = document.getElementsByClassName(".cClose");
-    // oOpen.style.opacity = "0.5";
-    // cClose.style.opacity = "1";
+
+    [...document.getElementsByClassName('cClose')].forEach(i => i.classList.add("visibleWindow"));
+    [...document.getElementsByClassName('oOpen')].forEach(i => i.classList.remove("visibleWindow"));
 }
 
-function status(){
-    console.log("Статус");
-    $('.Task').on('click', function(){ 
-        let index = $(this).attr('id');
-        console.info(`Id этой заметки = ${index}`);
-        localStorage.setItem(`IdThisTask`,`${index}`);
-        idTransfer_status_js(index);
-        $('.Task').unbind('click');
-    });
-}
+// function status(nNum){
+//     SED(nNum);
+//     console.log("Статус");
+//     $('.Task').on('click', function(){ 
+//         let index = $(this).attr('id');
+//         console.info(`Id этой заметки = ${index}`);
+//         localStorage.setItem(`IdThisTask`,`${index}`);
+//         idTransfer_status_js(index);
+//         $('.Task').unbind('click');
+//     });
+// }
 
-async function idTransfer_status_js(index){
-    console.log(`index = "${index}" пердаеться в python`);
+// async function idTransfer_status_js(index){
+//     console.log(`index = "${index}" пердаеться в python`);
 
-    eel.idTransfer_status(index);
-    eel.creatingStatusId();
-    eel.expose(retuuurnStatusId_js); 
-};
+//     eel.idTransfer_status(index);
+//     eel.creatingStatusId();
+//     eel.expose(retuuurnStatusId_js); 
+// };
 
-function retuuurnStatusId_js(status){
-    console.log(status);
-    eel.update_all_task();
-}
+// // function retuuurnStatusId_js(status){
+// //     console.log(status);
+// //     eel.update_all_task();
+// // }
+
+// function deleteT(nNum){
+//     SED(nNum);
+//     // console.log("Статус");
+//     // $('.Task').on('click', function(){ 
+//     //     let index = $(this).attr('id');
+//     //     console.info(`Id этой заметки = ${index}`);
+//     //     localStorage.setItem(`IdThisTask`,`${index}`);
+//     //     // idTransfer_deleteT_js(index);
+//     //     $('.Task').unbind('click');
+//     // });
+// }

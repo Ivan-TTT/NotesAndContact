@@ -93,58 +93,95 @@ def update_task():
 
 indexLine = []
 indexStatus = ""
+indexnNum = ""
 
-def acceptingAnId_py(index):
+def acceptingAnId_py(index, nNum):
     try:
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM tasks WHERE indexT=?",(index,))
+        global indexnNum
+        global indexStatus
         global indexLine 
-        indexLine = cursor.fetchall()
-        print("Строка с index = ", index ," : ", indexLine)
-        retuuurnLineId()
-        return indexLine 
+        print(nNum, "nen")
+        
+        if (nNum == '1'):
+            print(nNum, "nen2")
+            cursor.execute("SELECT cinditionT FROM tasks WHERE indexT=?",(index,))
+            indexStatus = cursor.fetchall()
+            print("Статус с index = ", index ," : ", indexStatus)
+
+            if (indexStatus[0][0] == 'start'):
+                print(indexStatus[0][0])
+                cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("middle" , index,))
+            elif (indexStatus[0][0] == 'middle'):
+                print(indexStatus[0][0])
+                cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("finish" , index,))
+            else:
+                print(indexStatus[0][0])
+                cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("start" , index,))
+
+            connect.commit()
+            connect.close()
+            retuuurnStatusId()
+
+        elif (nNum == '2'):
+            cursor.execute("SELECT * FROM tasks WHERE indexT=?",(index,))
+            indexLine = cursor.fetchall()
+            print("Строка с index = ", index ," : ", indexLine)
+            retuuurnLineId()
+            connect.close()
+        else: 
+            cursor.execute("DELETE FROM tasks WHERE indexT=?",(index,))
+            connect.commit()
+            connect.close()
+
+        indexnNum = nNum
+        f_nNum()
+        return indexLine, indexStatus
     except Exception as error:
         indexLine = "erro"
-        print(error)
-        return indexLine
-
-def acceptingAnId_satus_py(index):
-    try:
-        connect = sqlite3.connect("bd/storage.db")
-        cursor = connect.cursor()
-        cursor.execute("SELECT cinditionT FROM tasks WHERE indexT=?",(index,))
-        global indexStatus 
-        indexStatus = cursor.fetchall()
-        print("Статус с index = ", index ," : ", indexStatus)
-
-        update_status = "UPDATE tasks SET cinditionT = ? WHERE indexT=?"
-
-        if (indexStatus[0][0] == 'start'):
-            print(indexStatus[0][0])
-            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("middle" , index,))
-            
-            # value_status = ("middle" , index,)
-            # cursor.execute(update_status, value_status)
-        elif (indexStatus[0][0] == 'middle'):
-            print(indexStatus[0][0])
-            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("finish" , index,))
-            # value_status = ("finish" , index,)
-            # cursor.execute(update_status, value_status)
-        else:
-            print(indexStatus[0][0])
-            cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("start" , index,))
-            # value_status = ("start" , index,)
-            # cursor.execute(update_status, value_status)
-            
-        connect.commit()
-        connect.close()
-        retuuurnLineId()
-        return indexStatus 
-    except Exception as error:
         indexStatus = "erro"
         print(error)
-        return indexStatus
+        return indexLine, indexStatus
+
+def f_nNum():
+    return indexnNum
+
+def retuuurnLineId():
+    return indexLine
+
+def retuuurnStatusId():
+    return indexStatus
+
+# def acceptingAnId_satus_py(index):
+#     try:
+#         connect = sqlite3.connect("bd/storage.db")
+#         cursor = connect.cursor()
+#         cursor.execute("SELECT cinditionT FROM tasks WHERE indexT=?",(index,))
+#         global indexStatus 
+#         indexStatus = cursor.fetchall()
+#         print("Статус с index = ", index ," : ", indexStatus)
+
+#         update_status = "UPDATE tasks SET cinditionT = ? WHERE indexT=?"
+
+#         if (indexStatus[0][0] == 'start'):
+#             print(indexStatus[0][0])
+#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("middle" , index,))
+#         elif (indexStatus[0][0] == 'middle'):
+#             print(indexStatus[0][0])
+#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("finish" , index,))
+#         else:
+#             print(indexStatus[0][0])
+#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("start" , index,))
+            
+#         connect.commit()
+#         connect.close()
+#         retuuurnLineId()
+#         return indexStatus
+#     except Exception as error:
+#         indexStatus = "erro"
+#         print(error)
+#         return indexStatus
 
 # def lineDelete(index):
 #     connect = sqlite3.connect("bd/storage.db")
@@ -153,19 +190,7 @@ def acceptingAnId_satus_py(index):
 #     connect.close()
 
 # Возвращение данных о строке в JS, для ее создания, с возможностью редактирования
-def retuuurnLineId():
-    # index = indexLine[0][0]
-    # index.isdigit()
-    # print(index)
-    # lineDelete(index)
-    return indexLine
 
-def retuuurnStatusId():
-    # index = indexLine[0][0]
-    # index.isdigit()
-    # print(index)
-    # lineDelete(index)
-    return indexStatus
  
 
 

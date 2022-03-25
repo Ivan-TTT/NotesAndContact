@@ -292,14 +292,13 @@ header .logo-img .txt-logo-name {
       -ms-flex-pack: center;
           justify-content: center;
   list-style: none;
-  background-color: var(--sidePanel-color);
+  background-color: var(--task-color);
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
-  opacity: 0.5;
 }
 
-.home .btnTopTask li .text {
+.home .btnTopTask li span {
   font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
   color: var(--text-color);
   -webkit-transition: var(--tran-03);
@@ -307,11 +306,20 @@ header .logo-img .txt-logo-name {
   opacity: 0.5;
 }
 
-.home .btnTopTask li .text:hover {
+.home .btnTopTask li:hover {
+  background-color: var(--tabs-color);
   opacity: 1;
 }
 
-.home .btnTopTask li:hover {
+.home .btnTopTask li:hover span {
+  opacity: 1;
+}
+
+.home .btnTopTask li.visibleWindow {
+  background-color: var(--sidePanel-color);
+}
+
+.home .btnTopTask li.visibleWindow:hover {
   background-color: var(--tabs-color);
   opacity: 1;
 }

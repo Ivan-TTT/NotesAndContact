@@ -27,10 +27,17 @@
             <div class="tabs">
 
                 <ul class="tabs-links">
-                    <li class="li-tabs-link">
+                    <li class="li-tabs-link" onClick ="openW_Task('windowTask_id')" >
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Заметки</span>
+                        </a>
+                    </li>
+
+                    <li class="li-tabs-link">
+                        <a href="#">
+                            <img class="icon" src="Img/zero-G.svg" alt="">
+                            <span class="text nav-text">Контакты</span>
                         </a>
                     </li>
 
@@ -45,13 +52,6 @@
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Уведомления</span>
-                        </a>
-                    </li>
-
-                    <li class="li-tabs-link">
-                        <a href="#">
-                            <img class="icon" src="Img/zero-G.svg" alt="">
-                            <span class="text nav-text">Контакты</span>
                         </a>
                     </li>
 
@@ -78,21 +78,22 @@
 
     <section class="home">
 
-        <div class="btnTopTask">
-            <li class="oOpen" onClick ="activeTask()">
-                <span class="text">Активные</span>
-            </li> 
-            <li class="addTask" onclick ="getAddTask()">
-                <span class="text">Создать заметку</span>
-            </li>
-            <li class="" onClick = "pasiveTask()">
-                <span class="text">Неактивный</span>
-            </li>  
-        </div>
+        <div id="windowTask_id" class="windowTask" style ='display:blok'>
 
-        <div id = "0" class="Task invisible_static">
+            <div class="btnTopTask">
+                <li class="oOpen" onClick ="activeTask()" >
+                    <span class="text">Активные</span>
+                </li> 
+                <li class="addTask" onclick ="getAddTask()" >
+                    <span class="text">Создать заметку</span>
+                </li>
+                <li class="cClose" onClick = "pasiveTask()" >
+                    <span class="text">Неактивный</span>
+                </li>  
+            </div>
 
-            <!-- <div class="oneContent">
+            <div id = "0" class="Task invisible_static">
+                <!-- <div class="oneContent">
                 <nav class="queue">
                     <div class="higher">▲</div>
                     <input type="number">
@@ -142,9 +143,11 @@
                         <textarea id ="textareaDopTaskThree-id" class ="textarea-DopTaskThree" cols ="54" rows ="5"></textarea>
                     </li>
                 </ul>
-           </div>
-        </div> -->
+           </div>-->
+            </div>
 
+        </div>
+        
     </section>
 
     <script src="JS/mainJquery.js" ></script>
