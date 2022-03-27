@@ -9,6 +9,7 @@ $(document).ready(function() {
     console.log('HTML загружен');
     visibleNum();
     activeTask();
+    // startW();
 });
 
 
@@ -36,8 +37,10 @@ function visibleNum(){
     }
 }
 
+// -Функции открытия------------------------------------------------------------------------------------------
+
 function AddNewDopTaskFunction(id) {
-    var toggleElements = document.querySelectorAll(".itemGroupTwo");
+    var toogledElement = document.querySelectorAll(".itemGroupTwo");
     var toogledElement = document.querySelector("#" + id);
     if (toogledElement.style.display == 'none'){
         toogledElement.style.display == 'flex'
@@ -49,18 +52,47 @@ function AddNewDopTaskFunction(id) {
     }
 }
 
-function openW_Task(id) {
-    var open = document.querySelectorAll(".windowTask");
-    var open = document.querySelector("#" + id);
-    if (open.style.display == 'none'){
-        open.style.display == 'blok'
-        $( open ).slideToggle('hide');
+// function openW(id,id_1) {
+//     // var open = document.querySelectorAll(cLLass);
+//     var open = document.querySelector("#" + id);
+//     var close1 = document.querySelector("#" + id_1);
+//     open.style.display == 'none' ? $( open ).slideToggle('hide') && open.style.display == 'blok' :
+//     $( open ).slideToggle('show') && open.style.display == 'none';
+
+//     close1.style.display == 'blok' ? $( close1 ).slideToggle('show') && close1.style.display == 'none' :
+//     $( close1 ).slideToggle('hide') && close1.style.display == 'blok';
+//     // open.style.display == 'blok'
+//     // $( open ).slideToggle('show');
+//     // close1.style.display == 'none';
+// }
+// // function closeW(id) {
+// //     // var open = document.querySelectorAll(cLLass);
+// //     var open = document.querySelector("#" + id);
+// //     open.style.display == 'blok' ? open.style.display == 'none' : "";
+// //     $( open ).slideToggle('show');
+// // }
+
+// function startW(){
+//     // var n = localStorage.getItem('openW');
+//     localStorage.setItem('openW', 0);
+//     // cont_W(n);
+// }
+
+
+function cont_W(n){
+    console.log(n);
+    if (n == '1' ){
+        
     }
-    else{
-        open.style.display == 'blok'
-        $( open ).slideToggle('hide'); //.slideToggle
+    if (n == '2' ){
+
     }
 }
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 $( ".windowTask" ).sortable({
     start: function(event, ui) {
