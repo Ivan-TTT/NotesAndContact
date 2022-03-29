@@ -629,4 +629,210 @@ header .logo-img .txt-logo-name {
   background-color: darkgrey;
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
 }
+
+.home .windowContacts .btnTopContacts {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowContacts .btnTopContacts li {
+  cursor: pointer;
+  width: calc(100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  background-color: var(--task-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowContacts .btnTopContacts li span {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowContacts .btnTopContacts li:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowContacts .btnTopContacts li:hover span {
+  opacity: 1;
+}
+
+.home .windowContacts .btnTopContacts li.visibleWindow {
+  background-color: var(--sidePanel-color);
+}
+
+.home .windowContacts .btnTopContacts li.visibleWindow:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowContacts .columnNames {
+  height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.home .windowContacts .columnNames ul {
+  font-size: calc(4.6px + 23.4 * ((100vw - 320px) / 1600));
+  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.home .windowContacts .columnNames ul li {
+  cursor: pointer;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  height: calc(6px + 30 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home .windowContacts .columnNames ul li span {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  padding-left: calc(2px + 10 * ((100vw - 320px) / 1600));
+  padding-right: calc(2px + 10 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowContacts .columnNames ul li:hover {
+  background-color: var(--sidePanel-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 1;
+}
+
+.home .windowContacts .columnNames ul li:hover span {
+  opacity: 1;
+}
+
+.home .windowContacts .columnNames ul .name_C, .home .windowContacts .columnNames ul .organization_C,
+.home .windowContacts .columnNames ul .address_C, .home .windowContacts .columnNames ul .telephone_C,
+.home .windowContacts .columnNames ul .mail_C, .home .windowContacts .columnNames ul .ICQ_C {
+  margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .windowContacts .contact {
+  margin-top: calc(1.3px + 6.7 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowContacts .contact .contactGroup {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--sidePanel-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  width: calc(100%);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.home .windowContacts .contact .contactGroup ul {
+  font-size: calc(3px + 15 * ((100vw - 320px) / 1600));
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home .windowContacts .contact .contactGroup ul img {
+  cursor: pointer;
+  width: calc(5px + 25 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowContacts .contact .contactGroup ul img:hover {
+  opacity: 0.8;
+}
+
+.home .windowContacts .contact .contactGroup ul li {
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--tabs-color);
+}
+
+.home .windowContacts .contact .contactGroup ul li input, .home .windowContacts .contact .contactGroup ul li select {
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  height: calc(5px + 25 * ((100vw - 320px) / 1600));
+  border: none;
+  outline: none;
+  font-family: Montserrat-Regular;
+  background-color: var(--tabs-color);
+  width: calc(100%);
+  padding-left: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  padding-right: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  font-size: calc(3px + 15 * ((100vw - 320px) / 1600));
+}
 /*# sourceMappingURL=style.css.map */

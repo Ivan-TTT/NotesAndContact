@@ -78,7 +78,7 @@
 
     <section class="home">
 
-        <div id="windowTask_id" class="windowTask">
+        <div id="windowTask_id" class="windowTask" style ='display:none'>
 
             <div class="btnTopTask">
                 <li class="oOpen" onClick ="activeTask()" >
@@ -149,7 +149,114 @@
         </div>
 
         <div id="windowContacts_id" class="windowContacts" >
-            хлеб
+            <div class="btnTopContacts">
+                <li class="addContacts" onclick ="" >
+                    <span class="text">Создать контакт</span>
+                </li>
+            </div>
+
+            <div class="columnNames">
+                <ul>
+                    <li class="name_C" onclick ="" >
+                        <span class="text">Название</span>
+                    </li>
+                    <li class="organization_C" onclick ="" >
+                        <span class="text">Органиция</span>
+                    </li>
+                    <li class="address_C" onclick ="" >
+                        <span class="text">Адресс</span>
+                    </li>
+                    <li class="telephone_C" onclick ="" >
+                        <span class="text">Телефон</span>
+                    </li>
+                    <li class="mail_C" onclick ="" >
+                        <span class="text">Почта</span>
+                    </li>
+                    <li class="ICQ_C" onclick ="" >
+                        <span class="text">ICQ</span>
+                    </li>
+                    <li class="" onclick ="" >
+                        <span class="text">@</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact">
+                <div class="contactGroup">
+                    <ul>                   
+                       <li class="nameCon">
+                           <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
+                       </li>
+                   
+                       <li class="organizationCon" >
+                            <select id="organization">
+                                <option disabled selected>Органиция...</option>
+                                <option value="ип">ип</option>
+                                <option value="полиграфия">полиграфия</option>
+                            </select>
+                       </li>
+                   
+                       <li class="addressCon"> 
+                            <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
+                       </li class ="TimeTask"> 
+                   
+                       <li class ="telephoneCon" >
+                            <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
+                       </li>
+                   
+                       <li class ="mailCon" >
+                            <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
+                       </li>
+
+                       <li class="ICQCon" >
+                            <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
+                        <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                        </li>
+                    
+                        <li class="saveCon" onClick ="">
+                            <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
+                        </li class ="TimeTask">
+                    </ul>
+               </div>
+            </div>
+            <div class="contact">
+                <div class="contactGroup">
+                    <ul>                   
+                       <li class="nameCon">
+                           <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
+                       </li>
+                   
+                       <li class="organizationCon" >
+                            <select id="organization">
+                                <option disabled selected>Органиция...</option>
+                                <option value="ип">ип</option>
+                                <option value="полиграфия">полиграфия</option>
+                            </select>
+                       </li>
+                   
+                       <li class="addressCon"> 
+                            <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
+                       </li class ="TimeTask"> 
+                   
+                       <li class ="telephoneCon" >
+                            <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
+                       </li>
+                   
+                       <li class ="mailCon" >
+                            <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
+                       </li>
+
+                       <li class="ICQCon" >
+                            <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
+                        <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                        </li>
+                    
+                        <li class="saveCon" onClick ="">
+                            <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
+                        </li class ="TimeTask">
+                    </ul>
+               </div>
+            </div>
         </div>
         
     </section>

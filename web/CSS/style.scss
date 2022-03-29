@@ -460,4 +460,148 @@ header {
 			}
 		}
    }
+   .windowContacts{
+		.btnTopContacts{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			display: flex;
+			justify-content: space-between;
+			li{
+				cursor: pointer;
+				width: calc(100%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				background-color: var(--task-color);
+				transition: var(--tran-03);
+				@include adaptive( "border-radius" , 6 , 1 );
+				span{
+					@include adaptive( "font-size" , 26 , 4.3);
+					color: var(--text-color);
+					transition: var(--tran-03);
+					opacity: 0.5;
+				}
+				&:hover {
+					background-color: var(--tabs-color);
+					opacity: 1;
+					span{
+						opacity: 1;
+					}
+				}
+				&.visibleWindow{
+					background-color: var(--sidePanel-color);
+					&:hover {
+						background-color: var(--tabs-color);
+						opacity: 1;
+					}
+				}
+		   }
+		}
+		.columnNames{
+			@include adaptive( "height" , 56 , 9.3);
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+        	@include adaptive( "border-radius" , 6 , 1 );
+			background-color: var(--task-color);
+			display: flex;
+			align-self:flex-start;
+			ul{
+				@include adaptive( "font-size" , 28 , 4.6);
+				@include adaptive("padding", 10 , 1.6);
+				list-style: none;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex: 1;
+				li{	
+					cursor: pointer;
+					@include adaptive( "border-radius" , 6 , 1 );
+					@include adaptive( "height" , 36 , 6);
+					display: flex;
+					align-items: center; 
+					// background-color: var(--tabs-color);
+					span{
+						@include adaptive( "font-size" , 26 , 4.3);
+						@include adaptive("padding-left", 12 , 2);
+						@include adaptive("padding-right", 12 , 2);
+						color: var(--text-color);
+						transition: var(--tran-03);
+						opacity: 0.5;
+					}
+					&:hover {
+						background-color: var(--sidePanel-color);
+						transition: var(--tran-03);
+						opacity: 1;
+						span{
+							opacity: 1;
+						}
+					}
+				}
+				.name_C, .organization_C,
+				.address_C, .telephone_C,
+				.mail_C, .ICQ_C{
+					@include adaptive("margin-right", 10 , 1.6);
+				}
+			}
+		}
+		.contact{
+			@include adaptive("margin-top", 8 , 1.3);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			display: flex;
+			justify-content: space-between;
+			.contactGroup{
+				align-self:flex-start;
+				align-items: center;
+    		    background-color: var(--sidePanel-color);
+				// @include adaptive( "height" , 50 , 8.3);
+    		    @include adaptive( "border-radius" , 6 , 1 );
+				@include adaptive("padding", 10 , 1.6);
+				width: calc(100%);
+				flex: 1;
+				ul{
+    		        @include adaptive( "font-size" , 18 , 3);
+    		        list-style: none;
+    		        display: flex;
+    		        justify-content: space-between;
+    		        align-items: center;
+    		        img{
+    		            cursor: pointer;
+    		            
+						@include adaptive("width", 30 , 5);
+    		            @include adaptive( "border-radius" , 6 , 1 );
+    		            transition: var(--tran-03);
+    		            opacity: 0.5;
+    		            &:hover {
+    		                opacity: 0.8;
+    		            }
+    		        }
+    		        li{	
+						@include adaptive( "border-radius" , 6 , 1 );
+    		            display: flex;
+    		            align-items: center; 
+    		            background-color: var(--tabs-color);
+
+						input , select{
+							@include adaptive( "border-radius" , 6 , 1 );
+    		                @include adaptive( "height" , 30 , 5);
+    		                border: none;
+    		                outline: none;
+    		                font-family: Montserrat-Regular;
+							background-color: var(--tabs-color);
+							width: calc(100%);
+							@include adaptive("padding-left", 5 , 0.83);
+							@include adaptive("padding-right", 5 , 0.83);
+							@include adaptive( "font-size" , 18 , 3);
+    		            }
+    		            
+					}
+				}
+    		    
+			}	
+		}
+   }
 }
