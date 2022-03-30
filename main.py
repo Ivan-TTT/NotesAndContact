@@ -1,7 +1,7 @@
 from __future__ import print_function	
 import eel
 from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
-from models.bd_contact import saveContact_py
+from models.bd_contact import saveContact_py, update_contact
 eel.init('web')
 
 #- Заметеки ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -62,6 +62,20 @@ def update_all_task():
 @eel.expose 
 def contactValue(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ):
     msg = saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+
+@eel.expose 
+def update_all_contact():
+    get_contacts = update_contact()
+    eel.get_update_contact_js(get_contacts)
+    print("-"*130)
+    print( "контакты в базе данных")
+    print("-"*130)
+    for i in get_contacts:
+        print(i)
+    print("-"*130)
+
+
+
 
 
 eel.start('main.html') 

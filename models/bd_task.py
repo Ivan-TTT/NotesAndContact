@@ -39,7 +39,20 @@ def saveTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t,
             print("Соединение с базой данных [bd] закрыто")
             print("-"*130)
 
-
+def update_task():
+    try:
+        connect = sqlite3.connect("bd/storage.db")
+        cursor = connect.cursor()
+        cursor.execute("SELECT * FROM tasks ORDER BY queue_t DESC")
+        tasks_items = []
+        for item in cursor.fetchall():
+            tasks_items.append(item)
+            connect.close()
+        return tasks_items
+    except Exception as error:
+        tasks_items = "erro"
+        print(error)
+        return tasks_items
 
 def updateLineTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t):
     try:
@@ -75,21 +88,6 @@ def updateLineTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, kom
             print("Соединение с базой данных [bd] закрыто")
             print("-"*130)
     
-
-def update_task():
-    try:
-        connect = sqlite3.connect("bd/storage.db")
-        cursor = connect.cursor()
-        cursor.execute("SELECT * FROM tasks ORDER BY queue_t DESC")
-        tasks_items = []
-        for item in cursor.fetchall():
-            tasks_items.append(item)
-            connect.close()
-        return tasks_items
-    except Exception as error:
-        tasks_items = "erro"
-        print(error)
-        return tasks_items
 
 indexLine = []
 indexStatus = ""
