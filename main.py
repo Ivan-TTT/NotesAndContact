@@ -1,6 +1,6 @@
 from __future__ import print_function	
 import eel
-from models.bd import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
+from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
 
 eel.init('web')
 

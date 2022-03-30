@@ -150,7 +150,7 @@
 
         <div id="windowContacts_id" class="windowContacts" >
             <div class="btnTopContacts">
-                <li class="addContacts" onclick ="" >
+                <li class="addContacts" onclick ="getAddContact()" >
                     <span class="text">Создать контакт</span>
                 </li>
             </div>
@@ -175,7 +175,7 @@
                     <li class="ICQ_C" onclick ="" >
                         <span class="text">ICQ</span>
                     </li>
-                    <li class="" onclick ="" >
+                    <li class="value_Mail" onclick ="" >
                         <span class="text">@</span>
                     </li>
                 </ul>
@@ -185,31 +185,31 @@
                 <div class="contactGroup">
                     <ul>                   
                        <li class="nameCon">
-                           <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
+                           <input id ="nameCon-id" class ="nameCon" type ="text" placeholder ="Название..." >
                        </li>
                    
                        <li class="organizationCon" >
                             <select id="organization">
-                                <option disabled selected>Органиция...</option>
+                                <option disabled selected>Органиция</option>
                                 <option value="ип">ип</option>
                                 <option value="полиграфия">полиграфия</option>
                             </select>
                        </li>
                    
                        <li class="addressCon"> 
-                            <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
+                            <input id ="addressCon-id" class ="addressCon" type ="text" placeholder ="Адресс..." >
                        </li class ="TimeTask"> 
                    
                        <li class ="telephoneCon" >
-                            <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
+                            <input id ="telephoneCon-id" class ="telephoneCon" type ="tel" placeholder ="Телефон..." >
                        </li>
                    
                        <li class ="mailCon" >
-                            <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
+                            <input id ="mailCon-id" class ="mailCon" type ="email" placeholder ="Почта..." >
                        </li>
 
                        <li class="ICQCon" >
-                            <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
+                            <input id ="ICQCon-id" class ="ICQCon" type ="text" placeholder ="ICQ..." >
                         <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
                         </li>
                     
@@ -219,49 +219,10 @@
                     </ul>
                </div>
             </div>
-            <div class="contact">
-                <div class="contactGroup">
-                    <ul>                   
-                       <li class="nameCon">
-                           <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
-                       </li>
-                   
-                       <li class="organizationCon" >
-                            <select id="organization">
-                                <option disabled selected>Органиция...</option>
-                                <option value="ип">ип</option>
-                                <option value="полиграфия">полиграфия</option>
-                            </select>
-                       </li>
-                   
-                       <li class="addressCon"> 
-                            <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
-                       </li class ="TimeTask"> 
-                   
-                       <li class ="telephoneCon" >
-                            <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
-                       </li>
-                   
-                       <li class ="mailCon" >
-                            <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
-                       </li>
-
-                       <li class="ICQCon" >
-                            <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
-                        <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
-                        </li>
-                    
-                        <li class="saveCon" onClick ="">
-                            <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
-                        </li class ="TimeTask">
-                    </ul>
-               </div>
-            </div>
-        </div>
-        
     </section>
 
-    <script src="JS/mainJquery.js" ></script>
+    <script src="JS/wTask.js" ></script>
+    <script src="JS/wContact.js" ></script>
     <script src="JS/mainJs.js" ></script>
 </body>
 </html>

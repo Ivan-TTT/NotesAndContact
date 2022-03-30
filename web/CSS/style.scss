@@ -513,7 +513,7 @@ header {
 				@include adaptive("padding", 10 , 1.6);
 				list-style: none;
 				display: flex;
-				justify-content: space-between;
+				// justify-content: space-between;
 				align-items: center;
 				flex: 1;
 				li{	
@@ -522,11 +522,12 @@ header {
 					@include adaptive( "height" , 36 , 6);
 					display: flex;
 					align-items: center; 
+					justify-content: center;
 					// background-color: var(--tabs-color);
 					span{
-						@include adaptive( "font-size" , 26 , 4.3);
-						@include adaptive("padding-left", 12 , 2);
-						@include adaptive("padding-right", 12 , 2);
+						@include adaptive( "font-size" , 24 , 4);
+						// @include adaptive("padding-left", 6 , 1);
+						// @include adaptive("padding-right", 6 , 1);
 						color: var(--text-color);
 						transition: var(--tran-03);
 						opacity: 0.5;
@@ -544,6 +545,28 @@ header {
 				.address_C, .telephone_C,
 				.mail_C, .ICQ_C{
 					@include adaptive("margin-right", 10 , 1.6);
+				}
+
+				.name_C{
+					width: calc(25%);
+				}
+				.organization_C{
+					width: calc(8%);
+				}
+				.address_C{
+					width: calc(25%);
+				}
+				.telephone_C{
+					width: calc(10%);
+				}
+				.mail_C{
+					width: calc(18%);
+				}
+				.ICQ_C{
+					width: calc(10%);
+				}
+				.value_Mail{
+					@include adaptive( "width" , 36 , 6);
 				}
 			}
 		}
@@ -566,7 +589,7 @@ header {
     		        @include adaptive( "font-size" , 18 , 3);
     		        list-style: none;
     		        display: flex;
-    		        justify-content: space-between;
+    		        // justify-content: space-between;
     		        align-items: center;
     		        img{
     		            cursor: pointer;
@@ -597,7 +620,35 @@ header {
 							@include adaptive("padding-right", 5 , 0.83);
 							@include adaptive( "font-size" , 18 , 3);
     		            }
+						select {
+							-webkit-appearance: none;
+							-moz-appearance: none;
+							appearance: none;
+						}
     		            
+					}
+					.nameCon{
+						width: calc(25%);
+					}
+					.organizationCon{
+						width: calc(8%);
+					}
+					.addressCon{
+						width: calc(25%);
+					}
+					.telephoneCon{
+						width: calc(10%);
+					}
+					.mailCon{
+						width: calc(18%);
+					}
+					.ICQCon{
+						width: calc(10%);
+					}
+					.nameCon, .organizationCon,
+					.addressCon, .telephoneCon,
+					.mailCon, .ICQCon{
+						@include adaptive("margin-right", 10 , 1.6);
 					}
 				}
     		    
