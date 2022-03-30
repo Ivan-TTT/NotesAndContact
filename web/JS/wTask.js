@@ -194,7 +194,7 @@ function saveTaskFunction (){
     var saveTaskText = document.getElementById("Task-id").value; saveTaskText != ""         // Блок с созданием переменых
     ? console.log(saveTaskText): "" ;                                                       // Создаються переменные которой присваеваться тест из поллей ввода и выводяться в консоль
     var saveTaskDate = document.getElementById("DateTask-id").value; saveTaskDate != ""     // Поля с текстом, датой, временем, дополнительным текстом.
-    ? console.log(saveTaskDate): "";                                                        // 
+    ? console.log(saveTaskDate): "";                                                        // d
     var saveTaskTime = document.getElementById("TimeTask-id").value; saveTaskTime != ""     //
     ? console.log(saveTaskTime): "";                                                        // 
     // Коментарии
