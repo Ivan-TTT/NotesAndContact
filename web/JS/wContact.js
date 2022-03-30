@@ -60,7 +60,7 @@ localStorage.setItem('contact_id', generating_contact_id++);
 
 //---------------------------------------------------------------------------------------------
 
-
+// функция берет значения из формы и предает функции  (contactValue_js)
 function saveСontactFunction(){
 
     // название // name
@@ -88,7 +88,18 @@ function saveСontactFunction(){
     ? console.log(save_C_ICQ): ""; 
 
     if (save_C_name != ""){
-        СontactValue_js()
+        localStorage.setItem('contact_id', generating_contact_id++);
+        var save_C_Id = localStorage.getItem('contact_id');
+        contactValue_js(save_C_Id, save_C_name, save_C_organiz,
+            save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
     }
+}
+
+// функция отправить значения в python
+async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
+    save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
+
+    eel.contactValue(save_C_Id, save_C_name, save_C_organiz,
+        save_C_address, save_C_tel, save_C_mail, save_C_ICQ);
 
 }
