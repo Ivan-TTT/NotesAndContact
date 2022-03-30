@@ -853,7 +853,6 @@ header .logo-img .txt-logo-name {
   outline: none;
   font-family: Montserrat-Regular;
   background-color: var(--tabs-color);
-  width: calc(100%);
   padding-left: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
   padding-right: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
   font-size: calc(3px + 15 * ((100vw - 320px) / 1600));
@@ -863,6 +862,7 @@ header .logo-img .txt-logo-name {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  text-align: center;
 }
 
 .home .windowContacts .contact .contactGroup ul .nameCon {
@@ -893,5 +893,11 @@ header .logo-img .txt-logo-name {
 .home .windowContacts .contact .contactGroup ul .addressCon, .home .windowContacts .contact .contactGroup ul .telephoneCon,
 .home .windowContacts .contact .contactGroup ul .mailCon, .home .windowContacts .contact .contactGroup ul .ICQCon {
   margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .windowContacts .contact .contactGroup ul .nameCon input, .home .windowContacts .contact .contactGroup ul .organizationCon input,
+.home .windowContacts .contact .contactGroup ul .addressCon input, .home .windowContacts .contact .contactGroup ul .telephoneCon input,
+.home .windowContacts .contact .contactGroup ul .mailCon input, .home .windowContacts .contact .contactGroup ul .ICQCon input {
+  width: calc(100%);
 }
 /*# sourceMappingURL=style.css.map */

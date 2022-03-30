@@ -19,7 +19,7 @@ function getAddContact(){
                    <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
                </li>
            
-               <li class="organizationCon" >
+               <li class="organizationCon-id" >
                     <select id="organization">
                         <option disabled selected>Органиция</option>
                         <option value="ип">ип</option>
@@ -43,7 +43,7 @@ function getAddContact(){
                 <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
                 </li>
             
-                <li class="saveCon" onClick ="">
+                <li class="saveCon" onClick ="saveСontactFunction()">
                     <img class ="saveTask-img" src ="Img/Save-G.svg" alt ="" >
                 </li class ="TimeTask">
             </ul>
@@ -62,6 +62,33 @@ localStorage.setItem('contact_id', generating_contact_id++);
 
 
 function saveСontactFunction(){
-    var save_C_name = document.getElementById("nameCon-id").value; saveTaskTime != ""     //
-    ? console.log(saveTaskTime): ""; 
+
+    // название // name
+    var save_C_name = document.getElementById("nameCon-id").value; save_C_name != ""  
+    ? console.log(save_C_name): ""; 
+
+    // организация // organization
+    var save_C_organiz = document.getElementById("organizationCon-id").value; save_C_organiz != ""  
+    ? console.log(save_C_organiz): ""; 
+
+    // адресс // address
+    var save_C_address = document.getElementById("addressCon-id").value; save_C_address != ""  
+    ? console.log(save_C_address): ""; 
+
+    // телефон // telephone
+    var save_C_tel = document.getElementById("telephoneCon-id").value; save_C_tel != ""  
+    ? console.log(save_C_tel): ""; 
+
+    // почта // mail
+    var save_C_mail = document.getElementById("mailCon-id").value; save_C_mail != ""  
+    ? console.log(save_C_mail): ""; 
+
+    // ICQ 
+    var save_C_ICQ = document.getElementById("ICQCon-id").value; save_C_ICQ != ""  
+    ? console.log(save_C_ICQ): ""; 
+
+    if (save_C_name != ""){
+        СontactValue_js()
+    }
+
 }

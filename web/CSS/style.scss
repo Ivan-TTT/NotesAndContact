@@ -615,7 +615,7 @@ header {
     		                outline: none;
     		                font-family: Montserrat-Regular;
 							background-color: var(--tabs-color);
-							width: calc(100%);
+							// width: calc(100%);
 							@include adaptive("padding-left", 5 , 0.83);
 							@include adaptive("padding-right", 5 , 0.83);
 							@include adaptive( "font-size" , 18 , 3);
@@ -624,6 +624,7 @@ header {
 							-webkit-appearance: none;
 							-moz-appearance: none;
 							appearance: none;
+							text-align: center;
 						}
     		            
 					}
@@ -649,6 +650,9 @@ header {
 					.addressCon, .telephoneCon,
 					.mailCon, .ICQCon{
 						@include adaptive("margin-right", 10 , 1.6);
+						input{
+							width: calc(100%);
+						}
 					}
 				}
     		    
