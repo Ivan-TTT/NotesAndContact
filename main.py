@@ -1,7 +1,7 @@
 from __future__ import print_function	
 import eel
 from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
-from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S6M_py, accepting_id_ED_py 
+from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items 
 eel.init('web')
 
 #- Заметеки ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -75,11 +75,16 @@ def update_all_contact():
     print("-"*130)
 
 @eel.expose 
-def nNumTransfer_S6M(nNum):
+def nNumTransfer_S7M(nNum):
     int(nNum)
     print("")
     print( " номер сортировки = ", nNum, " | передан для сортировки в базы данных" )
-    msg = accepting_nNum_S6M_py(nNum)
+    msg = accepting_nNum_S7M_py(nNum)
+
+@eel.expose 
+def update_S7M():
+    get_contacts = retuuurn_sorted_items()
+    eel.get_update_contact_js(get_contacts)
 
 @eel.expose 
 def idTransfer_ED(index, nNum):

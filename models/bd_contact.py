@@ -42,7 +42,7 @@ def update_contact():
         print("Подключен к базе данных [bd_c]")
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM contacts ORDER BY C_name ")
+        cursor.execute("SELECT * FROM contacts ORDER BY C_name")
         contact_items = []
         for item in cursor.fetchall():
             contact_items.append(item)
@@ -56,27 +56,76 @@ def update_contact():
             print("Соединение с базой данных [bd_c] закрыто")
             print("-"*130)
 
-
-arr_S6M = [0,0,0,0,0,0]
-def accepting_nNum_S6M_py(nNum):
+sorted_items=[]
+arr_S7M = [0,0,0,0,0,0,0]
+def accepting_nNum_S7M_py(nNum):
     try:
         print("-"*130)
-        print("Функция (accepting_nNum_S6M_py)")
+        print("Функция (accepting_nNum_S7M_py)")
         print("Подключен к базе данных [bd_c]") 
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
-        global arr_S6M
+        global sorted_items
+        global arr_S7M
+
+        sorted_items = []
 
         if (nNum == '0'):
-            if (arr_S6M[0] == 0):
+            if (arr_S7M[0] == 0):
                 cursor.execute("SELECT * FROM contacts ORDER BY C_name ")
-                arr_S6M[0] = 1
-                print(arr_S6M)
+                arr_S7M[0] = 1
             else:
-                cursor.execute("SELECT * FROM contacts ORDER BY C_name ")
-                arr_S6M[0] = 0
-                print(arr_S6M)
+                cursor.execute("SELECT * FROM contacts ORDER BY C_name DESC")
+                arr_S7M[0] = 0
 
+        elif (nNum == '1'):
+            if (arr_S7M[1] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_organiz ")
+                arr_S7M[1] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_organiz DESC")
+                arr_S7M[1] = 0
+
+        elif (nNum == '2'):
+            if (arr_S7M[2] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_address ")
+                arr_S7M[2] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_address DESC")
+                arr_S7M[2] = 0
+
+        elif (nNum == '3'):
+            if (arr_S7M[3] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel ")
+                arr_S7M[3] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
+                arr_S7M[3] = 0
+
+        elif (nNum == '4'):
+            if (arr_S7M[4] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel ")
+                arr_S7M[4] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
+                arr_S7M[4] = 0
+
+        elif (nNum == '5'):
+            if (arr_S7M[5] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel ")
+                arr_S7M[5] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
+                arr_S7M[5] = 0
+
+
+        for item in cursor.fetchall():
+            sorted_items.append(item)    
+            connect.close()
+
+        print(arr_S7M)
+        print(sorted_items)
+        return sorted_items
     except sqlite3.Error as error:
         print("Ошибка при работе с базой данных [bd_c] : ОШИБКА ПРИ СОРТИРОВКЕ КОНТАКТОВ  : ", error)
     finally:
@@ -85,6 +134,8 @@ def accepting_nNum_S6M_py(nNum):
             print("Соединение с базой данных [bd_c] закрыто")
             print("-"*130) 
 
+def retuuurn_sorted_items():
+    return sorted_items
 
 
 def accepting_id_ED_py(index, nNum):

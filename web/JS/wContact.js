@@ -121,11 +121,7 @@ async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
 //- Функция принимает список с строками из [bd_C] -----------------------------------------
 eel.expose(get_update_contact_js)
 function get_update_contact_js(contacts_items){
-    // $(".pPpAsive").remove();
-    // $(".aAaKtive").remove();
-    // $(".cCreatTask").remove();
-    localStorage.setItem('OneCreated','no');
-    localStorage.setItem('Editing','');
+    $(".fixetT").remove();
     console.log("Обновление списка");
     for (var contacts = 0; contacts < contacts_items.length; contacts++){
 
@@ -147,6 +143,7 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
     
     const saveContactElement = document.createElement ( 'div' );
     saveContactElement.classList.add ( "contact" );
+    saveContactElement.classList.add ( "fixetT" );
     saveContactElement.setAttribute ('id', `${save_C_Id}`);
     saveContactElement.innerHTML = `
         <div class="contactGroup">
@@ -188,14 +185,15 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
 
 //---------------------------------------------------------------------------------------------
 
-//- 0-(S)sorted*6 | 6-(M)mail  
-function S6M(nNum){
-    console.log(`Выполняеться функция S6M | (S)status | nNnum"=${nNum}"`);
-    nNumTransfer_S6M_js(nNum)
+//- 0-(S)sorted*7 | 6-(M)mail  
+function S7M(nNum){
+    console.log(`Выполняеться функция S7M | (S)status | nNnum"=${nNum}"`);
+    nNumTransfer_S7M_js(nNum)
 }
-async function nNumTransfer_S6M_js(nNum){
-    console.log(`Выполняеться функция nNumTransfer_S6M_js | nNum="${nNum}" пердаеться в python`);
-    eel.nNumTransfer_S6M(nNum);
+async function nNumTransfer_S7M_js(nNum){
+    console.log(`Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
+    eel.nNumTransfer_S7M(nNum);
+    eel.update_S7M();
 }
 
 
@@ -217,4 +215,5 @@ function ED(nNum){
 async function idTransfer_ED_js(index, nNum){
     console.log(`Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
     eel.idTransfer_ED(index, nNum);
+    // eel.update_all_contact();
 }
