@@ -118,7 +118,7 @@ async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
 }
 //---------------------------------------------------------------------------------------------
 
-
+//- Функция принимает список с строками из [bd_C] -----------------------------------------
 eel.expose(get_update_contact_js)
 function get_update_contact_js(contacts_items){
     // $(".pPpAsive").remove();
@@ -141,6 +141,8 @@ function get_update_contact_js(contacts_items){
     // visibleNum()
 };
 
+//- Функция пригимает значения переданные из функции(get_update_contact_js) -----------------------------------------
+//- Функция создает блоки с контактами -----------------------------------------
 function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
     
     const saveContactElement = document.createElement ( 'div' );
@@ -175,11 +177,44 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
                 <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
                 </li>
             
-                <li class="saveCon" onClick ="">
+                <li class="saveCon" onClick ="ED('0')">
                     <img class ="" src ="Img/Pensil-G.svg" alt ="" >
                 </li>
             </ul>
         </div>
     `
     contactElement.after(saveContactElement);
+}
+
+//---------------------------------------------------------------------------------------------
+
+//- 0-(S)sorted*6 | 6-(M)mail  
+function S6M(nNum){
+    console.log(`Выполняеться функция S6M | (S)status | nNnum"=${nNum}"`);
+    nNumTransfer_S6M_js(nNum)
+}
+async function nNumTransfer_S6M_js(nNum){
+    console.log(`Выполняеться функция nNumTransfer_S6M_js | nNum="${nNum}" пердаеться в python`);
+    eel.nNumTransfer_S6M(nNum);
+}
+
+
+//- 0-(E)editing | 1-(D)delete
+function ED(nNum){
+    $('.contact').on('click', function(){ 
+        let index = $(this).attr('id');
+        console.info(`Id контакта = ${index}`);
+    
+        if (nNum == '0'){
+            console.log(`Выполняеться функция ED | (S)status | id"=${index}"`);
+            idTransfer_ED_js(index, nNum)
+        } else if (nNum == '1') {
+            console.log(`Выполняеться функция ED | (D)delete | id"=${index}"`);
+            idTransfer_ED_js(index, nNum)
+        }
+    });
+}
+async function idTransfer_ED_js(index, nNum){
+    console.log(`Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
+    eel.idTransfer_ED(index, nNum);
 }

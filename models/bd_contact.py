@@ -55,3 +55,43 @@ def update_contact():
             connect.close()
             print("Соединение с базой данных [bd_c] закрыто")
             print("-"*130)
+
+
+arr_S6M = [0,0,0,0,0,0]
+def accepting_nNum_S6M_py(nNum):
+    try:
+        print("-"*130)
+        print("Функция (accepting_nNum_S6M_py)")
+        print("Подключен к базе данных [bd_c]") 
+        connect = sqlite3.connect("bd/storage.db")
+        cursor = connect.cursor()
+        global arr_S6M
+
+        if (nNum == '0'):
+            if (arr_S6M[0] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_name ")
+                arr_S6M[0] = 1
+                print(arr_S6M)
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_name ")
+                arr_S6M[0] = 0
+                print(arr_S6M)
+
+    except sqlite3.Error as error:
+        print("Ошибка при работе с базой данных [bd_c] : ОШИБКА ПРИ СОРТИРОВКЕ КОНТАКТОВ  : ", error)
+    finally:
+        if connect:
+            connect.close()
+            print("Соединение с базой данных [bd_c] закрыто")
+            print("-"*130) 
+
+
+
+def accepting_id_ED_py(index, nNum):
+    print(index, nNum)
+    # try: 
+        
+    # except:
+    # finally:
+
+

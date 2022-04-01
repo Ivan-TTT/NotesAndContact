@@ -406,7 +406,7 @@ const sizeSorege = localStorage.length;
 function SED(nNum){
     $('.Task').on('click', function(){ 
         let index = $(this).attr('id');
-        console.info(`Id этой заметки = ${index}`);
+        console.info(`Id заметки = ${index}`);
         localStorage.setItem(`IdThisTask`,`${index}`);
         
         if (nNum == '1'){
