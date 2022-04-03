@@ -138,11 +138,39 @@ def retuuurn_sorted_items():
     return sorted_items
 
 
+editing_items = []
+C_IdnNum = ""
 def accepting_id_ED_py(index, nNum):
     print(index, nNum)
-    # try: 
+    try:
+        print("-"*130)
+        print("Функция (accepting_id_ED_py)")
+        print("Подключен к базе данных [bd_c]") 
+        connect = sqlite3.connect("bd/storage.db")
+        cursor = connect.cursor()
+        global editing_items
+        global C_IdnNum
+        editing_items = []
+
+        if (nNum == '0'):
+            cursor.execute("SELECT * FROM contacts WHERE C_Id=?",(index,))
+            editing_items = cursor.fetchall()
+            retuuurn_editing_items()
+        else: 
+            cursor.execute("DELETE FROM contacts WHERE C_Id=?",(index,))
+            connect.commit()
         
-    # except:
-    # finally:
+        C_IdnNum = nNum
+    except sqlite3.Error as error:
+        print("Ошибка при работе с базой данных [bd_c] : ОШИБКА ПРИ РЕДАКТРОВАНИя ИЛИ УДАЛЕНИя КОНТАКТА  : ", error)
+    finally:
+        if connect:
+            connect.close()
+            print("Соединение с базой данных [bd_c] закрыто")
+            print("-"*130) 
 
+def retuuurn_editing_items():
+    return editing_items
 
+def fU_nNum():
+    return C_IdnNum

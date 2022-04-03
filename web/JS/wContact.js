@@ -34,6 +34,7 @@ function getAddContact(){
                         <option disabled selected>Органиция</option>
                         <option value="ип">ип</option>
                         <option value="полиграфия">полиграфия</option>
+                        <option value="нет">нет</option>
                     </select>
                </li>
            
@@ -122,7 +123,7 @@ async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
 eel.expose(get_update_contact_js)
 function get_update_contact_js(contacts_items){
     $(".fixetT").remove();
-    console.log("Обновление списка");
+    console.log("Контакты : обновление списка");
     for (var contacts = 0; contacts < contacts_items.length; contacts++){
 
         var save_C_Id = contacts_items[contacts][0];                 
@@ -187,11 +188,13 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
 
 //- 0-(S)sorted*7 | 6-(M)mail  
 function S7M(nNum){
-    console.log(`Выполняеться функция S7M | (S)status | nNnum"=${nNum}"`);
+    console.log("");
+    console.log(`[1] Выполняеться функция S7M | (S)sorted | nNnum"=${nNum}"`);
     nNumTransfer_S7M_js(nNum)
 }
 async function nNumTransfer_S7M_js(nNum){
-    console.log(`Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
+    console.log(`[2] Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
+    console.log("");
     eel.nNumTransfer_S7M(nNum);
     eel.update_S7M();
 }
@@ -200,20 +203,92 @@ async function nNumTransfer_S7M_js(nNum){
 //- 0-(E)editing | 1-(D)delete
 function ED(nNum){
     $('.contact').on('click', function(){ 
-        let index = $(this).attr('id');
-        console.info(`Id контакта = ${index}`);
+        index = $(this).attr('id');
+        console.log("");
+        console.info(`[1] Id контакта = ${index}`);
     
         if (nNum == '0'){
-            console.log(`Выполняеться функция ED | (S)status | id"=${index}"`);
-            idTransfer_ED_js(index, nNum)
-        } else if (nNum == '1') {
-            console.log(`Выполняеться функция ED | (D)delete | id"=${index}"`);
-            idTransfer_ED_js(index, nNum)
+            console.log(`[2] Выполняеться функция ED | (E)editing | id"=${index}"`);
+            $(this).remove();
+        } else {
+            console.log(`[2] Выполняеться функция ED | (D)delete | id"=${index}"`);
         }
+
+        idTransfer_ED_js(index, nNum)
+        $('.contact').unbind('click');
     });
 }
 async function idTransfer_ED_js(index, nNum){
-    console.log(`Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
+    console.log(`[3] Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
+    console.log("");
     eel.idTransfer_ED(index, nNum);
-    // eel.update_all_contact();
+    eel.creating_ED_Id();
+    if (nNum == '1'){
+        eel.expose(retuuurn_contact_js);
+    // } else {
+    //     eel.update_all_task();
+    }
+}
+
+//---------------------------------------------------------------------------------------------
+
+function retuuurn_contact_js(contact_items){
+    console.log("елки палки"); 
+    for (var contact = 0; contact < contact_items.length; line++){
+        var save_C_Id       = contact_items[contact][0];                 
+        var save_C_name     = contact_items[contact][1];             
+        var save_C_organiz  = contact_items[contact][2];               
+        var save_C_address  = contact_items[contact][3];              
+        var save_C_tel      = contact_items[contact][4];              
+        var save_C_mail     = contact_items[contact][5];             
+        var save_C_ICQ      = contact_items[contact][6]; 
+    }    
+    create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ);   
+};
+
+
+function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
+    
+    const NewSaveContactElement = document.createElement ( 'div' );
+    NewSaveContactElement.classList.add ( "contact" );
+    NewSaveContactElement.classList.add ( "cCreatcontact" );
+    NewSaveContactElement.setAttribute ('id', `${save_C_Id}`);
+    NewSaveContactElement.innerHTML = `
+        <div class="contactGroup">
+            <ul>                   
+               <li class="nameCon">
+                   <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." readonly value ="${save_C_name}" >
+               </li>
+        
+               <li class="organizationCon">
+                    <select id="organization-id">
+                    <option disabled selected readonly>${save_C_organiz}</option>
+                        <option value="ип">ип</option>
+                        <option value="полиграфия">полиграфия</option>
+                    </select>
+               </li>
+        
+               <li class="addressCon"> 
+                    <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..."  value ="${save_C_address}" >
+               </li> 
+        
+               <li class ="telephoneCon" >
+                    <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..."  value ="${save_C_tel}" >
+               </li>
+        
+               <li class ="mailCon" >
+                    <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..."  value ="${save_C_mail}" >
+               </li>
+               <li class="ICQCon" >
+                    <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..."  value ="${save_C_ICQ}" >
+                <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                </li>
+            
+                <li class="saveCon" onClick ="saveСontactFunction()">
+                    <img class ="" src ="Img/Save-G.svg" alt ="" >
+                </li>
+            </ul>
+        </div>
+    `
+    contactElement.after(NewSaveContactElement);
 }

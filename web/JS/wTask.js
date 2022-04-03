@@ -276,7 +276,7 @@ function get_update_task_js(tasks_items){
     $(".cCreatTask").remove();
     localStorage.setItem('OneCreated','no');
     localStorage.setItem('Editing','');
-    console.log("Обновление списка");
+    console.log("Заметки : обновление списка");
     for (var tasks = 0; tasks < tasks_items.length; tasks++){
 
         var saveIndex = tasks_items[tasks][0];                 //
@@ -395,7 +395,7 @@ const sizeSorege = localStorage.length;
 // // Из пайтон передает значение функции с SQL запросом
 // // Запрос сравнивает значение в столбце index_t,
 // // Если значение совподает то возвращаеться целая строка
-// async function idTransfer_js(index){
+// async function idTransfer_js(index){creating_SL_Id
 //     console.log(`index = "${index}" пердаеться в python`);
 //     eel.idTransfer(index);
 //     eel.creatingLineId();
@@ -435,7 +435,7 @@ async function idTransfer_SED_js(index,nNum){
     if (nNum == '1'){
         eel.expose(retuuurnStatusId_js); 
     } else if (nNum == '2') {
-        eel.expose(retuuurnLineId_js)
+        eel.expose(retuuurnLineId_js);
     } else {
         eel.update_all_task();
     }
@@ -449,18 +449,18 @@ function retuuurnStatusId_js(status){
 function retuuurnLineId_js(line_items){
     console.log("елки палки"); 
     for (var line = 0; line < line_items.length; line++){
-        var saveIndex = line_items[line][0];                 //
-        var saveCindition = line_items[line][1];             //
-        var saveQueue  = line_items[line][2];                //
-        var saveTaskText = line_items[line][3];              //
-        var saveTaskDate = line_items[line][4];              //
-        var saveTaskTime  = line_items[line][5];             //
-        var saveDopTaskOne = line_items[line][6];            //
-        var saveTextareaDopTaskOne = line_items[line][7];    //
-        var saveDopTaskTwo = line_items[line][8];            //
-        var saveTextareaDopTaskTwo = line_items[line][9];    //
-        var saveDopTaskThree = line_items[line][10];         //
-        var saveTextareaDopTaskThree = line_items[line][11]; //  
+        var saveIndex                = line_items[line][0];             
+        var saveCindition            = line_items[line][1];             
+        var saveQueue                = line_items[line][2];             
+        var saveTaskText             = line_items[line][3];             
+        var saveTaskDate             = line_items[line][4];             
+        var saveTaskTime             = line_items[line][5];             
+        var saveDopTaskOne           = line_items[line][6];            
+        var saveTextareaDopTaskOne   = line_items[line][7];    
+        var saveDopTaskTwo           = line_items[line][8];            
+        var saveTextareaDopTaskTwo   = line_items[line][9];    
+        var saveDopTaskThree         = line_items[line][10];         
+        var saveTextareaDopTaskThree = line_items[line][11];   
     }    
     createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);   
 };
