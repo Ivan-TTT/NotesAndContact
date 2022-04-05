@@ -1,8 +1,7 @@
 $(document).ready(function() {
     eel.update_all_contact();
-    // localStorage.setItem(`IdTrisTask`,``);
-    // localStorage.setItem('Editing','');
-    // localStorage.setItem('OneCreated','no');
+    localStorage.setItem('contact_Editing','no');
+    localStorage.setItem('contact_Created','no');
     // localStorage.setItem('VisibleNumber','yes');
     // localStorage.setItem('ActiveOrPasiveTask','active');
     // console.log('HTML загружен');
@@ -18,48 +17,54 @@ $(document).ready(function() {
 const contactElement = document.querySelector('.contact');
 
 function getAddContact(){
-    const NewContactElement = document.createElement ( 'div' );
-    NewContactElement.classList.add ( "contact" );
-    NewContactElement.classList.add ( "cCreatcontact" );
-    NewContactElement.setAttribute ('id', '0');
-    NewContactElement.innerHTML = `
-        <div class="contactGroup">
-            <ul>                   
-               <li class="nameCon">
-                   <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
-               </li>
-           
-               <li class="organizationCon" >
-                    <select id="organization-id">
-                        <option disabled selected>Органиция</option>
-                        <option value="ип">ип</option>
-                        <option value="полиграфия">полиграфия</option>
-                        <option value="нет">нет</option>
-                    </select>
-               </li>
-           
-               <li class="addressCon"> 
-                    <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
-               </li> 
-           
-               <li class ="telephoneCon" >
-                    <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
-               </li>
-           
-               <li class ="mailCon" >
-                    <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
-               </li>
-               <li class="ICQCon" >
-                    <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
-                <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
-                </li>
-            
-                <li class="saveCon" onClick ="saveСontactFunction()">
-                    <img class ="" src ="Img/Save-G.svg" alt ="" >
-                </li>
-            </ul>
-       </div>
-    `
+    if (localStorage.getItem('contact_Created') == "no" && localStorage.getItem('contact_Editing') == "no"){
+
+        localStorage.setItem('contact_Created','yes');
+        localStorage.setItem('contact_Editing','no');
+
+        const NewContactElement = document.createElement ( 'div' );
+        NewContactElement.classList.add ( "contact" );
+        NewContactElement.classList.add ( "cCreatcontact" );
+        NewContactElement.setAttribute ('id', '0');
+        NewContactElement.innerHTML = `
+            <div class="contactGroup">
+                <ul>                   
+                   <li class="nameCon">
+                       <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
+                   </li>
+
+                   <li class="organizationCon" >
+                        <select id="organization-id">
+                            <option disabled selected>Органиция</option>
+                            <option value="ип">ип</option>
+                            <option value="полиграфия">полиграфия</option>
+                            <option value="нет">нет</option>
+                        </select>
+                   </li>
+
+                   <li class="addressCon"> 
+                        <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
+                   </li> 
+
+                   <li class ="telephoneCon" >
+                        <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
+                   </li>
+
+                   <li class ="mailCon" >
+                        <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
+                   </li>
+                   <li class="ICQCon" >
+                        <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
+                    <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                    </li>
+
+                    <li class="saveCon" onClick ="saveСontactFunction()">
+                        <img class ="" src ="Img/Save-G.svg" alt ="" >
+                    </li>
+                </ul>
+           </div>
+        `
+    }
     contactElement.after(NewContactElement);
 }
 //---------------------------------------------------------------------------------------------
@@ -99,10 +104,18 @@ function saveСontactFunction(){
     ? console.log(save_C_ICQ): ""; 
 
     if (save_C_name != ""){
-        localStorage.setItem('contact_id', generating_contact_id++);
-        var save_C_Id = localStorage.getItem('contact_id');
-        contactValue_js(save_C_Id, save_C_name, save_C_organiz,
-            save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+        if (localStorage.getItem('contact_Editing') == "no"){
+
+            localStorage.setItem('contact_id', generating_contact_id++);
+            var save_C_Id = localStorage.getItem('contact_id');
+            contactValue_js(save_C_Id, save_C_name, save_C_organiz,
+                save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+        } else {
+            alert( 'Верно!' );
+            var save_C_Id = localStorage.getItem('contact_id');
+            contactValue_js(save_C_Id, save_C_name, save_C_organiz,
+                save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+        }
     }
 }
 //---------------------------------------------------------------------------------------------
@@ -126,13 +139,13 @@ function get_update_contact_js(contacts_items){
     console.log("Контакты : обновление списка");
     for (var contacts = 0; contacts < contacts_items.length; contacts++){
 
-        var save_C_Id = contacts_items[contacts][0];                 
-        var save_C_name = contacts_items[contacts][1];             
-        var save_C_organiz  = contacts_items[contacts][2];               
+        var save_C_Id      = contacts_items[contacts][0];                 
+        var save_C_name    = contacts_items[contacts][1];             
+        var save_C_organiz = contacts_items[contacts][2];               
         var save_C_address = contacts_items[contacts][3];              
-        var save_C_tel = contacts_items[contacts][4];              
-        var save_C_mail  = contacts_items[contacts][5];             
-        var save_C_ICQ = contacts_items[contacts][6];  
+        var save_C_tel     = contacts_items[contacts][4];              
+        var save_C_mail    = contacts_items[contacts][5];             
+        var save_C_ICQ     = contacts_items[contacts][6];  
         createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ);       
     }
     // visibleNum()
@@ -223,10 +236,8 @@ async function idTransfer_ED_js(index, nNum){
     console.log("");
     eel.idTransfer_ED(index, nNum);
     eel.creating_ED_Id();
-    if (nNum == '1'){
-        eel.expose(retuuurn_contact_js);
-    // } else {
-    //     eel.update_all_task();
+    if (nNum == '0'){
+        eel.expose(retuuurn_contact_js)
     }
 }
 
@@ -234,7 +245,7 @@ async function idTransfer_ED_js(index, nNum){
 
 function retuuurn_contact_js(contact_items){
     console.log("елки палки"); 
-    for (var contact = 0; contact < contact_items.length; line++){
+    for (var contact = 0; contact < contact_items.length; contact++){
         var save_C_Id       = contact_items[contact][0];                 
         var save_C_name     = contact_items[contact][1];             
         var save_C_organiz  = contact_items[contact][2];               
@@ -257,12 +268,12 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
         <div class="contactGroup">
             <ul>                   
                <li class="nameCon">
-                   <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." readonly value ="${save_C_name}" >
+                   <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..."  value ="${save_C_name}" >
                </li>
         
                <li class="organizationCon">
-                    <select id="organization-id">
-                    <option disabled selected readonly>${save_C_organiz}</option>
+                    <select id="organizationCon-id">
+                        <option disabled selected readonly>${save_C_organiz}</option>
                         <option value="ип">ип</option>
                         <option value="полиграфия">полиграфия</option>
                     </select>

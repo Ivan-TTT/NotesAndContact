@@ -117,7 +117,6 @@ function getAddTask(){
         console.log(numberOfTasks);
 
         localStorage.setItem('Editing','');
-
         localStorage.setItem('OneCreated','yes');
 
         const NewTaskElement = document.createElement ( 'div' );

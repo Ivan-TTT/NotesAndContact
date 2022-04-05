@@ -97,11 +97,11 @@ def idTransfer_ED(index, nNum):
 @eel.expose 
 def creating_ED_Id():
     nNum = fU_nNum()
-    if (nNum == 0):
-        print(0-0)
+    if (nNum == '0'):
+        print("0000")
         get_editing = retuuurn_editing_items()
         eel.retuuurn_contact_js(get_editing)
-    elif (nNum == 1):
+    elif (nNum == '1'):
         get_delete = fU_nNum()
         eel.retuuurn_contact_js(get_delete)
 
