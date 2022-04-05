@@ -570,6 +570,204 @@ header {
 				}
 			}
 		}
+		.modal {
+			position: fixed;
+			/* фиксированное положение */
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0, 0.5);
+			/* цвет фона */
+			z-index: 1050;
+			opacity: 0;
+			/* по умолчанию модальное окно прозрачно */
+			transition: opacity 400ms ease-in;
+			/* анимация перехода */
+			pointer-events: none;
+			/* элемент невидим для событий мыши */
+			.modal-dialog {
+				position: relative;
+				width: auto;
+				@include adaptive("margin-top",    178 , 29.6);
+				@include adaptive("margin-left",   108 , 18);
+				@include adaptive("margin-right",  30 , 5);
+				@include adaptive("margin-bottom", 30 , 5);
+				.modal-content {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					background-color: var(--sidePanel-color);
+					border: 1px solid rgba(0, 0, 0, .2);
+					@include adaptive( "border-radius" , 6 , 1 );
+					outline: 0;
+
+					ul{
+						list-style: none;
+					}
+					.modal-header {
+						@include adaptive("padding", 10 , 1.6);
+						@include adaptive( "height" , 56 , 9.3);
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						border-bottom: 1px solid var(--task-color);
+						.modal-title {
+							margin-top: 0;
+							margin-bottom: 0;
+							line-height: 1.5;
+							font-size: 1.25rem;
+							font-weight: 500;
+						}
+						    /* свойства для кнопки "Закрыть" */
+    					.close {
+							float: right;
+							font-family: sans-serif;
+							font-size: 24px;
+							font-weight: 700;
+							line-height: 1;
+							color: #000;
+							text-shadow: 0 1px 0 #fff;
+							opacity: .5;
+							text-decoration: none;
+						}
+						.close:focus,
+   						.close:hover {
+   						  color: #000;
+   						  text-decoration: none;
+   						  cursor: pointer;
+   						  opacity: .75;
+   						}
+					}
+					.modal-body {
+						@include adaptive( "height" , 116 , 19.3);
+						position: relative;
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						@include adaptive( "padding" , 10 , 1.6);
+						overflow:hidden;
+						border-bottom: 1px solid var(--task-color);
+						.mail_textarea{
+							@include adaptive("margin-right", 10 , 1.6);
+							width:calc(100%);
+							@include adaptive( "height" , 92 , 15.3);
+							textarea{
+								font-family: Montserrat-Regular;
+								border: none;
+								outline: none;
+								resize: none;
+								width:calc(100%);
+								height:calc(100%);
+								@include adaptive( "font-size" , 20 , 3.3);
+								@include adaptive( "border-radius" , 6 , 1 );
+								@include adaptive("padding-top", 0 , 0);
+								@include adaptive("padding-left", 5 , 0.83);
+								@include adaptive("padding-right", 5 , 0.83);
+								@include adaptive("padding-bottom", 0 , 0);
+								background-color: var(--tabs-color);
+								text-emphasis-color: opacity(rgba(0, 0, 0, 0.5));
+							}
+							textarea{
+								@include adaptive( "height" , 92 , 15.3);
+								&::-webkit-scrollbar{
+									width: 0.5em;
+								}
+								&::-webkit-scrollbar-track{
+									box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+									@include adaptive( "border-radius" , 6 , 1 );
+									cursor: pointer;
+								}
+								&::-webkit-scrollbar-thumb{
+									background-color: darkgrey;
+									@include adaptive( "border-radius" , 6 , 1 );
+								}
+							}
+						}
+						.cope_mail{
+							@include adaptive("padding", 10 , 1.6);
+							cursor: pointer;
+							background-color: var(--tabs-color);
+							@include adaptive( "border-radius" , 6 , 1 );
+							transition: var(--tran-03);
+							opacity: 0.5;
+
+							span{
+								@include adaptive( "font-size" , 26 , 4.3);
+								color: var(--text-color);
+								transition: var(--tran-03);
+								opacity: 0.5;
+							}
+							&:hover {
+								// min-height:100%;
+								background-color: var(--tabs-color);
+								opacity: 1;
+								
+								span{
+									background-color: var(--tabs-color);
+									opacity: 1;
+								}
+							}
+
+						}
+						
+					}
+					.oOne, .tTwo, .tрHree{
+						@include adaptive( "padding" , 10 , 1.6);
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						transition: var(--tran-03);
+						border-bottom: 1px solid var(--task-color);
+						ul{
+							width:calc(100%);
+							display: flex;
+							align-items: center;
+							li{
+								cursor: pointer;
+								background-color: var(--tabs-color);
+								@include adaptive( "padding" , 3 , 0.5);
+								@include adaptive( "border-radius" , 6 , 1 );
+								@include adaptive("margin-top",    3 , 0.5);
+								@include adaptive("margin-right",  3 , 0.5);
+								@include adaptive("margin-bottom", 3 , 0.5);
+							}
+							.click, .click_t, .click_th{
+								background-color: var(--task-color);
+							}
+						}
+
+						span{
+							@include adaptive("padding", 10 , 1.6);
+							cursor: pointer;
+							background-color: var(--tabs-color);
+							@include adaptive( "border-radius" , 6 , 1 );
+							transition: var(--tran-03);
+							opacity: 0.5;
+							@include adaptive( "font-size" , 24 , 4);
+							&:hover{
+								background-color: var(--tabs-color);
+								opacity: 1;
+								span{
+									background-color: var(--tabs-color);
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+			}
+			.modal-dialog.oPPenn{
+				@include adaptive("margin-left",   280 , 46.6);
+			}
+		}
+		.modal.show {
+			opacity: 1;
+			pointer-events: auto;
+			overflow-y: auto;
+		}
+
+
 		.contact{
 			@include adaptive("margin-top", 8 , 1.3);
 			@include adaptive("margin-left", 30 , 5);

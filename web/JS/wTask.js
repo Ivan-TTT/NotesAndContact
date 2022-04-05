@@ -16,11 +16,15 @@ $(document).ready(function() {
 function toggle_js(){
     var sidePanel = document.querySelector(".sidePanel");
     sidePanel.classList.toggle("close");
+
     if (sidePanel.classList.contains("close")){
         localStorage.setItem('VisibleNumber','yes');
+
+        [...document.getElementsByClassName('modal-dialog')].forEach(i => i.classList.remove("oPPenn"));
     }
     else{
         localStorage.setItem('VisibleNumber','no');
+        [...document.getElementsByClassName('modal-dialog')].forEach(i => i.classList.add("oPPenn"));
     };
     visibleNum()
 }

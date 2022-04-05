@@ -1,7 +1,7 @@
 from __future__ import print_function	
 import eel
 from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
-from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items, retuuurn_editing_items, fU_nNum
+from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items, retuuurn_editing_items, fU_nNum, updateE_Contact_py
 eel.init('web')
 
 #- Заметеки ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -9,7 +9,7 @@ eel.init('web')
 @eel.expose 
 def taskValue(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t):
     msg = saveTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t)
-    up = updateLineTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t)
+    up  = updateLineTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t)
 
 # @eel.expose 
 # def creatingLineId():
@@ -62,6 +62,7 @@ def update_all_task():
 @eel.expose 
 def contactValue(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ):
     msg = saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+    up  = updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
 
 @eel.expose 
 def update_all_contact():
@@ -98,7 +99,6 @@ def idTransfer_ED(index, nNum):
 def creating_ED_Id():
     nNum = fU_nNum()
     if (nNum == '0'):
-        print("0000")
         get_editing = retuuurn_editing_items()
         eel.retuuurn_contact_js(get_editing)
     elif (nNum == '1'):

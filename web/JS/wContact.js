@@ -64,8 +64,8 @@ function getAddContact(){
                 </ul>
            </div>
         `
-    }
-    contactElement.after(NewContactElement);
+        contactElement.after(NewContactElement);
+    };
 }
 //---------------------------------------------------------------------------------------------
 
@@ -111,8 +111,9 @@ function saveСontactFunction(){
             contactValue_js(save_C_Id, save_C_name, save_C_organiz,
                 save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
         } else {
+
             alert( 'Верно!' );
-            var save_C_Id = localStorage.getItem('contact_id');
+            var save_C_Id = localStorage.getItem(`Id_This_contact`);
             contactValue_js(save_C_Id, save_C_name, save_C_organiz,
                 save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
         }
@@ -135,7 +136,12 @@ async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
 //- Функция принимает список с строками из [bd_C] -----------------------------------------
 eel.expose(get_update_contact_js)
 function get_update_contact_js(contacts_items){
+
+    localStorage.setItem('contact_Created','no');
+    localStorage.setItem('contact_Editing','no');
+
     $(".fixetT").remove();
+    $(".cCreatcontact").remove();
     console.log("Контакты : обновление списка");
     for (var contacts = 0; contacts < contacts_items.length; contacts++){
 
@@ -215,25 +221,27 @@ async function nNumTransfer_S7M_js(nNum){
 
 //- 0-(E)editing | 1-(D)delete
 function ED(nNum){
-    $('.contact').on('click', function(){ 
-        index = $(this).attr('id');
-        console.log("");
-        console.info(`[1] Id контакта = ${index}`);
-    
-        if (nNum == '0'){
-            console.log(`[2] Выполняеться функция ED | (E)editing | id"=${index}"`);
-            $(this).remove();
-        } else {
-            console.log(`[2] Выполняеться функция ED | (D)delete | id"=${index}"`);
-        }
+    if (localStorage.getItem('contact_Created') == "no" && localStorage.getItem('contact_Editing') == "no"){
+        $('.contact').on('click', function(){ 
+            index = $(this).attr('id');
+            localStorage.setItem(`Id_This_contact`,`${index}`);
+            console.log("");
+            console.info(`[1] Id контакта = ${index}`);
 
-        idTransfer_ED_js(index, nNum)
-        $('.contact').unbind('click');
-    });
+            if (nNum == '0'){
+                console.log(`[2] Выполняеться функция ED | (E)editing | id"=${index}"`);
+                $(this).remove();
+            } else {
+                console.log(`[2] Выполняеться функция ED | (D)delete | id"=${index}"`);
+            }
+        
+            idTransfer_ED_js(index, nNum)
+            $('.contact').unbind('click');
+        });
+    };
 }
 async function idTransfer_ED_js(index, nNum){
     console.log(`[3] Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
-    console.log("");
     eel.idTransfer_ED(index, nNum);
     eel.creating_ED_Id();
     if (nNum == '0'){
@@ -244,7 +252,7 @@ async function idTransfer_ED_js(index, nNum){
 //---------------------------------------------------------------------------------------------
 
 function retuuurn_contact_js(contact_items){
-    console.log("елки палки"); 
+    console.log(`[4] Выполняеться функция retuuurn_contact_js | line="${contact_items}" принимаеться из базы данных`);
     for (var contact = 0; contact < contact_items.length; contact++){
         var save_C_Id       = contact_items[contact][0];                 
         var save_C_name     = contact_items[contact][1];             
@@ -260,6 +268,11 @@ function retuuurn_contact_js(contact_items){
 
 function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
     
+    console.log(`[5] Выполняеться функция create_Contact_editing | создается форма для редактирования контакта`);
+    console.log("");
+
+    localStorage.setItem('contact_Editing','yes');
+
     const NewSaveContactElement = document.createElement ( 'div' );
     NewSaveContactElement.classList.add ( "contact" );
     NewSaveContactElement.classList.add ( "cCreatcontact" );
@@ -303,3 +316,15 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
     `
     contactElement.after(NewSaveContactElement);
 }
+
+$(document).on('click', '[data-toggle="modal"]', function () {
+    var target = $(this).attr('data-target');
+    console.log(target);
+    $(target).addClass('show');
+    return false;
+  });
+
+  $('.modal .close').on('click', function () {
+    $(this).closest('.modal').removeClass('show');
+    return false;
+})
