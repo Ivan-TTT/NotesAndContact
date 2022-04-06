@@ -238,14 +238,18 @@ function mail_S7M_js(mail_contact){
     }   
 }
 function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
+
+    console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
     if (save_C_organiz == "полиграфия"){
 
         console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_o" );
+        NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
+        NewOrganizElement.setAttribute('onclick',`${addText()}`)
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
-            <li>${save_C_name}</li>
+            ${save_C_name}
         `
         mailElement_1.after(NewOrganizElement);
 
@@ -253,21 +257,35 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
         console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_t" );
+        NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
+        NewOrganizElement.setAttribute('onclick',`${addText()}`)
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
-            <li>${save_C_name}</li>
+            ${save_C_name}
         `
         mailElement_2.after(NewOrganizElement);
     } else {
         console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_th" );
+        NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
+        NewOrganizElement.setAttribute('onclick',`${addText()}`)
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
-            <li>${save_C_name}</li>
+            ${save_C_name}
         `
         mailElement_2.after(NewOrganizElement);
     }
+}
+
+function addText() {
+    // var targ = event.target || event.srcElement;
+    // document.getElementById("textarea_modal_id").value += targ.textContent || targ.innerText;
+    $('li').on('click', function () {
+        var mail = $(this).attr('mail');
+        $('#textarea_modal_id').val(mail);
+
+    });
 }
 
 
