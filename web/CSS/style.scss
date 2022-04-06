@@ -720,20 +720,28 @@ header {
 						transition: var(--tran-03);
 						border-bottom: 1px solid var(--task-color);
 						ul{
+							@include adaptive("margin-right", 10 , 1.6);
 							width:calc(100%);
 							display: flex;
 							align-items: center;
 							li{
 								cursor: pointer;
-								background-color: var(--tabs-color);
+								// background-color: var(--tabs-color);
 								@include adaptive( "padding" , 3 , 0.5);
 								@include adaptive( "border-radius" , 6 , 1 );
 								@include adaptive("margin-top",    3 , 0.5);
 								@include adaptive("margin-right",  3 , 0.5);
 								@include adaptive("margin-bottom", 3 , 0.5);
 							}
-							.click, .click_t, .click_th{
+							.click_o, .click_t, .click_th{
 								background-color: var(--task-color);
+							}
+							.click_o_, .click_t_, .click_th_{
+								display: none;
+							}
+							.no_click_o, .no_click_t, .no_click_th{
+								background-color: var(--task-color);
+								opacity: 0.5;
 							}
 						}
 

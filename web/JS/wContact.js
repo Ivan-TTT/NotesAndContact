@@ -214,16 +214,17 @@ function S7M(nNum){
 async function nNumTransfer_S7M_js(nNum){
     console.log(`[2] Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
     eel.nNumTransfer_S7M(nNum);
-    if (nNum == ("0" || "1" || "2" || "3" || "4" || "5") ){
+    if (nNum == ("0") || nNum == ("1") || nNum == ("2") || nNum == ("3") || nNum == ("4") || nNum == ("5") ){
         eel.update_S7M();
         console.log("");
-    } else {
+    } else{
         eel.mail_S7M();
         console.log("тыры пыры");
     }
-
 }
-
+const mailElement_1 = document.querySelector('.click_o_');
+const mailElement_2 = document.querySelector('.click_t_');
+const mailElement_3 = document.querySelector('.click_th_');
 eel.expose(mail_S7M_js)
 function mail_S7M_js(mail_contact){
     console.log(`[3] Выполняеться функция mail_S7M_js | line="${mail_contact}" принимаеться из базы данных`);
@@ -233,11 +234,40 @@ function mail_S7M_js(mail_contact){
         var save_C_name     = mail_contact[contact][1];             
         var save_C_organiz  = mail_contact[contact][2];               
         var save_C_mail     = mail_contact[contact][3];   
-        console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);        
+        create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);       
     }   
 }
 function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
-    if 
+    if (save_C_organiz == "полиграфия"){
+
+        console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        const NewOrganizElement = document.createElement ( 'li' );
+        NewOrganizElement.classList.add ( "click_o" );
+        NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
+        NewOrganizElement.innerHTML =`
+            <li>${save_C_name}</li>
+        `
+        mailElement_1.after(NewOrganizElement);
+
+    } else if (save_C_organiz == "ип"){
+        console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        const NewOrganizElement = document.createElement ( 'li' );
+        NewOrganizElement.classList.add ( "click_t" );
+        NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
+        NewOrganizElement.innerHTML =`
+            <li>${save_C_name}</li>
+        `
+        mailElement_2.after(NewOrganizElement);
+    } else {
+        console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        const NewOrganizElement = document.createElement ( 'li' );
+        NewOrganizElement.classList.add ( "click_th" );
+        NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
+        NewOrganizElement.innerHTML =`
+            <li>${save_C_name}</li>
+        `
+        mailElement_2.after(NewOrganizElement);
+    }
 }
 
 
