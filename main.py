@@ -88,6 +88,11 @@ def update_S7M():
     eel.get_update_contact_js(get_contacts)
 
 @eel.expose 
+def mail_S7M():
+    mail_contacts = retuuurn_sorted_items()
+    eel.mail_S7M_js(mail_contacts)
+
+@eel.expose 
 def idTransfer_ED(index, nNum):
     int(index)
     int(nNum)

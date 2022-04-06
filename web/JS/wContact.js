@@ -213,9 +213,31 @@ function S7M(nNum){
 }
 async function nNumTransfer_S7M_js(nNum){
     console.log(`[2] Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
-    console.log("");
     eel.nNumTransfer_S7M(nNum);
-    eel.update_S7M();
+    if (nNum == ("0" || "1" || "2" || "3" || "4" || "5") ){
+        eel.update_S7M();
+        console.log("");
+    } else {
+        eel.mail_S7M();
+        console.log("тыры пыры");
+    }
+
+}
+
+eel.expose(mail_S7M_js)
+function mail_S7M_js(mail_contact){
+    console.log(`[3] Выполняеться функция mail_S7M_js | line="${mail_contact}" принимаеться из базы данных`);
+    console.log("");
+    for (var contact = 0; contact < mail_contact.length; contact++){
+        var save_C_Id       = mail_contact[contact][0];                 
+        var save_C_name     = mail_contact[contact][1];             
+        var save_C_organiz  = mail_contact[contact][2];               
+        var save_C_mail     = mail_contact[contact][3];   
+        console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);        
+    }   
+}
+function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
+    if 
 }
 
 
