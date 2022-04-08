@@ -19,6 +19,8 @@ const contactElement = document.querySelector('.contact');
 function getAddContact(){
     if (localStorage.getItem('contact_Created') == "no" && localStorage.getItem('contact_Editing') == "no"){
 
+        [...document.getElementsByClassName('fixetT')].forEach(i => i.classList.add("invi"));
+
         localStorage.setItem('contact_Created','yes');
         localStorage.setItem('contact_Editing','no');
 
@@ -161,6 +163,8 @@ function get_update_contact_js(contacts_items){
 //- Функция создает блоки с контактами -----------------------------------------
 function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
     
+    [...document.getElementsByClassName('fixetT')].forEach(i => i.classList.remove("invi"));
+
     const saveContactElement = document.createElement ( 'div' );
     saveContactElement.classList.add ( "contact" );
     saveContactElement.classList.add ( "fixetT" );
@@ -227,6 +231,9 @@ const mailElement_2 = document.querySelector('.click_t_');
 const mailElement_3 = document.querySelector('.click_th_');
 eel.expose(mail_S7M_js)
 function mail_S7M_js(mail_contact){
+    $(".li_li_1").remove();
+    $(".li_li_2").remove();
+    $(".li_li_3").remove();
     console.log(`[3] Выполняеться функция mail_S7M_js | line="${mail_contact}" принимаеться из базы данных`);
     console.log("");
     for (var contact = 0; contact < mail_contact.length; contact++){
@@ -235,7 +242,7 @@ function mail_S7M_js(mail_contact){
         var save_C_organiz  = mail_contact[contact][2];               
         var save_C_mail     = mail_contact[contact][3];   
         create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);       
-    }   
+    }  
 }
 function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
 
@@ -244,7 +251,7 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
         console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_o" );
-        NewOrganizElement.classList.add ( "li_li" );
+        NewOrganizElement.classList.add ( "li_li_1" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
         NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_o'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
@@ -257,7 +264,7 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
         console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_t" );
-        NewOrganizElement.classList.add ( "li_li" );
+        NewOrganizElement.classList.add ( "li_li_2" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
         NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_t'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
@@ -269,7 +276,7 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
         console.log("нет",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_th" );
-        NewOrganizElement.classList.add ( "li_li" );
+        NewOrganizElement.classList.add ( "li_li_3" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
         NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_th'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
@@ -280,8 +287,6 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
     }
     addText()
 }
-
-
 
 function add_notAdd(nNum){
     addText();
@@ -352,10 +357,7 @@ function add_notAdd(nNum){
     // $('#textarea_modal_id').val('');
 }
 
-
 function addText() {
-
-    // document.getElementById("textarea_modal_id").value='';
 
     const output = [];
 
@@ -391,6 +393,42 @@ function addText() {
     return
 }
 
+// copy add delete
+function KAD(per){
+    if ( per == "0"){
+        let textarea = document.getElementById("textarea_modal_id");
+        textarea.select();
+        document.execCommand("copy");
+    } else if (per == "1"){
+
+        if(document.querySelector(".li_li_1").classList.contains("click_o")){
+            [...document.getElementsByClassName('li_li_1')].forEach(i => i.classList.remove("click_o"));
+        } else {
+            [...document.getElementsByClassName('li_li_1')].forEach(i => i.classList.add("click_o"));
+        }
+
+    } else if (per == "2"){
+
+        if(document.querySelector(".li_li_2").classList.contains("click_t")){
+            [...document.getElementsByClassName('li_li_2')].forEach(i => i.classList.remove("click_t"));
+        } else {
+            [...document.getElementsByClassName('li_li_2')].forEach(i => i.classList.add("click_t"));
+        }
+        
+    } else if (per == "3"){
+
+        if(document.querySelector(".li_li_3").classList.contains("click_th")){
+            [...document.getElementsByClassName('li_li_3')].forEach(i => i.classList.remove("click_th"));
+        } else {
+            [...document.getElementsByClassName('li_li_3')].forEach(i => i.classList.add("click_th"));
+        }
+        
+    }
+
+    addText()
+    return
+}
+
 
 //- 0-(E)editing | 1-(D)delete
 function ED(nNum){
@@ -404,7 +442,7 @@ function ED(nNum){
             if (nNum == '0'){
                 console.log(`[2] Выполняеться функция ED | (E)editing | id"=${index}"`);
                 $(this).remove();
-            } else {
+            } else if (nNum == '1'){
                 console.log(`[2] Выполняеться функция ED | (D)delete | id"=${index}"`);
             }
         
@@ -412,6 +450,7 @@ function ED(nNum){
             $('.contact').unbind('click');
         });
     };
+    return
 }
 async function idTransfer_ED_js(index, nNum){
     console.log(`[3] Выполняеться функция idTransfer_ED_js | id="${index}" | nNum="${nNum}" пердаеться в python`);
@@ -446,13 +485,19 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
 
     localStorage.setItem('contact_Editing','yes');
 
+    [...document.getElementsByClassName('fixetT')].forEach(i => i.classList.add("invi"));
+
     const NewSaveContactElement = document.createElement ( 'div' );
     NewSaveContactElement.classList.add ( "contact" );
     NewSaveContactElement.classList.add ( "cCreatcontact" );
     NewSaveContactElement.setAttribute ('id', `${save_C_Id}`);
     NewSaveContactElement.innerHTML = `
         <div class="contactGroup">
-            <ul>                   
+            <ul> 
+                <li class="saveCon dele" onClick ="ED('1')">
+                    <img class ="" src ="Img/zero-G.svg" alt ="" >
+                </li>   
+
                <li class="nameCon">
                    <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..."  value ="${save_C_name}" >
                </li>
@@ -485,6 +530,7 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
                 <li class="saveCon" onClick ="saveСontactFunction()">
                     <img class ="" src ="Img/Save-G.svg" alt ="" >
                 </li>
+                
             </ul>
         </div>
     `

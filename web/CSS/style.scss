@@ -537,6 +537,7 @@ header {
 						transition: var(--tran-03);
 						opacity: 1;
 						span{
+							@include adaptive( "font-size" , 18 , 3);
 							opacity: 1;
 						}
 					}
@@ -589,7 +590,7 @@ header {
 			.modal-dialog {
 				position: relative;
 				width: auto;
-				@include adaptive("margin-top",    178 , 29.6);
+				@include adaptive("margin-top",    156 , 26);
 				@include adaptive("margin-left",   108 , 18);
 				@include adaptive("margin-right",  30 , 5);
 				@include adaptive("margin-bottom", 30 , 5);
@@ -613,18 +614,14 @@ header {
 						justify-content: space-between;
 						border-bottom: 1px solid var(--task-color);
 						.modal-title {
+							@include adaptive( "font-size" , 24 , 4);
 							margin-top: 0;
 							margin-bottom: 0;
-							line-height: 1.5;
-							font-size: 1.25rem;
-							font-weight: 500;
 						}
 						    /* свойства для кнопки "Закрыть" */
     					.close {
+							@include adaptive( "font-size" , 48 , 8);
 							float: right;
-							font-family: sans-serif;
-							font-size: 24px;
-							font-weight: 700;
 							line-height: 1;
 							color: #000;
 							text-shadow: 0 1px 0 #fff;
@@ -689,21 +686,25 @@ header {
 							cursor: pointer;
 							background-color: var(--tabs-color);
 							@include adaptive( "border-radius" , 6 , 1 );
+							display: flex;
+							align-items: center;
 							transition: var(--tran-03);
 							opacity: 0.5;
 
 							span{
+								// @include adaptive("height", 54 , 9);
 								@include adaptive( "font-size" , 26 , 4.3);
 								color: var(--text-color);
 								transition: var(--tran-03);
 								opacity: 0.5;
 							}
 							&:hover {
-								// min-height:100%;
+								@include adaptive("height", 92 , 15.3);
 								background-color: var(--tabs-color);
 								opacity: 1;
 								
 								span{
+									// @include adaptive( "font-size" , 18 , 3);
 									background-color: var(--tabs-color);
 									opacity: 1;
 								}
@@ -720,11 +721,15 @@ header {
 						transition: var(--tran-03);
 						border-bottom: 1px solid var(--task-color);
 						ul{
+
 							@include adaptive("margin-right", 10 , 1.6);
-							width:calc(100%);
+							@include adaptive("width", 1570 , 261.6);
+							// width:calc(100%);
 							display: flex;
 							align-items: center;
+							flex-wrap:wrap;
 							li{
+								@include adaptive( "font-size" , 18 , 3);
 								cursor: pointer;
 								background-color: var(--task-color);
 								opacity: 0.5;
@@ -752,6 +757,7 @@ header {
 							opacity: 0.5;
 							@include adaptive( "font-size" , 24 , 4);
 							&:hover{
+								// @include adaptive( "font-size" , 18 , 3);
 								background-color: var(--tabs-color);
 								opacity: 1;
 								span{
@@ -852,7 +858,7 @@ header {
 					}
 					.nameCon, .organizationCon,
 					.addressCon, .telephoneCon,
-					.mailCon, .ICQCon{
+					.mailCon, .ICQCon, .dele{
 						@include adaptive("margin-right", 10 , 1.6);
 						input{
 							width: calc(100%);
@@ -861,6 +867,9 @@ header {
 				}
     		    
 			}	
+		}
+		.contact.invi{
+			opacity: 0.5;
 		}
    }
 }
