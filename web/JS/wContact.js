@@ -34,7 +34,7 @@ function getAddContact(){
                    </li>
 
                    <li class="organizationCon" >
-                        <select id="organization-id">
+                        <select id="organizationCon-id">
                             <option disabled selected>Органиция</option>
                             <option value="ип">ип</option>
                             <option value="полиграфия">полиграфия</option>
@@ -239,53 +239,156 @@ function mail_S7M_js(mail_contact){
 }
 function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
 
-    console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
     if (save_C_organiz == "полиграфия"){
 
         console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_o" );
+        NewOrganizElement.classList.add ( "li_li" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
-        NewOrganizElement.setAttribute('onclick',`${addText()}`)
+        NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_o'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
             ${save_C_name}
-        `
+        `;
         mailElement_1.after(NewOrganizElement);
 
     } else if (save_C_organiz == "ип"){
         console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_t" );
+        NewOrganizElement.classList.add ( "li_li" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
-        NewOrganizElement.setAttribute('onclick',`${addText()}`)
+        NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_t'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
             ${save_C_name}
-        `
+        `;
         mailElement_2.after(NewOrganizElement);
     } else {
-        console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        console.log("нет",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_th" );
+        NewOrganizElement.classList.add ( "li_li" );
         NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
-        NewOrganizElement.setAttribute('onclick',`${addText()}`)
+        NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_th'); addText()`);
         NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
         NewOrganizElement.innerHTML =`
             ${save_C_name}
-        `
-        mailElement_2.after(NewOrganizElement);
+        `;
+        mailElement_3.after(NewOrganizElement);
     }
+    addText()
 }
 
-function addText() {
-    // var targ = event.target || event.srcElement;
-    // document.getElementById("textarea_modal_id").value += targ.textContent || targ.innerText;
-    $('li').on('click', function () {
-        var mail = $(this).attr('mail');
-        $('#textarea_modal_id').val(mail);
 
+
+function add_notAdd(nNum){
+    addText();
+    // $('li').on('click', function(){ 
+    //     id_m = $(this).attr('id');
+    //     console.log(id_m);
+    //     $(this).toggleClass('click_o');
+    //     $(this).toggleClass('no_click_o');
+    //     // if (nNum == '0'){
+    //     //     console.log(id_m)
+    //     // }
+    //     $('li').unbind('click');
+    // });
+
+
+
+    // $(".oOne_ul li").click(function () {
+    // if ($(this).hasClass("click_o")) {
+    //     $(this).removeClass("click_o");
+    //     $(this).addClass("no_click_o");
+    //     addText()
+    // }
+    // else {
+    //     $(this).removeClass("no_click_o");
+    //     $(this).addClass("click_o");
+    //     addText()
+    // }
+    // });
+      
+
+    // $(".li_li").click(function() {
+    //     var $this = $(this); // this is just for performance
+    //     if(!$this.hasClass('no_click_o'))
+    //       $('.no_click_o').toggleClass("no_click_o").toggleClass("click_o");
+    //     $this.toggleClass("no_click_o").toggleClass("click_o");
+    // });
+
+    // $("li.click_o, li.no_click_o").click(function() {
+    //     var $this = $(this);
+    //     if ($this.hasClass("click_o")) {
+    //         $this.removeClass("click_o").addClass("no_click_o");
+    //         $this.removeClass("click_o").addClass("no_click_o");
+    //     }
+    //     else {
+    //         $this.removeClass("no_click_o").addClass("click_o");
+    //         $this.removeClass("no_click_o").addClass("click_o");
+    //     }
+
+    //     // $('.li.click_o, li.no_click_o').unbind('click');
+    // });
+
+
+
+
+    // $('.li_li').bind('click');
+    // $('.li_li').click(function() {
+    //     $('#textarea_modal_id').val('');
+    //     $(this).toggleClass('click_o');
+    //     $('.li_li').unbind('click');
+    // });
+    // // ("li.click_o, li.no_click_o").live(function() {
+    // //     $('#textarea_modal_id').val('');
+    // //     var $this = $(this);
+    // //     var classes = $this.hasClass("click_o") ? ["click_o", "no_click_o"] : ["no_click_o", "click_o"];
+    // //     $this.removeClass(classes[0]).addClass(classes[1]);
+
+    // //     // $('.li_li').unbind('click');
+    // $('#textarea_modal_id').val('');
+}
+
+
+function addText() {
+
+    // document.getElementById("textarea_modal_id").value='';
+
+    const output = [];
+
+    [...document.querySelectorAll('.click_o')].forEach(item => {
+        output.push({
+            mail: item.getAttribute('mail')
+        });
     });
+    [...document.querySelectorAll('.click_t')].forEach(item => {
+        output.push({
+            mail: item.getAttribute('mail')
+        });
+    });
+    [...document.querySelectorAll('.click_th')].forEach(item => {
+        output.push({
+            mail: item.getAttribute('mail')
+        });
+    });
+
+    // console.log(output[0].mail);
+    console.log(output);
+    
+    var texteriiiaaa = document.getElementById("textarea_modal_id").value="";
+    console.log(texteriiiaaa);
+
+    for (var mail_m = 0; mail_m < output.length; mail_m++){
+        var pol = output[mail_m].mail;
+        $('#textarea_modal_id').val($('#textarea_modal_id').val()+(pol) + ', ');
+    } 
+    var ta = document.getElementById('textarea_modal_id');
+    ta.value = (ta.value.slice(0,-2) + '');
+
+    return
 }
 
 
@@ -359,6 +462,7 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
                         <option disabled selected readonly>${save_C_organiz}</option>
                         <option value="ип">ип</option>
                         <option value="полиграфия">полиграфия</option>
+                        <option value="нет">нет</option>
                     </select>
                </li>
         

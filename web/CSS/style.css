@@ -994,6 +994,8 @@ header .logo-img .txt-logo-name {
 
 .home .windowContacts .modal .modal-dialog .modal-content .oOne ul li, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul li, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul li {
   cursor: pointer;
+  background-color: var(--task-color);
+  opacity: 0.5;
   padding: calc(0.5px + 2.5 * ((100vw - 320px) / 1600));
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
   margin-top: calc(0.5px + 2.5 * ((100vw - 320px) / 1600));
@@ -1003,15 +1005,11 @@ header .logo-img .txt-logo-name {
 
 .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th {
   background-color: var(--task-color);
+  opacity: 1;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th_ {
   display: none;
-}
-
-.home .windowContacts .modal .modal-dialog .modal-content .oOne ul .no_click_o, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .no_click_t, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .no_click_th, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .no_click_o, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .no_click_t, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .no_click_th, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .no_click_o, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .no_click_t, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .no_click_th {
-  background-color: var(--task-color);
-  opacity: 0.5;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .oOne span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span {

@@ -726,7 +726,8 @@ header {
 							align-items: center;
 							li{
 								cursor: pointer;
-								// background-color: var(--tabs-color);
+								background-color: var(--task-color);
+								opacity: 0.5;
 								@include adaptive( "padding" , 3 , 0.5);
 								@include adaptive( "border-radius" , 6 , 1 );
 								@include adaptive("margin-top",    3 , 0.5);
@@ -735,13 +736,10 @@ header {
 							}
 							.click_o, .click_t, .click_th{
 								background-color: var(--task-color);
+								opacity: 1;
 							}
 							.click_o_, .click_t_, .click_th_{
 								display: none;
-							}
-							.no_click_o, .no_click_t, .no_click_th{
-								background-color: var(--task-color);
-								opacity: 0.5;
 							}
 						}
 

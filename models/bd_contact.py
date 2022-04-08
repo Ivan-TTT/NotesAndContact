@@ -149,7 +149,7 @@ def accepting_nNum_S7M_py(nNum):
                 arr_S7M[5] = 0
         elif (nNum == '6'):
            if (arr_S7M[6] == 0):
-               cursor.execute("SELECT C_Id, C_name, C_organiz, C_mail FROM contacts ORDER BY C_name ")
+               cursor.execute("SELECT C_Id, C_name, C_organiz, C_mail FROM contacts ORDER BY C_name DESC")
                arr_S7M[6] = 1
            else:
                cursor.execute("SELECT C_Id, C_name, C_organiz, C_mail FROM contacts ORDER BY C_name DESC")
