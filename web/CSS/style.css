@@ -1202,7 +1202,7 @@ header .logo-img .txt-logo-name {
 
 .home .windowСalendar .btnTopСalendar li {
   cursor: pointer;
-  width: calc(49%);
+  width: calc(20%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1220,7 +1220,7 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowСalendar .btnTopСalendar li span {
-  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
   color: var(--text-color);
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
@@ -1234,6 +1234,10 @@ header .logo-img .txt-logo-name {
 
 .home .windowСalendar .btnTopСalendar li:hover span {
   opacity: 1;
+}
+
+.home .windowСalendar .btnTopСalendar .mouthСalendar {
+  width: calc(56.5%);
 }
 
 .home .windowСalendar .monthDay {
@@ -1266,10 +1270,12 @@ header .logo-img .txt-logo-name {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: var(--sidePanel-color);
+  background-color: var(--body-color);
+  font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
   width: calc(36px + 180 * ((100vw - 320px) / 1600));
   height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
+  opacity: 0.7;
 }
 
 .home .windowСalendar .monthDay .dayDayDay {
@@ -1287,7 +1293,7 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowСalendar .monthDay .dayDayDay li {
-  opacity: 0.5;
+  opacity: 0.2;
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1305,10 +1311,24 @@ header .logo-img .txt-logo-name {
   height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
+  font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
 }
 
 .home .windowСalendar .monthDay .dayDayDay li:hover {
   background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toMonth {
+  opacity: 0.6;
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toDay.toMonth {
+  background-color: var(--tabs-color);
+  opacity: 0.8;
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toDay.toMonth:hover {
   opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */

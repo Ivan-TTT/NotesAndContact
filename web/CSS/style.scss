@@ -890,7 +890,7 @@ header {
 			justify-content: space-between;
 			li{
 				cursor: pointer;
-				width: calc(49%);
+				width: calc(20%);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -899,7 +899,7 @@ header {
 				transition: var(--tran-03);
 				@include adaptive( "border-radius" , 6 , 1 );
 				span{
-					@include adaptive( "font-size" , 26 , 4.3);
+					@include adaptive( "font-size" , 24 , 4);
 					color: var(--text-color);
 					transition: var(--tran-03);
 					opacity: 0.5;
@@ -911,6 +911,9 @@ header {
 						opacity: 1;
 					}
 				}
+		   }
+		   .mouthСalendar{
+			width: calc(56.5%);
 		   }
 		}
 		.monthDay{
@@ -930,12 +933,15 @@ header {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					background-color: var(--sidePanel-color);
+					background-color: var(--body-color);
+					@include adaptive( "font-size" , 24 , 4);
 					// cursor: pointer;
 					@include adaptive( "border-radius" , 6 , 1 );
 					@include adaptive("width", 216 , 36);
 					@include adaptive( "height" , 56 , 9.3);
+					opacity: 0.7;
 				}
+				
 			}
 			.dayDayDay{
 				list-style: none;
@@ -944,7 +950,7 @@ header {
 				align-content:space-around;
 				justify-content: space-between;
 				li{ 
-					opacity: 0.5;
+					opacity: 0.2;
 					@include adaptive("margin-top", 30 , 5);
 					display: flex;
 					align-items: center;
@@ -955,11 +961,25 @@ header {
 					@include adaptive("width", 216 , 36);
 					@include adaptive( "height" , 56 , 9.3);
 					transition: var(--tran-03);
+					@include adaptive( "font-size" , 24 , 4);
 					&:hover {
 						background-color: var(--tabs-color);
 						opacity: 1;
 					}
+				}
+				// .toDay{
+				// 	opacity: 1;
+				// }
+				.toMonth{
+					opacity: 0.6;
 				}	
+				.toDay.toMonth{
+					background-color: var(--tabs-color);
+					opacity: 0.8;
+					&:hover {
+						opacity: 1;
+					}
+				}
 			}
 		}
    }
