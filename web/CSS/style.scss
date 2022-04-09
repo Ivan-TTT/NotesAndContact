@@ -682,28 +682,32 @@ header {
 							}
 						}
 						.cope_mail{
-							@include adaptive("padding", 10 , 1.6);
 							cursor: pointer;
 							background-color: var(--tabs-color);
 							@include adaptive( "border-radius" , 6 , 1 );
-							display: flex;
-							align-items: center;
 							transition: var(--tran-03);
 							opacity: 0.5;
 
 							span{
 								// @include adaptive("height", 54 , 9);
-								@include adaptive( "font-size" , 26 , 4.3);
+								display: flex;
+								align-items: center; 
+								justify-content: center;
+								@include adaptive("padding", 10 , 1.6);
+								@include adaptive( "font-size" , 24 , 4);
+								@include adaptive( "width" , 182 , 30.3);
 								color: var(--text-color);
 								transition: var(--tran-03);
-								opacity: 0.5;
+								@include adaptive( "border-radius" , 6 , 1 );
+								// opacity: 0.5;
 							}
 							&:hover {
-								@include adaptive("height", 92 , 15.3);
 								background-color: var(--tabs-color);
 								opacity: 1;
 								
 								span{
+									@include adaptive("height", 92 , 15.3);
+									align-items: center; 
 									// @include adaptive( "font-size" , 18 , 3);
 									background-color: var(--tabs-color);
 									opacity: 1;
@@ -749,7 +753,11 @@ header {
 						}
 
 						span{
+							display: flex;
+							align-items: center; 
+							justify-content: center;
 							@include adaptive("padding", 10 , 1.6);
+							@include adaptive( "width" , 182 , 30.3);
 							cursor: pointer;
 							background-color: var(--tabs-color);
 							@include adaptive( "border-radius" , 6 , 1 );
@@ -870,6 +878,89 @@ header {
 		}
 		.contact.invi{
 			opacity: 0.5;
+		}
+   }
+   .windowСalendar{
+
+		.btnTopСalendar{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			display: flex;
+			justify-content: space-between;
+			li{
+				cursor: pointer;
+				width: calc(49%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				background-color: var(--task-color);
+				transition: var(--tran-03);
+				@include adaptive( "border-radius" , 6 , 1 );
+				span{
+					@include adaptive( "font-size" , 26 , 4.3);
+					color: var(--text-color);
+					transition: var(--tran-03);
+					opacity: 0.5;
+				}
+				&:hover {
+					background-color: var(--tabs-color);
+					opacity: 1;
+					span{
+						opacity: 1;
+					}
+				}
+		   }
+		}
+		.monthDay{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			background-color: var(--task-color);
+			@include adaptive("padding", 30 , 5);
+			@include adaptive( "border-radius" , 6 , 1 );
+			.weekday{
+				// width: calc(49%);
+				list-style: none;
+    		    display: flex;
+				display: flex;
+				justify-content: space-between;
+				li{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: var(--sidePanel-color);
+					// cursor: pointer;
+					@include adaptive( "border-radius" , 6 , 1 );
+					@include adaptive("width", 216 , 36);
+					@include adaptive( "height" , 56 , 9.3);
+				}
+			}
+			.dayDayDay{
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+				align-content:space-around;
+				justify-content: space-between;
+				li{ 
+					opacity: 0.5;
+					@include adaptive("margin-top", 30 , 5);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: var(--sidePanel-color);
+					cursor: pointer;
+					@include adaptive( "border-radius" , 6 , 1 );
+					@include adaptive("width", 216 , 36);
+					@include adaptive( "height" , 56 , 9.3);
+					transition: var(--tran-03);
+					&:hover {
+						background-color: var(--tabs-color);
+						opacity: 1;
+					}
+				}	
+			}
 		}
    }
 }

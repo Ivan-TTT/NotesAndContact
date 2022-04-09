@@ -432,17 +432,17 @@ function KAD(per){
 
 //- 0-(E)editing | 1-(D)delete
 function ED(nNum){
-    if (localStorage.getItem('contact_Created') == "no" && localStorage.getItem('contact_Editing') == "no"){
+    if (localStorage.getItem('contact_Created') == "no"){
         $('.contact').on('click', function(){ 
             index = $(this).attr('id');
             localStorage.setItem(`Id_This_contact`,`${index}`);
             console.log("");
             console.info(`[1] Id контакта = ${index}`);
 
-            if (nNum == '0'){
+            if (nNum == '0' && localStorage.getItem('contact_Editing') == "no"){
                 console.log(`[2] Выполняеться функция ED | (E)editing | id"=${index}"`);
                 $(this).remove();
-            } else if (nNum == '1'){
+            } else if (nNum == '1' && localStorage.getItem('contact_Editing') == "yes"){
                 console.log(`[2] Выполняеться функция ED | (D)delete | id"=${index}"`);
             }
         
@@ -458,7 +458,11 @@ async function idTransfer_ED_js(index, nNum){
     eel.creating_ED_Id();
     if (nNum == '0'){
         eel.expose(retuuurn_contact_js)
+    } else if (nNum == '1'){
+        eel.update_all_contact();
+        localStorage.setItem('contact_Editing','no');
     }
+
 }
 
 //---------------------------------------------------------------------------------------------

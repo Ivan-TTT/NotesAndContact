@@ -935,36 +935,43 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-body .cope_mail {
-  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   cursor: pointer;
   background-color: var(--tabs-color);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
   opacity: 0.5;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-body .cope_mail span {
-  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
+  width: calc(30.3px + 151.7 * ((100vw - 320px) / 1600));
   color: var(--text-color);
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
-  opacity: 0.5;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-body .cope_mail:hover {
-  height: calc(15.3px + 76.7 * ((100vw - 320px) / 1600));
   background-color: var(--tabs-color);
   opacity: 1;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-body .cope_mail:hover span {
+  height: calc(15.3px + 76.7 * ((100vw - 320px) / 1600));
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: var(--tabs-color);
   opacity: 1;
 }
@@ -1020,7 +1027,17 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .oOne span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  width: calc(30.3px + 151.7 * ((100vw - 320px) / 1600));
   cursor: pointer;
   background-color: var(--tabs-color);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
@@ -1169,5 +1186,129 @@ header .logo-img .txt-logo-name {
 
 .home .windowContacts .contact.invi {
   opacity: 0.5;
+}
+
+.home .windowСalendar .btnTopСalendar {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowСalendar .btnTopСalendar li {
+  cursor: pointer;
+  width: calc(49%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  background-color: var(--task-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowСalendar .btnTopСalendar li span {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowСalendar .btnTopСalendar li:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowСalendar .btnTopСalendar li:hover span {
+  opacity: 1;
+}
+
+.home .windowСalendar .monthDay {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  padding: calc(5px + 25 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowСalendar .monthDay .weekday {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowСalendar .monthDay .weekday li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: var(--sidePanel-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  width: calc(36px + 180 * ((100vw - 320px) / 1600));
+  height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
+}
+
+.home .windowСalendar .monthDay .dayDayDay {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowСalendar .monthDay .dayDayDay li {
+  opacity: 0.5;
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: var(--sidePanel-color);
+  cursor: pointer;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  width: calc(36px + 180 * ((100vw - 320px) / 1600));
+  height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+}
+
+.home .windowСalendar .monthDay .dayDayDay li:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
