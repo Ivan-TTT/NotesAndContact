@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    eel.all_calendar();
+    // eel.all_calendar();
     // localStorage.setItem('contact_Editing','no');
     // localStorage.setItem('contact_Created','no');
     // localStorage.setItem('VisibleNumber','yes');
@@ -26,6 +26,7 @@ function getAddСalendar(nNum){
         startDate  = new Date(fullDate.setDate(1)),     // первое число этого месяца
         fullDate_e = new Date(),                        // Сегодняшняя дата ддя переменой endtDate
         endtDate   = new Date(fullDate_e.setDate(1)),   // первое число этого месяца
+        thisDay    = document.querySelector('.e_d'),
         arrMouth   = ['январь','февраль','март','апрель','май','июнь',
                       'июль','август','сентябрь','октябрь','ноябрь','декабрь'];
     
@@ -109,31 +110,50 @@ function getAddСalendar(nNum){
         NewСalendarElement.classList.add ( "everyDay" );
         NewСalendarElement.classList.add ( "e_d" );
         startDate.getDate()  == NowNumber ? NewСalendarElement.classList.add ( "toDay" ) : "";
+        startDate.getDate()  == NowNumber ? NewСalendarElement.classList.add ( "toGetDay" ) : "";
         startDate.getMonth() == NowMonth  ? NewСalendarElement.classList.add ( "toMonth" ) : "";
         NewСalendarElement.setAttribute ('li_all', `${startDate.toLocaleDateString()}`);
         NewСalendarElement.setAttribute ('li_Year', `${startDate.getFullYear()}`);
         NewСalendarElement.setAttribute ('li_Month', `${startDate.getMonth()+1}`);
         NewСalendarElement.setAttribute ('li_Date', `${startDate.getDate()}`);
-        NewСalendarElement.setAttribute ('onclick', `whyThisDate()`);
+        NewСalendarElement.setAttribute ('onclick', ` whyThisDate()`);
         NewСalendarElement.innerHTML = `
-            ${startDate.getDate()}
+            <div class="metka m_${startDate.toLocaleDateString()}"></div>
+            <div class="metka z_${startDate.toLocaleDateString()}"></div>
+            <span class="text">${startDate.getDate()}</span>
+            <div class="metka t_${startDate.toLocaleDateString()}"></div>
+            <div class="metka p_${startDate.toLocaleDateString()}"></div>
         `
         СalendarElement.before(NewСalendarElement);
         var startDate = new Date(fullDate.setDate(fullDate.getDate() + 1));
 
     }
+    whyThisDate();
 
     return
 }
 
+
 function whyThisDate(){
-    const output = [];
-    [...document.querySelectorAll('.e_d')].forEach(item => {
-        output.push({
-            date: item.getAttribute('li_all')
-        });
+
+    $(".e_d").click(function () {
+        $(".e_d").removeClass("toGetDay");
+        $(this).addClass("toGetDay");
     });
-    console.log(output)
+
+    const output = [];
+    function viev_date(){
+        [...document.querySelectorAll('.toGetDay')].forEach(item => {
+            output.push({
+                date: item.getAttribute('li_all')
+            });
+        });
+        console.log(output[0].date);
+        localStorage.setItem('this_date_LS',`${output[0].date}`);
+        eel.all_calendar();
+    }
+    setTimeout(viev_date, 400);
+    // eel.all_calendar();
     return
 }
 
@@ -147,7 +167,7 @@ function get_calendar_js(get_calendar){
         var saveQueue     = get_calendar[tasks][2];                
 
         var saveTaskText             = get_calendar[tasks][3];              
-        var saveTaskDate             = get_calendar[tasks][4];              
+        var saveTaskDate             = get_calendar[tasks][4];           
         var saveTaskTime             = get_calendar[tasks][5];             
         var saveDopTaskOne           = get_calendar[tasks][6];            
         var saveTextareaDopTaskOne   = get_calendar[tasks][7];    
@@ -155,7 +175,25 @@ function get_calendar_js(get_calendar){
         var saveTextareaDopTaskTwo   = get_calendar[tasks][9];    
         var saveDopTaskThree         = get_calendar[tasks][10];         
         var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
-        create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
+
+        var saveTaskDate_Date        = new Date(get_calendar[tasks][4]).toLocaleDateString();   
+        console.log("-",saveTaskDate_Date );
+        console.log("+",localStorage.getItem('this_date_LS') )
+        var col_met = document.getElementsByClassName(`li_all`);
+        // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
+        if (col_met.classList.contains(`m_${saveTaskDate_Date}`)){
+            col_metclassList.add( "visi") ;
+        }
+
+        // console.log(col_met);
+        // col_met.classList.add( "visi" );.className += " otherclass"
+        // col_metclassList.add( "visi") ;
+        if (saveTaskDate_Date   == localStorage.getItem('this_date_LS')){
+            console.log("+------")
+            create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
+        } else {
+            $(".Сa_Task").remove();
+        }
     }
 }
 

@@ -954,7 +954,7 @@ header {
 					@include adaptive("margin-top", 30 , 5);
 					display: flex;
 					align-items: center;
-					justify-content: center;
+					justify-content: space-between;
 					background-color: var(--sidePanel-color);
 					cursor: pointer;
 					@include adaptive( "border-radius" , 6 , 1 );
@@ -965,6 +965,17 @@ header {
 					&:hover {
 						background-color: var(--tabs-color);
 						opacity: 1;
+					}
+					.metka{
+						@include adaptive("margin-left", 10 , 1.6);
+						@include adaptive("margin-right", 10 , 1.6);
+						@include adaptive( "border-radius" , 6 , 1 );
+						// background-color: var(--tabs-color);
+						@include adaptive("width", 24 , 4);
+						@include adaptive( "height" , 24 , 4);
+						&.visi{
+							background-color: var(--text-color);
+						} 
 					}
 				}
 				// .toDay{
@@ -977,6 +988,24 @@ header {
 					background-color: var(--tabs-color);
 					opacity: 0.8;
 					&:hover {
+						opacity: 1;
+					}
+				}
+				.toGetDay{
+					border: calc(1px + (6 - 1) * ((100vw - 320px) / (1920 - 320))) dashed var(--body-color);
+					// background-color: var(--body-color);
+					// opacity: 0.5;
+					&:hover {
+						background-color: var(--body-color);
+						opacity: 1;
+					}
+				}
+				.toGetDay.toDay{
+					border: calc(1px + (6 - 1) * ((100vw - 320px) / (1920 - 320))) dashed var(--tabs-color);
+					// background-color: var(--body-color);
+					// opacity: 0.8;
+					&:hover {
+						background-color: var(--sidePanel-color);
 						opacity: 1;
 					}
 				}

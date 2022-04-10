@@ -1301,9 +1301,9 @@ header .logo-img .txt-logo-name {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: var(--sidePanel-color);
   cursor: pointer;
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
@@ -1319,6 +1319,18 @@ header .logo-img .txt-logo-name {
   opacity: 1;
 }
 
+.home .windowСalendar .monthDay .dayDayDay li .metka {
+  margin-left: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  width: calc(4px + 20 * ((100vw - 320px) / 1600));
+  height: calc(4px + 20 * ((100vw - 320px) / 1600));
+}
+
+.home .windowСalendar .monthDay .dayDayDay li .metka.visi {
+  background-color: var(--text-color);
+}
+
 .home .windowСalendar .monthDay .dayDayDay .toMonth {
   opacity: 0.6;
 }
@@ -1329,6 +1341,24 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowСalendar .monthDay .dayDayDay .toDay.toMonth:hover {
+  opacity: 1;
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toGetDay {
+  border: calc(1px + (6 - 1) * ((100vw - 320px) / (1920 - 320))) dashed var(--body-color);
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toGetDay:hover {
+  background-color: var(--body-color);
+  opacity: 1;
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toGetDay.toDay {
+  border: calc(1px + (6 - 1) * ((100vw - 320px) / (1920 - 320))) dashed var(--tabs-color);
+}
+
+.home .windowСalendar .monthDay .dayDayDay .toGetDay.toDay:hover {
+  background-color: var(--sidePanel-color);
   opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
