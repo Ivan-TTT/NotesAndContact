@@ -179,11 +179,15 @@ function get_calendar_js(get_calendar){
         var saveTaskDate_Date        = new Date(get_calendar[tasks][4]).toLocaleDateString();   
         console.log("-",saveTaskDate_Date );
         console.log("+",localStorage.getItem('this_date_LS') )
-        var col_met = document.getElementsByClassName(`li_all`);
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
-        if (col_met.classList.contains(`m_${saveTaskDate_Date}`)){
-            col_metclassList.add( "visi") ;
+        if ($(".metka").hasClass(`m_${saveTaskDate_Date}`)){
+            alert("У элемента есть класс com!");
+            // var col_met = document.getElementsByClassName(`metka`);querySelector
+            var col_met = $(`m_${saveTaskDate_Date}`);
+            col_met.addClass('visi');
+            // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`).classList.add( "visi");
         }
+        console.log(`m_${saveTaskDate_Date}` )
 
         // console.log(col_met);
         // col_met.classList.add( "visi" );.className += " otherclass"
