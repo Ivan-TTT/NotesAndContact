@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 const СalendarElement = document.querySelector('.everyDay');
 const mouthElement = document.querySelector('.leftСalendar');
+const СalendarElement_Task = document.querySelector('.Сalendar_Task');
 
 function getAddСalendar(nNum){
 
@@ -113,6 +114,7 @@ function getAddСalendar(nNum){
         NewСalendarElement.setAttribute ('li_Year', `${startDate.getFullYear()}`);
         NewСalendarElement.setAttribute ('li_Month', `${startDate.getMonth()+1}`);
         NewСalendarElement.setAttribute ('li_Date', `${startDate.getDate()}`);
+        NewСalendarElement.setAttribute ('onclick', `whyThisDate()`);
         NewСalendarElement.innerHTML = `
             ${startDate.getDate()}
         `
@@ -122,12 +124,22 @@ function getAddСalendar(nNum){
     }
 
     return
-    
+}
+
+function whyThisDate(){
+    const output = [];
+    [...document.querySelectorAll('.e_d')].forEach(item => {
+        output.push({
+            date: item.getAttribute('li_all')
+        });
+    });
+    console.log(output)
+    return
 }
 
 eel.expose(get_calendar_js)
 function get_calendar_js(get_calendar){
-    console.log(get_calendar)
+    console.log(get_calendar);
     for (var tasks = 0; tasks < get_calendar.length; tasks++){
 
         var saveIndex     = get_calendar[tasks][0];                 
@@ -143,6 +155,61 @@ function get_calendar_js(get_calendar){
         var saveTextareaDopTaskTwo   = get_calendar[tasks][9];    
         var saveDopTaskThree         = get_calendar[tasks][10];         
         var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
-        console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
+        create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
     }
+}
+
+
+function create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){
+    const Сalendar_Element = document.createElement ( 'div' );
+    Сalendar_Element.classList.add ( "Task" );
+    Сalendar_Element.classList.add ( "Сa_Task" );
+    Сalendar_Element.setAttribute ('id', '0');
+    Сalendar_Element.innerHTML = `
+       <div class="oneContent">
+           <div class="itemGroupOne">
+                <ul>
+                    ${saveTaskText != "" ? Сalendar_Element.innerHTML = `
+                    <li class="TextTask">
+                        <input id ="Task-id_${saveIndex}" class ="inputTask-Text" type ="text"  readonly value ="${saveTaskText}" >
+                    </li>
+                    `: ""}
+                    ${saveTaskDate != "" ? Сalendar_Element.innerHTML = `
+                    <li class="DateTask" ${saveTaskText == "" ? 'style ="width: calc(100%)"' : ''}>
+                        <input id ="DateTask-id_${saveIndex}" class ="inputDateTask " type="date" readonly value ="${saveTaskDate}" >
+                    </li>
+                    `: ""}
+                    ${saveTaskTime != "" ? Сalendar_Element.innerHTML = `
+                    <li class="TimeTask" ${(saveTaskText == "") && (saveTaskDate == "") ? 'style ="width: calc(100%)"' : ''}>
+                        <input id ="TimeTask-id_${saveIndex}" class ="inputTimeTask " type ="time" readonly value ="${saveTaskTime}" >
+                    </li class ="TimeTask">
+                    `: ""}
+                </ul>
+           </div>
+       </div>
+       <div id ="itemGroupTwo_id" class ="itemGroupTwo " style ='display:${(saveDopTaskOne || saveTextareaDopTaskOne || saveDopTaskTwo ||
+            saveTextareaDopTaskTwo || saveDopTaskThree || saveTextareaDopTaskThree) != "" ? "flex": "none"}'>
+            <ul>
+                <li>
+                    <input id ="DopTaskOne-id_${saveIndex}" class ="input-DopTaskOne" type ="text" readonly value ="${ saveDopTaskOne != ""     
+                    ? saveDopTaskOne: "" }">
+                    <textarea id ="textareaDopTaskOne-id" class ="textarea-DopTaskOne" cols="54" rows="5" readonly >${ saveTextareaDopTaskOne != 
+                    "" ? saveTextareaDopTaskOne: "" }</textarea>
+                </li>
+                <li>
+                    <input id ="DopTaskTwo-id_${saveIndex}" class ="input-DopTaskTwo" type ="text" readonly value ="${ saveDopTaskTwo != ""     
+                    ? saveDopTaskTwo: "" }" >
+                    <textarea id ="textareaDopTaskTwo-id_${saveIndex}" class ="textarea-DopTaskTwo" cols ="54" rows ="5" readonly >${ saveTextareaDopTaskTwo != 
+                    "" ? saveTextareaDopTaskTwo: "" }</textarea>
+                </li>
+                <li>
+                    <input id ="DopTaskThree-id_${saveIndex}" class ="input-DopTaskThree" type ="text" readonly value ="${ saveDopTaskThree != ""     
+                    ? saveDopTaskThree: "" }" >
+                    <textarea id ="textareaDopTaskThree-id_${saveIndex}" class ="textarea-DopTaskThree" cols ="54" rows ="5" readonly >${ saveTextareaDopTaskThree != 
+                        ""? saveTextareaDopTaskThree: " "}</textarea>
+                </li>
+            </ul>
+        </div>
+    `
+    СalendarElement_Task.after(Сalendar_Element);
 }
