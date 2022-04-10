@@ -282,19 +282,19 @@ function get_update_task_js(tasks_items){
     console.log("Заметки : обновление списка");
     for (var tasks = 0; tasks < tasks_items.length; tasks++){
 
-        var saveIndex = tasks_items[tasks][0];                 //
-        var saveCindition = tasks_items[tasks][1];             //
-        var saveQueue  = tasks_items[tasks][2];                //
+        var saveIndex     = tasks_items[tasks][0];                 
+        var saveCindition = tasks_items[tasks][1];             
+        var saveQueue     = tasks_items[tasks][2];                
 
-        var saveTaskText = tasks_items[tasks][3];              //
-        var saveTaskDate = tasks_items[tasks][4];              //
-        var saveTaskTime  = tasks_items[tasks][5];             //
-        var saveDopTaskOne = tasks_items[tasks][6];            //
-        var saveTextareaDopTaskOne = tasks_items[tasks][7];    //
-        var saveDopTaskTwo = tasks_items[tasks][8];            //
-        var saveTextareaDopTaskTwo = tasks_items[tasks][9];    //
-        var saveDopTaskThree = tasks_items[tasks][10];         //
-        var saveTextareaDopTaskThree = tasks_items[tasks][11]; //
+        var saveTaskText             = tasks_items[tasks][3];              
+        var saveTaskDate             = tasks_items[tasks][4];              
+        var saveTaskTime             = tasks_items[tasks][5];             
+        var saveDopTaskOne           = tasks_items[tasks][6];            
+        var saveTextareaDopTaskOne   = tasks_items[tasks][7];    
+        var saveDopTaskTwo           = tasks_items[tasks][8];            
+        var saveTextareaDopTaskTwo   = tasks_items[tasks][9];    
+        var saveDopTaskThree         = tasks_items[tasks][10];         
+        var saveTextareaDopTaskThree = tasks_items[tasks][11]; 
         createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
     }
     visibleNum()

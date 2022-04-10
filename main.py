@@ -2,7 +2,7 @@ from __future__ import print_function
 import eel
 from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
 from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items, retuuurn_editing_items, fU_nNum, updateE_Contact_py
-from models.bd_contact import get_calendar_all
+from models.bd_calendar import get_calendar_all
 eel.init('web')
 
 #- Заметеки ----------------------------------------------------------------------------------------------------------------------------------------------------------

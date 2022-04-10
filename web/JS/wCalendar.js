@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // eel.update_all_contact();
+    eel.all_calendar();
     // localStorage.setItem('contact_Editing','no');
     // localStorage.setItem('contact_Created','no');
     // localStorage.setItem('VisibleNumber','yes');
@@ -125,6 +125,24 @@ function getAddСalendar(nNum){
     
 }
 
-function get_calendar_js(){
+eel.expose(get_calendar_js)
+function get_calendar_js(get_calendar){
+    console.log(get_calendar)
+    for (var tasks = 0; tasks < get_calendar.length; tasks++){
 
+        var saveIndex     = get_calendar[tasks][0];                 
+        var saveCindition = get_calendar[tasks][1];             
+        var saveQueue     = get_calendar[tasks][2];                
+
+        var saveTaskText             = get_calendar[tasks][3];              
+        var saveTaskDate             = get_calendar[tasks][4];              
+        var saveTaskTime             = get_calendar[tasks][5];             
+        var saveDopTaskOne           = get_calendar[tasks][6];            
+        var saveTextareaDopTaskOne   = get_calendar[tasks][7];    
+        var saveDopTaskTwo           = get_calendar[tasks][8];            
+        var saveTextareaDopTaskTwo   = get_calendar[tasks][9];    
+        var saveDopTaskThree         = get_calendar[tasks][10];         
+        var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
+        console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
+    }
 }
