@@ -118,11 +118,11 @@ function getAddСalendar(nNum){
         NewСalendarElement.setAttribute ('li_Date', `${startDate.getDate()}`);
         NewСalendarElement.setAttribute ('onclick', ` whyThisDate()`);
         NewСalendarElement.innerHTML = `
-            <div class="metka m_${startDate.toLocaleDateString()}"></div>
-            <div class="metka z_${startDate.toLocaleDateString()}"></div>
+            <div id ="m_${startDate.toLocaleDateString()}" class="metka"></div>
+            <div id ="z_${startDate.toLocaleDateString()}" class="metka"></div>
             <span class="text">${startDate.getDate()}</span>
-            <div class="metka t_${startDate.toLocaleDateString()}"></div>
-            <div class="metka p_${startDate.toLocaleDateString()}"></div>
+            <div id ="t_${startDate.toLocaleDateString()}" class="metka"></div>
+            <div id ="p_${startDate.toLocaleDateString()}" class="metka"></div>
         `
         СalendarElement.before(NewСalendarElement);
         var startDate = new Date(fullDate.setDate(fullDate.getDate() + 1));
@@ -180,19 +180,58 @@ function get_calendar_js(get_calendar){
         console.log("-",saveTaskDate_Date );
         console.log("+",localStorage.getItem('this_date_LS') )
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
-        if ($(".metka").hasClass(`m_${saveTaskDate_Date}`)){
-            alert("У элемента есть класс com!");
-            // var col_met = document.getElementsByClassName(`metka`);querySelector
-            var col_met = $(`m_${saveTaskDate_Date}`);
-            col_met.addClass('visi');
-            // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`).classList.add( "visi");
-        }
+        setTimeout($(`.m_${saveTaskDate_Date}`).addClass('visi'), 400);
+        // if ($(".metka").hasClass(`m_${saveTaskDate_Date}`)){
+        //     alert("У элемента есть класс com!");
+        //     // var col_met = document.getElementsByClassName(`metka`);querySelector
+        //     var col_met = $(`m_${saveTaskDate_Date}`);
+        //     col_met.addClass('visi');
+        //     $(`.m_${saveTaskDate_Date}`).addClass('visi');
+        //     // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`).classList.add( "visi");
+        // }
+
+        // var col_met = document.querySelector(`[id="m_${saveTaskDate_Date}" ]`);
+        // col_met.classList.add("visi");
+
+        // var values = []; // сюда запишем значения из input
+        // $('metka id').each(function(el){
+        //   values = $(el).val();
+        // });
+
+        // if ($('.metka').hasClass(`m_${saveTaskDate_Date}`)) {
+        //     $(`.m_${saveTaskDate_Date}`).addClass('visi');
+        //     var meeeTka = document.querySelector(".metka");
+        //     var a = meeeTka.querySelector(`'.m_${saveTaskDate_Date}'`);
+        //     a.classList ? a.classList.add('visi') : a.className += ' visi';
+        // }
+        
+        $('.metka').map(function(){
+            if ($(this).hasClass(`m_${saveTaskDate_Date}`)) {
+              $(this).addClass('visi');
+            }
+            
+        });
+        // // $('.metka',`.m_${saveTaskDate_Date}`).addClass('visi');
+        // $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
+        // $(document).ready(function(){
+        //     $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
+        //     // var $metka = $('.metka')
+        //     // if ($($metka).hasClass(`m_${saveTaskDate_Date}`)) {
+        //     //     $($metka).addClass('visi');
+        //     //   }
+        //     // $('.metka').ready(function(){
+        //     //     if ($(this).hasClass(`m_${saveTaskDate_Date}`)) {
+        //     //       $(this).addClass('visi');
+        //     //     }
+        //     // });
+        //   });
         console.log(`m_${saveTaskDate_Date}` )
 
         // console.log(col_met);
         // col_met.classList.add( "visi" );.className += " otherclass"
         // col_metclassList.add( "visi") ;
         if (saveTaskDate_Date   == localStorage.getItem('this_date_LS')){
+            $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
             console.log("+------")
             create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
         } else {
