@@ -881,7 +881,7 @@ header {
 		}
    }
    .windowСalendar{
-
+		@include adaptive("padding-bottom", 30 , 5);
 		.btnTopСalendar{
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);

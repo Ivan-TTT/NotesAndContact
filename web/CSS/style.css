@@ -1188,6 +1188,10 @@ header .logo-img .txt-logo-name {
   opacity: 0.5;
 }
 
+.home .windowСalendar {
+  padding-bottom: calc(5px + 25 * ((100vw - 320px) / 1600));
+}
+
 .home .windowСalendar .btnTopСalendar {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));

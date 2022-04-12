@@ -109,7 +109,7 @@ function getAddСalendar(nNum){
         const NewСalendarElement = document.createElement ( 'li' );
         NewСalendarElement.classList.add ( "everyDay" );
         NewСalendarElement.classList.add ( "e_d" );
-        startDate.getDate()  == NowNumber ? NewСalendarElement.classList.add ( "toDay" ) : "";
+        (startDate.getDate() == NowNumber) && (startDate.getMonth() == NowMonth) ? NewСalendarElement.classList.add ( "toDay" ) : "";
         startDate.getDate()  == NowNumber ? NewСalendarElement.classList.add ( "toGetDay" ) : "";
         startDate.getMonth() == NowMonth  ? NewСalendarElement.classList.add ( "toMonth" ) : "";
         NewСalendarElement.setAttribute ('li_all', `${startDate.toLocaleDateString()}`);
@@ -136,6 +136,7 @@ function getAddСalendar(nNum){
 
 function whyThisDate(){
 
+    $(".Сa_Task").remove();
     $(".e_d").click(function () {
         $(".e_d").removeClass("toGetDay");
         $(this).addClass("toGetDay");
@@ -177,8 +178,8 @@ function get_calendar_js(get_calendar){
         var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
 
         var saveTaskDate_Date        = new Date(get_calendar[tasks][4]).toLocaleDateString();   
-        console.log("-",saveTaskDate_Date );
-        console.log("+",localStorage.getItem('this_date_LS') )
+        // console.log("-",saveTaskDate_Date );
+        // console.log("+",localStorage.getItem('this_date_LS') )
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
         // setTimeout($(`#m_${saveTaskDate_Date}`).addClass('visi'), 400);
         // if ($(".metka").hasClass(`m_${saveTaskDate_Date}`)){
@@ -216,23 +217,30 @@ function get_calendar_js(get_calendar){
         // if (mydiv.id == `m_${saveTaskDate_Date}`){
         //     console.log(" ult").classList.add("visi");
         // }
-        var col_met = document.querySelectorAll('.metka');
+        var col_met = document.querySelectorAll('.metka'),
+            mmet_dom = 0;
+
+        console.log(mmet_dom);
+
         for (var i = 0, length = col_met.length; i < length; i++) {
         //   col_met[i].lang = "ru";
         //   console.log(col_met[i].id);
-          if ((col_met[i].id == `m_${saveTaskDate_Date}`) && [tasks] == 0 ){
-            col_met[i].classList.add("visi");
-          }
-          if ((col_met[i].id == `z_${saveTaskDate_Date}`) && [tasks] == 1 ){
-            col_met[i].classList.add("visi");
-          }
-          if ((col_met[i].id == `t_${saveTaskDate_Date}`) && [tasks] == 2 ){
-            col_met[i].classList.add("visi");
-          }
-          if ((col_met[i].id == `p_${saveTaskDate_Date}`) && [tasks] == 3 ){
-            col_met[i].classList.add("visi");
-          }
+        
+            // for (x = 0; )
+
+
+            if ((col_met[i].id == `m_${saveTaskDate_Date}`) && mmet_dom == 0){
+              col_met[i].classList.add("visi");
+            } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom == 1){
+              col_met[i].classList.add("visi");
+            } else if ((col_met[i].id == `t_${saveTaskDate_Date}`) && mmet_dom == 2){
+              col_met[i].classList.add("visi");
+            } else if ((col_met[i].id == `p_${saveTaskDate_Date}`) && mmet_dom == 3){
+              col_met[i].classList.add("visi");
+            }
         }
+
+
 
         // // $('.metka',`.m_${saveTaskDate_Date}`).addClass('visi');
         // $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
@@ -252,10 +260,8 @@ function get_calendar_js(get_calendar){
 
         // console.log(col_met);
         // col_met.classList.add( "visi" );.className += " otherclass"
-        // col_metclassList.add( "visi") ;
+        // col_metclassList.add( "visi") ; && (document.querySelector('Сa_Task') == null)
         if (saveTaskDate_Date == localStorage.getItem('this_date_LS') ){
-            $(`.metka#m_${saveTaskDate_Date}`).addClass('visi');
-            console.log("+------")
             create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
         } else {
             $(".Сa_Task").remove();
