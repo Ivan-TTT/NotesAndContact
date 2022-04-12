@@ -197,29 +197,36 @@ header {
 	width: calc(100% - calc(41.6px + (250 - 41.6) * ((100vw - 320px) / (1920 - 320))));
 	background-color: var(--body-color);
 	transition: var(--tran-05);
-    .btnTopTask{
+	.windowTask{
+		display: none;
+		&.aAcTivve{
+			display: block;
+		}
+	}
+
+	.btnTopTask{
 		@include adaptive("margin-top", 30 , 5);
 		@include adaptive("margin-left", 30 , 5);
 		@include adaptive("margin-right", 30 , 5);
 		display: flex;
 		justify-content: space-between;
-        li{
+		li{
 			cursor: pointer;
 			width: calc(30%);
-	    	display: flex;
-	    	align-items: center;
-            justify-content: center;
-	    	list-style: none;
-            background-color: var(--task-color);
-            transition: var(--tran-03);
-            @include adaptive( "border-radius" , 6 , 1 );
-            span{
-                @include adaptive( "font-size" , 26 , 4.3);
-                color: var(--text-color);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			list-style: none;
+			background-color: var(--task-color);
+			transition: var(--tran-03);
+			@include adaptive( "border-radius" , 6 , 1 );
+			span{
+				@include adaptive( "font-size" , 26 , 4.3);
+				color: var(--text-color);
 				transition: var(--tran-03);
-                opacity: 0.5;
-            }
-            &:hover {
+				opacity: 0.5;
+			}
+			&:hover {
 				background-color: var(--tabs-color);
 				opacity: 1;
 				span{
@@ -233,234 +240,234 @@ header {
 					opacity: 1;
 				}
 			}
-       }
-	    // .oOpen{
-		// 	opacity: 1;
-		// }
-   }
-   .Task{
-		@include adaptive("margin-top", 30 , 5);
-		@include adaptive("margin-left", 30 , 5);
-		@include adaptive("margin-right", 30 , 5);
-        background-color: var(--task-color);
-        @include adaptive( "border-radius" , 6 , 1 );
-		display: flex;
-		align-items:center;
-		align-content:center;
-		flex-direction:column;
-		flex-wrap: wrap;
-
-		&.invisible{
-			display: none;
 		}
-		&.invisible_static{
-			display: none;
-		}
-		&.pPpAsive{
-			opacity: 0.8;
-		}
-        
-		.oneContent{
-			display: flex;
-			justify-content:center;
-			flex-direction: row;
-			width: calc(100%);
-			background-color:var(--num-color);
+			// .oOpen{
+			// 	opacity: 1;
+			// }
+	}
+	.Task{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			background-color: var(--task-color);
 			@include adaptive( "border-radius" , 6 , 1 );
-			.queue{
-				@include adaptive( "width" , 36 , 6 );
-				@include adaptive( "height" , 36 , 6 );
-				@include adaptive( "border-radius" , 6 , 1 );
-				@include adaptive("margin", 10 , 1.6);
-				font-family: Montserrat-Regular;
-				display: none;
-				flex-direction:column;
-				&.invisible{
-					display: none;
-				}
-
-				input[type="number"]{
-					@include adaptive( "height" , 20 , 3.3);
-					@include adaptive( "width" , 36 , 6 );
-					border: none;
-					outline: none;
-					background-color: var(--tabs-color);
-					text-align: center;
-					&::-webkit-outer-spin-button,
-					&::-webkit-inner-spin-button{
-						-webkit-appearance: none;
-					}
-				}
-				.higher, .below{
-					text-align: center;
-					cursor: pointer;
-					@include adaptive( "width" , 36 , 6 );
-					@include adaptive( "height" , 8 , 1.3);
-					font-size: 0px;
-					background-color: var(--sidePanel-color);
-				}
-				.higher{
-					border-radius: 6px 6px 0px 0px ;
-					transition: var(--tran-03);
-					&:hover{
-						@include adaptive( "height" , 16 , 2.6);
-						@include adaptive( "font-size" , 10 , 1.6);
-					}
-					&:hover ~ .below{
-						display: none;
-					}
-					&:hover ~ input[type="number"]{
-						border-radius: 0px 0px 6px 6px ;
-					}
-				};
-				.below{
-					border-radius: 0px 0px 6px 6px ;
-					transition: var(--tran-03);
-					&:hover{
-						@include adaptive( "height" , 16 , 2.6);
-						@include adaptive( "font-size" , 10 , 1.6);
-					}
-					&:hover ~ .higher{
-						display: none;
-					}
-					&:hover ~ input[type="number"]{
-						border-radius: 6px 6px 0px 0px ;
-					}
-				}
-			}
-		
-    		.itemGroupOne{
-				align-self:flex-start;
-    		    background-color: var(--sidePanel-color);
-    		    @include adaptive( "border-radius" , 6 , 1 );
-				@include adaptive("padding", 10 , 1.6);
-				width: calc(100%);
-				flex: 1;
-
-    		    ul{
-    		        @include adaptive( "font-size" , 26 , 4.3);
-    		        list-style: none;
-    		        display: flex;
-    		        justify-content: space-between;
-    		        align-items: center;
-    		        img{
-    		            cursor: pointer;
-    		            
-						@include adaptive("width", 36 , 6);
-    		            @include adaptive( "border-radius" , 6 , 1 );
-    		            transition: var(--tran-03);
-    		            opacity: 0.5;
-    		            &:hover {
-    		                opacity: 0.8;
-    		            }
-    		        }
-    		        li{	
-						@include adaptive( "border-radius" , 6 , 1 );
-    		            display: flex;
-    		            align-items: center; 
-    		            background-color: var(--tabs-color);
-    		            input[type="date"],
-    		            input[type="time"]{
-    		                position: relative;
-    		                text-align: center;
-    		                &::-webkit-calendar-picker-indicator{
-    		                    position: absolute;
-    		                    top: 0;
-    		                    right: 0;
-    		                    bottom: 0;
-    		                    width: auto;
-    		                    height: auto;
-    		                    background: transparent;
-								@include adaptive( "left" , (-10) , (-1.6) );
-    		                    color: transparent;
-    		                }
-    		                &::-webkit-inner-spin-button{
-    		                    z-index: 1;
-    		                }
-    		            }
-    		            input{
-							@include adaptive( "border-radius" , 6 , 1 );
-    		                @include adaptive( "height" , 36 , 6);
-    		                border: none;
-    		                outline: none;
-    		                font-family: Montserrat-Regular;
-							background-color: var(--tabs-color);
-							width: calc(100%);
-							@include adaptive("padding-left", 5 , 0.83);
-							@include adaptive("padding-right", 5 , 0.83);
-							@include adaptive( "font-size" , 28 , 4.6);
-    		            }
-
-    		        }
-					.ProgressTask, .TextTask,
-					.DateTask, .TimeTask,
-					.AddNewDopTask{
-						@include adaptive("margin-right", 10 , 1.6);
-					}
-					.TextTask{
-						width: calc(100%);
-					}
-    		    }
-    		}
-   		}
-		.itemGroupTwo{
+			display: flex;
 			align-items:center;
 			align-content:center;
-			@include adaptive( "height" , 172 , 28.6);
-			ul{
+			flex-direction:column;
+			flex-wrap: wrap;
+			&.invisible{
+				display: none;
+			}
+			&.invisible_static{
+				display: none;
+			}
+			&.pPpAsive{
+				opacity: 0.8;
+			}
+			
+			.oneContent{
 				display: flex;
-    			justify-content: space-around;
-    			align-items: center; 
-				li{
-					background-color: var(--dopT-color);
+				justify-content:center;
+				flex-direction: row;
+				width: calc(100%);
+				background-color:var(--num-color);
+				@include adaptive( "border-radius" , 6 , 1 );
+				.queue{
+					@include adaptive( "width" , 36 , 6 );
+					@include adaptive( "height" , 36 , 6 );
 					@include adaptive( "border-radius" , 6 , 1 );
-					display: flex;
-    				align-items:center;
-    				flex-flow:wrap column;
-    				justify-content: space-around;
-					border: none;
-    				outline: none;
 					@include adaptive("margin", 10 , 1.6);
-					@include adaptive("padding", 10 , 1.6);
-
-					textarea, input{
-						font-family: Montserrat-Regular;
+					font-family: Montserrat-Regular;
+					display: none;
+					flex-direction:column;
+					&.invisible{
+						display: none;
+					}
+					input[type="number"]{
+						@include adaptive( "height" , 20 , 3.3);
+						@include adaptive( "width" , 36 , 6 );
 						border: none;
-    					outline: none;
-						resize: none;
-						@include adaptive( "font-size" , 20 , 3.3);
-						width:calc(100%);
-						@include adaptive( "border-radius" , 6 , 1 );
-						@include adaptive("padding-top", 0 , 0);
-						@include adaptive("padding-left", 5 , 0.83);
-						@include adaptive("padding-right", 5 , 0.83);
-						@include adaptive("padding-bottom", 0 , 0);
+						outline: none;
 						background-color: var(--tabs-color);
-						text-emphasis-color: opacity(rgba(0, 0, 0, 0.5));
-					}
-					input{
-						@include adaptive("margin-bottom", 10 , 1.6);
-					}
-					textarea{
-						@include adaptive( "height" , 98 , 16.3);
-						&::-webkit-scrollbar{
-							width: 0.5em;
+						text-align: center;
+						&::-webkit-outer-spin-button,
+						&::-webkit-inner-spin-button{
+							-webkit-appearance: none;
 						}
-						&::-webkit-scrollbar-track{
-							box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-							@include adaptive( "border-radius" , 6 , 1 );
+					}
+					.higher, .below{
+						text-align: center;
+						cursor: pointer;
+						@include adaptive( "width" , 36 , 6 );
+						@include adaptive( "height" , 8 , 1.3);
+						font-size: 0px;
+						background-color: var(--sidePanel-color);
+					}
+					.higher{
+						border-radius: 6px 6px 0px 0px ;
+						transition: var(--tran-03);
+						&:hover{
+							@include adaptive( "height" , 16 , 2.6);
+							@include adaptive( "font-size" , 10 , 1.6);
+						}
+						&:hover ~ .below{
+							display: none;
+						}
+						&:hover ~ input[type="number"]{
+							border-radius: 0px 0px 6px 6px ;
+						}
+					};
+					.below{
+						border-radius: 0px 0px 6px 6px ;
+						transition: var(--tran-03);
+						&:hover{
+							@include adaptive( "height" , 16 , 2.6);
+							@include adaptive( "font-size" , 10 , 1.6);
+						}
+						&:hover ~ .higher{
+							display: none;
+						}
+						&:hover ~ input[type="number"]{
+							border-radius: 6px 6px 0px 0px ;
+						}
+					}
+				}
+			
+				.itemGroupOne{
+					align-self:flex-start;
+					background-color: var(--sidePanel-color);
+					@include adaptive( "border-radius" , 6 , 1 );
+					@include adaptive("padding", 10 , 1.6);
+					width: calc(100%);
+					flex: 1;
+					ul{
+						@include adaptive( "font-size" , 26 , 4.3);
+						list-style: none;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						img{
 							cursor: pointer;
-						}
-						&::-webkit-scrollbar-thumb{
-							background-color: darkgrey;
+							
+							@include adaptive("width", 36 , 6);
 							@include adaptive( "border-radius" , 6 , 1 );
+							transition: var(--tran-03);
+							opacity: 0.5;
+							&:hover {
+								opacity: 0.8;
+							}
+						}
+						li{	
+							@include adaptive( "border-radius" , 6 , 1 );
+							display: flex;
+							align-items: center; 
+							background-color: var(--tabs-color);
+							input[type="date"],
+							input[type="time"]{
+								position: relative;
+								text-align: center;
+								&::-webkit-calendar-picker-indicator{
+									position: absolute;
+									top: 0;
+									right: 0;
+									bottom: 0;
+									width: auto;
+									height: auto;
+									background: transparent;
+									@include adaptive( "left" , (-10) , (-1.6) );
+									color: transparent;
+								}
+								&::-webkit-inner-spin-button{
+									z-index: 1;
+								}
+							}
+							input{
+								@include adaptive( "border-radius" , 6 , 1 );
+								@include adaptive( "height" , 36 , 6);
+								border: none;
+								outline: none;
+								font-family: Montserrat-Regular;
+								background-color: var(--tabs-color);
+								width: calc(100%);
+								@include adaptive("padding-left", 5 , 0.83);
+								@include adaptive("padding-right", 5 , 0.83);
+								@include adaptive( "font-size" , 28 , 4.6);
+							}
+						}
+						.ProgressTask, .TextTask,
+						.DateTask, .TimeTask,
+						.AddNewDopTask{
+							@include adaptive("margin-right", 10 , 1.6);
+						}
+						.TextTask{
+							width: calc(100%);
 						}
 					}
 				}
 			}
-		}
-   }
+			.itemGroupTwo{
+				align-items:center;
+				align-content:center;
+				@include adaptive( "height" , 172 , 28.6);
+				ul{
+					display: flex;
+					justify-content: space-around;
+					align-items: center; 
+					li{
+						background-color: var(--dopT-color);
+						@include adaptive( "border-radius" , 6 , 1 );
+						display: flex;
+						align-items:center;
+						flex-flow:wrap column;
+						justify-content: space-around;
+						border: none;
+						outline: none;
+						@include adaptive("margin", 10 , 1.6);
+						@include adaptive("padding", 10 , 1.6);
+						textarea, input{
+							font-family: Montserrat-Regular;
+							border: none;
+							outline: none;
+							resize: none;
+							@include adaptive( "font-size" , 20 , 3.3);
+							width:calc(100%);
+							@include adaptive( "border-radius" , 6 , 1 );
+							@include adaptive("padding-top", 0 , 0);
+							@include adaptive("padding-left", 5 , 0.83);
+							@include adaptive("padding-right", 5 , 0.83);
+							@include adaptive("padding-bottom", 0 , 0);
+							background-color: var(--tabs-color);
+							text-emphasis-color: opacity(rgba(0, 0, 0, 0.5));
+						}
+						input{
+							@include adaptive("margin-bottom", 10 , 1.6);
+						}
+						textarea{
+							@include adaptive( "height" , 98 , 16.3);
+							&::-webkit-scrollbar{
+								width: 0.5em;
+							}
+							&::-webkit-scrollbar-track{
+								box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+								@include adaptive( "border-radius" , 6 , 1 );
+								cursor: pointer;
+							}
+							&::-webkit-scrollbar-thumb{
+								background-color: darkgrey;
+								@include adaptive( "border-radius" , 6 , 1 );
+							}
+						}
+					}
+				}
+			}
+	}
+
    .windowContacts{
+	   display: none;
+		&.aAcTivve{
+			display: block;
+		}
 		.btnTopContacts{
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
@@ -880,8 +887,16 @@ header {
 			opacity: 0.5;
 		}
    }
+//    .windowContacts.aAcTivve{
+// 	display: block;
+//    }
+
    .windowСalendar{
 		@include adaptive("padding-bottom", 30 , 5);
+		display: none;
+		&.aAcTivve{
+			display: block;
+		}
 		.btnTopСalendar{
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);

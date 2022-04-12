@@ -27,35 +27,35 @@
             <div class="tabs">
 
                 <ul class="tabs-links">
-                    <li class="li-tabs-link" onClick ="cont_W('1')" >
+                    <li id="li_taskk" class="li-tabs-link" onClick ="cont_W('1')" >
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Заметки</span>
                         </a>
                     </li>
 
-                    <li class="li-tabs-link" onClick ="cont_W('2')">
+                    <li id="li_contactt" class="li-tabs-link" onClick ="cont_W('2')">
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Контакты</span>
                         </a>
                     </li>
 
-                    <li class="li-tabs-link">
+                    <li id="li_calendarr" class="li-tabs-link">
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Календарь</span>
                         </a>
                     </li>
 
-                    <li class="li-tabs-link">
+                    <li id="li_massedj" class="li-tabs-link">
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Уведомления</span>
                         </a>
                     </li>
 
-                    <li class="li-tabs-link">
+                    <li id="li_optionn" class="li-tabs-link">
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Настройки</span>
@@ -78,7 +78,7 @@
 
     <section class="home">
 
-        <div id="windowTask_id" class="windowTask" style ='display:none'>
+        <div id="windowTask_id" class="windowTask aAcTivve" >
 
             <div class="btnTopTask">
                 <li class="oOpen" onClick ="activeTask()" >
@@ -148,7 +148,7 @@
 
         </div>
 
-        <div id="windowContacts_id" class="windowContacts" style ='display:none' >
+        <div id="windowContacts_id" class="windowContacts"  >
             <div class="btnTopContacts">
                 <li class="addContacts" onclick ="getAddContact()" >
                     <span class="text">Создать контакт</span>
@@ -350,10 +350,10 @@
         </div>
             
     </section>
-
+    
+    <script src="JS/mainJs.js"   ></script>
     <script src="JS/wTask.js"    ></script>
     <script src="JS/wContact.js" ></script>
     <script src="JS/wCalendar.js" ></script>
-    <script src="JS/mainJs.js"   ></script>
 </body>
 </html>

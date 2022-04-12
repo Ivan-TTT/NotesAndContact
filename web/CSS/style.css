@@ -268,6 +268,14 @@ header .logo-img .txt-logo-name {
   transition: var(--tran-05);
 }
 
+.home .windowTask {
+  display: none;
+}
+
+.home .windowTask.aAcTivve {
+  display: block;
+}
+
 .home .btnTopTask {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
@@ -629,6 +637,14 @@ header .logo-img .txt-logo-name {
 .home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowContacts {
+  display: none;
+}
+
+.home .windowContacts.aAcTivve {
+  display: block;
 }
 
 .home .windowContacts .btnTopContacts {
@@ -1190,6 +1206,11 @@ header .logo-img .txt-logo-name {
 
 .home .windowСalendar {
   padding-bottom: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: none;
+}
+
+.home .windowСalendar.aAcTivve {
+  display: block;
 }
 
 .home .windowСalendar .btnTopСalendar {

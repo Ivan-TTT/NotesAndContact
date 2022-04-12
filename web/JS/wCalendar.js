@@ -133,7 +133,7 @@ function getAddСalendar(nNum){
     return
 }
 
-
+var mmet_dom_p = 0;
 function whyThisDate(){
 
     $(".Сa_Task").remove();
@@ -151,10 +151,11 @@ function whyThisDate(){
         });
         console.log(output[0].date);
         localStorage.setItem('this_date_LS',`${output[0].date}`);
-        eel.all_calendar();
+        setTimeout(eel.all_calendar(), 50);
     }
-    setTimeout(viev_date, 400);
+    setTimeout(viev_date, 500);
     // eel.all_calendar();
+    mmet_dom_p = 0;
     return
 }
 
@@ -178,6 +179,7 @@ function get_calendar_js(get_calendar){
         var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
 
         var saveTaskDate_Date        = new Date(get_calendar[tasks][4]).toLocaleDateString();   
+        console.log(saveTaskDate_Date);
         // console.log("-",saveTaskDate_Date );
         // console.log("+",localStorage.getItem('this_date_LS') )
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
@@ -217,26 +219,22 @@ function get_calendar_js(get_calendar){
         // if (mydiv.id == `m_${saveTaskDate_Date}`){
         //     console.log(" ult").classList.add("visi");
         // }
-        var col_met = document.querySelectorAll('.metka'),
-            mmet_dom = 0;
-
-        console.log(mmet_dom);
-
+        var col_met = document.querySelectorAll('.metka');
+        // var mmet_dom = 0;
         for (var i = 0, length = col_met.length; i < length; i++) {
-        //   col_met[i].lang = "ru";
-        //   console.log(col_met[i].id);
-        
-            // for (x = 0; )
-
-
-            if ((col_met[i].id == `m_${saveTaskDate_Date}`) && mmet_dom == 0){
-              col_met[i].classList.add("visi");
-            } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom == 1){
-              col_met[i].classList.add("visi");
-            } else if ((col_met[i].id == `t_${saveTaskDate_Date}`) && mmet_dom == 2){
-              col_met[i].classList.add("visi");
-            } else if ((col_met[i].id == `p_${saveTaskDate_Date}`) && mmet_dom == 3){
-              col_met[i].classList.add("visi");
+            var mmet_dom = 0;
+            if ((col_met[i].id == `m_${saveTaskDate_Date}`) && mmet_dom_p == 1){
+                // mmet_dom++;
+                col_met[i].classList.add("visi");
+                console.log(mmet_dom_p);
+            } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom_p == 2){
+                col_met[i].classList.add("visi");
+                // mmet_dom_p++;
+            } else if ((col_met[i].id == `t_${saveTaskDate_Date}`) && mmet_dom_p == 3){
+                col_met[i].classList.add("visi");
+                // mmet_dom_p++;
+            } else if ((col_met[i].id == `p_${saveTaskDate_Date}`) && mmet_dom_p == 4){
+                col_met[i].classList.add("visi");
             }
         }
 
@@ -262,9 +260,9 @@ function get_calendar_js(get_calendar){
         // col_met.classList.add( "visi" );.className += " otherclass"
         // col_metclassList.add( "visi") ; && (document.querySelector('Сa_Task') == null)
         if (saveTaskDate_Date == localStorage.getItem('this_date_LS') ){
-            create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
-        } else {
-            $(".Сa_Task").remove();
+            mmet_dom_p = mmet_dom_p+1;
+            console.log("выполненно");
+            setTimeout(create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree), 40);
         }
     }
 }
@@ -274,7 +272,8 @@ function create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText
     const Сalendar_Element = document.createElement ( 'div' );
     Сalendar_Element.classList.add ( "Task" );
     Сalendar_Element.classList.add ( "Сa_Task" );
-    Сalendar_Element.setAttribute ('id', '0');
+    // Сalendar_Element.setAttribute ('id', '0');
+    console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
     Сalendar_Element.innerHTML = `
        <div class="oneContent">
            <div class="itemGroupOne">
