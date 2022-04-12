@@ -1320,6 +1320,7 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowСalendar .monthDay .dayDayDay li .metka {
+  cursor: default;
   margin-left: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
@@ -1329,6 +1330,11 @@ header .logo-img .txt-logo-name {
 
 .home .windowСalendar .monthDay .dayDayDay li .metka.visi {
   background-color: var(--text-color);
+  opacity: 0.5;
+}
+
+.home .windowСalendar .monthDay .dayDayDay li .metka.visi:hover {
+  opacity: 1;
 }
 
 .home .windowСalendar .monthDay .dayDayDay .toMonth {

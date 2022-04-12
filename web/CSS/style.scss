@@ -967,6 +967,7 @@ header {
 						opacity: 1;
 					}
 					.metka{
+						cursor: default;
 						@include adaptive("margin-left", 10 , 1.6);
 						@include adaptive("margin-right", 10 , 1.6);
 						@include adaptive( "border-radius" , 6 , 1 );
@@ -975,7 +976,11 @@ header {
 						@include adaptive( "height" , 24 , 4);
 						&.visi{
 							background-color: var(--text-color);
-						} 
+							opacity: 0.5;
+							&:hover {
+								opacity: 1;
+							}
+						}
 					}
 				}
 				// .toDay{

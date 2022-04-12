@@ -180,7 +180,7 @@ function get_calendar_js(get_calendar){
         console.log("-",saveTaskDate_Date );
         console.log("+",localStorage.getItem('this_date_LS') )
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
-        setTimeout($(`.m_${saveTaskDate_Date}`).addClass('visi'), 400);
+        // setTimeout($(`#m_${saveTaskDate_Date}`).addClass('visi'), 400);
         // if ($(".metka").hasClass(`m_${saveTaskDate_Date}`)){
         //     alert("У элемента есть класс com!");
         //     // var col_met = document.getElementsByClassName(`metka`);querySelector
@@ -201,16 +201,39 @@ function get_calendar_js(get_calendar){
         // if ($('.metka').hasClass(`m_${saveTaskDate_Date}`)) {
         //     $(`.m_${saveTaskDate_Date}`).addClass('visi');
         //     var meeeTka = document.querySelector(".metka");
-        //     var a = meeeTka.querySelector(`'.m_${saveTaskDate_Date}'`);
+        //     var a = meeeTka.querySelector(`'#m_${saveTaskDate_Date}'`);
         //     a.classList ? a.classList.add('visi') : a.className += ' visi';
         // }
         
-        $('.metka').map(function(){
-            if ($(this).hasClass(`m_${saveTaskDate_Date}`)) {
-              $(this).addClass('visi');
-            }
+        // $('.metka').map(function(){
+        //     if ($(this).hasClass(`m_${saveTaskDate_Date}`)) {
+        //       $(this).addClass('visi');
+        //     }
             
-        });
+        // });
+        // mydiv = document.querySelector('.metka'); 
+        // setTimeout(console.log("=========",mydiv.id),1000);
+        // if (mydiv.id == `m_${saveTaskDate_Date}`){
+        //     console.log(" ult").classList.add("visi");
+        // }
+        var col_met = document.querySelectorAll('.metka');
+        for (var i = 0, length = col_met.length; i < length; i++) {
+        //   col_met[i].lang = "ru";
+        //   console.log(col_met[i].id);
+          if ((col_met[i].id == `m_${saveTaskDate_Date}`) && [tasks] == 0 ){
+            col_met[i].classList.add("visi");
+          }
+          if ((col_met[i].id == `z_${saveTaskDate_Date}`) && [tasks] == 1 ){
+            col_met[i].classList.add("visi");
+          }
+          if ((col_met[i].id == `t_${saveTaskDate_Date}`) && [tasks] == 2 ){
+            col_met[i].classList.add("visi");
+          }
+          if ((col_met[i].id == `p_${saveTaskDate_Date}`) && [tasks] == 3 ){
+            col_met[i].classList.add("visi");
+          }
+        }
+
         // // $('.metka',`.m_${saveTaskDate_Date}`).addClass('visi');
         // $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
         // $(document).ready(function(){
@@ -225,13 +248,13 @@ function get_calendar_js(get_calendar){
         //     //     }
         //     // });
         //   });
-        console.log(`m_${saveTaskDate_Date}` )
+        // console.log(`m_${saveTaskDate_Date}` )
 
         // console.log(col_met);
         // col_met.classList.add( "visi" );.className += " otherclass"
         // col_metclassList.add( "visi") ;
-        if (saveTaskDate_Date   == localStorage.getItem('this_date_LS')){
-            $(`.metka.m_${saveTaskDate_Date}`).addClass('visi');
+        if (saveTaskDate_Date == localStorage.getItem('this_date_LS') ){
+            $(`.metka#m_${saveTaskDate_Date}`).addClass('visi');
             console.log("+------")
             create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
         } else {
