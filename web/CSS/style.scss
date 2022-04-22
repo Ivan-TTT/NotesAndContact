@@ -203,6 +203,18 @@ header {
 			display: block;
 		}
 	}
+	.windowContacts{
+		display: none;
+		&.aAcTivve{
+			display: block;
+		}
+	}
+	.windowСalendar{
+		display: none;
+		&.aAcTivve{
+			display: block;
+		}
+	}
 
 	.btnTopTask{
 		@include adaptive("margin-top", 30 , 5);
@@ -461,6 +473,9 @@ header {
 					}
 				}
 			}
+		&.invi{
+			opacity: 0.5;
+		}
 	}
 
    .windowContacts{
@@ -516,7 +531,7 @@ header {
 			display: flex;
 			align-self:flex-start;
 			ul{
-				@include adaptive( "font-size" , 28 , 4.6);
+				// @include adaptive( "font-size" , 24 , 4);
 				@include adaptive("padding", 10 , 1.6);
 				list-style: none;
 				display: flex;
@@ -532,7 +547,7 @@ header {
 					justify-content: center;
 					// background-color: var(--tabs-color);
 					span{
-						@include adaptive( "font-size" , 24 , 4);
+						@include adaptive( "font-size" , 20 , 4);
 						// @include adaptive("padding-left", 6 , 1);
 						// @include adaptive("padding-right", 6 , 1);
 						color: var(--text-color);
@@ -550,7 +565,7 @@ header {
 					}
 				}
 				.name_C, .organization_C,
-				.address_C, .telephone_C,
+				.address_C, .contFace_C, .telephone_C,
 				.mail_C, .ICQ_C{
 					@include adaptive("margin-right", 10 , 1.6);
 				}
@@ -559,16 +574,19 @@ header {
 					width: calc(25%);
 				}
 				.organization_C{
-					width: calc(8%);
+					width: calc(8.4%);
 				}
 				.address_C{
 					width: calc(25%);
+				}
+				.contFace_C{
+					width: calc(15%);
 				}
 				.telephone_C{
 					width: calc(10%);
 				}
 				.mail_C{
-					width: calc(18%);
+					width: calc(15%);
 				}
 				.ICQ_C{
 					width: calc(10%);
@@ -833,23 +851,33 @@ header {
     		            align-items: center; 
     		            background-color: var(--tabs-color);
 
-						input , select{
+						input , select , textarea{
 							@include adaptive( "border-radius" , 6 , 1 );
     		                @include adaptive( "height" , 30 , 5);
     		                border: none;
     		                outline: none;
+							resize: none;
+							vertical-align: middle;
     		                font-family: Montserrat-Regular;
 							background-color: var(--tabs-color);
-							// width: calc(100%);
+							width: calc(100%);
+							// @include adaptive("padding", 5 , 0.83);
+							@include adaptive("padding-top", 5 , 0.83);
 							@include adaptive("padding-left", 5 , 0.83);
 							@include adaptive("padding-right", 5 , 0.83);
+							// @include adaptive("padding-right", 5 , 0.83);
 							@include adaptive( "font-size" , 18 , 3);
     		            }
+						textarea::-webkit-scrollbar{
+							width: 0;
+							resize:none;
+						}
 						select {
 							-webkit-appearance: none;
 							-moz-appearance: none;
 							appearance: none;
 							text-align: center;
+							@include adaptive("padding-bottom", 5 , 0.83);
 						}
     		            
 					}
@@ -857,25 +885,28 @@ header {
 						width: calc(25%);
 					}
 					.organizationCon{
-						width: calc(8%);
+						width: calc(8.4%);
 					}
 					.addressCon{
 						width: calc(25%);
+					}
+					.contFaceCon{
+						width: calc(15%);
 					}
 					.telephoneCon{
 						width: calc(10%);
 					}
 					.mailCon{
-						width: calc(18%);
+						width: calc(15%);
 					}
 					.ICQCon{
 						width: calc(10%);
 					}
 					.nameCon, .organizationCon,
-					.addressCon, .telephoneCon,
+					.addressCon,.contFaceCon, .telephoneCon,
 					.mailCon, .ICQCon, .dele{
 						@include adaptive("margin-right", 10 , 1.6);
-						input{
+						input , textarea{
 							width: calc(100%);
 						}
 					}

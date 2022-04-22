@@ -1,6 +1,6 @@
 import sqlite3
 
-def saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ):
+def saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ):
     try:
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
@@ -14,12 +14,13 @@ def saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_
                 C_name    TEXT NOT NULL,
                 C_organiz VARCHAR(50),
                 C_address TEXT,
+                C_contFace TEXT,
                 C_tel     VARCHAR(255),
-                C_mail    VARCHAR(255),
+                C_mail    TEXT,
                 C_ICQ     VARCHAR(255))
             """)
-        cursor.execute(" INSERT INTO contacts(C_Id, C_name, C_organiz, C_address, C_tel, C_mail, C_ICQ) VALUES (?,?,?,?,?,?,?) ",\
-            (save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ))
+        cursor.execute(" INSERT INTO contacts(C_Id, C_name, C_organiz, C_address, C_contFace, C_tel, C_mail, C_ICQ) VALUES (?,?,?,?,?,?,?,?) ",\
+            (save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ))
 
         print("Задача созданна и записана в базу данных [bd_c]")
         connect.commit()
@@ -35,7 +36,7 @@ def saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_
             print("-"*130)
 
 
-def updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ):
+def updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ):
     try:
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
@@ -44,13 +45,14 @@ def updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, s
         print("Подключен к базе данных [bd_c]")
         update_query = ("""
             UPDATE contacts SET C_name = ?,
-            C_organiz = ?,
-            C_address = ?,
-            C_tel     = ?,
-            C_mail    = ?,
-            C_ICQ     = ? WHERE C_Id = ?
+            C_organiz  = ?,
+            C_address  = ?,
+            C_contFace = ?,
+            C_tel      = ?,
+            C_mail     = ?,
+            C_ICQ      = ? WHERE C_Id = ?
         """)
-        column_values = (save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ, save_C_Id)
+        column_values = (save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ, save_C_Id)
         cursor.execute(update_query, column_values)
         print("Контакт с id = [", save_C_Id ,"] обнавлен и записан в базу данных [bd_c]")
         connect.commit()
@@ -87,7 +89,7 @@ def update_contact():
             print("-"*130)
 
 sorted_items=[]
-arr_S7M = [0,0,0,0,0,0,0]
+arr_S7M = [1,0,0,0,0,0,0,0]
 def accepting_nNum_S7M_py(nNum):
     try:
         print("-"*130)
@@ -126,10 +128,10 @@ def accepting_nNum_S7M_py(nNum):
 
         elif (nNum == '3'):
             if (arr_S7M[3] == 0):
-                cursor.execute("SELECT * FROM contacts ORDER BY C_tel ")
+                cursor.execute("SELECT * FROM contacts ORDER BY C_contFace ")
                 arr_S7M[3] = 1
             else:
-                cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
+                cursor.execute("SELECT * FROM contacts ORDER BY C_contFace DESC")
                 arr_S7M[3] = 0
 
         elif (nNum == '4'):
@@ -147,13 +149,22 @@ def accepting_nNum_S7M_py(nNum):
             else:
                 cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
                 arr_S7M[5] = 0
+
         elif (nNum == '6'):
-           if (arr_S7M[6] == 0):
+            if (arr_S7M[6] == 0):
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel ")
+                arr_S7M[6] = 1
+            else:
+                cursor.execute("SELECT * FROM contacts ORDER BY C_tel DESC")
+                arr_S7M[6] = 0
+
+        elif (nNum == '7'):
+           if (arr_S7M[7] == 0):
                cursor.execute("SELECT C_Id, C_name, C_organiz, C_mail FROM contacts ORDER BY C_name DESC")
-               arr_S7M[6] = 1
+               arr_S7M[7] = 1
            else:
                cursor.execute("SELECT C_Id, C_name, C_organiz, C_mail FROM contacts ORDER BY C_name DESC")
-               arr_S7M[6] = 0
+               arr_S7M[7] = 0
 
 
         for item in cursor.fetchall():

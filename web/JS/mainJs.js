@@ -39,3 +39,18 @@ $('#li_calendarr').click(function () {
   // $('#block').slideUp(aAcTivve);
   // $('#block').slideUp(aAcTivve);
 });
+
+
+// function home_reset(){
+//   eel.update_all_contact();
+//   localStorage.setItem('contact_Editing','no');
+//   localStorage.setItem('contact_Created','no');
+
+
+//   // eel.update_all_task();
+//   // localStorage.setItem(`IdTrisTask`,``);
+//   // localStorage.setItem('Editing','');
+//   // localStorage.setItem('OneCreated','no');
+//   // localStorage.setItem('VisibleNumber','yes');
+//   // localStorage.setItem('ActiveOrPasiveTask','active');
+// }

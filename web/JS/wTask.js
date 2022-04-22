@@ -117,6 +117,8 @@ function getAddTask(){
 
     if (localStorage.getItem('OneCreated') == "no" && localStorage.getItem('ActiveOrPasiveTask') == 'active') {
 
+        [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invi"));
+
         numberOfTasks = document.getElementsByClassName('Task').length;
         console.log(numberOfTasks);
 
@@ -306,6 +308,8 @@ function get_update_task_js(tasks_items){
 
 function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){    
     // localStorage.setItem('Number', number_stchet++);
+    [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.remove("invi"));
+
     const saveTaskElement = document.createElement ( 'div' );
     saveTaskElement.classList.add ( "Task" );
     saveTaskElement.classList.add ( `${saveCindition == "finish" ? "pPpAsive" : "aAaKtive"}` );
@@ -471,6 +475,8 @@ function retuuurnLineId_js(line_items){
 function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){
     
     localStorage.setItem('Editing','active');
+
+    [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invi"));
     
     const NewTaskElement = document.createElement ( 'div' );
     NewTaskElement.classList.add ( "Task" );

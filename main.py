@@ -61,9 +61,9 @@ def update_all_task():
 #- Контакты ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 @eel.expose 
-def contactValue(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ):
-    msg = saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
-    up  = updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+def contactValue(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ):
+    msg = saveContact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ)
+    up  = updateE_Contact_py(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ)
 
 @eel.expose 
 def update_all_contact():

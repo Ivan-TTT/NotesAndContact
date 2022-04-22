@@ -10,6 +10,16 @@ $(document).ready(function() {
     // // startW();
 });
 
+$('body').on('keydown input', 'textarea[data-expandable]', function() {
+    //Auto-expanding textarea
+    this.style.removeProperty('height');
+    this.style.height = (this.scrollHeight+2) + 'px';
+  }).on('mousedown focus', 'textarea[data-expandable]', function() {
+    //Do this on focus, to allow textarea to animate to height...
+    this.style.removeProperty('height');
+    this.style.height = (this.scrollHeight+2) + 'px';
+  });
+
 
 //-------------------------------------
 //- Создание формы для нового контакта ---------------------------------------------------------------
@@ -31,33 +41,36 @@ function getAddContact(){
         NewContactElement.innerHTML = `
             <div class="contactGroup">
                 <ul>                   
-                   <li class="nameCon">
-                       <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..." >
-                   </li>
+                    <li class="nameCon">
+                        <textarea data-expandable id ="nameCon-id" class ="nameCon" rows ="1" placeholder ="Название..." ></textarea>
+                    </li>
 
-                   <li class="organizationCon" >
-                        <select id="organizationCon-id">
-                            <option disabled selected>Органиция</option>
-                            <option value="ип">ип</option>
-                            <option value="полиграфия">полиграфия</option>
-                            <option value="нет">нет</option>
-                        </select>
-                   </li>
+                    <li class="organizationCon" >
+                         <select id="organizationCon-id">
+                             <option disabled selected>Органиция</option>
+                             <option value="ип">ип</option>
+                             <option value="полиграфия">полиграфия</option>
+                             <option value="нет">нет</option>
+                         </select>
+                    </li>
 
-                   <li class="addressCon"> 
-                        <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..." >
-                   </li> 
-
-                   <li class ="telephoneCon" >
-                        <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." >
-                   </li>
-
-                   <li class ="mailCon" >
-                        <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..." >
-                   </li>
-                   <li class="ICQCon" >
-                        <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." >
-                    <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                    <li class="addressCon"> 
+                        <textarea data-expandable id ="addressCon-id" class ="addressCon" rows ="1" placeholder ="Адресс..."></textarea>
+                    </li>
+                    
+                    <li class="contFaceCon"> 
+                        <textarea data-expandable id ="contFaceCon-id" class ="contFaceCon" rows ="1" placeholder ="Контак..."></textarea>
+                    </li> 
+ 
+                    <li class ="telephoneCon" >
+                        <textarea data-expandable id ="telephoneCon-id" class ="telephoneCon" rows ="1" placeholder ="Телефон..."></textarea>
+                    </li>
+ 
+                    <li class ="mailCon" >
+                        <textarea data-expandable id ="mailCon-id" class ="mailCon" rows ="1" placeholder ="Почта..."></textarea>
+                    </li>
+                    <li class="ICQCon" >
+                        <textarea data-expandable id ="ICQCon-id" class ="ICQCon" rows ="1" placeholder ="ICQ..."></textarea>
                     </li>
 
                     <li class="saveCon" onClick ="saveСontactFunction()">
@@ -91,7 +104,11 @@ function saveСontactFunction(){
 
     // адресс // address
     var save_C_address = document.getElementById("addressCon-id").value; save_C_address != ""  
-    ? console.log(save_C_address): ""; 
+    ? console.log(save_C_address): "";
+
+    // контактное лицо // contact face
+    var save_C_contFace = document.getElementById("contFaceCon-id").value; save_C_contFace != ""  
+    ? console.log(save_C_contFace): ""; 
 
     // телефон // telephone
     var save_C_tel = document.getElementById("telephoneCon-id").value; save_C_tel != ""  
@@ -111,13 +128,13 @@ function saveСontactFunction(){
             localStorage.setItem('contact_id', generating_contact_id++);
             var save_C_Id = localStorage.getItem('contact_id');
             contactValue_js(save_C_Id, save_C_name, save_C_organiz,
-                save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+                save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ)
         } else {
 
             alert( 'Верно!' );
             var save_C_Id = localStorage.getItem(`Id_This_contact`);
             contactValue_js(save_C_Id, save_C_name, save_C_organiz,
-                save_C_address, save_C_tel, save_C_mail, save_C_ICQ)
+                save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ)
         }
     }
 }
@@ -125,10 +142,10 @@ function saveСontactFunction(){
 
 //- функция отправить значения в python -----------------------------------------
 async function contactValue_js(save_C_Id, save_C_name, save_C_organiz,
-    save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
+    save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ){
 
     eel.contactValue(save_C_Id, save_C_name, save_C_organiz,
-        save_C_address, save_C_tel, save_C_mail, save_C_ICQ);
+        save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ);
 
     eel.update_all_contact();
 
@@ -147,21 +164,22 @@ function get_update_contact_js(contacts_items){
     console.log("Контакты : обновление списка");
     for (var contacts = 0; contacts < contacts_items.length; contacts++){
 
-        var save_C_Id      = contacts_items[contacts][0];                 
-        var save_C_name    = contacts_items[contacts][1];             
-        var save_C_organiz = contacts_items[contacts][2];               
-        var save_C_address = contacts_items[contacts][3];              
-        var save_C_tel     = contacts_items[contacts][4];              
-        var save_C_mail    = contacts_items[contacts][5];             
-        var save_C_ICQ     = contacts_items[contacts][6];  
-        createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ);       
+        var save_C_Id       = contacts_items[contacts][0];                 
+        var save_C_name     = contacts_items[contacts][1];             
+        var save_C_organiz  = contacts_items[contacts][2];               
+        var save_C_address  = contacts_items[contacts][3];
+        var save_C_contFace = contacts_items[contacts][4];                
+        var save_C_tel      = contacts_items[contacts][5];              
+        var save_C_mail     = contacts_items[contacts][6];             
+        var save_C_ICQ      = contacts_items[contacts][7];  
+        createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ);       
     }
     // visibleNum()
 };
 
 //- Функция пригимает значения переданные из функции(get_update_contact_js) -----------------------------------------
 //- Функция создает блоки с контактами -----------------------------------------
-function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
+function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ){
     
     [...document.getElementsByClassName('fixetT')].forEach(i => i.classList.remove("invi"));
 
@@ -173,8 +191,8 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
         <div class="contactGroup">
             <ul>                   
                <li class="nameCon">
-                   <input id ="nameCon-id_${save_C_Id}" class ="nameCon-Text" type ="text" placeholder ="Название..." readonly value ="${save_C_name}" >
-               </li>
+                   <textarea data-expandable id ="nameCon-id_${save_C_Id}" class ="nameCon" rows ="1" readonly >${save_C_name}</textarea>
+                </li>
         
                <li class="organizationCon">
                     <select id="organization-id_${save_C_Id}">
@@ -183,19 +201,23 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
                </li>
         
                <li class="addressCon"> 
-                    <input id ="addressCon-id_${save_C_Id}" class ="addressCon-Text" type ="text" placeholder ="Адресс..." readonly value ="${save_C_address}" >
-               </li> 
+                    <textarea data-expandable id ="addressCon-id_${save_C_Id}" class ="addressCon" rows ="1" readonly >${save_C_address}</textarea>
+                </li>
+                
+                <li class="contFaceCon">
+                    <textarea data-expandable id ="contFaceCon-id_${save_C_Id}" class ="contFaceCon" rows ="1" readonly >${save_C_contFace}</textarea>
+                </li> 
         
                <li class ="telephoneCon" >
-                    <input id ="telephoneCon-id_${save_C_Id}" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..." readonly value ="${save_C_tel}" >
-               </li>
+                    <textarea data-expandable id ="telephoneCon-id_${save_C_Id}" class ="telephoneCon" rows ="1" readonly >${save_C_tel}</textarea>
+                </li>
         
                <li class ="mailCon" >
-                    <input id ="mailCon-id_${save_C_Id}" class ="mailCon-Text" type ="email" placeholder ="Почта..." readonly value ="${save_C_mail}" >
-               </li>
+                    <textarea data-expandable id ="mailCon-id_${save_C_Id}" class ="mailCon" rows ="1" readonly >${save_C_mail}</textarea>
+                </li>
+
                <li class="ICQCon" >
-                    <input id ="ICQCon-id_${save_C_Id}" class ="ICQCon-Text" type ="text" placeholder ="ICQ..." readonly value ="${save_C_ICQ}" >
-                <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                    <textarea data-expandable id ="ICQCon-id_${save_C_Id}" class ="ICQCon" rows ="1" readonly >${save_C_ICQ}</textarea>
                 </li>
             
                 <li class="saveCon" onClick ="ED('0')">
@@ -218,7 +240,7 @@ function S7M(nNum){
 async function nNumTransfer_S7M_js(nNum){
     console.log(`[2] Выполняеться функция nNumTransfer_S7M_js | nNum="${nNum}" пердаеться в python`);
     eel.nNumTransfer_S7M(nNum);
-    if (nNum == ("0") || nNum == ("1") || nNum == ("2") || nNum == ("3") || nNum == ("4") || nNum == ("5") ){
+    if (nNum == ("0") || nNum == ("1") || nNum == ("2") || nNum == ("3") || nNum == ("4") || nNum == ("5") || nNum == ("6")){
         eel.update_S7M();
         console.log("");
     } else{
@@ -473,16 +495,17 @@ function retuuurn_contact_js(contact_items){
         var save_C_Id       = contact_items[contact][0];                 
         var save_C_name     = contact_items[contact][1];             
         var save_C_organiz  = contact_items[contact][2];               
-        var save_C_address  = contact_items[contact][3];              
-        var save_C_tel      = contact_items[contact][4];              
-        var save_C_mail     = contact_items[contact][5];             
-        var save_C_ICQ      = contact_items[contact][6]; 
+        var save_C_address  = contact_items[contact][3];
+        var save_C_contFace = contact_items[contact][4];                
+        var save_C_tel      = contact_items[contact][5];              
+        var save_C_mail     = contact_items[contact][6];             
+        var save_C_ICQ      = contact_items[contact][7];
     }    
-    create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ);   
+    create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ);   
 };
 
 
-function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_tel, save_C_mail, save_C_ICQ){
+function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ){
     
     console.log(`[5] Выполняеться функция create_Contact_editing | создается форма для редактирования контакта`);
     console.log("");
@@ -497,44 +520,45 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
     NewSaveContactElement.setAttribute ('id', `${save_C_Id}`);
     NewSaveContactElement.innerHTML = `
         <div class="contactGroup">
-            <ul> 
+            <ul>  
                 <li class="saveCon dele" onClick ="ED('1')">
                     <img class ="" src ="Img/zero-G.svg" alt ="" >
-                </li>   
+                </li>        
 
-               <li class="nameCon">
-                   <input id ="nameCon-id" class ="nameCon-Text" type ="text" placeholder ="Название..."  value ="${save_C_name}" >
-               </li>
+                <li class="nameCon">
+                    <textarea data-expandable id ="nameCon-id" class ="nameCon" rows ="1" placeholder ="Название..." >${save_C_name}</textarea>
+                </li>
+                
+                <li class="organizationCon" >
+                      <select id="organizationCon-id">
+                          <option disabled selected>${save_C_organiz}</option>
+                          <option value="ип">ип</option>
+                          <option value="полиграфия">полиграфия</option>
+                          <option value="нет">нет</option>
+                      </select>
+                </li>
+                
+                <li class="addressCon"> 
+                   <textarea data-expandable id ="addressCon-id" class ="addressCon" rows ="1" placeholder ="Адресс...">${save_C_address}</textarea>
+                </li> 
+                <li class="contFaceCon"> 
+                    <textarea data-expandable id ="contFaceCon-id" class ="contFaceCon" rows ="1" placeholder ="Контак...">${save_C_contFace}</textarea>
+                </li> 
         
-               <li class="organizationCon">
-                    <select id="organizationCon-id">
-                        <option disabled selected readonly>${save_C_organiz}</option>
-                        <option value="ип">ип</option>
-                        <option value="полиграфия">полиграфия</option>
-                        <option value="нет">нет</option>
-                    </select>
-               </li>
-        
-               <li class="addressCon"> 
-                    <input id ="addressCon-id" class ="addressCon-Text" type ="text" placeholder ="Адресс..."  value ="${save_C_address}" >
-               </li> 
-        
-               <li class ="telephoneCon" >
-                    <input id ="telephoneCon-id" class ="telephoneCon-Text" type ="tel" placeholder ="Телефон..."  value ="${save_C_tel}" >
-               </li>
-        
-               <li class ="mailCon" >
-                    <input id ="mailCon-id" class ="mailCon-Text" type ="email" placeholder ="Почта..."  value ="${save_C_mail}" >
-               </li>
-               <li class="ICQCon" >
-                    <input id ="ICQCon-id" class ="ICQCon-Text" type ="text" placeholder ="ICQ..."  value ="${save_C_ICQ}" >
-                <!-- <input id ="DateTask-id" class ="inputDateTask " type="date" > -->
+                <li class ="telephoneCon" >
+                    <textarea data-expandable id ="telephoneCon-id" class ="telephoneCon" rows ="1" placeholder ="Телефон...">${save_C_tel}</textarea>
+                </li>
+            
+                <li class ="mailCon" >
+                    <textarea data-expandable id ="mailCon-id" class ="mailCon" rows ="1" placeholder ="Почта...">${save_C_mail}</textarea>
+                </li>
+                <li class="ICQCon" >
+                    <textarea data-expandable id ="ICQCon-id" class ="ICQCon" rows ="1" placeholder ="ICQ...">${save_C_ICQ}</textarea>
                 </li>
             
                 <li class="saveCon" onClick ="saveСontactFunction()">
                     <img class ="" src ="Img/Save-G.svg" alt ="" >
                 </li>
-                
             </ul>
         </div>
     `
