@@ -27,7 +27,7 @@
             <div class="tabs">
 
                 <ul class="tabs-links">
-                    <li id="li_taskk" class="li-tabs-link" onClick ="cont_W('1')" >
+                    <li id="li_taskk" class="li-tabs-link">
                         <a href="#">
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Заметки</span>
@@ -76,9 +76,9 @@
         </div>
     </nav>
 
-    <section class="home">
+    <section class="home" >
 
-        <div id="windowTask_id" class="windowTask aAcTivve" >
+        <div id="windowTask_id" class="windowTask " >
 
             <div class="btnTopTask">
                 <li class="oOpen" onClick ="activeTask()" >
@@ -148,7 +148,7 @@
 
         </div>
 
-        <div id="windowContacts_id" class="windowContacts"  >
+        <div id="windowContacts_id" class="windowContacts" >
             <div class="btnTopContacts">
                 <li class="addContacts" onclick ="getAddContact()" >
                     <span class="text">Создать контакт</span>
@@ -166,16 +166,19 @@
                     <li class="address_C" onclick ="S7M('2')" >
                         <span class="text">Адресс</span>
                     </li>
-                    <li class="telephone_C" onclick ="S7M('3')" >
+                    <li class="contFace_C" onclick ="S7M('3')" >
+                        <span class="text">Контак</span>
+                    </li>
+                    <li class="telephone_C" onclick ="S7M('4')" >
                         <span class="text">Телефон</span>
                     </li>
-                    <li class="mail_C" onclick ="S7M('4')" >
+                    <li class="mail_C" onclick ="S7M('5')" >
                         <span class="text">Почта</span>
                     </li>
-                    <li class="ICQ_C" onclick ="S7M('5')" >
+                    <li class="ICQ_C" onclick ="S7M('6')" >
                         <span class="text">ICQ</span>
                     </li>
-                    <li class="value_Mail" onclick ="S7M('6')" data-toggle="modal" data-target="#modal-id" >
+                    <li class="value_Mail" onclick ="S7M('7')" data-toggle="modal" data-target="#modal-id" >
                         <span class="text">@</span>
                     </li>
                 </ul>
@@ -224,47 +227,51 @@
                     </div>
                 </div>
             </div>
-
-            <div class="contact " style ='display: none'>
+            <!-- style ='display: none' -->
+            <div class="contact " style ='display: none'> 
                 <!-- <div class="contactGroup">
                     <ul>                   
-                       <li class="nameCon">
-                           <input id ="nameCon-id" class ="nameCon" type ="text" placeholder ="Название..." >
-                       </li>
-                   
-                       <li class="organizationCon" >
-                            <select id="organizationCon-id">
-                                <option disabled selected>Органиция</option>
-                                <option value="ип">ип</option>
-                                <option value="полиграфия">полиграфия</option>
-                                <option value="нет">нет</option>
-                            </select>
-                       </li>
-                   
-                       <li class="addressCon"> 
-                            <input id ="addressCon-id" class ="addressCon" type ="text" placeholder ="Адресс..." >
-                       </li> 
-                   
-                       <li class ="telephoneCon" >
-                            <input id ="telephoneCon-id" class ="telephoneCon" type ="tel" placeholder ="Телефон..." >
-                       </li>
-                   
-                       <li class ="mailCon" >
-                            <input id ="mailCon-id" class ="mailCon" type ="email" placeholder ="Почта..." >
-                       </li>
+                        <li class="nameCon">
+                            <textarea data-expandable id ="nameCon-id" class ="nameCon" rows ="1" placeholder ="Название..." ></textarea>
+                        </li>
+                       
+                        <li class="organizationCon" >
+                             <select id="organizationCon-id">
+                                 <option disabled selected>Органиция</option>
+                                 <option value="ип">ип</option>
+                                 <option value="полиграфия">полиграфия</option>
+                                 <option value="нет">нет</option>
+                             </select>
+                        </li>
+                       
+                        <li class="addressCon"> 
+                            <textarea data-expandable id ="addressCon-id" class ="addressCon" rows ="1" placeholder ="Адресс..."></textarea>
+                        </li> 
 
-                       <li class="ICQCon" >
-                            <input id ="ICQCon-id" class ="ICQCon" type ="text" placeholder ="ICQ..." >
+                        <li class="contFaceCon"> 
+                            <textarea data-expandable id ="contFaceCon-id" class ="contFaceCon" rows ="1" placeholder ="Контак..."></textarea>
+                        </li> 
+                   
+                        <li class ="telephoneCon" >
+                            <textarea data-expandable id ="telephoneCon-id" class ="telephoneCon" rows ="1" placeholder ="Телефон..."></textarea>
+                        </li>
+                       
+                        <li class ="mailCon" >
+                            <textarea data-expandable id ="mailCon-id" class ="mailCon" rows ="1" placeholder ="Почта..."></textarea>
+                        </li>
+
+                        <li class="ICQCon" >
+                            <textarea data-expandable id ="ICQCon-id" class ="ICQCon" rows ="1" placeholder ="ICQ..."></textarea>
                         </li>
                     
                         <li class="saveCon" onClick ="saveСontactFunction()">
                             <img class ="" src ="Img/Save-G.svg" alt ="" >
                         </li>
-                    </ul> -->
-               </div>
+                    </ul>
+               </div> -->
             </div>
 
-        <div id="windowСalendar_id" class="windowСalendar">
+        <div id="windowСalendar_id" class="windowСalendar ">
 
             <div class="btnTopСalendar">
                 <li class="leftСalendar" onclick ="getAddСalendar('1')" >
