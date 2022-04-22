@@ -276,22 +276,6 @@ header .logo-img .txt-logo-name {
   display: block;
 }
 
-.home .windowContacts {
-  display: none;
-}
-
-.home .windowContacts.aAcTivve {
-  display: block;
-}
-
-.home .windowСalendar {
-  display: none;
-}
-
-.home .windowСalendar.aAcTivve {
-  display: block;
-}
-
 .home .btnTopTask {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));

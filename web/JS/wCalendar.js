@@ -11,6 +11,10 @@ $(document).ready(function() {
     getAddСalendar('0');
 });
 
+function up_cale(){
+    getAddСalendar('0');
+}
+
 const СalendarElement = document.querySelector('.everyDay');
 const mouthElement = document.querySelector('.leftСalendar');
 const СalendarElement_Task = document.querySelector('.Сalendar_Task');
@@ -223,19 +227,20 @@ function get_calendar_js(get_calendar){
         // var mmet_dom = 0;
         for (var i = 0, length = col_met.length; i < length; i++) {
             var mmet_dom = 0;
-            if ((col_met[i].id == `m_${saveTaskDate_Date}`) && mmet_dom_p == 1){
+            if ((col_met[i].id == `m_${saveTaskDate_Date}`) == 1){
                 // mmet_dom++;
                 col_met[i].classList.add("visi");
                 console.log(mmet_dom_p);
-            } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom_p == 2){
-                col_met[i].classList.add("visi");
-                // mmet_dom_p++;
-            } else if ((col_met[i].id == `t_${saveTaskDate_Date}`) && mmet_dom_p == 3){
-                col_met[i].classList.add("visi");
-                // mmet_dom_p++;
-            } else if ((col_met[i].id == `p_${saveTaskDate_Date}`) && mmet_dom_p == 4){
-                col_met[i].classList.add("visi");
             }
+            // } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom_p == 2){
+            //     col_met[i].classList.add("visi");
+            //     // mmet_dom_p++;
+            // } else if ((col_met[i].id == `t_${saveTaskDate_Date}`) && mmet_dom_p == 3){
+            //     col_met[i].classList.add("visi");
+            //     // mmet_dom_p++;
+            // } else if ((col_met[i].id == `p_${saveTaskDate_Date}`) && mmet_dom_p == 4){
+            //     col_met[i].classList.add("visi");
+            // }
         }
 
 

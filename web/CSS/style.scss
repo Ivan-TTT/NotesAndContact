@@ -203,18 +203,6 @@ header {
 			display: block;
 		}
 	}
-	.windowContacts{
-		display: none;
-		&.aAcTivve{
-			display: block;
-		}
-	}
-	.windowСalendar{
-		display: none;
-		&.aAcTivve{
-			display: block;
-		}
-	}
 
 	.btnTopTask{
 		@include adaptive("margin-top", 30 , 5);
