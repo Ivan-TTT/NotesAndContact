@@ -1052,10 +1052,11 @@ header {
 		}
    }
    .windowNotice{
-	   display: none;
-	   &.aAcTivve{
+		@include adaptive("padding-bottom", 30 , 5);
+	    display: none;
+	    &.aAcTivve{
 		   display: block;
-	   }
+	    }
 	   .btnTopNotice{
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
@@ -1087,18 +1088,20 @@ header {
 				}
 	    	}
 		}
-		.todayNotice, .weekNotice, .mouthNotice{
+		.todayNotice, .weekNotice, .mouthNotice, .timmeNotice{
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
 			@include adaptive("margin-right", 30 , 5);
-			@include adaptive("padding-top", 10 , 1.6);
+			@include adaptive("padding-top", 30 , 5);
+			@include adaptive("padding-bottom", 30 , 5);
 			background-color: var(--task-color);
 			// border-bottom: 1px solid var(--body-color);
 			@include adaptive( "border-radius" , 6 , 1 );
-			li{
-				@include adaptive("margin-left", 10 , 1.6);
-				@include adaptive("margin-right", 10 , 1.6);
-				@include adaptive("margin-bottom", 10 , 1.6);
+			.today_li, .week_li, .mouth_li, .timme_li {
+				@include adaptive( "height" , 28 , 4.6 );
+				@include adaptive("margin-left", 30 , 5);
+				@include adaptive("margin-right", 30 , 5);
+				// @include adaptive("margin-bottom", 10 , 1.6);
 				cursor: default;
 				display: flex;
 				align-items: center;
@@ -1122,6 +1125,9 @@ header {
 				@include adaptive( "font-size" , 24 , 4);
 				// @include adaptive("margin-bottom", 10 , 1.6);
 			}
+		}
+		.timmeNotice.invisible{
+			display: none;
 		}
    }
    .windowSettings{

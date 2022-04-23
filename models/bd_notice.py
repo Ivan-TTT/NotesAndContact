@@ -11,7 +11,7 @@ def get_notice_all():
         print("Подключен к базе данных [bd_t]")
         global arrNotice
 
-        cursor.execute("SELECT * FROM tasks WHERE dateT != '' OR timeT != '' ORDER BY dateT")
+        cursor.execute("SELECT * FROM tasks WHERE dateT != '' OR timeT != '' ORDER BY dateT DESC")
         arrNotice = cursor.fetchall()
 
     except sqlite3.Error as error:

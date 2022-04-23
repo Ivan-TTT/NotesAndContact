@@ -1,4 +1,8 @@
 
+$(document).ready(function() {
+  hello();
+});
+
 $('#li_taskk').click(function () {
   $('#windowTask_id').slideDown('.aAcTivve');
 
@@ -44,5 +48,67 @@ $('#li_settings').click(function () {
   $('#windowСalendar_id').slideUp('.aAcTivve');
   $('#windowNotice_id').slideUp('.aAcTivve');
 });
+
+function sendNotification(title, options) {
+  // Проверим, есть ли права на отправку уведомлений
+  if (Notification.permission === "granted") {
+      // Если права есть, отправим уведомление
+      var notification = new Notification(title, options);
+      
+      function clickFunc() { alert('Пользователь кликнул на уведомление'); }
+      
+      notification.onclick = clickFunc;
+  }
+  
+  // Если прав нет, пытаемся их получить
+  else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(function (permission) {
+          // Если права успешно получены, отправляем уведомление
+          if (permission === "granted") {
+              var notification = new Notification(title, options);
+          } else {
+              alert('Вы запретили показывать уведомления'); // Юзер отклонил наш запрос на показ уведомлений
+          }
+      });
+  } 
+}
+
+// sendNotification('Верните Линуса!', {
+//     body: 'Тестирование HTML5 Notifications',
+//     icon: 'Img/AddDop-G.svg',
+//     dir:  'auto'
+// });
+
+function hello(){
+  var now = new Date(),
+      hour = now.getHours(),
+      minute = now.getMinutes(),
+      second = now.getSeconds(),
+      message = '';
+
+  // определим фразу приветствия в зависимости от местного времени пользователя
+  if (hour <= 6) {
+      sendNotification('Доброе время суток', {
+        body: '☕',
+        dir:  'auto'
+      });
+  } else if (hour <= 12) {
+      sendNotification('Доброе утро', {
+        body: '🌅',
+        dir:  'auto'
+      });
+  } else if (hour <= 18) {
+      sendNotification('Добрый день', {
+          body: '🍀',
+          dir:  'auto'
+      });
+  } else {
+      sendNotification('Добрый вечер', {
+          body: '🌇',
+          dir:  'auto'
+      });
+  }
+}
+
 
 
