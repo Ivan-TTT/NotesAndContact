@@ -1415,4 +1415,68 @@ header .logo-img .txt-logo-name {
   background-color: var(--sidePanel-color);
   opacity: 1;
 }
+
+.home .windowNotice {
+  display: none;
+}
+
+.home .windowNotice.aAcTivve {
+  display: block;
+}
+
+.home .windowNotice .btnTopNotice {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .windowNotice .btnTopNotice li {
+  cursor: pointer;
+  width: calc(49%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  background-color: var(--task-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowNotice .btnTopNotice li span {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowNotice .btnTopNotice li:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowNotice .btnTopNotice li:hover span {
+  opacity: 1;
+}
+
+.home .windowSettings {
+  display: none;
+}
+
+.home .windowSettings.aAcTivve {
+  display: block;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1051,4 +1051,47 @@ header {
 			}
 		}
    }
+   .windowNotice{
+	   display: none;
+	   &.aAcTivve{
+		   display: block;
+	   }
+	   .btnTopNotice{
+		@include adaptive("margin-top", 30 , 5);
+		@include adaptive("margin-left", 30 , 5);
+		@include adaptive("margin-right", 30 , 5);
+		display: flex;
+		justify-content: space-between;
+		li{
+			cursor: pointer;
+			width: calc(49%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			list-style: none;
+			background-color: var(--task-color);
+			transition: var(--tran-03);
+			@include adaptive( "border-radius" , 6 , 1 );
+			span{
+				@include adaptive( "font-size" , 26 , 4.3);
+				color: var(--text-color);
+				transition: var(--tran-03);
+				opacity: 0.5;
+			}
+			&:hover {
+				background-color: var(--tabs-color);
+				opacity: 1;
+				span{
+					opacity: 1;
+				}
+			}
+	   }
+	}
+   }
+   .windowSettings{
+	display: none;
+	&.aAcTivve{
+		display: block;
+	}
+}
 }
