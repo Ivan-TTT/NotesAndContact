@@ -1057,41 +1057,77 @@ header {
 		   display: block;
 	   }
 	   .btnTopNotice{
-		@include adaptive("margin-top", 30 , 5);
-		@include adaptive("margin-left", 30 , 5);
-		@include adaptive("margin-right", 30 , 5);
-		display: flex;
-		justify-content: space-between;
-		li{
-			cursor: pointer;
-			width: calc(49%);
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			list-style: none;
-			background-color: var(--task-color);
-			transition: var(--tran-03);
-			@include adaptive( "border-radius" , 6 , 1 );
-			span{
-				@include adaptive( "font-size" , 26 , 4.3);
-				color: var(--text-color);
+			justify-content: space-between;
+			li{
+				cursor: pointer;
+				width: calc(49%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				background-color: var(--task-color);
 				transition: var(--tran-03);
-				opacity: 0.5;
-			}
-			&:hover {
-				background-color: var(--tabs-color);
-				opacity: 1;
+				@include adaptive( "border-radius" , 6 , 1 );
 				span{
+					@include adaptive( "font-size" , 26 , 4.3);
+					color: var(--text-color);
+					transition: var(--tran-03);
+					opacity: 0.5;
+				}
+				&:hover {
+					background-color: var(--tabs-color);
 					opacity: 1;
+					span{
+						opacity: 1;
+					}
+				}
+	    	}
+		}
+		.todayNotice, .weekNotice, .mouthNotice{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			@include adaptive("padding-top", 10 , 1.6);
+			background-color: var(--task-color);
+			// border-bottom: 1px solid var(--body-color);
+			@include adaptive( "border-radius" , 6 , 1 );
+			li{
+				@include adaptive("margin-left", 10 , 1.6);
+				@include adaptive("margin-right", 10 , 1.6);
+				@include adaptive("margin-bottom", 10 , 1.6);
+				cursor: default;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				background-color: var(--body-color);
+				transition: var(--tran-03);
+				@include adaptive( "border-radius" , 6 , 1 );
+				span{
+					@include adaptive( "font-size" , 26 , 4.3);
+					color: var(--text-color);
+					transition: var(--tran-03);
+					opacity: 0.5;
 				}
 			}
-	   }
-	}
+			.noNono{
+				@include adaptive("padding-bottom", 10 , 1.6);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				@include adaptive( "font-size" , 24 , 4);
+				// @include adaptive("margin-bottom", 10 , 1.6);
+			}
+		}
    }
    .windowSettings{
-	display: none;
-	&.aAcTivve{
-		display: block;
+		display: none;
+		&.aAcTivve{
+			display: block;
+		}
 	}
-}
 }

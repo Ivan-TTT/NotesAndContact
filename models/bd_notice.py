@@ -1,7 +1,6 @@
 import sqlite3
 
-
-arrGetCon = []
+arrNotice = []
 
 def get_notice_all():
     try:
@@ -10,10 +9,10 @@ def get_notice_all():
         print("-"*130)
         print("Функция (get_notice_all)")
         print("Подключен к базе данных [bd_t]")
-        global arrGetCon
+        global arrNotice
 
         cursor.execute("SELECT * FROM tasks WHERE dateT != '' OR timeT != '' ORDER BY dateT")
-        arrGetCon = cursor.fetchall()
+        arrNotice = cursor.fetchall()
 
     except sqlite3.Error as error:
         print("Ошибка при работе с базой данных [bd_t] : ОШИБКА ПРИ ПОЛУЧЕНИИ КАЛЕНДАРЯ  : ", error)
@@ -23,4 +22,4 @@ def get_notice_all():
             connect.close()
             print("Соединение с базой данных [bd_t] закрыто")
             print("-"*130)
-            return arrGetCon
+            return arrNotice

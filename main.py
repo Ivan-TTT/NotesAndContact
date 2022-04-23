@@ -1,9 +1,9 @@
 from __future__ import print_function	
 import eel
-from models.bd_task import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
-from models.bd_contact import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items, retuuurn_editing_items, fU_nNum, updateE_Contact_py
+from models.bd_task     import saveTask_py, update_task, acceptingAnId_py, retuuurnLineId, updateLineTask_py, retuuurnStatusId, f_nNum
+from models.bd_contact  import saveContact_py, update_contact, accepting_nNum_S7M_py, accepting_id_ED_py, retuuurn_sorted_items, retuuurn_editing_items, fU_nNum, updateE_Contact_py
 from models.bd_calendar import get_calendar_all
-from models.bd_notice import get_notice_all
+from models.bd_notice   import get_notice_all
 eel.init('web')
 
 #- Заметеки ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -12,22 +12,6 @@ eel.init('web')
 def taskValue(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t):
     msg = saveTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t)
     up  = updateLineTask_py(index_t, condition_t, queue_t, text_t, date_t, time_t, koment_t, dopKoment_t, reglament_t, dopReglament_t, osobennosti_t, dapOsobennosti_t)
-
-# @eel.expose 
-# def creatingLineId():
-#     get_line = retuuurnLineId()
-#     eel.retuuurnLineId_js(get_line)
-#     print("Строка передалась в JS, для дальнейшего её редактирования")
-#     print("")
-#     print("-"*130)
-
-# @eel.expose 
-# def creatingStatusId():
-#     get_status = retuuurnStatusId()
-#     eel.retuuurnStatusId_js(get_status)
-#     print("Строка передалась в JS, для дальнейшего её редактирования")
-#     print("")
-#     print("-"*130)
 
 @eel.expose 
 def idTransfer_SED(index,nNum):
@@ -137,5 +121,6 @@ def all_notice():
     for i in get_notice:
         print(i)
     print("-"*130)
+
 
 eel.start('main.html') 

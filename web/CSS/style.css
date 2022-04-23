@@ -1472,6 +1472,58 @@ header .logo-img .txt-logo-name {
   opacity: 1;
 }
 
+.home .windowNotice .todayNotice, .home .windowNotice .weekNotice, .home .windowNotice .mouthNotice {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  padding-top: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowNotice .todayNotice li, .home .windowNotice .weekNotice li, .home .windowNotice .mouthNotice li {
+  margin-left: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  margin-bottom: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  cursor: default;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  background-color: var(--body-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .windowNotice .todayNotice li span, .home .windowNotice .weekNotice li span, .home .windowNotice .mouthNotice li span {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .windowNotice .todayNotice .noNono, .home .windowNotice .weekNotice .noNono, .home .windowNotice .mouthNotice .noNono {
+  padding-bottom: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
+}
+
 .home .windowSettings {
   display: none;
 }

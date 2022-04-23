@@ -23,15 +23,15 @@ function getAddСalendar(nNum){
 
 
     var fullNowDate = new Date(),                       // Сегодняшняя дата 
-        NowYear    = fullNowDate.getFullYear(),         // Год на данныйй момент
-        NowMonth   = fullNowDate.getMonth(),            // Сегодняшний месяц
-        NowNumber  = fullNowDate.getDate(),             // Сегодняшенее число
-        fullDate   = new Date(),                        // Сегодняшняя дата ддя переменой startDate
-        startDate  = new Date(fullDate.setDate(1)),     // первое число этого месяца
-        fullDate_e = new Date(),                        // Сегодняшняя дата ддя переменой endtDate
-        endtDate   = new Date(fullDate_e.setDate(1)),   // первое число этого месяца
-        thisDay    = document.querySelector('.e_d'),
-        arrMouth   = ['январь','февраль','март','апрель','май','июнь',
+        NowYear     = fullNowDate.getFullYear(),         // Год на данныйй момент
+        NowMonth    = fullNowDate.getMonth(),            // Сегодняшний месяц
+        NowNumber   = fullNowDate.getDate(),             // Сегодняшенее число
+        fullDate    = new Date(),                        // Сегодняшняя дата ддя переменой startDate
+        startDate   = new Date(fullDate.setDate(1)),     // первое число этого месяца
+        fullDate_e  = new Date(),                        // Сегодняшняя дата ддя переменой endtDate
+        endtDate    = new Date(fullDate_e.setDate(1)),   // первое число этого месяца
+        thisDay     = document.querySelector('.e_d'),
+        arrMouth    = ['январь','февраль','март','апрель','май','июнь',
                       'июль','август','сентябрь','октябрь','ноябрь','декабрь'];
     
 
