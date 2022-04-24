@@ -1,6 +1,5 @@
 $(document).ready(function() {
     eel.all_notice();
-    clock();
     // localStorage.setItem(`IdTrisTask`,``);
     // localStorage.setItem('Editing','');
     // localStorage.setItem('OneCreated','no');
@@ -106,6 +105,7 @@ function get_notice_js(get_notice){
 
 
     }
+    clock();
     
 }
 
@@ -128,6 +128,7 @@ function create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, s
     Notice_Element.classList.add ( "Task" );
 
     saveTaskDate_Date < fullNowDate ? Notice_Element.classList.add ("invi") : "";
+    saveTaskDate_Date == fullNowDate+1 ? Notice_Element.classList.add ("tTomorrow") : "";
     saveCindition == "finish" ? Notice_Element.classList.add ("invi") : "";  
 
     saveTaskTime == "" ? Notice_Element.classList.add ("noTime") : "";
@@ -187,6 +188,16 @@ function create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, s
 function notionTime_w(){
     [...document.getElementsByClassName('noTime')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('timmeNotice')].forEach(i => i.classList.remove("invisible"));
+
+    // var div_www = document.getElementsByClassName('weekNotice'); // Получаем список все блоков документа
+    // var c_www= div_www.childNodes.length;                       // Считаем количество блок 
+    // console.log( c_www)
+    var onN =
+    $(".weekNotice").each(function () {
+        $(this).find('.Task').length;
+        
+    })
+
 }
 
 function notion_w(){
@@ -237,6 +248,10 @@ function clock(){
 
     var div_tTO_Day = document.querySelectorAll('.tTO_Day'); // Получаем список все блоков документа
     var cnt = div_tTO_Day.length;                       // Считаем количество блок 
+
+    var div_tTO_morr = document.querySelectorAll('.tTomorrow'); // Получаем список все блоков документа
+    var ctr = div_tTO_morr.length;                       // Считаем количество блок
+     
   
     if(hours < 10)
          hours = "0" + hours;
@@ -250,8 +265,15 @@ function clock(){
     // var container_Notice = document.getElementsById('todayNotice_id');
     // var Notice = container_Notice.getElementsByTagName('div').length;
 
-    if (( str == "17:26:30" || str == "07:30:30" || str == "09:20:30" || str == "12:00:30" || str == "14:00:30" || str == "16:00:30" || str == "17:30:00" || str == "17:00:30" || str == "21:00:30" || str == "23:30:00") && (ostanovit == 0)){
+    if (( str == "07:30:30" || str == "09:20:30" || str == "12:00:30" || str == "14:00:30" || str == "16:00:30" || str == "17:30:00" ) && (ostanovit == 0)){
         sendNotification(`Заметок на сегодня : ${cnt}`, {
+            body: 'Зайдите во вкладку "Задачи"',
+            dir:  'auto'
+        });
+        ostanovit = 1;
+        // setTimeout( ostanovit = 0, 61000);
+    } else if (( str == "14:55:00" || str == "17:00:00" ||  str == "21:00:30" || str == "23:30:00") && (ostanovit == 0)){
+        sendNotification(`Заметок на завтра : ${ctr}`, {
             body: 'Зайдите во вкладку "Задачи"',
             dir:  'auto'
         });
@@ -271,8 +293,8 @@ function clock(){
                 dir:  'auto'
             })
         } else if (arrTime_Task[mass][2] != "finish" && arrTime_Task[mass][1] == "" && str == arrTime_Task[mass][0]){
-            sendNotification(`Время : ${arrTime_Task[mass][1]}`, {
-                body: `${arrTime_Task[mass][0]}`,
+            sendNotification(`Время : ${arrTime_Task[mass][0]}`, {
+                body: `Время :${arrTime_Task[mass][0]}`,
                 dir:  'auto'
             });
         }
