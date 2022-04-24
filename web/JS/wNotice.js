@@ -18,6 +18,7 @@ $(document).ready(function() {
 // }
 
 var NoticeElement_Task = document.querySelector('.today_li');
+var arrTime_Task = [];
 
 eel.expose(get_notice_js)
 function get_notice_js(get_notice){
@@ -86,6 +87,7 @@ function get_notice_js(get_notice){
                 console.log("сгодня",saveTaskDate_Date)
                 NoticeElement_Task = document.querySelector('.today_li');
                 create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree)
+                saveTaskTime != "" ? arrTime_Task.push([saveTaskTime + ":00", saveTaskText , saveCindition]) : "";
             } else if( saveTaskDate_Date == Monday || saveTaskDate_Date == Tuesday || saveTaskDate_Date == Wednesday || saveTaskDate_Date == Thursday || saveTaskDate_Date == Friday || saveTaskDate_Date == Saturday || saveTaskDate_Date == Sunday ){
                 console.log("на недели",saveTaskDate_Date)
                 NoticeElement_Task = document.querySelector('.week_li');
@@ -99,7 +101,8 @@ function get_notice_js(get_notice){
         } else {
             NoticeElement_Task = document.querySelector('.timme_li');
             create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree)
-    }
+            arrTime_Task.push([saveTaskTime + ":00", "" , saveCindition])
+        }
 
 
     }
@@ -111,15 +114,25 @@ function get_notice_js(get_notice){
 function create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree){
     
     var fullNowDate = new Date().getUTCDate();
-    var saveTaskDate_Date = new Date(saveTaskDate).getUTCDate();
+        saveTaskDate_Date = new Date(saveTaskDate).getUTCDate(),
+        fullNowDate_2 = new Date(),                       
+        NowDay      = fullNowDate_2.toLocaleDateString(),
+        tototoDay   = new Date(saveTaskDate).toLocaleDateString()
+
+    // console.log("")
+    // console.log(new Date(saveTaskDate).toLocaleDateString())
+    // console.log("")
 
 
     const Notice_Element = document.createElement ( 'div' );
     Notice_Element.classList.add ( "Task" );
 
-    saveTaskDate_Date < fullNowDate ? Notice_Element.classList.add ("invi") : ""; 
+    saveTaskDate_Date < fullNowDate ? Notice_Element.classList.add ("invi") : "";
+    saveCindition == "finish" ? Notice_Element.classList.add ("invi") : "";  
 
     saveTaskTime == "" ? Notice_Element.classList.add ("noTime") : "";
+
+    tototoDay == NowDay && saveCindition == "finish" ? Notice_Element.classList.add ("tTO_Day") : "";
 
     console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
     Notice_Element.innerHTML = `
@@ -211,9 +224,9 @@ function sendNotification(title, options) {
 //     dir:  'auto'
 // });
 
-var ostanovit = 0
-var container_Notice = document.getElementsById('todayNotice_id');
-var Notice = container_Notice.getElementsByTagName('div').length;
+// var ostanovit = 0
+// var container_Notice = document.getElementsById('todayNotice_id');
+// var Notice = container_Notice.getElementsByTagName('div').length;
 
 function clock(){
 
@@ -221,6 +234,9 @@ function clock(){
     var hours = date.getHours();
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
+
+    var div_tTO_Day = document.querySelectorAll('.tTO_Day'); // Получаем список все блоков документа
+    var cnt = div_tTO_Day.length;                       // Считаем количество блок 
   
     if(hours < 10)
          hours = "0" + hours;
@@ -229,22 +245,42 @@ function clock(){
     if(seconds < 10)
        seconds = "0" + seconds;
   
-    var str = hours + ":" + minutes;
+    var str = hours + ":" + minutes + ":" + seconds;
 
     // var container_Notice = document.getElementsById('todayNotice_id');
     // var Notice = container_Notice.getElementsByTagName('div').length;
 
-    if ((str == "01:36" || str == "12:00" || str == "14:00" || str == "16:00" || str == "17:30" || str == "17:00" || str == "21:00" || str == "23:30") && (ostanovit == 0)){
-        sendNotification(`Заметок на сегодня : ${Notice}`, {
+    if (( str == "17:26:30" || str == "07:30:30" || str == "09:20:30" || str == "12:00:30" || str == "14:00:30" || str == "16:00:30" || str == "17:30:00" || str == "17:00:30" || str == "21:00:30" || str == "23:30:00") && (ostanovit == 0)){
+        sendNotification(`Заметок на сегодня : ${cnt}`, {
             body: 'Зайдите во вкладку "Задачи"',
             dir:  'auto'
         });
         ostanovit = 1;
-        setTimeout( ostanovit = 0, 61000);
-    } 
+        // setTimeout( ostanovit = 0, 61000);
+    } else {
+        ostanovit = 0;
+    }
   
-    // // console.log(str)
-    // setTimeout("clock()", 1000);
+    // console.log(arrTime_Task)
+
+    for (var mass = 0; mass < arrTime_Task.length; mass++){
+        
+        if (arrTime_Task[mass][2] != "finish" && arrTime_Task[mass][1] != "" && str == arrTime_Task[mass][0]){
+            sendNotification(`${arrTime_Task[mass][1]}`, {
+                body: `Осалось выполниь : ${cnt}, Время : ${arrTime_Task[mass][0]}`,
+                dir:  'auto'
+            })
+        } else if (arrTime_Task[mass][2] != "finish" && arrTime_Task[mass][1] == "" && str == arrTime_Task[mass][0]){
+            sendNotification(`Время : ${arrTime_Task[mass][1]}`, {
+                body: `${arrTime_Task[mass][0]}`,
+                dir:  'auto'
+            });
+        }
+         
+    } 
+
+
+    setTimeout("clock()", 1000)
 
     // if (ostanovit = 1 ){
     //     setTimeout( ostanovit = 0, 60000);
