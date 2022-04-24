@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
   hello();
+  document.location.href.split('/').pop();
 });
 
 $('#li_taskk').click(function () {

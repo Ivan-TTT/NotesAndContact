@@ -1479,7 +1479,7 @@ header .logo-img .txt-logo-name {
   margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
   padding-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   padding-bottom: calc(5px + 25 * ((100vw - 320px) / 1600));
-  background-color: var(--task-color);
+  border-bottom: 1px solid var(--task-color);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
 }
 
@@ -1498,7 +1498,7 @@ header .logo-img .txt-logo-name {
       -ms-flex-pack: center;
           justify-content: center;
   list-style: none;
-  background-color: var(--body-color);
+  background-color: var(--task-color);
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));

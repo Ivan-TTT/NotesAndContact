@@ -1094,8 +1094,8 @@ header {
 			@include adaptive("margin-right", 30 , 5);
 			@include adaptive("padding-top", 30 , 5);
 			@include adaptive("padding-bottom", 30 , 5);
-			background-color: var(--task-color);
-			// border-bottom: 1px solid var(--body-color);
+			// background-color: var(--task-color);
+			border-bottom: 1px solid var(--task-color);
 			@include adaptive( "border-radius" , 6 , 1 );
 			.today_li, .week_li, .mouth_li, .timme_li {
 				@include adaptive( "height" , 28 , 4.6 );
@@ -1107,7 +1107,7 @@ header {
 				align-items: center;
 				justify-content: center;
 				list-style: none;
-				background-color: var(--body-color);
+				background-color: var(--task-color);
 				transition: var(--tran-03);
 				@include adaptive( "border-radius" , 6 , 1 );
 				span{
