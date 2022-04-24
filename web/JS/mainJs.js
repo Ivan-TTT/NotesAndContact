@@ -96,16 +96,19 @@ function hello(){
   } else if (hour <= 12) {
       sendNotification('Доброе утро', {
         body: '🌅',
+        icon: '🌅',
         dir:  'auto'
       });
   } else if (hour <= 18) {
       sendNotification('Добрый день', {
           body: '🍀',
+          icon: '🍀',
           dir:  'auto'
       });
   } else {
       sendNotification('Добрый вечер', {
           body: '🌇',
+          icon: '🌇',
           dir:  'auto'
       });
   }
