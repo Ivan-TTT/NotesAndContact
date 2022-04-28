@@ -1131,9 +1131,113 @@ header {
 		}
    }
    .windowSettings{
-		display: none;
+		@include adaptive("padding-bottom", 30 , 5);
+	    display: none;
+	    &.aAcTivve{
+		   display: block;
+	    }
+	   .btnTopSettings{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			display: flex;
+			justify-content: space-between;
+			li{
+				cursor: pointer;
+				width: calc(23.5%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				background-color: var(--task-color);
+				transition: var(--tran-03);
+				@include adaptive( "border-radius" , 6 , 1 );
+				span{
+					@include adaptive( "font-size" , 26 , 4.3);
+					color: var(--text-color);
+					transition: var(--tran-03);
+					opacity: 0.5;
+				}
+				&:hover {
+					background-color: var(--tabs-color);
+					opacity: 1;
+					span{
+						opacity: 1;
+					}
+				}
+	    	}
+		}
 		&.aAcTivve{
 			display: block;
+		}
+		.con_Set{
+			@include adaptive("margin-top", 30 , 5);
+			@include adaptive("margin-left", 30 , 5);
+			@include adaptive("margin-right", 30 , 5);
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			.organization_set, .ISQ_set{
+				width: calc(23.5%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				flex-direction: column;
+				background-color: var(--task-color);
+				@include adaptive( "border-radius" , 6 , 1 );
+				li{
+					@include adaptive("margin-top", 6 , 1);
+					@include adaptive("padding", 10 , 1.6);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					// flex-direction: column;
+					background-color: var(--sidePanel-color);
+					@include adaptive( "border-radius" , 6 , 1 );
+					img{
+						cursor: pointer;
+						
+						@include adaptive("width", 36 , 6);
+						@include adaptive( "border-radius" , 6 , 1 );
+						transition: var(--tran-03);
+						opacity: 0.5;
+						&:hover {
+							opacity: 0.8;
+						}
+					}
+					input {
+						@include adaptive( "border-radius" , 6 , 1 );
+						@include adaptive( "height" , 30 , 5);
+						border: none;
+						outline: none;
+						resize: none;
+						vertical-align: middle;
+						font-family: Montserrat-Regular;
+						background-color: var(--tabs-color);
+						width: calc(100%);
+						// @include adaptive("padding", 5 , 0.83);
+						// @include adaptive("padding-top", 5 , 0.83);
+						@include adaptive("padding-left", 5 , 0.83);
+						@include adaptive("padding-right", 5 , 0.83);
+						// @include adaptive("padding-right", 5 , 0.83);
+						@include adaptive( "font-size" , 18 , 3);
+					}
+					.name_set, .inp_set{
+						@include adaptive("margin-right", 10 , 1.6);
+					}
+					span{
+						@include adaptive( "font-size" , 20 , 3.3);
+						color: var(--text-color);
+						width: calc(60%);
+					}
+				}
+				.name_name{
+					@include adaptive( "font-size" , 24 , 4);
+					@include adaptive("padding-bottom", 12 , 2);
+					@include adaptive("padding-top", 12 , 2);
+				}
+			}
 		}
 	}
 }
