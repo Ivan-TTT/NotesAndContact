@@ -2,6 +2,7 @@ $(document).ready(function() {
     eel.update_all_contact();
     localStorage.setItem('contact_Editing','no');
     localStorage.setItem('contact_Created','no');
+    set_mame_o();
     // localStorage.setItem('VisibleNumber','yes');
     // localStorage.setItem('ActiveOrPasiveTask','active');
     // console.log('HTML загружен');
@@ -230,6 +231,45 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
 }
 
 //---------------------------------------------------------------------------------------------
+
+function orga_setting(){
+    var i_s_1 = document.getElementById("i_s_1_id").value; i_s_1 != ""  
+    ? console.log(i_s_1): ""; 
+
+    var i_s_2 = document.getElementById("i_s_2_id").value; i_s_2 != ""  
+    ? console.log(i_s_2): ""; 
+
+    var i_s_3 = document.getElementById("i_s_3_id").value; i_s_3 != ""  
+    ? console.log(i_s_3): ""; 
+
+    var i_s_4 = document.getElementById("i_s_4_id").value; i_s_4 != ""  
+    ? console.log(i_s_4): ""; 
+
+    var i_s_5 = document.getElementById("i_s_5_id").value; i_s_5 != ""  
+    ? console.log(i_s_5): ""; 
+
+    var i_s_arr = [i_s_1, i_s_2, i_s_3, i_s_4, i_s_5];
+    localStorage.setItem('Name_Or',i_s_arr);
+}
+
+function set_mame_o(){
+    var arrLock = localStorage.getItem("Name_Or")
+    // $("#i_s_1_id").update(arrLock[0]);
+    // $("#i_s_2_id").update(arrLock[1]);
+    // $("#i_s_3_id").update(arrLock[2]);
+    // $("#i_s_4_id").update(arrLock[3]);
+    // $("#i_s_5_id").update(arrLock[4]);
+    // document.query("input").value = "Ваш текст";
+
+    document.getElementById("i_s_1_id").value = arrLock[0];
+    document.getElementById("i_s_2_id").value = arrLock[2];
+    document.getElementById("i_s_3_id").value = arrLock[4];
+    document.getElementById("i_s_4_id").value = arrLock[6];
+    document.getElementById("i_s_5_id").value = arrLock[8];
+}
+
+//---------------------------------------------------------------------------------------------
+
 
 //- 0-(S)sorted*7 | 6-(M)mail  
 function S7M(nNum){

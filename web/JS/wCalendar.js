@@ -38,11 +38,11 @@ function getAddСalendar(nNum){
     if (nNum =='1'){
         var startDate = new Date(fullDate.setMonth(startDate.getMonth() - 01));
         var startDate = new Date(fullDate.setDate(1));
-        console.log(startDate);
+        // console.log(startDate);
     } else if (nNum =='2'){
         var startDate = new Date(fullDate.setMonth(startDate.getMonth() + 01));
         var startDate = new Date(fullDate.setDate(1));
-        console.log(startDate);
+        // console.log(startDate);
     }
 
     var len_m = startDate.getMonth();
@@ -58,7 +58,7 @@ function getAddСalendar(nNum){
     mouthElement.after(NewMouthElement);
 
     var startDateDay = startDate.getDay();
-    console.log(startDateDay);
+    // console.log(startDateDay);
 
     // for(var ssStart = 0; ssStart <= startDateDay; ssStart++){
     //     if (startDateDay > 1){
@@ -72,40 +72,40 @@ function getAddСalendar(nNum){
     // }
     // находим первое число для сетки 7 на 6
     if (startDateDay == '1'){
-        console.log(startDateDay);
+        // console.log(startDateDay);
     } else if (startDateDay == '2'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 1));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 1));
-        console.log(2);
+        // console.log(2);
     } else if (startDateDay == '3'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 2));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 2));
-        console.log(3);
+        // console.log(3);
     } else if (startDateDay == '4'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 3));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 3));
-        console.log(4);
+        // console.log(4);
     } else if (startDateDay == '5'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 4));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 4));
-        console.log(5);
+        // console.log(5);
     } else if (startDateDay == '6'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 5));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 5));
-        console.log(6);
+        // console.log(6);
     } else if (startDateDay == '0'){
         var startDate = new Date(fullDate.setDate(fullDate.getDate() - 6));
         var endtDate = new Date(fullDate_e.setDate(fullDate_e.getDate() - 6));
-        console.log(7);
+        // console.log(7);
     }
 
     // Последнее число для сетки 7 на 6
     var endtDate = new Date(endtDate.setDate(endtDate.getDate() + 41));
 
 
-    console.log(startDate.toLocaleDateString());
-    console.log(fullNowDate.toLocaleDateString());
-    console.log(endtDate.toLocaleDateString());
+    // console.log(startDate.toLocaleDateString());
+    // console.log(fullNowDate.toLocaleDateString());
+    // console.log(endtDate.toLocaleDateString());
 
 
     $(".e_d").remove();
@@ -153,7 +153,7 @@ function whyThisDate(){
                 date: item.getAttribute('li_all')
             });
         });
-        console.log(output[0].date);
+        // console.log(output[0].date);
         localStorage.setItem('this_date_LS',`${output[0].date}`);
         setTimeout(eel.all_calendar(), 50);
     }
@@ -165,7 +165,7 @@ function whyThisDate(){
 
 eel.expose(get_calendar_js)
 function get_calendar_js(get_calendar){
-    console.log(get_calendar);
+    // console.log(get_calendar);
     for (var tasks = 0; tasks < get_calendar.length; tasks++){
 
         var saveIndex     = get_calendar[tasks][0];                 
@@ -183,7 +183,7 @@ function get_calendar_js(get_calendar){
         var saveTextareaDopTaskThree = get_calendar[tasks][11]; 
 
         var saveTaskDate_Date        = new Date(get_calendar[tasks][4]).toLocaleDateString();   
-        console.log(saveTaskDate_Date);
+        // console.log(saveTaskDate_Date);
         // console.log("-",saveTaskDate_Date );
         // console.log("+",localStorage.getItem('this_date_LS') )
         // var col_met = document.getElementsByClassName(`m_${saveTaskDate_Date}`);
@@ -230,7 +230,7 @@ function get_calendar_js(get_calendar){
             if ((col_met[i].id == `m_${saveTaskDate_Date}`) == 1){
                 // mmet_dom++;
                 col_met[i].classList.add("visi");
-                console.log(mmet_dom_p);
+                // console.log(mmet_dom_p);
             }
             // } else if ((col_met[i].id == `z_${saveTaskDate_Date}`) && mmet_dom_p == 2){
             //     col_met[i].classList.add("visi");
@@ -278,7 +278,7 @@ function create_Сalendar_Task(saveIndex, saveCindition, saveQueue, saveTaskText
     Сalendar_Element.classList.add ( "Task" );
     Сalendar_Element.classList.add ( "Сa_Task" );
     // Сalendar_Element.setAttribute ('id', '0');
-    console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
+    // console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
     Сalendar_Element.innerHTML = `
        <div class="oneContent">
            <div class="itemGroupOne">

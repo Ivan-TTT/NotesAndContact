@@ -47,7 +47,7 @@ function get_notice_js(get_notice){
     } else if (HowDayWeek == '0'){
         var SartDayWeek = new Date(fullNowDate.setDate(fullNowDate.getDate() - 6));
     }
-    console.log(SartDayWeek.toLocaleDateString())
+    // console.log(SartDayWeek.toLocaleDateString())
 
     var Monday    = SartDayWeek.toLocaleDateString(),
         Tuesday   = new Date(SartDayWeek.setDate(SartDayWeek.getDate() + 1)).toLocaleDateString(),
@@ -57,7 +57,7 @@ function get_notice_js(get_notice){
         Saturday  = new Date(SartDayWeek.setDate(SartDayWeek.getDate() + 5)).toLocaleDateString(),
         Sunday    = new Date(SartDayWeek.setDate(SartDayWeek.getDate() + 6)).toLocaleDateString()
 
-    console.log(Tuesday)
+    // console.log(Tuesday)
 
 
     for (var notice = 0; notice < get_notice.length; notice++){
@@ -81,18 +81,18 @@ function get_notice_js(get_notice){
                 sMou = new Date(get_notice[notice][4]).getUTCMonth(),
                 sYea = new Date(get_notice[notice][4]).getUTCFullYear()
 
-            console.log(sMou, sYea);
+            // console.log(sMou, sYea);
             if (saveTaskDate_Date == NowDay){
-                console.log("сгодня",saveTaskDate_Date)
+                // console.log("сгодня",saveTaskDate_Date)
                 NoticeElement_Task = document.querySelector('.today_li');
                 create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree)
                 saveTaskTime != "" ? arrTime_Task.push([saveTaskTime + ":00", saveTaskText , saveCindition]) : "";
             } else if( saveTaskDate_Date == Monday || saveTaskDate_Date == Tuesday || saveTaskDate_Date == Wednesday || saveTaskDate_Date == Thursday || saveTaskDate_Date == Friday || saveTaskDate_Date == Saturday || saveTaskDate_Date == Sunday ){
-                console.log("на недели",saveTaskDate_Date)
+                // console.log("на недели",saveTaskDate_Date)
                 NoticeElement_Task = document.querySelector('.week_li');
                 create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree)
             } else if (( sMou == NowMonth) && (sYea == NowYear)){
-                console.log("В этом месяце",saveTaskDate_Date)
+                // console.log("В этом месяце",saveTaskDate_Date)
                 NoticeElement_Task = document.querySelector('.mouth_li');
                 create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree)
             }
@@ -135,7 +135,7 @@ function create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, s
 
     tototoDay == NowDay && saveCindition == "finish" ? Notice_Element.classList.add ("tTO_Day") : "";
 
-    console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
+    // console.log(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);
     Notice_Element.innerHTML = `
        <div class="oneContent">
            <div class="itemGroupOne">

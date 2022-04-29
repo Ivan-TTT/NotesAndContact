@@ -536,7 +536,7 @@ function createTask_editing(saveIndex, saveCindition, saveQueue, saveTaskText, s
 
 function activeTask(){
     localStorage.setItem('ActiveOrPasiveTask','active');
-    console.log("актив");
+    // console.log("актив");
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.remove("invisible"));
 
@@ -545,7 +545,7 @@ function activeTask(){
 }
 function pasiveTask(){
     localStorage.setItem('ActiveOrPasiveTask','pasive');
-    console.log("пасив");
+    // console.log("пасив");
     [...document.getElementsByClassName('aAaKtive')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('pPpAsive')].forEach(i => i.classList.remove("invisible"));
 
