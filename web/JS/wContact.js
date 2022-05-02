@@ -233,19 +233,19 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
 //---------------------------------------------------------------------------------------------
 
 function orga_setting(){
-    var i_s_1 = document.getElementById("i_s_1_id").value; i_s_1 != ""  
+    var i_s_1 = [document.getElementById("i_s_1_id").value]; i_s_1 != ""  
     ? console.log(i_s_1): ""; 
 
-    var i_s_2 = document.getElementById("i_s_2_id").value; i_s_2 != ""  
+    var i_s_2 = [document.getElementById("i_s_2_id").value]; i_s_2 != ""  
     ? console.log(i_s_2): ""; 
 
-    var i_s_3 = document.getElementById("i_s_3_id").value; i_s_3 != ""  
+    var i_s_3 = [document.getElementById("i_s_3_id").value]; i_s_3 != ""  
     ? console.log(i_s_3): ""; 
 
-    var i_s_4 = document.getElementById("i_s_4_id").value; i_s_4 != ""  
+    var i_s_4 = [document.getElementById("i_s_4_id").value]; i_s_4 != ""  
     ? console.log(i_s_4): ""; 
 
-    var i_s_5 = document.getElementById("i_s_5_id").value; i_s_5 != ""  
+    var i_s_5 = [document.getElementById("i_s_5_id").value]; i_s_5 != ""  
     ? console.log(i_s_5): ""; 
 
     var i_s_arr = [i_s_1, i_s_2, i_s_3, i_s_4, i_s_5];
@@ -253,19 +253,36 @@ function orga_setting(){
 }
 
 function set_mame_o(){
-    var arrLock = localStorage.getItem("Name_Or")
     // $("#i_s_1_id").update(arrLock[0]);
     // $("#i_s_2_id").update(arrLock[1]);
     // $("#i_s_3_id").update(arrLock[2]);
     // $("#i_s_4_id").update(arrLock[3]);
     // $("#i_s_5_id").update(arrLock[4]);
     // document.query("input").value = "Ваш текст";
+    var arrLock = localStorage.getItem("Name_Or")
+    console.log(arrLock)
+    var j = 0;
 
-    document.getElementById("i_s_1_id").value = arrLock[0];
-    document.getElementById("i_s_2_id").value = arrLock[2];
-    document.getElementById("i_s_3_id").value = arrLock[4];
-    document.getElementById("i_s_4_id").value = arrLock[6];
-    document.getElementById("i_s_5_id").value = arrLock[8];
+    for(var i = 0; i < arrLock.length; i++){
+        // for( var j = 0; (j < i)  )
+        // document.getElementById(`i_s_${i + 1}_id`).value = arrLock[i][0];
+        if (arrLock[i][0] != ","){
+            j++;
+            for( var ji = 0; (ji < j); ji++){
+                // document.getElementById(`i_s_${ji + 1}_id`).value = arrLock[ji];
+                console.log(1)
+            }
+            // document.getElementById(`i_s_${i + 1}_id`).value = arrLock[i][0];
+            // console.log(1)
+        }
+        
+    } 
+
+    // document.getElementById("i_s_1_id").value = arrLock[0];
+    // document.getElementById("i_s_2_id").value = arrLock[1];
+    // document.getElementById("i_s_3_id").value = arrLock[2];
+    // document.getElementById("i_s_4_id").value = arrLock[3];
+    // document.getElementById("i_s_5_id").value = arrLock[4];
 }
 
 //---------------------------------------------------------------------------------------------
