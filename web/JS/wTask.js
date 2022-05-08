@@ -352,7 +352,7 @@ function createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText
                 <li class ="SaveTask" onClick ="${saveCindition == "finish" 
                 ? "SED('3')" : "SED('2')"}" >
                     <img class ="saveTask-img" src ="${saveCindition == "finish" 
-                    ? 'Img/zero-G.svg' : 'Img/Pensil-G.svg'}" alt ="" >
+                    ? 'Img/Trash-G.svg' : 'Img/Pensil-G.svg'}" alt ="" >
                 </li>
              </ul>
         </div>

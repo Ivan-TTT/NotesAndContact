@@ -123,4 +123,4 @@ def all_notice():
     print("-"*130)
 
 
-eel.start('main.html', port=2525, cmdline_args=['--start-fullscreen']) 
+eel.start('main.html', port=2525, size=(1024, 600)) 

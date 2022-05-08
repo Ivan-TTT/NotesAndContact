@@ -659,7 +659,7 @@ function create_Contact_editing(save_C_Id, save_C_name, save_C_organiz, save_C_a
         <div class="contactGroup">
             <ul>  
                 <li class="saveCon dele" onClick ="ED('1')">
-                    <img class ="" src ="Img/zero-G.svg" alt ="" >
+                    <img class ="" src ="Img/Trash-G.svg" alt ="" >
                 </li>        
 
                 <li class="nameCon">
