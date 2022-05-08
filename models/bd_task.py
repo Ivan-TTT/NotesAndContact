@@ -43,7 +43,7 @@ def update_task():
     try:
         connect = sqlite3.connect("bd/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM tasks ORDER BY queue_t DESC")
+        cursor.execute("SELECT * FROM tasks ORDER BY indexT DESC")
         tasks_items = []
         for item in cursor.fetchall():
             tasks_items.append(item)
@@ -151,43 +151,6 @@ def retuuurnLineId():
 def retuuurnStatusId():
     return indexStatus
 
-# def acceptingAnId_satus_py(index):
-#     try:
-#         connect = sqlite3.connect("bd/storage.db")
-#         cursor = connect.cursor()
-#         cursor.execute("SELECT cinditionT FROM tasks WHERE indexT=?",(index,))
-#         global indexStatus 
-#         indexStatus = cursor.fetchall()
-#         print("Статус с index = ", index ," : ", indexStatus)
-
-#         update_status = "UPDATE tasks SET cinditionT = ? WHERE indexT=?"
-
-#         if (indexStatus[0][0] == 'start'):
-#             print(indexStatus[0][0])
-#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("middle" , index,))
-#         elif (indexStatus[0][0] == 'middle'):
-#             print(indexStatus[0][0])
-#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("finish" , index,))
-#         else:
-#             print(indexStatus[0][0])
-#             cursor.execute("UPDATE tasks SET cinditionT = ? WHERE indexT=?",("start" , index,))
-            
-#         connect.commit()
-#         connect.close()
-#         retuuurnLineId()
-#         return indexStatus
-#     except Exception as error:
-#         indexStatus = "erro"
-#         print(error)
-#         return indexStatus
-
-# def lineDelete(index):
-#     connect = sqlite3.connect("bd/storage.db")
-#     cursor = connect.cursor()
-#     cursor.execute("DELETE FROM tasks WHERE indexT=?",(index,))
-#     connect.close()
-
-# Возвращение данных о строке в JS, для ее создания, с возможностью редактирования
 
  
 

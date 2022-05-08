@@ -110,6 +110,10 @@ body {
   opacity: 0.5;
 }
 
+.sidePanel li a .text {
+  color: var(--text-color);
+}
+
 .sidePanel li a:hover {
   background-color: var(--tabs-color);
   opacity: 0.8;
@@ -134,6 +138,10 @@ body {
 .sidePanel .text {
   font-size: calc(3.6px + 18.4 * ((100vw - 320px) / 1600));
   opacity: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .sidePanel header {
@@ -249,7 +257,7 @@ header .logo-img .txt-logo-name {
 
 .sidePanel li a:hover .icon,
 .sidePanel li a:hover .text {
-  color: var(--sidePanel-color);
+  color: var(--text-color);
 }
 
 .tabs-bar::-webkit-scrollbar {
@@ -270,6 +278,7 @@ header .logo-img .txt-logo-name {
 
 .home .windowTask {
   display: none;
+  padding-bottom: calc(5px + 25 * ((100vw - 320px) / 1600));
 }
 
 .home .windowTask.aAcTivve {
@@ -286,6 +295,10 @@ header .logo-img .txt-logo-name {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .btnTopTask li {
@@ -655,6 +668,10 @@ header .logo-img .txt-logo-name {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -775,6 +792,10 @@ header .logo-img .txt-logo-name {
 .home .windowContacts .columnNames ul .address_C, .home .windowContacts .columnNames ul .contFace_C, .home .windowContacts .columnNames ul .telephone_C,
 .home .windowContacts .columnNames ul .mail_C, .home .windowContacts .columnNames ul .ICQ_C {
   margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowContacts .columnNames ul .name_C {
@@ -876,6 +897,10 @@ header .logo-img .txt-logo-name {
   font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
   margin-top: 0;
   margin-bottom: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-header .close {
@@ -964,6 +989,10 @@ header .logo-img .txt-logo-name {
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
   opacity: 0.5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowContacts .modal .modal-dialog .modal-content .modal-body .cope_mail span {
@@ -999,7 +1028,7 @@ header .logo-img .txt-logo-name {
   opacity: 1;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne, .home .windowContacts .modal .modal-dialog .modal-content .tTwo, .home .windowContacts .modal .modal-dialog .modal-content .tрHree {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne, .home .windowContacts .modal .modal-dialog .modal-content .tTwo, .home .windowContacts .modal .modal-dialog .modal-content .tрHree, .home .windowContacts .modal .modal-dialog .modal-content .fFour, .home .windowContacts .modal .modal-dialog .modal-content .fiFive {
   padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1013,9 +1042,13 @@ header .logo-img .txt-logo-name {
   -webkit-transition: var(--tran-03);
   transition: var(--tran-03);
   border-bottom: 1px solid var(--task-color);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne ul, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne ul, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul {
   margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
   width: calc(261.6px + 1308.4 * ((100vw - 320px) / 1600));
   display: -webkit-box;
@@ -1028,7 +1061,7 @@ header .logo-img .txt-logo-name {
       flex-wrap: wrap;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne ul li, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul li, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul li {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne ul li, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul li, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul li, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul li, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul li {
   font-size: calc(3px + 15 * ((100vw - 320px) / 1600));
   cursor: pointer;
   background-color: var(--task-color);
@@ -1040,16 +1073,16 @@ header .logo-img .txt-logo-name {
   margin-bottom: calc(0.5px + 2.5 * ((100vw - 320px) / 1600));
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_f, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_fi, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_f, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_fi, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_f, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_fi, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_f, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_fi, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_o, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_t, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_th, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_f, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_fi {
   background-color: var(--task-color);
   opacity: 1;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th_ {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_f_, .home .windowContacts .modal .modal-dialog .modal-content .oOne ul .click_fi_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_f_, .home .windowContacts .modal .modal-dialog .modal-content .tTwo ul .click_fi_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_f_, .home .windowContacts .modal .modal-dialog .modal-content .tрHree ul .click_fi_, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_f_, .home .windowContacts .modal .modal-dialog .modal-content .fFour ul .click_fi_, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_o_, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_t_, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_th_, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_f_, .home .windowContacts .modal .modal-dialog .modal-content .fiFive ul .click_fi_ {
   display: none;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span, .home .windowContacts .modal .modal-dialog .modal-content .fFour span, .home .windowContacts .modal .modal-dialog .modal-content .fiFive span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1060,7 +1093,7 @@ header .logo-img .txt-logo-name {
       -ms-flex-pack: center;
           justify-content: center;
   padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
-  width: calc(30.3px + 151.7 * ((100vw - 320px) / 1600));
+  min-width: calc(30.3px + 151.7 * ((100vw - 320px) / 1600));
   cursor: pointer;
   background-color: var(--tabs-color);
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
@@ -1070,12 +1103,12 @@ header .logo-img .txt-logo-name {
   font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne span:hover, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span:hover, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span:hover {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne span:hover, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span:hover, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span:hover, .home .windowContacts .modal .modal-dialog .modal-content .fFour span:hover, .home .windowContacts .modal .modal-dialog .modal-content .fiFive span:hover {
   background-color: var(--tabs-color);
   opacity: 1;
 }
 
-.home .windowContacts .modal .modal-dialog .modal-content .oOne span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span:hover span {
+.home .windowContacts .modal .modal-dialog .modal-content .oOne span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .tTwo span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .tрHree span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .fFour span:hover span, .home .windowContacts .modal .modal-dialog .modal-content .fiFive span:hover span {
   background-color: var(--tabs-color);
   opacity: 1;
 }
@@ -1246,6 +1279,10 @@ header .logo-img .txt-logo-name {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowСalendar .btnTopСalendar li {
@@ -1295,6 +1332,10 @@ header .logo-img .txt-logo-name {
   background-color: var(--task-color);
   padding: calc(5px + 25 * ((100vw - 320px) / 1600));
   border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowСalendar .monthDay .weekday {
@@ -1429,6 +1470,10 @@ header .logo-img .txt-logo-name {
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1473,7 +1518,29 @@ header .logo-img .txt-logo-name {
   opacity: 1;
 }
 
+.home .windowNotice .btnTopNotice .leftNotice.light, .home .windowNotice .btnTopNotice .rightTime.light {
+  background-color: var(--sidePanel-color);
+  opacity: 1;
+}
+
+.home .windowNotice .btnTopNotice .leftNotice.light span, .home .windowNotice .btnTopNotice .rightTime.light span {
+  opacity: 0.8;
+}
+
+.home .windowNotice .btnTopNotice .leftNotice:hover, .home .windowNotice .btnTopNotice .rightTime:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .windowNotice .btnTopNotice .leftNotice:hover span, .home .windowNotice .btnTopNotice .rightTime:hover span {
+  opacity: 1;
+}
+
 .home .windowNotice .todayNotice, .home .windowNotice .weekNotice, .home .windowNotice .mouthNotice, .home .windowNotice .timmeNotice {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
@@ -1549,9 +1616,17 @@ header .logo-img .txt-logo-name {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home .windowSettings .btnTopSettings li {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
   width: calc(23.5%);
   display: -webkit-box;
@@ -1592,6 +1667,10 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowSettings .con_Set {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
   margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
@@ -1675,6 +1754,7 @@ header .logo-img .txt-logo-name {
 }
 
 .home .windowSettings .con_Set .organization_set li span, .home .windowSettings .con_Set .ISQ_set li span {
+  text-align: center;
   font-size: calc(3.3px + 16.7 * ((100vw - 320px) / 1600));
   color: var(--text-color);
   width: calc(60%);
@@ -1684,5 +1764,6 @@ header .logo-img .txt-logo-name {
   font-size: calc(4px + 20 * ((100vw - 320px) / 1600));
   padding-bottom: calc(2px + 10 * ((100vw - 320px) / 1600));
   padding-top: calc(2px + 10 * ((100vw - 320px) / 1600));
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

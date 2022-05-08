@@ -1,14 +1,13 @@
 
 $(document).ready(function() {
     eel.update_all_task();
-    localStorage.setItem(`IdTrisTask`,``);
-    localStorage.setItem('Editing','');
-    localStorage.setItem('OneCreated','no');
-    localStorage.setItem('VisibleNumber','yes');
-    localStorage.setItem('ActiveOrPasiveTask','active');
-    console.log('HTML загружен');
-    visibleNum();
-    activeTask();
+    // localStorage.setItem(`IdTrisTask`,``);
+    // localStorage.setItem('Editing','');
+    // localStorage.setItem('OneCreated','no');
+    // localStorage.setItem('VisibleNumber','yes');
+    // localStorage.setItem('ActiveOrPasiveTask','active');
+    // visibleNum();
+    // activeTask();
     // startW();
 });
 
@@ -279,8 +278,6 @@ function get_update_task_js(tasks_items){
     $(".pPpAsive").remove();
     $(".aAaKtive").remove();
     $(".cCreatTask").remove();
-    localStorage.setItem('OneCreated','no');
-    localStorage.setItem('Editing','');
     console.log("Заметки : обновление списка");
     for (var tasks = 0; tasks < tasks_items.length; tasks++){
 
@@ -299,7 +296,15 @@ function get_update_task_js(tasks_items){
         var saveTextareaDopTaskThree = tasks_items[tasks][11]; 
         createTask_ReceivedBd(saveIndex, saveCindition, saveQueue, saveTaskText, saveTaskDate, saveTaskTime, saveDopTaskOne, saveTextareaDopTaskOne, saveDopTaskTwo, saveTextareaDopTaskTwo, saveDopTaskThree, saveTextareaDopTaskThree);       
     }
-    visibleNum()
+    
+    visibleNum();
+    localStorage.setItem(`IdTrisTask`,``);
+    localStorage.setItem('Editing','');
+    localStorage.setItem('OneCreated','no');
+    localStorage.setItem('VisibleNumber','yes');
+    localStorage.setItem('ActiveOrPasiveTask','active');
+    visibleNum();
+    activeTask();
 };
 
 // {6} - Функция (createTask_ReceivedBd) принимает значения

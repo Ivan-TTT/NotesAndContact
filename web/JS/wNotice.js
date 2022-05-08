@@ -31,6 +31,9 @@ function get_notice_js(get_notice){
 
     // console.log(HowDayWeek)
 
+    $(".ta_noi").remove();
+    // $(".cCreatcontact").remove();
+
 
     if (HowDayWeek == '1'){
         var SartDayWeek = new Date(fullNowDate.setDate(fullNowDate.getDate()));
@@ -106,6 +109,7 @@ function get_notice_js(get_notice){
 
     }
     clock();
+    notion_w();
     
 }
 
@@ -126,6 +130,7 @@ function create_Notice_Task(saveIndex, saveCindition, saveQueue, saveTaskText, s
 
     const Notice_Element = document.createElement ( 'div' );
     Notice_Element.classList.add ( "Task" );
+    Notice_Element.classList.add ( "ta_noi" );
 
     saveTaskDate_Date < fullNowDate ? Notice_Element.classList.add ("invi") : "";
     saveTaskDate_Date == fullNowDate+1 ? Notice_Element.classList.add ("tTomorrow") : "";
@@ -189,10 +194,10 @@ function notionTime_w(){
     [...document.getElementsByClassName('noTime')].forEach(i => i.classList.add("invisible"));
     [...document.getElementsByClassName('timmeNotice')].forEach(i => i.classList.remove("invisible"));
 
-    // var div_www = document.getElementsByClassName('weekNotice'); // Получаем список все блоков документа
-    // var c_www= div_www.childNodes.length;                       // Считаем количество блок 
-    // console.log( c_www)
-    var onN =
+    [...document.getElementsByClassName('leftNotice')].forEach(i => i.classList.remove("light"));
+    [...document.getElementsByClassName('rightTime')].forEach(i => i.classList.add("light"));
+
+    
     $(".weekNotice").each(function () {
         $(this).find('.Task').length;
         
@@ -203,6 +208,9 @@ function notionTime_w(){
 function notion_w(){
     [...document.getElementsByClassName('noTime')].forEach(i => i.classList.remove("invisible"));
     [...document.getElementsByClassName('timmeNotice')].forEach(i => i.classList.add("invisible"));
+
+    [...document.getElementsByClassName('rightTime')].forEach(i => i.classList.remove("light"));
+    [...document.getElementsByClassName('leftNotice')].forEach(i => i.classList.add("light"));
 }
 
 function sendNotification(title, options) {

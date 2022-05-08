@@ -28,35 +28,35 @@
 
                 <ul class="tabs-links">
                     <li id="li_taskk" class="li-tabs-link">
-                        <a href="#">
+                        <a>
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Заметки</span>
                         </a>
                     </li>
 
                     <li id="li_contactt" class="li-tabs-link">
-                        <a href="#">
+                        <a>
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Контакты</span>
                         </a>
                     </li>
 
-                    <li id="li_calendarr" class="li-tabs-link">
-                        <a href="#">
-                            <img class="icon" src="Img/zero-G.svg" alt="" onClick ="up_cale()">
+                    <li id="li_calendarr" class="li-tabs-link" onClick ="getAddСalendar('0')">
+                        <a>
+                            <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Календарь</span>
                         </a>
                     </li>
 
                     <li id="li_notice" class="li-tabs-link">
-                        <a href="#">
+                        <a>
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Уведомления</span>
                         </a>
                     </li>
 
                     <li id="li_settings" class="li-tabs-link">
-                        <a href="#">
+                        <a>
                             <img class="icon" src="Img/zero-G.svg" alt="">
                             <span class="text nav-text">Настройки</span>
                         </a>
@@ -66,12 +66,12 @@
             </div>
 
             <div class="bottom-content">
-                <li class="">
-                    <a href="#">
+                <!-- <li class="">
+                    <a >
                         <img class="icon" src="Img/two-G.svg" alt="">
                         <span class="text nav-text">Выход</span>
                     </a>
-                </li> 
+                </li>  -->
             </div>
         </div>
     </nav>
@@ -176,7 +176,7 @@
                         <span class="text">Почта</span>
                     </li>
                     <li class="ICQ_C" onclick ="S7M('6')" >
-                        <span class="text">ICQ</span>
+                        <span id="na_1" class="text"></span>
                     </li>
                     <li class="value_Mail" onclick ="S7M('7')" data-toggle="modal" data-target="#modal-id" >
                         <span class="text">@</span>
@@ -206,7 +206,7 @@
                                 <li class="click_o_"></li>
                                 <!-- <li class="no_click_o">2</li> -->
                             </ul>
-                            <span class="text" onclick ="KAD('1')">Полиграфия</span>
+                            <span id="o_1" class="text" onclick ="KAD('1')"></span>
                         </div>
 
                         <div class="tTwo">
@@ -214,7 +214,7 @@
                                 <li class="click_t_"></li>
                                 <!-- <li class="no_click_t">2</li> -->
                             </ul>
-                            <span class="text" onclick ="KAD('2')">Ип</span>
+                            <span id="t_2" class="text" onclick ="KAD('2')"></span>
                         </div>
 
                         <div class="tрHree">
@@ -222,7 +222,23 @@
                                 <li class="click_th_"></li>
                                 <!-- <li class="no_click_th">2</li> -->
                             </ul>
-                            <span class="text" onclick ="KAD('3')">Нет</span>
+                            <span id="th_3" class="text" onclick ="KAD('3')"></span>
+                        </div>
+
+                        <div class="fFour">
+                            <ul class="fFour_ul">
+                                <li class="click_f_"></li>
+                                <!-- <li class="no_click_th">2</li> -->
+                            </ul>
+                            <span id="f_4" class="text" onclick ="KAD('4')"></span>
+                        </div>
+
+                        <div class="fiFive">
+                            <ul class="fiFive_ul">
+                                <li class="click_fi_"></li>
+                                <!-- <li class="no_click_th">2</li> -->
+                            </ul>
+                            <span id="fi_5" class="text" onclick ="KAD('5')"></span>
                         </div>
                     </div>
                 </div>
@@ -439,11 +455,11 @@
                     </li>
                 </div>
                 <div class="ISQ_set">
-                    <span class="name_name">Последнее название</span>
+                    <span class="name_name">Название последнего столбца</span>
                     <li class="">
                         <span class="name_set n_s2_1">Название &ensp;</span>
-                        <input class="inp_set i_s2_1" type="text">
-                        <img class ="img_set im_s2_1" src ="Img/Save-G.svg" alt ="" onclick ="" >
+                        <input id="i_s2_1_id" class="inp_set i_s2_1" type="text">
+                        <img class ="img_set im_s2_1" src ="Img/Save-G.svg" alt ="" onclick ="get_na_fi()" >
                     </li>
                 </div>
             </div>

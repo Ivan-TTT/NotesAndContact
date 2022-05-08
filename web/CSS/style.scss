@@ -24,6 +24,7 @@ $maxWidth:1920;
 	--text-color: #000;
 	--tabs-color: #E4E4E4;
 	--num-color: #74747488;
+	
 	--tran-03: all 0.2s ease;
 	--tran-03: all 0.3s ease;
 	--tran-04: all 0.3s ease;
@@ -84,6 +85,9 @@ body {
 			text-decoration: none;
 			transition: var(--tran-03);
             opacity: 0.5;
+			.text {
+				color: var(--text-color);
+			}
 			&:hover {
 				background-color: var(--tabs-color);
                 opacity: 0.8;
@@ -102,6 +106,7 @@ body {
 	.text {
 		@include adaptive( "font-size" , 22 , 3.6);
 		opacity: 1;
+		user-select: none;
 	}
 	header {
 		position: relative;
@@ -179,7 +184,7 @@ header {
 }
 .sidePanel li a:hover .icon,
 .sidePanel li a:hover .text {
-	color: var(--sidePanel-color);
+	color: var(--text-color);
 }
 .tabs-bar {
 	&::-webkit-scrollbar {
@@ -202,6 +207,7 @@ header {
 		&.aAcTivve{
 			display: block;
 		}
+		@include adaptive("padding-bottom", 30 , 5);
 	}
 
 	.btnTopTask{
@@ -210,6 +216,7 @@ header {
 		@include adaptive("margin-right", 30 , 5);
 		display: flex;
 		justify-content: space-between;
+		user-select: none;
 		li{
 			cursor: pointer;
 			width: calc(30%);
@@ -475,6 +482,7 @@ header {
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
 			@include adaptive("margin-right", 30 , 5);
+			user-select: none;
 			display: flex;
 			justify-content: space-between;
 			li{
@@ -556,6 +564,7 @@ header {
 				.address_C, .contFace_C, .telephone_C,
 				.mail_C, .ICQ_C{
 					@include adaptive("margin-right", 10 , 1.6);
+					user-select: none;
 				}
 
 				.name_C{
@@ -630,6 +639,7 @@ header {
 							@include adaptive( "font-size" , 24 , 4);
 							margin-top: 0;
 							margin-bottom: 0;
+							user-select: none;
 						}
 						    /* свойства для кнопки "Закрыть" */
     					.close {
@@ -700,6 +710,7 @@ header {
 							@include adaptive( "border-radius" , 6 , 1 );
 							transition: var(--tran-03);
 							opacity: 0.5;
+							user-select: none;
 
 							span{
 								// @include adaptive("height", 54 , 9);
@@ -730,13 +741,14 @@ header {
 						}
 						
 					}
-					.oOne, .tTwo, .tрHree{
+					.oOne, .tTwo, .tрHree, .fFour, .fiFive {
 						@include adaptive( "padding" , 10 , 1.6);
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
 						transition: var(--tran-03);
 						border-bottom: 1px solid var(--task-color);
+						user-select: none;
 						ul{
 
 							@include adaptive("margin-right", 10 , 1.6);
@@ -756,11 +768,11 @@ header {
 								@include adaptive("margin-right",  3 , 0.5);
 								@include adaptive("margin-bottom", 3 , 0.5);
 							}
-							.click_o, .click_t, .click_th{
+							.click_o, .click_t, .click_th, .click_f, .click_fi{
 								background-color: var(--task-color);
 								opacity: 1;
 							}
-							.click_o_, .click_t_, .click_th_{
+							.click_o_, .click_t_, .click_th_, .click_f_, .click_fi_{
 								display: none;
 							}
 						}
@@ -770,7 +782,7 @@ header {
 							align-items: center; 
 							justify-content: center;
 							@include adaptive("padding", 10 , 1.6);
-							@include adaptive( "width" , 182 , 30.3);
+							@include adaptive( "min-width" , 182 , 30.3);
 							cursor: pointer;
 							background-color: var(--tabs-color);
 							@include adaptive( "border-radius" , 6 , 1 );
@@ -922,6 +934,7 @@ header {
 			@include adaptive("margin-right", 30 , 5);
 			display: flex;
 			justify-content: space-between;
+			user-select: none;
 			li{
 				cursor: pointer;
 				width: calc(20%);
@@ -957,6 +970,7 @@ header {
 			background-color: var(--task-color);
 			@include adaptive("padding", 30 , 5);
 			@include adaptive( "border-radius" , 6 , 1 );
+			user-select: none;
 			.weekday{
 				// width: calc(49%);
 				list-style: none;
@@ -1061,6 +1075,7 @@ header {
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
 			@include adaptive("margin-right", 30 , 5);
+			user-select: none;
 			display: flex;
 			justify-content: space-between;
 			li{
@@ -1087,8 +1102,25 @@ header {
 					}
 				}
 	    	}
+			.leftNotice, .rightTime{
+				&.light{
+					background-color: var(--sidePanel-color);
+					opacity: 1;
+					span{
+						opacity: 0.8;
+					}
+				}
+				&:hover {
+					background-color: var(--tabs-color);
+					opacity: 1;
+					span{
+						opacity: 1;
+					}
+				}
+			}
 		}
 		.todayNotice, .weekNotice, .mouthNotice, .timmeNotice{
+			user-select: none;
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
 			@include adaptive("margin-right", 30 , 5);
@@ -1142,7 +1174,9 @@ header {
 			@include adaptive("margin-right", 30 , 5);
 			display: flex;
 			justify-content: space-between;
+			user-select: none;
 			li{
+				user-select: none;
 				cursor: pointer;
 				width: calc(23.5%);
 				display: flex;
@@ -1171,6 +1205,7 @@ header {
 			display: block;
 		}
 		.con_Set{
+			user-select: none;
 			@include adaptive("margin-top", 30 , 5);
 			@include adaptive("margin-left", 30 , 5);
 			@include adaptive("margin-right", 30 , 5);
@@ -1227,6 +1262,7 @@ header {
 						@include adaptive("margin-right", 10 , 1.6);
 					}
 					span{
+						text-align: center;
 						@include adaptive( "font-size" , 20 , 3.3);
 						color: var(--text-color);
 						width: calc(60%);
@@ -1236,6 +1272,7 @@ header {
 					@include adaptive( "font-size" , 24 , 4);
 					@include adaptive("padding-bottom", 12 , 2);
 					@include adaptive("padding-top", 12 , 2);
+					text-align: center;
 				}
 			}
 		}

@@ -11,6 +11,8 @@ $('#li_taskk').click(function () {
   $('#windowСalendar_id').slideUp('.aAcTivve');
   $('#windowNotice_id').slideUp('.aAcTivve');
   $('#windowSettings_id').slideUp('.aAcTivve');
+
+  eel.update_all_task();
 });
 
 
@@ -21,6 +23,8 @@ $('#li_contactt').click(function () {
   $('#windowСalendar_id').slideUp('.aAcTivve');
   $('#windowNotice_id').slideUp('.aAcTivve');
   $('#windowSettings_id').slideUp('.aAcTivve');
+
+  eel.update_all_contact();
 });
 
 $('#li_calendarr').click(function () {
@@ -39,6 +43,8 @@ $('#li_notice').click(function () {
   $('#windowContacts_id').slideUp('.aAcTivve');
   $('#windowСalendar_id').slideUp('.aAcTivve');
   $('#windowSettings_id').slideUp('.aAcTivve');
+
+  eel.all_notice();
 });
 
 $('#li_settings').click(function () {

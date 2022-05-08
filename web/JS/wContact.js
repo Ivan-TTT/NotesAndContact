@@ -1,14 +1,5 @@
 $(document).ready(function() {
     eel.update_all_contact();
-    localStorage.setItem('contact_Editing','no');
-    localStorage.setItem('contact_Created','no');
-    set_mame_o();
-    // localStorage.setItem('VisibleNumber','yes');
-    // localStorage.setItem('ActiveOrPasiveTask','active');
-    // console.log('HTML загружен');
-    // visibleNum();
-    // activeTask();
-    // // startW();
 });
 
 $('body').on('keydown input', 'textarea[data-expandable]', function() {
@@ -24,7 +15,7 @@ $('body').on('keydown input', 'textarea[data-expandable]', function() {
 
 //-------------------------------------
 //- Создание формы для нового контакта ---------------------------------------------------------------
-//-------------------------------------
+//-------------------------------------${localStorage.setItem('Name_Or_1',i_s_1) != "" ? }
 const contactElement = document.querySelector('.contact');
 
 function getAddContact(){
@@ -34,6 +25,12 @@ function getAddContact(){
 
         localStorage.setItem('contact_Created','yes');
         localStorage.setItem('contact_Editing','no');
+
+        var Or_1 = localStorage.getItem('Name_Or_1');
+        var Or_2 = localStorage.getItem('Name_Or_2');
+        var Or_3 = localStorage.getItem('Name_Or_3');
+        var Or_4 = localStorage.getItem('Name_Or_4');
+        var Or_5 = localStorage.getItem('Name_Or_5');
 
         const NewContactElement = document.createElement ( 'div' );
         NewContactElement.classList.add ( "contact" );
@@ -49,9 +46,11 @@ function getAddContact(){
                     <li class="organizationCon" >
                          <select id="organizationCon-id">
                              <option disabled selected>Органиция</option>
-                             <option value="ип">ип</option>
-                             <option value="полиграфия">полиграфия</option>
-                             <option value="нет">нет</option>
+                             ${Or_1 != "" ? `<option value="${Or_1}">${Or_1}</option>` : ''}
+                             ${Or_2 != "" ? `<option value="${Or_2}">${Or_2}</option>` : ''}
+                             ${Or_3 != "" ? `<option value="${Or_3}">${Or_3}</option>` : ''}
+                             ${Or_4 != "" ? `<option value="${Or_4}">${Or_4}</option>` : ''}
+                             ${Or_5 != "" ? `<option value="${Or_5}">${Or_5}</option>` : ''}
                          </select>
                     </li>
 
@@ -102,7 +101,21 @@ function saveСontactFunction(){
     // организация // organization
     var save_C_organiz = document.getElementById("organizationCon-id").value; save_C_organiz != ""  
     ? console.log(save_C_organiz): ""; 
+    
 
+    var orgArray = [localStorage.getItem('Name_Or_1'), localStorage.getItem('Name_Or_2')
+                   ,localStorage.getItem('Name_Or_3'), localStorage.getItem('Name_Or_4')
+                   ,localStorage.getItem('Name_Or_5')]
+    console.log(orgArray)
+
+    for( var i = 0; i < orgArray.length; i++){
+        if ( save_C_organiz == orgArray[i]){
+            save_C_organiz = i+1
+            // console.log(orgArray[i]);
+        }
+        // console.log(orgArray[i]);
+    }
+    console.log(save_C_organiz);
     // адресс // address
     var save_C_address = document.getElementById("addressCon-id").value; save_C_address != ""  
     ? console.log(save_C_address): "";
@@ -175,6 +188,9 @@ function get_update_contact_js(contacts_items){
         var save_C_ICQ      = contacts_items[contacts][7];  
         createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C_address, save_C_contFace, save_C_tel, save_C_mail, save_C_ICQ);       
     }
+    set_na_();
+    set_mame_o();
+    set_na_();
     // visibleNum()
 };
 
@@ -197,7 +213,11 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
         
                <li class="organizationCon">
                     <select id="organization-id_${save_C_Id}">
-                        <option disabled selected readonly>${save_C_organiz}</option>
+                        ${save_C_organiz == 1 ? `<option disabled selected readonly>${localStorage.getItem('Name_Or_1')}</option>` : ""}
+                        ${save_C_organiz == 2 ? `<option disabled selected readonly>${localStorage.getItem('Name_Or_2')}</option>` : ""}
+                        ${save_C_organiz == 3 ? `<option disabled selected readonly>${localStorage.getItem('Name_Or_3')}</option>` : ""}
+                        ${save_C_organiz == 4 ? `<option disabled selected readonly>${localStorage.getItem('Name_Or_4')}</option>` : ""}
+                        ${save_C_organiz == 5 ? `<option disabled selected readonly>${localStorage.getItem('Name_Or_5')}</option>` : ""}
                     </select>
                </li>
         
@@ -233,57 +253,51 @@ function createContact_ReceivedBd(save_C_Id, save_C_name, save_C_organiz, save_C
 //---------------------------------------------------------------------------------------------
 
 function orga_setting(){
-    var i_s_1 = [document.getElementById("i_s_1_id").value]; i_s_1 != ""  
+    var i_s_1 = document.getElementById("i_s_1_id").value; i_s_1 != ""  
     ? console.log(i_s_1): ""; 
 
-    var i_s_2 = [document.getElementById("i_s_2_id").value]; i_s_2 != ""  
+    var i_s_2 = document.getElementById("i_s_2_id").value; i_s_2 != ""  
     ? console.log(i_s_2): ""; 
 
-    var i_s_3 = [document.getElementById("i_s_3_id").value]; i_s_3 != ""  
+    var i_s_3 = document.getElementById("i_s_3_id").value; i_s_3 != ""  
     ? console.log(i_s_3): ""; 
 
-    var i_s_4 = [document.getElementById("i_s_4_id").value]; i_s_4 != ""  
+    var i_s_4 = document.getElementById("i_s_4_id").value; i_s_4 != ""  
     ? console.log(i_s_4): ""; 
 
-    var i_s_5 = [document.getElementById("i_s_5_id").value]; i_s_5 != ""  
+    var i_s_5 = document.getElementById("i_s_5_id").value; i_s_5 != ""  
     ? console.log(i_s_5): ""; 
 
-    var i_s_arr = [i_s_1, i_s_2, i_s_3, i_s_4, i_s_5];
-    localStorage.setItem('Name_Or',i_s_arr);
+    (!i_s_1.trim()) == false || (i_s_1.length === 0) ? localStorage.setItem('Name_Or_1',i_s_1): "";
+    (!i_s_2.trim()) == false || (i_s_2.length === 0) ? localStorage.setItem('Name_Or_2',i_s_2): "";
+    (!i_s_3.trim()) == false || (i_s_3.length === 0) ? localStorage.setItem('Name_Or_3',i_s_3): "";
+    (!i_s_4.trim()) == false || (i_s_4.length === 0) ? localStorage.setItem('Name_Or_4',i_s_4): "";
+    (!i_s_5.trim()) == false || (i_s_5.length === 0) ? localStorage.setItem('Name_Or_5',i_s_5): "";
 }
 
 function set_mame_o(){
-    // $("#i_s_1_id").update(arrLock[0]);
-    // $("#i_s_2_id").update(arrLock[1]);
-    // $("#i_s_3_id").update(arrLock[2]);
-    // $("#i_s_4_id").update(arrLock[3]);
-    // $("#i_s_5_id").update(arrLock[4]);
-    // document.query("input").value = "Ваш текст";
-    var arrLock = localStorage.getItem("Name_Or")
-    console.log(arrLock)
-    var j = 0;
 
-    for(var i = 0; i < arrLock.length; i++){
-        // for( var j = 0; (j < i)  )
-        // document.getElementById(`i_s_${i + 1}_id`).value = arrLock[i][0];
-        if (arrLock[i][0] != ","){
-            j++;
-            for( var ji = 0; (ji < j); ji++){
-                // document.getElementById(`i_s_${ji + 1}_id`).value = arrLock[ji];
-                console.log(1)
-            }
-            // document.getElementById(`i_s_${i + 1}_id`).value = arrLock[i][0];
-            // console.log(1)
-        }
+    for(var i = 1; i < 6; i++){
+        var gogotito = localStorage.getItem(`Name_Or_${i}`);
+        document.getElementById(`i_s_${i}_id`).value = gogotito;
+        console.log(1);
         
     } 
-
-    // document.getElementById("i_s_1_id").value = arrLock[0];
-    // document.getElementById("i_s_2_id").value = arrLock[1];
-    // document.getElementById("i_s_3_id").value = arrLock[2];
-    // document.getElementById("i_s_4_id").value = arrLock[3];
-    // document.getElementById("i_s_5_id").value = arrLock[4];
 }
+
+function get_na_fi(){
+    var i_s2_1 = document.getElementById("i_s2_1_id").value; i_s2_1 != ""  
+    ? console.log(i_s2_1): "";
+    (!i_s2_1.trim()) == false || (i_s2_1.length === 0) ? localStorage.setItem('Name_na_fi',i_s2_1): "";
+    set_na_()
+}
+
+function set_na_(){
+    document.getElementById("na_1").innerHTML =  localStorage.getItem('Name_na_fi');
+    document.getElementById(`i_s2_1_id`).value = localStorage.getItem('Name_na_fi');
+}
+
+
 
 //---------------------------------------------------------------------------------------------
 
@@ -308,11 +322,26 @@ async function nNumTransfer_S7M_js(nNum){
 const mailElement_1 = document.querySelector('.click_o_');
 const mailElement_2 = document.querySelector('.click_t_');
 const mailElement_3 = document.querySelector('.click_th_');
+const mailElement_4 = document.querySelector('.click_f_');
+const mailElement_5 = document.querySelector('.click_fi_');
 eel.expose(mail_S7M_js)
 function mail_S7M_js(mail_contact){
     $(".li_li_1").remove();
     $(".li_li_2").remove();
     $(".li_li_3").remove();
+    $(".li_li_4").remove();
+    $(".li_li_5").remove();
+    document.getElementById("o_1").innerHTML =  localStorage.getItem('Name_Or_1');
+    document.getElementById("t_2").innerHTML =  localStorage.getItem('Name_Or_2');
+    document.getElementById("th_3").innerHTML = localStorage.getItem('Name_Or_3');
+    document.getElementById("f_4").innerHTML =  localStorage.getItem('Name_Or_4');
+    document.getElementById("fi_5").innerHTML = localStorage.getItem('Name_Or_5');
+    // $("#o_1" ).append($(localStorage.getItem('Name_Or_1')));
+    // $("#t_2" ).append($(localStorage.getItem('Name_Or_2')));
+    // $("#th_3").append($(localStorage.getItem('Name_Or_3')));
+    // $("#f_4" ).append($(localStorage.getItem('Name_Or_4')));
+    // $("#fi_5").append($(localStorage.getItem('Name_Or_5')));
+
     console.log(`[3] Выполняеться функция mail_S7M_js | line="${mail_contact}" принимаеться из базы данных`);
     console.log("");
     for (var contact = 0; contact < mail_contact.length; contact++){
@@ -325,7 +354,7 @@ function mail_S7M_js(mail_contact){
 }
 function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
 
-    if (save_C_organiz == "полиграфия"){
+    if (save_C_organiz == "1"){
 
         console.log(save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
@@ -339,8 +368,8 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
         `;
         mailElement_1.after(NewOrganizElement);
 
-    } else if (save_C_organiz == "ип"){
-        console.log("ип",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+    } else if (save_C_organiz == "2"){
+        console.log("2",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_t" );
         NewOrganizElement.classList.add ( "li_li_2" );
@@ -351,8 +380,8 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
             ${save_C_name}
         `;
         mailElement_2.after(NewOrganizElement);
-    } else {
-        console.log("нет",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+    } else if (save_C_organiz == "3") {
+        console.log("3",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
         const NewOrganizElement = document.createElement ( 'li' );
         NewOrganizElement.classList.add ( "click_th" );
         NewOrganizElement.classList.add ( "li_li_3" );
@@ -363,7 +392,32 @@ function create_mail_S7M(save_C_Id, save_C_name, save_C_organiz,  save_C_mail){
             ${save_C_name}
         `;
         mailElement_3.after(NewOrganizElement);
+    } else if (save_C_organiz == "4") {
+        console.log("4",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        const NewOrganizElement = document.createElement ( 'li' );
+        NewOrganizElement.classList.add ( "click_f" );
+        NewOrganizElement.classList.add ( "li_li_4" );
+        NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
+        NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_f'); addText()`);
+        NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
+        NewOrganizElement.innerHTML =`
+            ${save_C_name}
+        `;
+        mailElement_4.after(NewOrganizElement);
+    } else if (save_C_organiz == "5") {
+        console.log("5",save_C_Id, save_C_name, save_C_organiz,  save_C_mail);
+        const NewOrganizElement = document.createElement ( 'li' );
+        NewOrganizElement.classList.add ( "click_fi" );
+        NewOrganizElement.classList.add ( "li_li_5" );
+        NewOrganizElement.setAttribute('mail',`${save_C_mail}`)
+        NewOrganizElement.setAttribute('onclick',`this.classList.toggle('click_fi'); addText()`);
+        NewOrganizElement.setAttribute ('id', `${save_C_Id}_mail`);
+        NewOrganizElement.innerHTML =`
+            ${save_C_name}
+        `;
+        mailElement_5.after(NewOrganizElement);
     }
+    
     addText()
 }
 
@@ -455,6 +509,16 @@ function addText() {
             mail: item.getAttribute('mail')
         });
     });
+    [...document.querySelectorAll('.click_f')].forEach(item => {
+        output.push({
+            mail: item.getAttribute('mail')
+        });
+    });
+    [...document.querySelectorAll('.click_fi')].forEach(item => {
+        output.push({
+            mail: item.getAttribute('mail')
+        });
+    });
 
     // console.log(output[0].mail);
     console.log(output);
@@ -500,6 +564,22 @@ function KAD(per){
             [...document.getElementsByClassName('li_li_3')].forEach(i => i.classList.remove("click_th"));
         } else {
             [...document.getElementsByClassName('li_li_3')].forEach(i => i.classList.add("click_th"));
+        }
+        
+    } else if (per == "4"){
+
+        if(document.querySelector(".li_li_4").classList.contains("click_f")){
+            [...document.getElementsByClassName('li_li_4')].forEach(i => i.classList.remove("click_f"));
+        } else {
+            [...document.getElementsByClassName('li_li_4')].forEach(i => i.classList.add("click_f"));
+        }
+        
+    } else if (per == "5"){
+
+        if(document.querySelector(".li_li_5").classList.contains("click_fi")){
+            [...document.getElementsByClassName('li_li_5')].forEach(i => i.classList.remove("click_fi"));
+        } else {
+            [...document.getElementsByClassName('li_li_5')].forEach(i => i.classList.add("click_fi"));
         }
         
     }

@@ -11,9 +11,9 @@ $(document).ready(function() {
     getAddСalendar('0');
 });
 
-function up_cale(){
-    getAddСalendar('0');
-}
+// function up_cale(){
+//     getAddСalendar('0');
+// }
 
 const СalendarElement = document.querySelector('.everyDay');
 const mouthElement = document.querySelector('.leftСalendar');
