@@ -1,7 +1,7 @@
 # NotesAndContact
 Приложение разработанное для создания заметок, добавление контактов, работы с календарем.
 **Создание заметки.**
-https://user-images.githubusercontent.com/101339844/175076411-7278b814-1088-4d25-b6c9-b9587f65e040.mp4
+![2022-06-22 22-46-57](https://user-images.githubusercontent.com/101339844/175077292-37e130c6-bcc4-474d-b169-aefff5675244.gif)
 
 **Удаление заметки**
 https://user-images.githubusercontent.com/101339844/175076564-b5b70aee-2e97-4045-9fbb-21aa0aae2aa7.mp4
