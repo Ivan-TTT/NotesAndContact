@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <script type="text/javascript" src="eel.js"></script>
+    <script src="JS/jquery-3.6.0.js" ></script>
+    <script src="JS/main.js" ></script>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+    <div class="AllContentWindow"> <!--Контейнер со всем кодом страниц, нужен для регулировки положения основных элементов таких как боковое окно и окно по центру экрана -->
+        <div class="SidePanel"> <!-- Боковая панель  --> 
+            <div class="Tabs indent">
+                Заметки 
+            </div>
+            <div class="Tabs indent">
+                Календарь 
+            </div>
+            <div class="Tabs indent">
+                Контакты 
+            </div>
+            <div class="Tabs indent">
+                Настройки 
+            </div>
+        </div>
+
+        <div class="TaskWindow EventWindow" id="TaskWindow_id"><!-- Окно Заметок, окно события  --> 
+            <div class="AddTask indent" onclick="AddTask()"> 
+                Создать заметку
+            </div>
+            <div class="Task indent">
+                <div class="ProgressTask indentTask">
+                    <img class="Progress-img " src="Img/zero-G.svg" alt="">
+                </div>
+                <div class="TextTask     indentTask">
+                    <input class="inputTask-Text " type="text" name="Task-name" id="Task-id" placeholder="Task-input-placeholder" value="Task-1">
+                </div>
+                <div class="DateTask     indentTask">
+                    <div id="img_date_id"class="ImgDate">
+                        <img class="Progress-img " src="Img/One-G.svg" alt="">
+                    </div>
+                    <div id="inputDate_id" class="gfgd">
+                        <input class="indentTask" type="date">
+                    </div>
+                </div>
+
+
+                <!-- <div class="DateTask     indentTask">
+                    <details class="dropRight">
+                        <summary class="btn-Date">
+                            <img class="Progress-img " src="Img/One-G.svg" alt="">
+                        </summary>
+                        <div class="dropRight-menu show">
+                            <input class="indentTask" type="date">
+                        </div>
+                      </details>
+                </div>
+                <div class="TimeTask   indentTask">
+                    <details class="dropRight">
+                        <summary class="btn-Time">
+                            <img class="Progress-img " src="Img/Two-G.svg" alt="">
+                        </summary>
+                        <div class="dropRight show">
+                            <input class="indentTask" type="time">
+                        </div>
+                      </details>
+                </div> -->
+                
+            </div>
+    </div>
+
+    <script src="JS/main.js" ></script>
+    <script src="JS/jquery.js" ></script>
+</body>
+</html>

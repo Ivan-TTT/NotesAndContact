@@ -1,6 +1,5 @@
 import sqlite3
 
-
 arrGetCon = []
 
 def get_calendar_all():
@@ -14,10 +13,6 @@ def get_calendar_all():
 
         cursor.execute("SELECT * FROM tasks WHERE dateT != '' ORDER BY dateT")
         arrGetCon = cursor.fetchall()
-
-        # for item in cursor.fetchall():
-        #     arrGetCon.append(item)    
-        #     connect.close()
 
     except sqlite3.Error as error:
         print("Ошибка при работе с базой данных [bd_t] : ОШИБКА ПРИ ПОЛУЧЕНИИ КАЛЕНДАРЯ  : ", error)

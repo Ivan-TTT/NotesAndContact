@@ -1,0 +1,619 @@
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("../Fonts/Montserrat-Regular.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat-Regular';
+}
+
+:root {
+  --body-color: #747474;
+  --sidePanel-color: #C4C4C4;
+  --dopT-color: #C0C0C0;
+  --task-color: #9C9797;
+  --text-color: #000;
+  --tabs-color: #E4E4E4;
+  --num-color: #74747488;
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+::-moz-selection {
+  background-color: var(--body-color);
+  color: var(--tabs-color);
+}
+
+::selection {
+  background-color: var(--body-color);
+  color: var(--tabs-color);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  -webkit-transition: var(--tran-05);
+  transition: var(--tran-05);
+}
+
+.sidePanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(41.6px + 208.4 * ((100vw - 320px) / 1600));
+  padding-top: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  padding-left: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  padding-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  padding-bottom: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  background: var(--sidePanel-color);
+  -webkit-transition: var(--tran-05);
+  transition: var(--tran-05);
+  z-index: 100;
+}
+
+.sidePanel.close {
+  width: calc(13px + 65 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel.close .text {
+  opacity: 0;
+}
+
+.sidePanel.close .toggle {
+  -webkit-transform: translateY(-50%) rotate(0deg);
+          transform: translateY(-50%) rotate(0deg);
+}
+
+.sidePanel.close ~ .home {
+  left: calc(13px + 65 * ((100vw - 320px) / 1600));
+  height: 100vh;
+  width: calc(100% - calc(13px + (78 - 13) * ((100vw - 320px) / (1920 - 320))));
+}
+
+.sidePanel li {
+  height: calc(9.3px + 46.7 * ((100vw - 320px) / 1600));
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  margin-bottom: calc(5px + 25 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel li a {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  text-decoration: none;
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.sidePanel li a:hover {
+  background-color: var(--tabs-color);
+  opacity: 0.8;
+}
+
+.sidePanel .icon {
+  width: calc(10px + 50 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(3.3px + 16.7 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel .text {
+  font-size: calc(3.6px + 18.4 * ((100vw - 320px) / 1600));
+  opacity: 1;
+}
+
+.sidePanel header {
+  position: relative;
+}
+
+.sidePanel header .logo-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sidePanel header .logo-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidePanel header .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.sidePanel header .logo img {
+  width: calc(6.6px + 33.4 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel header .toggle {
+  position: absolute;
+  top: 50%;
+  right: calc(-4.16px + -20.84 * ((100vw - 320px) / 1600));
+  -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+  height: calc(4.16px + 20.84 * ((100vw - 320px) / 1600));
+  width: calc(4.16px + 20.84 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  color: var(--sidebar-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(3.6px + 18.4 * ((100vw - 320px) / 1600));
+  cursor: pointer;
+  -webkit-transition: var(--tran-05);
+  transition: var(--tran-05);
+}
+
+.sidePanel .tabs {
+  margin-top: calc(2.6px + 13.4 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel .tabs-bar {
+  height: calc(100% - calc(9.16px + (55 - 9.16) * ((100vw - 320px) / (1920 - 320))));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow-y: scroll;
+}
+
+.sidePanel .tabs-bar .mode {
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  position: relative;
+  -webkit-transition: var(--tran-05);
+  transition: var(--tran-05);
+}
+
+.sidePanel header .logo,
+.sidePanel .icon {
+  min-width: calc(9.6px + 48.4 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.sidePanel .text,
+.sidePanel .icon {
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+}
+
+header .logo-img .txt-logo-name {
+  margin-top: calc(0.3px + 1.7 * ((100vw - 320px) / 1600));
+  font-size: calc(3px + 15 * ((100vw - 320px) / 1600));
+  font-weight: 600;
+}
+
+.sidePanel li a:hover .icon,
+.sidePanel li a:hover .text {
+  color: var(--sidePanel-color);
+}
+
+.tabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.home {
+  position: absolute;
+  top: 0;
+  top: 0;
+  left: calc(41.6px + 208.4 * ((100vw - 320px) / 1600));
+  height: 100vh;
+  width: calc(100% - calc(41.6px + (250 - 41.6) * ((100vw - 320px) / (1920 - 320))));
+  background-color: var(--body-color);
+  -webkit-transition: var(--tran-05);
+  transition: var(--tran-05);
+}
+
+.home .btnTopTask {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home .btnTopTask li {
+  cursor: pointer;
+  width: calc(30%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  background-color: var(--sidePanel-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  opacity: 0.5;
+}
+
+.home .btnTopTask li .text {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  color: var(--text-color);
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .btnTopTask li .text:hover {
+  opacity: 1;
+}
+
+.home .btnTopTask li:hover {
+  background-color: var(--tabs-color);
+  opacity: 1;
+}
+
+.home .btnTopTask .oOpen {
+  opacity: 1;
+}
+
+.home .Task {
+  margin-top: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-left: calc(5px + 25 * ((100vw - 320px) / 1600));
+  margin-right: calc(5px + 25 * ((100vw - 320px) / 1600));
+  background-color: var(--task-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.home .Task.invisible {
+  display: none;
+}
+
+.home .Task .oneContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: calc(100%);
+  background-color: var(--num-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .oneContent .queue {
+  width: calc(6px + 30 * ((100vw - 320px) / 1600));
+  height: calc(6px + 30 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  margin: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  font-family: Montserrat-Regular;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.home .Task .oneContent .queue input[type="number"] {
+  height: calc(3.3px + 16.7 * ((100vw - 320px) / 1600));
+  width: calc(6px + 30 * ((100vw - 320px) / 1600));
+  border: none;
+  outline: none;
+  background-color: var(--tabs-color);
+  text-align: center;
+}
+
+.home .Task .oneContent .queue input[type="number"]::-webkit-outer-spin-button, .home .Task .oneContent .queue input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.home .Task .oneContent .queue .higher, .home .Task .oneContent .queue .below {
+  text-align: center;
+  cursor: pointer;
+  width: calc(6px + 30 * ((100vw - 320px) / 1600));
+  height: calc(1.3px + 6.7 * ((100vw - 320px) / 1600));
+  font-size: 0px;
+  background-color: var(--sidePanel-color);
+}
+
+.home .Task .oneContent .queue .higher {
+  border-radius: 6px 6px 0px 0px;
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+}
+
+.home .Task .oneContent .queue .higher:hover {
+  height: calc(2.6px + 13.4 * ((100vw - 320px) / 1600));
+  font-size: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .oneContent .queue .higher:hover ~ .below {
+  display: none;
+}
+
+.home .Task .oneContent .queue .higher:hover ~ input[type="number"] {
+  border-radius: 0px 0px 6px 6px;
+}
+
+.home .Task .oneContent .queue .below {
+  border-radius: 0px 0px 6px 6px;
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+}
+
+.home .Task .oneContent .queue .below:hover {
+  height: calc(2.6px + 13.4 * ((100vw - 320px) / 1600));
+  font-size: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .oneContent .queue .below:hover ~ .higher {
+  display: none;
+}
+
+.home .Task .oneContent .queue .below:hover ~ input[type="number"] {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.home .Task .oneContent .itemGroupOne {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  background-color: var(--sidePanel-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  width: calc(100%);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.home .Task .oneContent .itemGroupOne ul {
+  font-size: calc(4.3px + 21.7 * ((100vw - 320px) / 1600));
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home .Task .oneContent .itemGroupOne ul img {
+  cursor: pointer;
+  width: calc(6px + 30 * ((100vw - 320px) / 1600));
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  -webkit-transition: var(--tran-03);
+  transition: var(--tran-03);
+  opacity: 0.5;
+}
+
+.home .Task .oneContent .itemGroupOne ul img:hover {
+  opacity: 0.8;
+}
+
+.home .Task .oneContent .itemGroupOne ul li {
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--tabs-color);
+}
+
+.home .Task .oneContent .itemGroupOne ul li input[type="date"],
+.home .Task .oneContent .itemGroupOne ul li input[type="time"] {
+  position: relative;
+  text-align: center;
+}
+
+.home .Task .oneContent .itemGroupOne ul li input[type="date"]::-webkit-calendar-picker-indicator,
+.home .Task .oneContent .itemGroupOne ul li input[type="time"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  background: transparent;
+  left: calc(-1.6px + -8.4 * ((100vw - 320px) / 1600));
+  color: transparent;
+}
+
+.home .Task .oneContent .itemGroupOne ul li input[type="date"]::-webkit-inner-spin-button,
+.home .Task .oneContent .itemGroupOne ul li input[type="time"]::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+.home .Task .oneContent .itemGroupOne ul li input {
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  height: calc(6px + 30 * ((100vw - 320px) / 1600));
+  border: none;
+  outline: none;
+  font-family: Montserrat-Regular;
+  background-color: var(--tabs-color);
+  width: calc(100%);
+  padding-left: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  padding-right: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  font-size: calc(4.6px + 23.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .oneContent .itemGroupOne ul .ProgressTask, .home .Task .oneContent .itemGroupOne ul .TextTask,
+.home .Task .oneContent .itemGroupOne ul .DateTask, .home .Task .oneContent .itemGroupOne ul .TimeTask,
+.home .Task .oneContent .itemGroupOne ul .AddNewDopTask {
+  margin-right: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .oneContent .itemGroupOne ul .TextTask {
+  width: calc(100%);
+}
+
+.home .Task .itemGroupTwo {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: none;
+  height: calc(28.6px + 143.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .itemGroupTwo ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home .Task .itemGroupTwo ul li {
+  background-color: var(--dopT-color);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: wrap column;
+          flex-flow: wrap column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: none;
+  outline: none;
+  margin: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+  padding: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .itemGroupTwo ul li textarea, .home .Task .itemGroupTwo ul li input {
+  font-family: Montserrat-Regular;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: calc(3.3px + 16.7 * ((100vw - 320px) / 1600));
+  width: calc(100%);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  padding-top: calc(0px + 0 * ((100vw - 320px) / 1600));
+  padding-left: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  padding-right: calc(0.83px + 4.17 * ((100vw - 320px) / 1600));
+  padding-bottom: calc(0px + 0 * ((100vw - 320px) / 1600));
+  background-color: var(--tabs-color);
+  -webkit-text-emphasis-color: 0.5;
+          text-emphasis-color: 0.5;
+}
+
+.home .Task .itemGroupTwo ul li input {
+  margin-bottom: calc(1.6px + 8.4 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .itemGroupTwo ul li textarea {
+  height: calc(16.3px + 81.7 * ((100vw - 320px) / 1600));
+}
+
+.home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+  cursor: pointer;
+}
+
+.home .Task .itemGroupTwo ul li textarea::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: calc(1px + 5 * ((100vw - 320px) / 1600));
+}
+/*# sourceMappingURL=style.css.map */

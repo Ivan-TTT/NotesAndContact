@@ -1,0 +1,449 @@
+//Адаптивное свойство
+$maxWidth:1920;
+@mixin adaptive($property,$startSize,$minSize) {
+	$addSize: $startSize - $minSize;
+	#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+}
+
+
+@font-face {
+	font-family: "Montserrat-Regular";
+	src: url("../Fonts/Montserrat-Regular.ttf");
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat-Regular';
+}
+:root {
+	--body-color: #747474;
+	--sidePanel-color: #C4C4C4;
+	--dopT-color: #C0C0C0;
+	--task-color: #9C9797;
+	--text-color: #000;
+	--tabs-color: #E4E4E4;
+	--num-color: #74747488;
+	--tran-03: all 0.2s ease;
+	--tran-03: all 0.3s ease;
+	--tran-04: all 0.3s ease;
+	--tran-05: all 0.3s ease;
+}
+::selection {
+	background-color: var(--body-color);
+	color: var(--tabs-color);
+}
+body {
+	min-height: 100vh;
+	background-color: var(--body-color);
+	transition: var(--tran-05);
+}
+.sidePanel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	@include adaptive( "width" , 250 , 41.6 );
+	@include adaptive("padding-top", 26 , 4.3);
+	@include adaptive("padding-left", 10 , 1.6);
+	@include adaptive("padding-right", 10 , 1.6);
+	@include adaptive("padding-bottom", 10 , 1.6);
+	background: var(--sidePanel-color);
+	transition: var(--tran-05);
+	z-index: 100;
+	&.close {
+		@include adaptive("width", 78 , 13 );
+		.text {
+			opacity: 0;
+		}
+		.toggle {
+			transform: translateY(-50%) rotate(0deg);
+		}
+		& ~ .home {
+			@include adaptive("left", 78 , 13 );
+			height: 100vh;
+			width: calc(100% - calc(13px + (78 - 13) * ((100vw - 320px) / (1920 - 320))));
+		}
+	}
+	li {
+		@include adaptive( "height" , 56 , 9.3);
+		list-style: none;
+		display: flex;
+		align-items: center;
+		@include adaptive( "margin-top" , 10 , 1.6);
+		@include adaptive( "margin-bottom" , 30 , 5 );
+		a {
+			list-style: none;
+			height: 100%;
+			background-color: transparent;
+			display: flex;
+			align-items: center;
+			height: 100%;
+			width: 100%;
+			@include adaptive( "border-radius" , 6 , 1 );
+			text-decoration: none;
+			transition: var(--tran-03);
+            opacity: 0.5;
+			&:hover {
+				background-color: var(--tabs-color);
+                opacity: 0.8;
+			}
+		}
+	}
+	.icon {
+		@include adaptive( "width" , 60 , 10 );
+		@include adaptive( "border-radius" , 6 , 1 );
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		@include adaptive( "font-size" , 20 , 3.3);
+	}
+	.text {
+		@include adaptive( "font-size" , 22 , 3.6);
+		opacity: 1;
+	}
+	header {
+		position: relative;
+		.logo-img {
+			display: flex;
+			align-items: center;
+		}
+		.logo-text {
+			display: flex;
+			flex-direction: column;
+		}
+		.logo {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			// @include adaptive( "margin-left" , 18 , 3 );
+			img {
+				@include adaptive( "width" , 40 , 6.6 );
+				@include adaptive( "border-radius" , 6 , 1 );
+			}
+		}
+		.toggle {
+			position: absolute;
+			top: 50%;
+			@include adaptive( "right" , (-25) , (-4.16) );
+			transform: translateY(-50%) rotate(180deg);
+			@include adaptive( "height" , 25 , 4.16 );
+			@include adaptive( "width" , 25 , 4.16 );
+			background-color: var(--task-color);
+			color: var(--sidebar-color);
+			@include adaptive( "border-radius" , 6 , 1 );
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include adaptive( "font-size" , 22 , 3.6);
+			cursor: pointer;
+			transition: var(--tran-05);
+		}
+	}
+	.tabs {
+		@include adaptive("margin-top", 16 , 2.6);
+	}
+	.tabs-bar {
+		height: calc(100% - calc(9.16px + (55 - 9.16) * ((100vw - 320px) / (1920 - 320))));
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		overflow-y: scroll;
+		.mode {
+			@include adaptive( "border-radius" , 6 , 1 );
+			background-color: var(--task-color);
+			position: relative;
+			transition: var(--tran-05);
+		}
+	}
+}
+.sidePanel header .logo,
+.sidePanel .icon {
+	@include adaptive( "min-width" , 58 , 9.6 );
+	@include adaptive( "border-radius" , 6 , 1 );
+}
+.sidePanel .text,
+.sidePanel .icon {
+	color: var(--text-color);
+	transition: var(--tran-03);
+}
+header {
+	.logo-img {
+		.txt-logo-name {
+			@include adaptive( "margin-top", 2 , 0.3 );
+			@include adaptive( "font-size" , 18 , 3);
+			font-weight: 600;
+		}
+	}
+}
+.sidePanel li a:hover .icon,
+.sidePanel li a:hover .text {
+	color: var(--sidePanel-color);
+}
+.tabs-bar {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.home {
+	position: absolute;
+	top: 0;
+	top: 0;
+	@include adaptive("left", 250 , 41.6 );
+	height: 100vh;
+    
+	width: calc(100% - calc(41.6px + (250 - 41.6) * ((100vw - 320px) / (1920 - 320))));
+	background-color: var(--body-color);
+	transition: var(--tran-05);
+    .btnTopTask{
+		@include adaptive("margin-top", 30 , 5);
+		@include adaptive("margin-left", 30 , 5);
+		@include adaptive("margin-right", 30 , 5);
+		display: flex;
+		justify-content: space-between;
+        li{
+			cursor: pointer;
+			width: calc(30%);
+	    	display: flex;
+	    	align-items: center;
+            justify-content: center;
+	    	list-style: none;
+            background-color: var(--sidePanel-color);
+            transition: var(--tran-03);
+            @include adaptive( "border-radius" , 6 , 1 );
+			opacity: 0.5;
+            .text {
+                @include adaptive( "font-size" , 26 , 4.3);
+                color: var(--text-color);
+                transition: var(--tran-03);
+                opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+            &:hover {
+				background-color: var(--tabs-color);
+				opacity: 1;
+			}
+       }
+	    .oOpen{
+			opacity: 1;
+		}
+   }
+   .Task{
+		@include adaptive("margin-top", 30 , 5);
+		@include adaptive("margin-left", 30 , 5);
+		@include adaptive("margin-right", 30 , 5);
+        background-color: var(--task-color);
+        @include adaptive( "border-radius" , 6 , 1 );
+		display: flex;
+		align-items:center;
+		align-content:center;
+		flex-direction:column;
+		flex-wrap: wrap;
+
+		&.invisible{
+			display: none;
+		}
+        
+		.oneContent{
+			display: flex;
+			justify-content:center;
+			flex-direction: row;
+			width: calc(100%);
+			background-color:var(--num-color);
+			@include adaptive( "border-radius" , 6 , 1 );
+			.queue{
+				@include adaptive( "width" , 36 , 6 );
+				@include adaptive( "height" , 36 , 6 );
+				@include adaptive( "border-radius" , 6 , 1 );
+				@include adaptive("margin", 10 , 1.6);
+				font-family: Montserrat-Regular;
+				display: flex;
+				flex-direction:column;
+
+				input[type="number"]{
+					@include adaptive( "height" , 20 , 3.3);
+					@include adaptive( "width" , 36 , 6 );
+					border: none;
+					outline: none;
+					background-color: var(--tabs-color);
+					text-align: center;
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button{
+						-webkit-appearance: none;
+					}
+				}
+				.higher, .below{
+					text-align: center;
+					cursor: pointer;
+					@include adaptive( "width" , 36 , 6 );
+					@include adaptive( "height" , 8 , 1.3);
+					font-size: 0px;
+					background-color: var(--sidePanel-color);
+				}
+				.higher{
+					border-radius: 6px 6px 0px 0px ;
+					transition: var(--tran-03);
+					&:hover{
+						@include adaptive( "height" , 16 , 2.6);
+						@include adaptive( "font-size" , 10 , 1.6);
+					}
+					&:hover ~ .below{
+						display: none;
+					}
+					&:hover ~ input[type="number"]{
+						border-radius: 0px 0px 6px 6px ;
+					}
+				};
+				.below{
+					border-radius: 0px 0px 6px 6px ;
+					transition: var(--tran-03);
+					&:hover{
+						@include adaptive( "height" , 16 , 2.6);
+						@include adaptive( "font-size" , 10 , 1.6);
+					}
+					&:hover ~ .higher{
+						display: none;
+					}
+					&:hover ~ input[type="number"]{
+						border-radius: 6px 6px 0px 0px ;
+					}
+				}
+			}
+		
+    		.itemGroupOne{
+				align-self:flex-start;
+    		    background-color: var(--sidePanel-color);
+    		    @include adaptive( "border-radius" , 6 , 1 );
+				@include adaptive("padding", 10 , 1.6);
+				width: calc(100%);
+				flex: 1;
+
+    		    ul{
+    		        @include adaptive( "font-size" , 26 , 4.3);
+    		        list-style: none;
+    		        display: flex;
+    		        justify-content: space-between;
+    		        align-items: center;
+    		        img{
+    		            cursor: pointer;
+    		            
+						@include adaptive("width", 36 , 6);
+    		            @include adaptive( "border-radius" , 6 , 1 );
+    		            transition: var(--tran-03);
+    		            opacity: 0.5;
+    		            &:hover {
+    		                opacity: 0.8;
+    		            }
+    		        }
+    		        li{	
+						@include adaptive( "border-radius" , 6 , 1 );
+    		            display: flex;
+    		            align-items: center; 
+    		            background-color: var(--tabs-color);
+    		            input[type="date"],
+    		            input[type="time"]{
+    		                position: relative;
+    		                text-align: center;
+    		                &::-webkit-calendar-picker-indicator{
+    		                    position: absolute;
+    		                    top: 0;
+    		                    right: 0;
+    		                    bottom: 0;
+    		                    width: auto;
+    		                    height: auto;
+    		                    background: transparent;
+								@include adaptive( "left" , (-10) , (-1.6) );
+    		                    color: transparent;
+    		                }
+    		                &::-webkit-inner-spin-button{
+    		                    z-index: 1;
+    		                }
+    		            }
+    		            input{
+							@include adaptive( "border-radius" , 6 , 1 );
+    		                @include adaptive( "height" , 36 , 6);
+    		                border: none;
+    		                outline: none;
+    		                font-family: Montserrat-Regular;
+							background-color: var(--tabs-color);
+							width: calc(100%);
+							@include adaptive("padding-left", 5 , 0.83);
+							@include adaptive("padding-right", 5 , 0.83);
+							@include adaptive( "font-size" , 28 , 4.6);
+    		            }
+
+    		        }
+					.ProgressTask, .TextTask,
+					.DateTask, .TimeTask,
+					.AddNewDopTask{
+						@include adaptive("margin-right", 10 , 1.6);
+					}
+					.TextTask{
+						width: calc(100%);
+					}
+    		    }
+    		}
+   		}
+		.itemGroupTwo{
+			align-items:center;
+			align-content:center;
+			display: none;
+			@include adaptive( "height" , 172 , 28.6);
+			ul{
+				display: flex;
+    			justify-content: space-around;
+    			align-items: center; 
+				li{
+					background-color: var(--dopT-color);
+					@include adaptive( "border-radius" , 6 , 1 );
+					display: flex;
+    				align-items:center;
+    				flex-flow:wrap column;
+    				justify-content: space-around;
+					border: none;
+    				outline: none;
+					@include adaptive("margin", 10 , 1.6);
+					@include adaptive("padding", 10 , 1.6);
+
+					textarea, input{
+						font-family: Montserrat-Regular;
+						border: none;
+    					outline: none;
+						resize: none;
+						@include adaptive( "font-size" , 20 , 3.3);
+						width:calc(100%);
+						@include adaptive( "border-radius" , 6 , 1 );
+						@include adaptive("padding-top", 0 , 0);
+						@include adaptive("padding-left", 5 , 0.83);
+						@include adaptive("padding-right", 5 , 0.83);
+						@include adaptive("padding-bottom", 0 , 0);
+						background-color: var(--tabs-color);
+						text-emphasis-color: opacity(rgba(0, 0, 0, 0.5));
+					}
+					input{
+						@include adaptive("margin-bottom", 10 , 1.6);
+					}
+					textarea{
+						@include adaptive( "height" , 98 , 16.3);
+						&::-webkit-scrollbar{
+							width: 0.5em;
+						}
+						&::-webkit-scrollbar-track{
+							box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+							@include adaptive( "border-radius" , 6 , 1 );
+							cursor: pointer;
+						}
+						&::-webkit-scrollbar-thumb{
+							background-color: darkgrey;
+							@include adaptive( "border-radius" , 6 , 1 );
+						}
+					}
+				}
+			}
+		}
+   }
+}

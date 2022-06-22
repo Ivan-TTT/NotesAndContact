@@ -1,0 +1,47 @@
+body{
+    background-color: #747474;
+}
+
+
+
+/* .SidePanel, .AddTask, .itemGroupOne */
+.colorC{ 
+    background-color: #C4C4C4;
+}
+
+
+.ProgressTask, .AddNewDopTask, .SaveTask{
+    background-color: #E4E4E4;
+}
+
+.DopTask{
+    background-color: #C0C0C0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    color: transparent;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+.Tabs:hover, .AddTask:hover{
+    background-color: #E4E4E4;
+}
+
+/* Task */
+.colorA{
+    background-color: #9C9797;
+}
+/* .colorA:hover{
+    background-color: #bebebe;
+} */ 
+
+
+/* DopTask, itemGroupOne */
+/* .colorB:hover{
+    background-color: #1a1a1acc;
+} */
+
+
+

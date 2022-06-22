@@ -1,0 +1,182 @@
+body{
+    padding: 0;
+    margin: 0;
+
+    background-color: #9C9797;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+@font-face{ /*Шрифт*/
+    font-family: "Montserrat-ExtraLight";
+    src: url("../Fonts/Montserrat-Light.ttf");
+}
+
+.AllContentWindow{/*Расположение SidePane(боковая панель) и EventWindow(окно события)*/
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.indent{ /*Отступы элементов в контейнере*/
+    margin-top: calc(10px + (30 - 10)*((100vw - 320px) / (1980 - 320)));
+    margin-left: calc(8px + (26 - 8)*((100vw - 320px) / (1980 - 320)));
+    margin-right: calc(8px + (26 - 8)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    padding-left: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-right: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+}
+
+.indentTask{
+    padding-left: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-right: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-top: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+    padding-bottom: calc(2px + (4 - 2)*((100vw - 320px) / (1980 - 320)));
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------Бокавая панель----------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.SidePanel{ /*Бокавая панель*/
+    background-color: #C4C4C4;
+    display: flex;
+    flex-direction: column;
+    width: calc(120px + (260 - 120)*((100vw - 320px) / (1980 - 320)));
+    height: 100vh;
+}
+.Tabs{/*Вкладки боковой панели*/
+    width: calc(100px + (200 - 100)*((100vw - 320px) / (1980 - 320)));
+    height: calc(20px + (40 - 20)*((100vw - 320px) / (1980 - 320)));
+    font-family: "Montserrat-ExtraLight";
+    font-size: calc(16px + (32 - 16)*((100vw - 320px) / (1980 - 320)));
+    transition: .3s;
+}
+.Tabs:hover{
+    cursor: pointer;
+    background-color: #E1DEDE;
+    text-decoration: none;
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------Задачи--------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+.EventWindow{/*Настройка EventWindow (окна события)*/
+    width: 100vw;
+    height: 100vh;
+}
+
+.AddTask {
+    background-color: #C4C4C4;
+    font-family: "Montserrat-ExtraLight";
+    font-size: calc(16px + (32 - 16)*((100vw - 320px) / (1980 - 320)));
+    transition: .3s;
+    display: flex;
+    justify-content: center;
+    /* width: calc(100px + (1616 - 100)*((100vw - 320px) / (1980 - 320))); */
+}
+.AddTask:hover{
+    cursor: pointer;
+    background-color: #E1DEDE;
+    text-decoration: none;
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+.Task{
+    background-color: #C4C4C4;
+    font-family: "Montserrat-ExtraLight";
+    font-size: calc(16px + (32 - 16)*((100vw - 320px) / (1980 - 320)));
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.ProgressTask,.DateTask, .TimeTask{
+    height: calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))) ;
+    width: calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))) ;
+    background-color: #E4E4E4;
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+}
+.Progress-img{
+    color:#9C9797 ;
+}
+
+.inputTask-Text{
+    font-family: "Montserrat-ExtraLight";
+    background-color: #E4E4E4;
+    font-size: calc(14px + (28 - 14)*((100vw - 320px) / (1980 - 320)));
+    width: calc(100px + (1000 - 100)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    border: none;
+    outline: none;
+}
+/* Убираем стандартный маркер Chrome */
+details summary::-webkit-details-marker {
+    display: none
+}
+/* Убираем стандартный маркер Firefox */
+details > summary {
+    list-style: none;
+}
+details[open] .dropRight-menu {
+    transform: translate(calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))), calc(-25px + (-50 - (-25))*((100vw - 320px) / (1980 - 320))));
+    animation: slide .3s ease-in-out;
+} 
+@keyframes slide {
+    0%      {opacity: 0; transform:  translate(calc(0px + (0 - 0)*((100vw - 320px) / (1980 - 320))), calc(-25px + (-50 - (-25))*((100vw - 320px) / (1980 - 320))));}
+
+    100%    {opacity: 100%; transform:  translate(calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))), calc(-25px + (-50 - (-25))*((100vw - 320px) / (1980 - 320))));}
+}
+input[type="date"]{
+    font-family: "Montserrat-ExtraLight";
+    background-color: #E4E4E4;
+    font-size: calc(8px + (16 - 8)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    width: calc(50px + (100 - 50)*((100vw - 320px) / (1980 - 320)));
+    height: calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))) ;
+    border: none;
+    outline: none;
+}
+/*А так убрать*/
+input[type="date"] {
+    position: relative;
+}
+
+
+/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: calc(-5px + (-10 - (-5))*((100vw - 320px) / (1980 - 320)));
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+/* adjust increase/decrease button */
+input[type="date"]::-webkit-inner-spin-button {
+    z-index: 1;
+}
+
+/* adjust clear button */
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
+
+input[type="time"]{
+    font-family: "Montserrat-ExtraLight";
+    background-color: #E4E4E4;
+    font-size: calc(8px + (16 - 8)*((100vw - 320px) / (1980 - 320)));
+    border-radius: calc(1px + (5 - 1)*((100vw - 320px) / (1980 - 320)));
+    width: calc(50px + (100 - 50)*((100vw - 320px) / (1980 - 320)));
+    height: calc(18px + (36 - 18)*((100vw - 320px) / (1980 - 320))) ;
+    border: none;
+    outline: none;
+}
